@@ -36,7 +36,6 @@
     <Folder Include="My Project\NewFolder3\" />
     <Folder Include="My Project\NewFolder\" />
     <Folder Include="Entidades\" />
-    <Folder Include="Formularios\" />
     <Folder Include="Recursos\" />
     <Folder Include="Utilidades\" />
   </ItemGroup>
