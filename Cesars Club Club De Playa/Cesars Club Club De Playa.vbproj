@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="DAL\" />
     <Folder Include="My Project\NewFolder1\" />
     <Folder Include="My Project\NewFolder2\" />
     <Folder Include="My Project\NewFolder3\" />
