@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="DAL\" />
     <Folder Include="My Project\NewFolder1\" />
     <Folder Include="My Project\NewFolder2\" />
     <Folder Include="My Project\NewFolder3\" />
@@ -38,6 +39,10 @@
     <Folder Include="Entidades\" />
     <Folder Include="Recursos\" />
     <Folder Include="Utilidades\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.OleDb" Version="10.0.2" />
   </ItemGroup>
 
 </Project>
