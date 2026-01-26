@@ -1,5 +1,4 @@
 ﻿Imports System.Data.OleDb
-
 Public Class Form1
 
 
@@ -49,7 +48,6 @@ Public Class Form1
             TextBox2.PasswordChar = "*"c
         End If
     End Sub
-
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Application.Exit()
     End Sub
