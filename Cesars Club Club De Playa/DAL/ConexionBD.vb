@@ -2,7 +2,6 @@
 Imports System.Data.OleDb
 
 Namespace DAL
-
     Public Module ConexionBD
         Public conexion As New OleDbConnection
         Public estado As String

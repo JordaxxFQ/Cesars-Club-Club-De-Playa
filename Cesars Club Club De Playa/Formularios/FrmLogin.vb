@@ -30,6 +30,7 @@ Public Class FrmLogin
 
                 If resultado > 0 Then
                     MessageBox.Show("¡Bienvenido al sistema!")
+                    System.Media.SystemSounds.Beep.Play()
                     Form2.Show()
                     Me.Hide()
                 Else
