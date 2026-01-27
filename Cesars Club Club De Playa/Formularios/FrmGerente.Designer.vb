@@ -33,76 +33,75 @@ Partial Class FrmGerente
         ' 
         ' btnRegistro
         ' 
-        btnRegistro.Location = New Point(12, 42)
-        btnRegistro.Margin = New Padding(3, 4, 3, 4)
+        btnRegistro.Location = New Point(10, 32)
         btnRegistro.Name = "btnRegistro"
-        btnRegistro.Size = New Size(110, 34)
+        btnRegistro.Size = New Size(96, 26)
         btnRegistro.TabIndex = 0
         btnRegistro.Text = "Registrar"
         btnRegistro.UseVisualStyleBackColor = True
         ' 
         ' btnReservaciones
         ' 
-        btnReservaciones.Location = New Point(128, 45)
-        btnReservaciones.Margin = New Padding(3, 4, 3, 4)
+        btnReservaciones.Location = New Point(112, 34)
         btnReservaciones.Name = "btnReservaciones"
-        btnReservaciones.Size = New Size(123, 31)
+        btnReservaciones.Size = New Size(108, 23)
         btnReservaciones.TabIndex = 1
         btnReservaciones.Text = "Reservaciones"
         btnReservaciones.UseVisualStyleBackColor = True
         ' 
         ' btnMesita
         ' 
-        btnMesita.Location = New Point(257, 45)
-        btnMesita.Margin = New Padding(3, 4, 3, 4)
+        btnMesita.Location = New Point(225, 34)
         btnMesita.Name = "btnMesita"
-        btnMesita.Size = New Size(86, 31)
+        btnMesita.Size = New Size(75, 23)
         btnMesita.TabIndex = 2
         btnMesita.Text = "Mesas"
         btnMesita.UseVisualStyleBackColor = True
         ' 
         ' btnFactura
         ' 
-        btnFactura.Location = New Point(649, 47)
-        btnFactura.Margin = New Padding(3, 4, 3, 4)
+        btnFactura.Location = New Point(568, 35)
         btnFactura.Name = "btnFactura"
-        btnFactura.Size = New Size(86, 31)
+        btnFactura.Size = New Size(75, 23)
         btnFactura.TabIndex = 3
         btnFactura.Text = "Factura"
         btnFactura.UseVisualStyleBackColor = True
         ' 
         ' btonPedido
         ' 
-        btonPedido.Location = New Point(449, 46)
+        btonPedido.Location = New Point(393, 34)
+        btonPedido.Margin = New Padding(3, 2, 3, 2)
         btonPedido.Name = "btonPedido"
-        btonPedido.Size = New Size(94, 29)
+        btonPedido.Size = New Size(82, 22)
         btonPedido.TabIndex = 4
         btonPedido.Text = "Pedidos"
         btonPedido.UseVisualStyleBackColor = True
         ' 
         ' btnClient
         ' 
-        btnClient.Location = New Point(349, 47)
+        btnClient.Location = New Point(305, 35)
+        btnClient.Margin = New Padding(3, 2, 3, 2)
         btnClient.Name = "btnClient"
-        btnClient.Size = New Size(94, 29)
+        btnClient.Size = New Size(82, 22)
         btnClient.TabIndex = 5
         btnClient.Text = "Clientes"
         btnClient.UseVisualStyleBackColor = True
         ' 
         ' btnProducto
         ' 
-        btnProducto.Location = New Point(549, 47)
+        btnProducto.Location = New Point(480, 35)
+        btnProducto.Margin = New Padding(3, 2, 3, 2)
         btnProducto.Name = "btnProducto"
-        btnProducto.Size = New Size(94, 29)
+        btnProducto.Size = New Size(82, 22)
         btnProducto.TabIndex = 6
         btnProducto.Text = "Productos"
         btnProducto.UseVisualStyleBackColor = True
         ' 
         ' FrmGerente
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1318, 823)
+        ClientSize = New Size(1153, 617)
         Controls.Add(btnProducto)
         Controls.Add(btnClient)
         Controls.Add(btonPedido)
@@ -110,7 +109,6 @@ Partial Class FrmGerente
         Controls.Add(btnMesita)
         Controls.Add(btnReservaciones)
         Controls.Add(btnRegistro)
-        Margin = New Padding(3, 4, 3, 4)
         Name = "FrmGerente"
         Text = "Menú"
         ResumeLayout(False)
