@@ -101,7 +101,7 @@ Partial Class FrmGerente
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1153, 617)
+        ClientSize = New Size(1153, 556)
         Controls.Add(btnProducto)
         Controls.Add(btnClient)
         Controls.Add(btonPedido)
