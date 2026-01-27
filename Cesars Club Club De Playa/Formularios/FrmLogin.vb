@@ -35,9 +35,9 @@ Public Class FrmLogin
                         Case "Gerente"
                             FrmGerente.Show()
                         Case "Recepcionista"
-                            Form3.Show()
+                            FrmGerente.Show()
                         Case "Cocinero"
-                            Form3.Show()
+                            FrmGerente.Show()
                         Case Else
                             MessageBox.Show("Rol no asignado. Contacte al administrador.")
                             Exit Sub
