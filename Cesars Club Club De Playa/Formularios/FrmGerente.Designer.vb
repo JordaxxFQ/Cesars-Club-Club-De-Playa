@@ -22,64 +22,105 @@ Partial Class FrmGerente
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Button1 = New Button()
-        Button2 = New Button()
-        Button3 = New Button()
-        Button4 = New Button()
+        btnRegistro = New Button()
+        btnReservaciones = New Button()
+        btnMesita = New Button()
+        btnFactura = New Button()
+        btonPedido = New Button()
+        btnClient = New Button()
+        btnProducto = New Button()
         SuspendLayout()
         ' 
-        ' Button1
+        ' btnRegistro
         ' 
-        Button1.Location = New Point(232, 60)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(75, 23)
-        Button1.TabIndex = 0
-        Button1.Text = "Button1"
-        Button1.UseVisualStyleBackColor = True
+        btnRegistro.Location = New Point(12, 42)
+        btnRegistro.Margin = New Padding(3, 4, 3, 4)
+        btnRegistro.Name = "btnRegistro"
+        btnRegistro.Size = New Size(110, 34)
+        btnRegistro.TabIndex = 0
+        btnRegistro.Text = "Registrar"
+        btnRegistro.UseVisualStyleBackColor = True
         ' 
-        ' Button2
+        ' btnReservaciones
         ' 
-        Button2.Location = New Point(313, 60)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(75, 23)
-        Button2.TabIndex = 1
-        Button2.Text = "Button2"
-        Button2.UseVisualStyleBackColor = True
+        btnReservaciones.Location = New Point(128, 45)
+        btnReservaciones.Margin = New Padding(3, 4, 3, 4)
+        btnReservaciones.Name = "btnReservaciones"
+        btnReservaciones.Size = New Size(123, 31)
+        btnReservaciones.TabIndex = 1
+        btnReservaciones.Text = "Reservaciones"
+        btnReservaciones.UseVisualStyleBackColor = True
         ' 
-        ' Button3
+        ' btnMesita
         ' 
-        Button3.Location = New Point(394, 60)
-        Button3.Name = "Button3"
-        Button3.Size = New Size(75, 23)
-        Button3.TabIndex = 2
-        Button3.Text = "Button3"
-        Button3.UseVisualStyleBackColor = True
+        btnMesita.Location = New Point(257, 45)
+        btnMesita.Margin = New Padding(3, 4, 3, 4)
+        btnMesita.Name = "btnMesita"
+        btnMesita.Size = New Size(86, 31)
+        btnMesita.TabIndex = 2
+        btnMesita.Text = "Mesas"
+        btnMesita.UseVisualStyleBackColor = True
         ' 
-        ' Button4
+        ' btnFactura
         ' 
-        Button4.Location = New Point(475, 60)
-        Button4.Name = "Button4"
-        Button4.Size = New Size(75, 23)
-        Button4.TabIndex = 3
-        Button4.Text = "Button4"
-        Button4.UseVisualStyleBackColor = True
+        btnFactura.Location = New Point(649, 47)
+        btnFactura.Margin = New Padding(3, 4, 3, 4)
+        btnFactura.Name = "btnFactura"
+        btnFactura.Size = New Size(86, 31)
+        btnFactura.TabIndex = 3
+        btnFactura.Text = "Factura"
+        btnFactura.UseVisualStyleBackColor = True
+        ' 
+        ' btonPedido
+        ' 
+        btonPedido.Location = New Point(449, 46)
+        btonPedido.Name = "btonPedido"
+        btonPedido.Size = New Size(94, 29)
+        btonPedido.TabIndex = 4
+        btonPedido.Text = "Pedidos"
+        btonPedido.UseVisualStyleBackColor = True
+        ' 
+        ' btnClient
+        ' 
+        btnClient.Location = New Point(349, 47)
+        btnClient.Name = "btnClient"
+        btnClient.Size = New Size(94, 29)
+        btnClient.TabIndex = 5
+        btnClient.Text = "Clientes"
+        btnClient.UseVisualStyleBackColor = True
+        ' 
+        ' btnProducto
+        ' 
+        btnProducto.Location = New Point(549, 47)
+        btnProducto.Name = "btnProducto"
+        btnProducto.Size = New Size(94, 29)
+        btnProducto.TabIndex = 6
+        btnProducto.Text = "Productos"
+        btnProducto.UseVisualStyleBackColor = True
         ' 
         ' FrmGerente
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1153, 617)
-        Controls.Add(Button4)
-        Controls.Add(Button3)
-        Controls.Add(Button2)
-        Controls.Add(Button1)
+        ClientSize = New Size(1318, 823)
+        Controls.Add(btnProducto)
+        Controls.Add(btnClient)
+        Controls.Add(btonPedido)
+        Controls.Add(btnFactura)
+        Controls.Add(btnMesita)
+        Controls.Add(btnReservaciones)
+        Controls.Add(btnRegistro)
+        Margin = New Padding(3, 4, 3, 4)
         Name = "FrmGerente"
         Text = "Menú"
         ResumeLayout(False)
     End Sub
 
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
+    Friend WithEvents btnRegistro As Button
+    Friend WithEvents btnReservaciones As Button
+    Friend WithEvents btnMesita As Button
+    Friend WithEvents btnFactura As Button
+    Friend WithEvents btonPedido As Button
+    Friend WithEvents btnClient As Button
+    Friend WithEvents btnProducto As Button
 End Class
