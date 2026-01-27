@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+Partial Class FrmLogin
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -28,6 +28,7 @@ Partial Class Form1
         Label1 = New Label()
         Label2 = New Label()
         CheckBox1 = New CheckBox()
+        lblHora = New Label()
         SuspendLayout()
         ' 
         ' Button1
@@ -80,19 +81,29 @@ Partial Class Form1
         CheckBox1.TabIndex = 5
         CheckBox1.UseVisualStyleBackColor = True
         ' 
-        ' Form1
+        ' lblHora
+        ' 
+        lblHora.AutoSize = True
+        lblHora.Location = New Point(78, -1)
+        lblHora.Name = "lblHora"
+        lblHora.Size = New Size(41, 15)
+        lblHora.TabIndex = 6
+        lblHora.Text = "Label3"
+        ' 
+        ' FrmLogin
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(210, 266)
+        Controls.Add(lblHora)
         Controls.Add(CheckBox1)
         Controls.Add(Label2)
         Controls.Add(Label1)
         Controls.Add(TextBox2)
         Controls.Add(TextBox1)
         Controls.Add(Button1)
-        Name = "Form1"
-        Text = "Form1"
+        Name = "FrmLogin"
+        Text = "Club Playa - Acceso al Sistema v1.0"
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -103,5 +114,6 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents lblHora As Label
 
 End Class

@@ -4,10 +4,27 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <RootNamespace>Cesars_Club_Club_De_Playa</RootNamespace>
-    <StartupObject>Sub Main</StartupObject>
+    <StartupObject>Cesars_Club_Club_De_Playa.My.MyApplication</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="DataBase\BD Proyecto Final.accdb" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="DataBase\BD Proyecto Final.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
   <ItemGroup>
     <Import Include="System.Data" />
@@ -24,6 +41,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="BD Proyecto Final.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -31,7 +51,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DAL\" />
     <Folder Include="My Project\NewFolder1\" />
     <Folder Include="My Project\NewFolder2\" />
     <Folder Include="My Project\NewFolder3\" />
