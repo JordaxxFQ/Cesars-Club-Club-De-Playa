@@ -27,7 +27,9 @@ Partial Class FrmRegistroPersonal
         btnRefresh = New Button()
         btnDelete = New Button()
         Label1 = New Label()
+        dgvPersonal = New DataGridView()
         ConexionBDBindingSource = New BindingSource(components)
+        CType(dgvPersonal, ComponentModel.ISupportInitialize).BeginInit()
         CType(ConexionBDBindingSource, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -67,6 +69,17 @@ Partial Class FrmRegistroPersonal
         Label1.TabIndex = 3
         Label1.Text = "Listado del Personal"
         ' 
+        ' dgvPersonal
+        ' 
+        dgvPersonal.AutoGenerateColumns = False
+        dgvPersonal.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvPersonal.DataSource = ConexionBDBindingSource
+        dgvPersonal.Location = New Point(57, 92)
+        dgvPersonal.Name = "dgvPersonal"
+        dgvPersonal.RowHeadersWidth = 51
+        dgvPersonal.Size = New Size(300, 188)
+        dgvPersonal.TabIndex = 4
+        ' 
         ' ConexionBDBindingSource
         ' 
         ConexionBDBindingSource.DataSource = GetType(DAL.ConexionBD)
@@ -76,12 +89,14 @@ Partial Class FrmRegistroPersonal
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(536, 619)
+        Controls.Add(dgvPersonal)
         Controls.Add(Label1)
         Controls.Add(btnDelete)
         Controls.Add(btnRefresh)
         Controls.Add(btnAgg)
         Name = "FrmRegistroPersonal"
         Text = "FrmRegistroPersonal"
+        CType(dgvPersonal, ComponentModel.ISupportInitialize).EndInit()
         CType(ConexionBDBindingSource, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
@@ -91,5 +106,6 @@ Partial Class FrmRegistroPersonal
     Friend WithEvents btnRefresh As Button
     Friend WithEvents btnDelete As Button
     Friend WithEvents Label1 As Label
+    Friend WithEvents dgvPersonal As DataGridView
     Friend WithEvents ConexionBDBindingSource As BindingSource
 End Class
