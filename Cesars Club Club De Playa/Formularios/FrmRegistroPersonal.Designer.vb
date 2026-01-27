@@ -22,10 +22,15 @@ Partial Class FrmRegistroPersonal
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         btnAgg = New Button()
         btnRefresh = New Button()
         btnDelete = New Button()
         Label1 = New Label()
+        DataGridView1 = New DataGridView()
+        ConexionBDBindingSource = New BindingSource(components)
+        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(ConexionBDBindingSource, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnAgg
@@ -67,11 +72,26 @@ Partial Class FrmRegistroPersonal
         Label1.TabIndex = 3
         Label1.Text = "Listado del Personal"
         ' 
+        ' DataGridView1
+        ' 
+        DataGridView1.AutoGenerateColumns = False
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.DataSource = ConexionBDBindingSource
+        DataGridView1.Location = New Point(38, 69)
+        DataGridView1.Name = "DataGridView1"
+        DataGridView1.Size = New Size(240, 150)
+        DataGridView1.TabIndex = 4
+        ' 
+        ' ConexionBDBindingSource
+        ' 
+        ConexionBDBindingSource.DataSource = GetType(DAL.ConexionBD)
+        ' 
         ' FrmRegistroPersonal
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(469, 464)
+        Controls.Add(DataGridView1)
         Controls.Add(Label1)
         Controls.Add(btnDelete)
         Controls.Add(btnRefresh)
@@ -79,6 +99,8 @@ Partial Class FrmRegistroPersonal
         Margin = New Padding(3, 2, 3, 2)
         Name = "FrmRegistroPersonal"
         Text = "FrmRegistroPersonal"
+        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        CType(ConexionBDBindingSource, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -87,4 +109,6 @@ Partial Class FrmRegistroPersonal
     Friend WithEvents btnRefresh As Button
     Friend WithEvents btnDelete As Button
     Friend WithEvents Label1 As Label
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents ConexionBDBindingSource As BindingSource
 End Class
