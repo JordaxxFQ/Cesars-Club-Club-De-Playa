@@ -12,5 +12,7 @@
         Application.Exit()
     End Sub
 
-
+    Private Sub btnClient_Click(sender As Object, e As EventArgs) Handles btnClient.Click
+        FrmRegistroClientes.Show()
+    End Sub
 End Class
