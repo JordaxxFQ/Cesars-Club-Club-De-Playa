@@ -1,6 +1,5 @@
 ﻿Imports System.Data.Common
 Imports System.Data.OleDb
-Imports System.Runtime.InteropServices.JavaScript.JSType
 Imports Cesars_Club_Club_De_Playa.DAL
 Public Class FrmRegistroPersonal
 
