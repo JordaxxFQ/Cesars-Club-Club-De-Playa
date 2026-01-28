@@ -84,7 +84,6 @@ Public Class FrmRegistroPersonal
         End Using
     End Sub
 
-
     Private Sub btnAgg_Click(sender As Object, e As EventArgs) Handles btnAgg.Click
 
         Dim ventanaAgregar As New FrmAggPerso()
@@ -93,6 +92,5 @@ Public Class FrmRegistroPersonal
 
         CargarDatos()
     End Sub
-
 
 End Class
