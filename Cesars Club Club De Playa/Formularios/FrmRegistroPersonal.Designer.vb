@@ -24,7 +24,6 @@ Partial Class FrmRegistroPersonal
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
         btnAgg = New Button()
-        btnRefresh = New Button()
         btnDelete = New Button()
         Label1 = New Label()
         ConexionBDBindingSource = New BindingSource(components)
@@ -37,23 +36,13 @@ Partial Class FrmRegistroPersonal
         ' 
         ' btnAgg
         ' 
-        btnAgg.Location = New Point(345, 163)
+        btnAgg.Location = New Point(345, 125)
         btnAgg.Margin = New Padding(3, 2, 3, 2)
         btnAgg.Name = "btnAgg"
         btnAgg.Size = New Size(82, 43)
         btnAgg.TabIndex = 0
         btnAgg.Text = "Agregar"
         btnAgg.UseVisualStyleBackColor = True
-        ' 
-        ' btnRefresh
-        ' 
-        btnRefresh.Location = New Point(345, 116)
-        btnRefresh.Margin = New Padding(3, 2, 3, 2)
-        btnRefresh.Name = "btnRefresh"
-        btnRefresh.Size = New Size(82, 43)
-        btnRefresh.TabIndex = 1
-        btnRefresh.Text = "Actualizar"
-        btnRefresh.UseVisualStyleBackColor = True
         ' 
         ' btnDelete
         ' 
@@ -98,7 +87,6 @@ Partial Class FrmRegistroPersonal
         Controls.Add(DataGridView1)
         Controls.Add(Label1)
         Controls.Add(btnDelete)
-        Controls.Add(btnRefresh)
         Controls.Add(btnAgg)
         Margin = New Padding(3, 2, 3, 2)
         Name = "FrmRegistroPersonal"
@@ -111,7 +99,6 @@ Partial Class FrmRegistroPersonal
     End Sub
 
     Friend WithEvents btnAgg As Button
-    Friend WithEvents btnRefresh As Button
     Friend WithEvents btnDelete As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents ConexionBDBindingSource As BindingSource
