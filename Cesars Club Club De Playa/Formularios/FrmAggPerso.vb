@@ -42,22 +42,24 @@ Public Class FrmAggPerso
             Exit Sub
         End If
 
-        ' 2. Definir la consulta SQL (Asegúrate de que los nombres coincidan con tu tabla en Access)
-        ' Nota: No incluimos ID_Perso si es Autonumérico en Access
+        If Not {"Diurno", "Nocturno"}.Contains(txtTurno.Text) Then
+            MessageBox.Show("Turno inválido. Use 'Diurno' o 'Nocturno'.")
+            Exit Sub
+        End If
+
         Dim query As String = "INSERT INTO Personal (Usuario, Contraseña, Turno, ID_Rol) VALUES (?, ?, ?, ?)"
 
         Using conexion As New OleDbConnection(connectionString)
             Try
                 Dim comando As New OleDbCommand(query, conexion)
 
-                ' 3. Agregar los parámetros en el MISMO ORDEN que en el INSERT
-                ' El "?" es un marcador de posición que evita errores de caracteres especiales
+
                 comando.Parameters.AddWithValue("@usuario", txtboxusuario.Text)
                 comando.Parameters.AddWithValue("@contra", txtboxContra.Text)
                 comando.Parameters.AddWithValue("@Rol", txtRol.Text)
                 comando.Parameters.AddWithValue("@turno", txtTurno.Text)
                 conexion.Open()
-                comando.ExecuteNonQuery() ' Ejecuta la inserción
+                comando.ExecuteNonQuery()
 
                 MessageBox.Show("¡Registro guardado exitosamente!")
 
@@ -67,7 +69,6 @@ Public Class FrmAggPerso
                 txtRol.Clear()
                 txtTurno.Clear()
 
-                ' Opcional: Cerrar este formulario al terminar
                 Me.Close()
 
             Catch ex As Exception

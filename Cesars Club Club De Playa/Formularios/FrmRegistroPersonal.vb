@@ -41,6 +41,12 @@ Public Class FrmRegistroPersonal
     End Sub
 
     Private Sub btnAgg_Click(sender As Object, e As EventArgs) Handles btnAgg.Click
-        FrmAggPerso.Show()
+
+        Dim ventanaAgregar As New FrmAggPerso()
+
+        ventanaAgregar.ShowDialog()
+
+        CargarDatos()
     End Sub
+
 End Class
