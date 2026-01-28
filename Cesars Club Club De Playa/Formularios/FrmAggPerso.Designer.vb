@@ -47,7 +47,7 @@ Partial Class FrmAggPerso
         ' 
         ' txtboxContra
         ' 
-        txtboxContra.Location = New Point(12, 136)
+        txtboxContra.Location = New Point(12, 137)
         txtboxContra.Name = "txtboxContra"
         txtboxContra.Size = New Size(100, 23)
         txtboxContra.TabIndex = 1
@@ -78,7 +78,7 @@ Partial Class FrmAggPerso
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(12, 118)
+        Label2.Location = New Point(12, 119)
         Label2.Name = "Label2"
         Label2.Size = New Size(67, 15)
         Label2.TabIndex = 5
