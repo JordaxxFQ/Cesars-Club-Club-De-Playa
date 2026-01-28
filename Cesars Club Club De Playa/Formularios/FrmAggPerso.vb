@@ -41,7 +41,7 @@ Public Class FrmAggPerso
 
 
     Private Sub CargarRoles()
-        ' Usamos DISTINCT para evitar duplicados desde la base de datos
+
         Dim query As String = "SELECT DISTINCT ID_Rol FROM Personal"
 
         Using conexion As New OleDbConnection(connectionString)
