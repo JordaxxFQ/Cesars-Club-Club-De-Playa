@@ -23,9 +23,6 @@ Public Class FrmAggPerso
                 Dim comando As New OleDbCommand(query, conexion)
                 Dim lector As OleDbDataReader = comando.ExecuteReader()
 
-                ' === PASO CRUCIAL: Limpiar la lista antes de agregar ===
-                cmbTurno.Items.Clear()
-
                 While lector.Read()
                     ' Solo agregamos si el valor no es nulo
                     If Not IsDBNull(lector("Turno")) Then
@@ -51,9 +48,6 @@ Public Class FrmAggPerso
                 conexion.Open()
                 Dim comando As New OleDbCommand(query, conexion)
                 Dim lector As OleDbDataReader = comando.ExecuteReader()
-
-                ' === PASO CRUCIAL: Limpiar la lista antes de agregar ===
-                cmbRol.Items.Clear()
 
                 While lector.Read()
                     ' Solo agregamos si el valor no es nulo
