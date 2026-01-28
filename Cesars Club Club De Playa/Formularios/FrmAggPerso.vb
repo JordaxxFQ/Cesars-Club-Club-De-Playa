@@ -8,9 +8,62 @@ Public Class FrmAggPerso
     Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
     Private Sub FrmAggPerso_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         enlace()
-
+        CargarRoles()
         CargarDatos()
+        CargarTurno()
     End Sub
+
+
+    Private Sub CargarTurno()
+        Dim query As String = "SELECT DISTINCT Turno FROM Personal"
+
+        Using conexion As New OleDbConnection(connectionString)
+            Try
+                conexion.Open()
+                Dim comando As New OleDbCommand(query, conexion)
+                Dim lector As OleDbDataReader = comando.ExecuteReader()
+
+                While lector.Read()
+                    ' Solo agregamos si el valor no es nulo
+                    If Not IsDBNull(lector("Turno")) Then
+                        cmbTurno.Items.Add(lector("Turno").ToString())
+                    End If
+                End While
+
+                lector.Close()
+
+            Catch ex As Exception
+                MessageBox.Show("Error al cargar Turnos: " & ex.Message)
+            End Try
+        End Using
+    End Sub
+
+
+    Private Sub CargarRoles()
+        ' Usamos DISTINCT para evitar duplicados desde la base de datos
+        Dim query As String = "SELECT DISTINCT ID_Rol FROM Personal"
+
+        Using conexion As New OleDbConnection(connectionString)
+            Try
+                conexion.Open()
+                Dim comando As New OleDbCommand(query, conexion)
+                Dim lector As OleDbDataReader = comando.ExecuteReader()
+
+                While lector.Read()
+                    ' Solo agregamos si el valor no es nulo
+                    If Not IsDBNull(lector("ID_Rol")) Then
+                        cmbRol.Items.Add(lector("ID_Rol").ToString())
+                    End If
+                End While
+
+                lector.Close()
+
+            Catch ex As Exception
+                MessageBox.Show("Error al cargar roles: " & ex.Message)
+            End Try
+        End Using
+    End Sub
+
     Private Sub CargarDatos()
         Dim query As String = "SELECT * FROM Personal"
 
@@ -37,17 +90,14 @@ Public Class FrmAggPerso
 
     Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles btnConfirmar.Click
         ' 1. Validar que los campos no estén vacíos
-        If txtboxusuario.Text = "" Or txtboxContra.Text = "" Or txtRol.Text = "" Or txtTurno.Text = "" Then
+        If txtboxusuario.Text = "" Or txtboxContra.Text = "" Or cmbRol.Text = "" Or cmbTurno.Text = "" Then
             MessageBox.Show("Por favor, complete todos los campos.")
             Exit Sub
         End If
 
-        If Not {"Diurno", "Nocturno"}.Contains(txtTurno.Text) Then
-            MessageBox.Show("Turno inválido. Use 'Diurno' o 'Nocturno'.")
-            Exit Sub
-        End If
 
-        Dim query As String = "INSERT INTO Personal (Usuario, Contraseña, Turno, ID_Rol) VALUES (?, ?, ?, ?)"
+
+        Dim query As String = "INSERT INTO Personal (Usuario, Contraseña, ID_Rol, Turno) VALUES (?, ?, ?, ?)"
 
         Using conexion As New OleDbConnection(connectionString)
             Try
@@ -56,8 +106,8 @@ Public Class FrmAggPerso
 
                 comando.Parameters.AddWithValue("@usuario", txtboxusuario.Text)
                 comando.Parameters.AddWithValue("@contra", txtboxContra.Text)
-                comando.Parameters.AddWithValue("@Rol", txtRol.Text)
-                comando.Parameters.AddWithValue("@turno", txtTurno.Text)
+                comando.Parameters.AddWithValue("@Rol", cmbRol.Text)
+                comando.Parameters.AddWithValue("@turno", cmbTurno.Text)
                 conexion.Open()
                 comando.ExecuteNonQuery()
 
@@ -66,9 +116,8 @@ Public Class FrmAggPerso
 
                 txtboxusuario.Clear()
                 txtboxContra.Clear()
-                txtRol.Clear()
-                txtTurno.Clear()
-
+                cmbTurno.Items.Clear()
+                cmbRol.Items.Clear()
                 Me.Close()
 
             Catch ex As Exception
