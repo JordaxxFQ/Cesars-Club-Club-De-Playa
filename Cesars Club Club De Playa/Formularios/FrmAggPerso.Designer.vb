@@ -22,20 +22,17 @@ Partial Class FrmAggPerso
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New ComponentModel.Container()
         txtboxusuario = New TextBox()
         txtboxContra = New TextBox()
-        txtRol = New TextBox()
         txtTurno = New TextBox()
         Label1 = New Label()
         Label2 = New Label()
         Label3 = New Label()
         Label4 = New Label()
         DataGridView1 = New DataGridView()
-        ConexionBDBindingSource = New BindingSource(components)
         btnConfirmar = New Button()
+        cmbRol = New ComboBox()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
-        CType(ConexionBDBindingSource, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' txtboxusuario
@@ -51,13 +48,6 @@ Partial Class FrmAggPerso
         txtboxContra.Name = "txtboxContra"
         txtboxContra.Size = New Size(100, 23)
         txtboxContra.TabIndex = 1
-        ' 
-        ' txtRol
-        ' 
-        txtRol.Location = New Point(12, 199)
-        txtRol.Name = "txtRol"
-        txtRol.Size = New Size(100, 23)
-        txtRol.TabIndex = 2
         ' 
         ' txtTurno
         ' 
@@ -105,17 +95,11 @@ Partial Class FrmAggPerso
         ' DataGridView1
         ' 
         DataGridView1.AllowUserToOrderColumns = True
-        DataGridView1.AutoGenerateColumns = False
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.DataSource = ConexionBDBindingSource
         DataGridView1.Location = New Point(144, 58)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.Size = New Size(277, 365)
         DataGridView1.TabIndex = 8
-        ' 
-        ' ConexionBDBindingSource
-        ' 
-        ConexionBDBindingSource.DataSource = GetType(DAL.ConexionBD)
         ' 
         ' btnConfirmar
         ' 
@@ -126,11 +110,20 @@ Partial Class FrmAggPerso
         btnConfirmar.Text = "Confirmar"
         btnConfirmar.UseVisualStyleBackColor = True
         ' 
+        ' cmbRol
+        ' 
+        cmbRol.FormattingEnabled = True
+        cmbRol.Location = New Point(12, 199)
+        cmbRol.Name = "cmbRol"
+        cmbRol.Size = New Size(100, 23)
+        cmbRol.TabIndex = 10
+        ' 
         ' FrmAggPerso
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(433, 447)
+        Controls.Add(cmbRol)
         Controls.Add(btnConfirmar)
         Controls.Add(DataGridView1)
         Controls.Add(Label4)
@@ -138,26 +131,23 @@ Partial Class FrmAggPerso
         Controls.Add(Label2)
         Controls.Add(Label1)
         Controls.Add(txtTurno)
-        Controls.Add(txtRol)
         Controls.Add(txtboxContra)
         Controls.Add(txtboxusuario)
         Name = "FrmAggPerso"
         Text = "FrmAggPerso"
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
-        CType(ConexionBDBindingSource, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
     Friend WithEvents txtboxusuario As TextBox
     Friend WithEvents txtboxContra As TextBox
-    Friend WithEvents txtRol As TextBox
     Friend WithEvents txtTurno As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents ConexionBDBindingSource As BindingSource
     Friend WithEvents btnConfirmar As Button
+    Friend WithEvents cmbRol As ComboBox
 End Class
