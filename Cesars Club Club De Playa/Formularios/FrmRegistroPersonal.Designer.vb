@@ -73,6 +73,7 @@ Partial Class FrmRegistroPersonal
         ' 
         ' DataGridView1
         ' 
+        DataGridView1.AllowUserToOrderColumns = True
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Location = New Point(21, 69)
         DataGridView1.Name = "DataGridView1"

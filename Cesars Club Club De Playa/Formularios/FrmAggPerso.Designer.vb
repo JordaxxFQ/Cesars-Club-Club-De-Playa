@@ -24,7 +24,6 @@ Partial Class FrmAggPerso
     Private Sub InitializeComponent()
         txtboxusuario = New TextBox()
         txtboxContra = New TextBox()
-        txtTurno = New TextBox()
         Label1 = New Label()
         Label2 = New Label()
         Label3 = New Label()
@@ -32,6 +31,7 @@ Partial Class FrmAggPerso
         DataGridView1 = New DataGridView()
         btnConfirmar = New Button()
         cmbRol = New ComboBox()
+        cmbTurno = New ComboBox()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -48,13 +48,6 @@ Partial Class FrmAggPerso
         txtboxContra.Name = "txtboxContra"
         txtboxContra.Size = New Size(100, 23)
         txtboxContra.TabIndex = 1
-        ' 
-        ' txtTurno
-        ' 
-        txtTurno.Location = New Point(12, 252)
-        txtTurno.Name = "txtTurno"
-        txtTurno.Size = New Size(100, 23)
-        txtTurno.TabIndex = 3
         ' 
         ' Label1
         ' 
@@ -118,11 +111,20 @@ Partial Class FrmAggPerso
         cmbRol.Size = New Size(100, 23)
         cmbRol.TabIndex = 10
         ' 
+        ' cmbTurno
+        ' 
+        cmbTurno.FormattingEnabled = True
+        cmbTurno.Location = New Point(12, 252)
+        cmbTurno.Name = "cmbTurno"
+        cmbTurno.Size = New Size(100, 23)
+        cmbTurno.TabIndex = 11
+        ' 
         ' FrmAggPerso
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(433, 447)
+        Controls.Add(cmbTurno)
         Controls.Add(cmbRol)
         Controls.Add(btnConfirmar)
         Controls.Add(DataGridView1)
@@ -130,7 +132,6 @@ Partial Class FrmAggPerso
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(Label1)
-        Controls.Add(txtTurno)
         Controls.Add(txtboxContra)
         Controls.Add(txtboxusuario)
         Name = "FrmAggPerso"
@@ -142,7 +143,6 @@ Partial Class FrmAggPerso
 
     Friend WithEvents txtboxusuario As TextBox
     Friend WithEvents txtboxContra As TextBox
-    Friend WithEvents txtTurno As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
@@ -150,4 +150,5 @@ Partial Class FrmAggPerso
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents btnConfirmar As Button
     Friend WithEvents cmbRol As ComboBox
+    Friend WithEvents cmbTurno As ComboBox
 End Class

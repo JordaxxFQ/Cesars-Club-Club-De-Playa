@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <Content Include="DataBase\BD Proyecto Final.accdb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 

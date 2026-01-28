@@ -94,4 +94,5 @@ Public Class FrmRegistroPersonal
         CargarDatos()
     End Sub
 
+
 End Class
