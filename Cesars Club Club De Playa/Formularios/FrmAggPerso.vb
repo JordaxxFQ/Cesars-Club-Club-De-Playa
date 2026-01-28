@@ -100,7 +100,10 @@ Public Class FrmAggPerso
             MessageBox.Show("Por favor, complete todos los campos.")
             Exit Sub
         End If
-
+        If Not {"Diurno", "Nocturno"}.Contains(cmbTurno.Text) Then
+            MessageBox.Show("Turno inválido. Use 'Diurno' o 'Nocturno'.")
+            Exit Sub
+        End If
 
 
         Dim query As String = "INSERT INTO Personal (Usuario, Contraseña, ID_Rol, Turno) VALUES (?, ?, ?, ?)"

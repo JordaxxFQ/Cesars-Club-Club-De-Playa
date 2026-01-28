@@ -113,6 +113,7 @@ Partial Class FrmAggPerso
         ' 
         ' cmbTurno
         ' 
+        cmbTurno.DropDownStyle = ComboBoxStyle.DropDownList
         cmbTurno.FormattingEnabled = True
         cmbTurno.Location = New Point(12, 252)
         cmbTurno.Name = "cmbTurno"
