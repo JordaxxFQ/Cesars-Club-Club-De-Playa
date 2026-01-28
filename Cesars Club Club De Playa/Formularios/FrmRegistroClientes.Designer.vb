@@ -27,11 +27,11 @@ Partial Class FrmRegistroClientes
         Label3 = New Label()
         TxtNombre = New TextBox()
         TxtCedula = New TextBox()
-        TxtFecha = New TextBox()
         BtnGuardar = New Button()
         BtnLimpiar = New Button()
         dtpFechaRegistro = New DateTimePicker()
         DataGridView1 = New DataGridView()
+        BtnEliminar = New Button()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -76,13 +76,6 @@ Partial Class FrmRegistroClientes
         TxtCedula.Size = New Size(100, 23)
         TxtCedula.TabIndex = 4
         ' 
-        ' TxtFecha
-        ' 
-        TxtFecha.Location = New Point(198, 12)
-        TxtFecha.Name = "TxtFecha"
-        TxtFecha.Size = New Size(100, 23)
-        TxtFecha.TabIndex = 5
-        ' 
         ' BtnGuardar
         ' 
         BtnGuardar.Location = New Point(12, 205)
@@ -116,16 +109,25 @@ Partial Class FrmRegistroClientes
         DataGridView1.Size = New Size(390, 231)
         DataGridView1.TabIndex = 9
         ' 
+        ' BtnEliminar
+        ' 
+        BtnEliminar.Location = New Point(53, 234)
+        BtnEliminar.Name = "BtnEliminar"
+        BtnEliminar.Size = New Size(75, 23)
+        BtnEliminar.TabIndex = 10
+        BtnEliminar.Text = "Eliminar"
+        BtnEliminar.UseVisualStyleBackColor = True
+        ' 
         ' FrmRegistroClientes
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(972, 466)
+        Controls.Add(BtnEliminar)
         Controls.Add(DataGridView1)
         Controls.Add(dtpFechaRegistro)
         Controls.Add(BtnLimpiar)
         Controls.Add(BtnGuardar)
-        Controls.Add(TxtFecha)
         Controls.Add(TxtCedula)
         Controls.Add(TxtNombre)
         Controls.Add(Label3)
@@ -143,9 +145,9 @@ Partial Class FrmRegistroClientes
     Friend WithEvents Label3 As Label
     Friend WithEvents TxtNombre As TextBox
     Friend WithEvents TxtCedula As TextBox
-    Friend WithEvents TxtFecha As TextBox
     Friend WithEvents BtnGuardar As Button
     Friend WithEvents BtnLimpiar As Button
     Friend WithEvents dtpFechaRegistro As DateTimePicker
     Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents BtnEliminar As Button
 End Class

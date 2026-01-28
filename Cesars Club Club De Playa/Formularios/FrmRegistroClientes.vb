@@ -86,11 +86,109 @@ Public Class FrmRegistroClientes
         TxtNombre.Focus()
     End Sub
 
-    Private Sub FrmRegistroClientes_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If conexion.State = ConnectionState.Open Then
-            conexion.Close()
+    Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
+
+        If DataGridView1.SelectedRows.Count = 0 Then
+            MessageBox.Show("Por favor seleccione un cliente para eliminar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
         End If
 
+        Dim cedulaCliente As String = ""
+        Dim idCliente As Integer = 0
+        Dim nombreCliente As String = ""
+        Dim filaSeleccionada As DataGridViewRow = DataGridView1.SelectedRows(0)
+
+        If filaSeleccionada.Cells("ID_Clientes").Value IsNot Nothing Then
+            idCliente = CInt(filaSeleccionada.Cells("ID_Clientes").Value)
+        End If
+
+        If filaSeleccionada.Cells("NombreComp").Value IsNot Nothing Then
+            nombreCliente = filaSeleccionada.Cells("NombreComp").Value.ToString()
+        End If
+
+        If filaSeleccionada.Cells("Cedula").Value IsNot Nothing Then
+            cedulaCliente = filaSeleccionada.Cells("Cedula").Value.ToString()
+        End If
+
+        Dim respuesta As DialogResult = MessageBox.Show(
+            "¿Está seguro de eliminar al cliente: " & nombreCliente & "?" & vbCrLf &
+            "Cédula: " & cedulaCliente,
+            "Confirmar eliminación",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question)
+
+        If respuesta = DialogResult.Yes Then
+            EliminarCliente(idCliente)
+        End If
     End Sub
+
+    Private Sub EliminarCliente(idCliente As Integer)
+        Using conexion As New OleDbConnection(connectionString)
+            Try
+                conexion.Open()
+
+                Dim query As String = "DELETE FROM Clientes WHERE ID_Clientes = @ID"
+
+                Using comando As New OleDbCommand(query, conexion)
+                    comando.Parameters.AddWithValue("@ID", idCliente)
+
+                    Dim filasAfectadas As Integer = comando.ExecuteNonQuery()
+
+                    If filasAfectadas > 0 Then
+                        MessageBox.Show("Cliente eliminado exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        LimpiarCampos()
+                        CargarDatos()
+                    Else
+                        MessageBox.Show("No se encontró el cliente para eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Error al eliminar cliente: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Using
+    End Sub
+
+    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+        If e.RowIndex >= 0 Then
+            Dim fila As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+            Dim idClienteSeleccionado As Integer = 0
+
+            If fila.Cells("ID_Clientes").Value IsNot Nothing Then
+                idClienteSeleccionado = CInt(fila.Cells("ID_Clientes").Value)
+            Else
+                idClienteSeleccionado = 0
+            End If
+
+
+            If fila.Cells("NombreComp").Value IsNot Nothing Then
+                TxtNombre.Text = fila.Cells("NombreComp").Value.ToString()
+            Else
+                TxtNombre.Text = ""
+            End If
+
+
+            If fila.Cells("Cedula").Value IsNot Nothing Then
+                TxtCedula.Text = fila.Cells("Cedula").Value.ToString()
+            Else
+                TxtCedula.Text = ""
+            End If
+
+
+            If fila.Cells("FechaRegis").Value IsNot Nothing AndAlso IsDate(fila.Cells("FechaRegis").Value) Then
+                dtpFechaRegistro.Value = CDate(fila.Cells("FechaRegis").Value)
+            Else
+                dtpFechaRegistro.Value = Date.Today
+            End If
+        End If
+    End Sub
+
+    Private Sub BtnLimpiar_Click(sender As Object, e As EventArgs) Handles BtnLimpiar.Click
+        LimpiarCampos()
+    End Sub
+
+    Private Sub FrmRegistroClientes_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+
+    End Sub
+
 
 End Class
