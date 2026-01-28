@@ -11,6 +11,7 @@ Public Class FrmLogin
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
+
         If estado = "Desconectado" Then
             MsgBox("No hay conexión con la base de datos", MsgBoxStyle.Critical)
             Exit Sub

@@ -9,7 +9,7 @@ Namespace DAL
 
         Sub enlace()
             Try
-                Dim ruta As String = IO.Path.Combine(Application.StartupPath, "DataBase", "BD Proyecto Final.accdb")
+                Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
 
                 If Not IO.File.Exists(ruta) Then
                     MsgBox("El archivo NO está en: " & ruta)
