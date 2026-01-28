@@ -27,35 +27,40 @@ Partial Class FrmRegistroPersonal
         btnRefresh = New Button()
         btnDelete = New Button()
         Label1 = New Label()
-        dgvPersonal = New DataGridView()
         ConexionBDBindingSource = New BindingSource(components)
-        CType(dgvPersonal, ComponentModel.ISupportInitialize).BeginInit()
+        ConexionBDBindingSource1 = New BindingSource(components)
+        DataGridView1 = New DataGridView()
         CType(ConexionBDBindingSource, ComponentModel.ISupportInitialize).BeginInit()
+        CType(ConexionBDBindingSource1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnAgg
         ' 
-        btnAgg.Location = New Point(394, 92)
+        btnAgg.Location = New Point(345, 163)
+        btnAgg.Margin = New Padding(3, 2, 3, 2)
         btnAgg.Name = "btnAgg"
-        btnAgg.Size = New Size(94, 29)
+        btnAgg.Size = New Size(82, 43)
         btnAgg.TabIndex = 0
         btnAgg.Text = "Agregar"
         btnAgg.UseVisualStyleBackColor = True
         ' 
         ' btnRefresh
         ' 
-        btnRefresh.Location = New Point(394, 144)
+        btnRefresh.Location = New Point(345, 116)
+        btnRefresh.Margin = New Padding(3, 2, 3, 2)
         btnRefresh.Name = "btnRefresh"
-        btnRefresh.Size = New Size(94, 29)
+        btnRefresh.Size = New Size(82, 43)
         btnRefresh.TabIndex = 1
         btnRefresh.Text = "Actualizar"
         btnRefresh.UseVisualStyleBackColor = True
         ' 
         ' btnDelete
         ' 
-        btnDelete.Location = New Point(394, 190)
+        btnDelete.Location = New Point(345, 69)
+        btnDelete.Margin = New Padding(3, 2, 3, 2)
         btnDelete.Name = "btnDelete"
-        btnDelete.Size = New Size(94, 29)
+        btnDelete.Size = New Size(82, 43)
         btnDelete.TabIndex = 2
         btnDelete.Text = "Eliminar"
         btnDelete.UseVisualStyleBackColor = True
@@ -63,41 +68,44 @@ Partial Class FrmRegistroPersonal
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(158, 9)
+        Label1.Location = New Point(105, 37)
         Label1.Name = "Label1"
-        Label1.Size = New Size(141, 20)
+        Label1.Size = New Size(112, 15)
         Label1.TabIndex = 3
         Label1.Text = "Listado del Personal"
-        ' 
-        ' dgvPersonal
-        ' 
-        dgvPersonal.AutoGenerateColumns = False
-        dgvPersonal.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvPersonal.DataSource = ConexionBDBindingSource
-        dgvPersonal.Location = New Point(57, 92)
-        dgvPersonal.Name = "dgvPersonal"
-        dgvPersonal.RowHeadersWidth = 51
-        dgvPersonal.Size = New Size(300, 188)
-        dgvPersonal.TabIndex = 4
         ' 
         ' ConexionBDBindingSource
         ' 
         ConexionBDBindingSource.DataSource = GetType(DAL.ConexionBD)
         ' 
+        ' ConexionBDBindingSource1
+        ' 
+        ConexionBDBindingSource1.DataSource = GetType(DAL.ConexionBD)
+        ' 
+        ' DataGridView1
+        ' 
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.Location = New Point(21, 69)
+        DataGridView1.Name = "DataGridView1"
+        DataGridView1.Size = New Size(308, 383)
+        DataGridView1.TabIndex = 10
+        ' 
         ' FrmRegistroPersonal
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(536, 619)
-        Controls.Add(dgvPersonal)
+        ClientSize = New Size(469, 464)
+        Controls.Add(DataGridView1)
         Controls.Add(Label1)
         Controls.Add(btnDelete)
         Controls.Add(btnRefresh)
         Controls.Add(btnAgg)
+        Margin = New Padding(3, 2, 3, 2)
         Name = "FrmRegistroPersonal"
         Text = "FrmRegistroPersonal"
-        CType(dgvPersonal, ComponentModel.ISupportInitialize).EndInit()
         CType(ConexionBDBindingSource, ComponentModel.ISupportInitialize).EndInit()
+        CType(ConexionBDBindingSource1, ComponentModel.ISupportInitialize).EndInit()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -106,6 +114,7 @@ Partial Class FrmRegistroPersonal
     Friend WithEvents btnRefresh As Button
     Friend WithEvents btnDelete As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents dgvPersonal As DataGridView
     Friend WithEvents ConexionBDBindingSource As BindingSource
+    Friend WithEvents ConexionBDBindingSource1 As BindingSource
+    Friend WithEvents DataGridView1 As DataGridView
 End Class

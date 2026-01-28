@@ -111,9 +111,9 @@ Partial Class FrmRegistroClientes
         ' DataGridView1
         ' 
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(402, 90)
+        DataGridView1.Location = New Point(252, 48)
         DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(240, 150)
+        DataGridView1.Size = New Size(390, 231)
         DataGridView1.TabIndex = 9
         ' 
         ' FrmRegistroClientes

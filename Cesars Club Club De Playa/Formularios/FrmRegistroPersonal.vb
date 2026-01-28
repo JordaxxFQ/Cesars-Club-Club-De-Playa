@@ -3,45 +3,50 @@ Imports System.Data.OleDb
 Imports Cesars_Club_Club_De_Playa.DAL
 Public Class FrmRegistroPersonal
 
-    Private Sub FrmRegistroPersonal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CargarTablaDesdeCero()
+    Dim ruta As String = IO.Path.Combine(Application.StartupPath, "DataBase", "BD Proyecto Final.accdb")
+    Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
 
+    Private Sub FrmRegistroPersonal_Load(sender As Object, e As EventArgs) Handles Me.Load
         enlace()
 
+        CargarDatos()
     End Sub
 
-    ' 2. CADENA DE CONEXIÓN PARA ACCESS
-    ' Reemplaza RUTA_DE_TU_ARCHIVO por la ubicación real (ej: C:\BD\MiBase.accdb)
-    Dim cadenaConexion As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\User\source\repos\Cesars-Club-Club-De-Playa\Cesars Club Club De Playa\DataBase\BD Proyecto Final.accdb;Persist Security Info=False;"
+    Private Sub CargarDatos()
+        Dim query As String = "SELECT * FROM Personal"
 
-    Dim dsPersonal As DataSet
-    Dim daPersonal As OleDbDataAdapter ' Cambiado a OleDb
+        Using conexion As New OleDbConnection(connectionString)
+            Try
+                conexion.Open()
+
+                Dim adaptador As New OleDbDataAdapter(query, conexion)
+                Dim dataset As New DataSet()
 
 
-    Public Sub CargarTablaDesdeCero()
-        Try
-            dsPersonal = New DataSet()
+                adaptador.Fill(dataset, "TablaPersonal")
+                DataGridView1.DataSource = dataset.Tables("TablaPersonal")
 
-            ' Usamos OleDbConnection en lugar de SqlConnection
-            Using conexion As New OleDbConnection(cadenaConexion)
-                Dim sql As String = "SELECT * FROM Personal"
-                daPersonal = New OleDbDataAdapter(sql, conexion)
+                DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+                DataGridView1.ReadOnly = True
+                DataGridView1.AllowUserToAddRows = False
+                DataGridView1.AutoGenerateColumns = True
+            Catch ex As Exception
+                MessageBox.Show("Error al cargar datos: " & ex.Message)
+            End Try
+        End Using
+    End Sub
 
-                ' Llenar el DataSet
-                daPersonal.Fill(dsPersonal, "Personal")
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
 
-                ' Vincular al DataGridView (Asegúrate que se llame dgvPersonal en el diseño)
-                dgvPersonal.DataSource = dsPersonal.Tables("Personal")
-
-                dgvPersonal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-            End Using
-
-        Catch ex As Exception
-            MessageBox.Show("Error al cargar Access: " & ex.Message)
-        End Try
     End Sub
 
     Private Sub btnAgg_Click(sender As Object, e As EventArgs) Handles btnAgg.Click
 
+        Dim ventanaAgregar As New FrmAggPerso()
+
+        ventanaAgregar.ShowDialog()
+
+        CargarDatos()
     End Sub
+
 End Class
