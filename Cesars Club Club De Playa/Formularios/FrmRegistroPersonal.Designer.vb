@@ -27,10 +27,12 @@ Partial Class FrmRegistroPersonal
         btnRefresh = New Button()
         btnDelete = New Button()
         Label1 = New Label()
-        DataGridView1 = New DataGridView()
         ConexionBDBindingSource = New BindingSource(components)
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        ConexionBDBindingSource1 = New BindingSource(components)
+        DataGridView1 = New DataGridView()
         CType(ConexionBDBindingSource, ComponentModel.ISupportInitialize).BeginInit()
+        CType(ConexionBDBindingSource1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnAgg
@@ -72,19 +74,21 @@ Partial Class FrmRegistroPersonal
         Label1.TabIndex = 3
         Label1.Text = "Listado del Personal"
         ' 
-        ' DataGridView1
-        ' 
-        DataGridView1.AutoGenerateColumns = False
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.DataSource = ConexionBDBindingSource
-        DataGridView1.Location = New Point(38, 69)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(240, 150)
-        DataGridView1.TabIndex = 4
-        ' 
         ' ConexionBDBindingSource
         ' 
         ConexionBDBindingSource.DataSource = GetType(DAL.ConexionBD)
+        ' 
+        ' ConexionBDBindingSource1
+        ' 
+        ConexionBDBindingSource1.DataSource = GetType(DAL.ConexionBD)
+        ' 
+        ' DataGridView1
+        ' 
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.Location = New Point(21, 69)
+        DataGridView1.Name = "DataGridView1"
+        DataGridView1.Size = New Size(308, 383)
+        DataGridView1.TabIndex = 10
         ' 
         ' FrmRegistroPersonal
         ' 
@@ -99,8 +103,9 @@ Partial Class FrmRegistroPersonal
         Margin = New Padding(3, 2, 3, 2)
         Name = "FrmRegistroPersonal"
         Text = "FrmRegistroPersonal"
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         CType(ConexionBDBindingSource, ComponentModel.ISupportInitialize).EndInit()
+        CType(ConexionBDBindingSource1, ComponentModel.ISupportInitialize).EndInit()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -109,6 +114,7 @@ Partial Class FrmRegistroPersonal
     Friend WithEvents btnRefresh As Button
     Friend WithEvents btnDelete As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents ConexionBDBindingSource As BindingSource
+    Friend WithEvents ConexionBDBindingSource1 As BindingSource
+    Friend WithEvents DataGridView1 As DataGridView
 End Class

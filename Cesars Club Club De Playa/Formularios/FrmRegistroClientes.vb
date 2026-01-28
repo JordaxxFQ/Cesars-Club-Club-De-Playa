@@ -47,9 +47,6 @@ Public Class FrmRegistroClientes
     End Sub
 
     ' Este evento ya no se necesita para cargar, puedes dejarlo vacío o borrarlo
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-
-    End Sub
 
     Private Sub FrmRegistroClientes_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
 
