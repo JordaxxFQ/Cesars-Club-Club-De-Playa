@@ -37,30 +37,30 @@ Partial Class FrmRegistroPersonal
         ' 
         ' btnAgg
         ' 
-        btnAgg.Location = New Point(345, 69)
+        btnAgg.Location = New Point(345, 163)
         btnAgg.Margin = New Padding(3, 2, 3, 2)
         btnAgg.Name = "btnAgg"
-        btnAgg.Size = New Size(82, 22)
+        btnAgg.Size = New Size(82, 43)
         btnAgg.TabIndex = 0
         btnAgg.Text = "Agregar"
         btnAgg.UseVisualStyleBackColor = True
         ' 
         ' btnRefresh
         ' 
-        btnRefresh.Location = New Point(345, 108)
+        btnRefresh.Location = New Point(345, 116)
         btnRefresh.Margin = New Padding(3, 2, 3, 2)
         btnRefresh.Name = "btnRefresh"
-        btnRefresh.Size = New Size(82, 22)
+        btnRefresh.Size = New Size(82, 43)
         btnRefresh.TabIndex = 1
         btnRefresh.Text = "Actualizar"
         btnRefresh.UseVisualStyleBackColor = True
         ' 
         ' btnDelete
         ' 
-        btnDelete.Location = New Point(345, 142)
+        btnDelete.Location = New Point(345, 69)
         btnDelete.Margin = New Padding(3, 2, 3, 2)
         btnDelete.Name = "btnDelete"
-        btnDelete.Size = New Size(82, 22)
+        btnDelete.Size = New Size(82, 43)
         btnDelete.TabIndex = 2
         btnDelete.Text = "Eliminar"
         btnDelete.UseVisualStyleBackColor = True
@@ -68,7 +68,7 @@ Partial Class FrmRegistroPersonal
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(138, 7)
+        Label1.Location = New Point(105, 37)
         Label1.Name = "Label1"
         Label1.Size = New Size(112, 15)
         Label1.TabIndex = 3

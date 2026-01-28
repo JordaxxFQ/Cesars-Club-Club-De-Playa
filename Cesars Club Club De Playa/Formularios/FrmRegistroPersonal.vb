@@ -36,6 +36,11 @@ Public Class FrmRegistroPersonal
         End Using
     End Sub
 
-    ' Este evento ya no se necesita para cargar, puedes dejarlo vacío o borrarlo
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
 
+    End Sub
+
+    Private Sub btnAgg_Click(sender As Object, e As EventArgs) Handles btnAgg.Click
+
+    End Sub
 End Class
