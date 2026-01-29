@@ -38,7 +38,7 @@ Partial Class FrmRegistroClientes
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(12, 30)
+        Label1.Location = New Point(12, 39)
         Label1.Name = "Label1"
         Label1.Size = New Size(107, 15)
         Label1.TabIndex = 0
@@ -56,7 +56,7 @@ Partial Class FrmRegistroClientes
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(12, 136)
+        Label3.Location = New Point(12, 143)
         Label3.Name = "Label3"
         Label3.Size = New Size(100, 15)
         Label3.TabIndex = 2
@@ -64,7 +64,7 @@ Partial Class FrmRegistroClientes
         ' 
         ' TxtNombre
         ' 
-        TxtNombre.Location = New Point(12, 48)
+        TxtNombre.Location = New Point(12, 57)
         TxtNombre.Name = "TxtNombre"
         TxtNombre.Size = New Size(100, 23)
         TxtNombre.TabIndex = 3
@@ -78,7 +78,7 @@ Partial Class FrmRegistroClientes
         ' 
         ' BtnGuardar
         ' 
-        BtnGuardar.Location = New Point(12, 205)
+        BtnGuardar.Location = New Point(321, 161)
         BtnGuardar.Name = "BtnGuardar"
         BtnGuardar.Size = New Size(75, 23)
         BtnGuardar.TabIndex = 6
@@ -87,7 +87,7 @@ Partial Class FrmRegistroClientes
         ' 
         ' BtnLimpiar
         ' 
-        BtnLimpiar.Location = New Point(93, 205)
+        BtnLimpiar.Location = New Point(240, 161)
         BtnLimpiar.Name = "BtnLimpiar"
         BtnLimpiar.Size = New Size(75, 23)
         BtnLimpiar.TabIndex = 7
@@ -96,7 +96,7 @@ Partial Class FrmRegistroClientes
         ' 
         ' dtpFechaRegistro
         ' 
-        dtpFechaRegistro.Location = New Point(12, 154)
+        dtpFechaRegistro.Location = New Point(12, 161)
         dtpFechaRegistro.Name = "dtpFechaRegistro"
         dtpFechaRegistro.Size = New Size(200, 23)
         dtpFechaRegistro.TabIndex = 8
@@ -104,14 +104,14 @@ Partial Class FrmRegistroClientes
         ' DataGridView1
         ' 
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(252, 48)
+        DataGridView1.Location = New Point(12, 210)
         DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(390, 231)
+        DataGridView1.Size = New Size(384, 328)
         DataGridView1.TabIndex = 9
         ' 
         ' BtnEliminar
         ' 
-        BtnEliminar.Location = New Point(53, 234)
+        BtnEliminar.Location = New Point(321, 132)
         BtnEliminar.Name = "BtnEliminar"
         BtnEliminar.Size = New Size(75, 23)
         BtnEliminar.TabIndex = 10
@@ -122,7 +122,7 @@ Partial Class FrmRegistroClientes
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(972, 466)
+        ClientSize = New Size(417, 550)
         Controls.Add(BtnEliminar)
         Controls.Add(DataGridView1)
         Controls.Add(dtpFechaRegistro)
