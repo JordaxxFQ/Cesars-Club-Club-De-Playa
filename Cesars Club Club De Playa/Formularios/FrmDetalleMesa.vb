@@ -60,38 +60,39 @@ Public Class FrmDetalleMesa
 
     ' Botón Confirmar Reserva / Ocupar
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        ' Validaciones previas
         If _idClienteEncontrado = 0 Then
-            MessageBox.Show("Debe buscar y seleccionar un cliente válido primero.")
+            MessageBox.Show("Debe buscar un cliente válido.")
             Exit Sub
         End If
 
-        ' Consulta para insertar en tu tabla RESERVAS (Segun tu imagen)
-        ' Access pone la fecha/hora actual con la función Now()
+        ' Usamos parámetros tipados para que Access no se confunda
         Dim queryReserva As String = "INSERT INTO Reservas (ID_Cliente, ID_Mesa, FechaReserva, EstadoReserva) VALUES (?, ?, ?, ?)"
-
-        ' Consulta para cambiar el color de la mesa en ZONAS
-        Dim queryMesa As String = "UPDATE Zonas SET Estado = 'Reservada' WHERE ID_Mesa = ?"
+        Dim queryMesa As String = "UPDATE Zonas SET Estado = ? WHERE ID_Mesa = ?"
 
         Using conexion As New OleDbConnection(connectionString)
             Try
                 conexion.Open()
 
-                ' 1. Guardamos la Reserva
+                ' 1. INSERTAR RESERVA
                 Dim cmdReserva As New OleDbCommand(queryReserva, conexion)
-                cmdReserva.Parameters.AddWithValue("@cli", _idClienteEncontrado)
-                cmdReserva.Parameters.AddWithValue("@mesa", _idMesa)
-                cmdReserva.Parameters.AddWithValue("@fecha", DateTime.Now) ' Fecha de hoy
-                cmdReserva.Parameters.AddWithValue("@estado", "Activa")
+
+                ' Forzamos los tipos de datos exactos de tu tabla
+                cmdReserva.Parameters.Add("@cli", OleDbType.Integer).Value = _idClienteEncontrado
+                cmdReserva.Parameters.Add("@mesa", OleDbType.Integer).Value = _idMesa
+                cmdReserva.Parameters.Add("@fecha", OleDbType.Date).Value = DateTime.Now
+                cmdReserva.Parameters.Add("@est", OleDbType.VarWChar).Value = "Activa"
+
                 cmdReserva.ExecuteNonQuery()
 
-                ' 2. Actualizamos el estado de la mesa (Para que se ponga Amarilla/Roja)
+                ' 2. ACTUALIZAR ESTADO DE LA MESA
                 Dim cmdMesa As New OleDbCommand(queryMesa, conexion)
-                cmdMesa.Parameters.AddWithValue("@id", _idMesa)
+                cmdMesa.Parameters.Add("@status", OleDbType.VarWChar).Value = "Reservada"
+                cmdMesa.Parameters.Add("@id", OleDbType.Integer).Value = _idMesa
+
                 cmdMesa.ExecuteNonQuery()
 
-                MessageBox.Show("Reserva creada con éxito.")
-                Me.Close() ' Cerramos para volver al panel de mesas
+                MessageBox.Show("¡Mesa reservada exitosamente!")
+                Me.Close()
 
             Catch ex As Exception
                 MessageBox.Show("Error al reservar: " & ex.Message)

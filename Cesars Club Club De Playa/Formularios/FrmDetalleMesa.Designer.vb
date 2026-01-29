@@ -49,7 +49,7 @@ Partial Class FrmDetalleMesa
         ' 
         ' btnBuscarCliente
         ' 
-        btnBuscarCliente.Location = New Point(99, 277)
+        btnBuscarCliente.Location = New Point(32, 243)
         btnBuscarCliente.Margin = New Padding(3, 4, 3, 4)
         btnBuscarCliente.Name = "btnBuscarCliente"
         btnBuscarCliente.Size = New Size(86, 31)
@@ -59,7 +59,7 @@ Partial Class FrmDetalleMesa
         ' 
         ' btnGuardar
         ' 
-        btnGuardar.Location = New Point(191, 277)
+        btnGuardar.Location = New Point(139, 243)
         btnGuardar.Margin = New Padding(3, 4, 3, 4)
         btnGuardar.Name = "btnGuardar"
         btnGuardar.Size = New Size(86, 31)

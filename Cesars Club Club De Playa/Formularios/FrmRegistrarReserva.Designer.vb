@@ -22,9 +22,15 @@ Partial Class FrmRegistrarReserva
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Text = "FrmRegistrar"
+        SuspendLayout()
+        ' 
+        ' FrmRegistrarReserva
+        ' 
+        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleMode = AutoScaleMode.Font
+        ClientSize = New Size(800, 450)
+        Name = "FrmRegistrarReserva"
+        Text = "FrmRegistrar"
+        ResumeLayout(False)
     End Sub
 End Class
