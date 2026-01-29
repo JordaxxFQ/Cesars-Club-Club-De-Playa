@@ -21,8 +21,8 @@ Public Class FrmLogin
 
         Using cmd As New OleDbCommand(sql, conexion)
             Try
-                cmd.Parameters.AddWithValue("@p1", TextBox1.Text)
-                cmd.Parameters.AddWithValue("@p2", TextBox2.Text)
+                cmd.Parameters.AddWithValue("@p1", txtUsuario.Text)
+                cmd.Parameters.AddWithValue("@p2", txtContrasena.Text)
 
                 Dim resultado = cmd.ExecuteScalar()
 
@@ -48,9 +48,9 @@ Public Class FrmLogin
 
                 Else
                     MessageBox.Show("Usuario o contraseña incorrectos.")
-                    TextBox1.Clear()
-                    TextBox2.Clear()
-                    TextBox1.Focus()
+                    txtUsuario.Clear()
+                    txtContrasena.Clear()
+                    txtUsuario.Focus()
                 End If
 
             Catch ex As Exception
@@ -61,9 +61,9 @@ Public Class FrmLogin
     End Sub
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
         If CheckBox1.Checked Then
-            TextBox2.PasswordChar = ControlChars.NullChar
+            txtContrasena.PasswordChar = ControlChars.NullChar
         Else
-            TextBox2.PasswordChar = "*"c
+            txtContrasena.PasswordChar = "*"c
         End If
     End Sub
 
