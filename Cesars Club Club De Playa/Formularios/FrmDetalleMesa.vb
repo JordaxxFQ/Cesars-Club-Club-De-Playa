@@ -33,7 +33,7 @@ Public Class FrmDetalleMesa
         End If
 
         ' Asumo que tu tabla de clientes tiene campos: ID_Cliente, Cedula, Nombre, Apellido
-        Dim query As String = "SELECT ID_Cliente, Nombre, Apellido FROM Clientes WHERE Cedula = ?"
+        Dim query As String = "SELECT ID_Cliente, NombreComp FROM Clientes WHERE Cedula = ?"
 
         Using conexion As New OleDbConnection(connectionString)
             Try
@@ -49,7 +49,7 @@ Public Class FrmDetalleMesa
                     _idClienteEncontrado = CInt(lector("ID_Cliente"))
 
                     ' 2. Mostramos el nombre en el TextBox visual
-                    txtNombre.Text = lector("Nombre").ToString() & " " & lector("Apellido").ToString()
+                    txtNombre.Text = lector("NombreComp").ToString() & " "
                 Else
                     ' NO ENCONTRADO
                     MessageBox.Show("Cliente no registrado. Por favor regístrelo primero.")
@@ -57,7 +57,7 @@ Public Class FrmDetalleMesa
                     txtNombre.Clear()
 
                     ' Opcional: Aquí podrías abrir el formulario de agregar cliente
-                    ' Dim frmNuevo As New FrmAggPerso() ...
+                    Dim frmNuevo As New FrmRegistroClientes() ...
                 End If
 
             Catch ex As Exception
