@@ -6,7 +6,7 @@ Public Class FrmDetalleMesa
     Dim _idClienteEncontrado As Integer = 0 ' Aquí guardaremos el ID si lo encontramos
 
     ' Tu cadena de conexión
-    Dim ruta As String = IO.Path.Combine(Application.StartupPath, "DataBase", "BD Proyecto Final.accdb")
+    Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
     Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
 
     ' Constructor que recibe el ID de la mesa

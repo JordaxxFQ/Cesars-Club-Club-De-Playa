@@ -27,6 +27,8 @@ Partial Class FrmDetalleMesa
         btnBuscarCliente = New Button()
         btnGuardar = New Button()
         lblTitulo = New Label()
+        Label1 = New Label()
+        Label2 = New Label()
         SuspendLayout()
         ' 
         ' txtCedula
@@ -49,7 +51,7 @@ Partial Class FrmDetalleMesa
         btnBuscarCliente.Name = "btnBuscarCliente"
         btnBuscarCliente.Size = New Size(75, 23)
         btnBuscarCliente.TabIndex = 2
-        btnBuscarCliente.Text = "Button1"
+        btnBuscarCliente.Text = "Buscar"
         btnBuscarCliente.UseVisualStyleBackColor = True
         ' 
         ' btnGuardar
@@ -58,7 +60,7 @@ Partial Class FrmDetalleMesa
         btnGuardar.Name = "btnGuardar"
         btnGuardar.Size = New Size(75, 23)
         btnGuardar.TabIndex = 3
-        btnGuardar.Text = "Button2"
+        btnGuardar.Text = "Guardar"
         btnGuardar.UseVisualStyleBackColor = True
         ' 
         ' lblTitulo
@@ -70,11 +72,31 @@ Partial Class FrmDetalleMesa
         lblTitulo.TabIndex = 4
         lblTitulo.Text = "lblTitulo"
         ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Location = New Point(87, 63)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(44, 15)
+        Label1.TabIndex = 5
+        Label1.Text = "Cedula"
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Location = New Point(87, 133)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(51, 15)
+        Label2.TabIndex = 6
+        Label2.Text = "Nombre"
+        ' 
         ' FrmDetalleMesa
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(Label2)
+        Controls.Add(Label1)
         Controls.Add(lblTitulo)
         Controls.Add(btnGuardar)
         Controls.Add(btnBuscarCliente)
@@ -91,4 +113,6 @@ Partial Class FrmDetalleMesa
     Friend WithEvents btnBuscarCliente As Button
     Friend WithEvents btnGuardar As Button
     Friend WithEvents lblTitulo As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
 End Class
