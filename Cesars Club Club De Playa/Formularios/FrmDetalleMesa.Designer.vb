@@ -59,7 +59,7 @@ Partial Class FrmDetalleMesa
         ' 
         ' btnGuardar
         ' 
-        btnGuardar.Location = New Point(201, 234)
+        btnGuardar.Location = New Point(201, 277)
         btnGuardar.Margin = New Padding(3, 4, 3, 4)
         btnGuardar.Name = "btnGuardar"
         btnGuardar.Size = New Size(86, 31)
