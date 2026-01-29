@@ -42,7 +42,7 @@ Partial Class FrmGerente
         ' 
         ' btnReservaciones
         ' 
-        btnReservaciones.Location = New Point(259, 35)
+        btnReservaciones.Location = New Point(242, 265)
         btnReservaciones.Name = "btnReservaciones"
         btnReservaciones.Size = New Size(117, 98)
         btnReservaciones.TabIndex = 1
@@ -51,7 +51,7 @@ Partial Class FrmGerente
         ' 
         ' btnMesita
         ' 
-        btnMesita.Location = New Point(382, 35)
+        btnMesita.Location = New Point(532, 265)
         btnMesita.Name = "btnMesita"
         btnMesita.Size = New Size(117, 98)
         btnMesita.TabIndex = 2
@@ -69,7 +69,7 @@ Partial Class FrmGerente
         ' 
         ' btonPedido
         ' 
-        btonPedido.Location = New Point(629, 35)
+        btonPedido.Location = New Point(101, 265)
         btonPedido.Margin = New Padding(3, 2, 3, 2)
         btonPedido.Name = "btonPedido"
         btonPedido.Size = New Size(118, 98)
@@ -79,7 +79,7 @@ Partial Class FrmGerente
         ' 
         ' btnClient
         ' 
-        btnClient.Location = New Point(135, 35)
+        btnClient.Location = New Point(176, 162)
         btnClient.Margin = New Padding(3, 2, 3, 2)
         btnClient.Name = "btnClient"
         btnClient.Size = New Size(118, 98)
@@ -89,7 +89,7 @@ Partial Class FrmGerente
         ' 
         ' btnProducto
         ' 
-        btnProducto.Location = New Point(505, 35)
+        btnProducto.Location = New Point(684, 265)
         btnProducto.Margin = New Padding(3, 2, 3, 2)
         btnProducto.Name = "btnProducto"
         btnProducto.Size = New Size(118, 98)
