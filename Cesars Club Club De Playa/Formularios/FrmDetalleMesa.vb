@@ -32,7 +32,6 @@ Public Class FrmDetalleMesa
             Exit Sub
         End If
 
-        ' Asumo que tu tabla de clientes tiene campos: ID_Cliente, Cedula, Nombre, Apellido
         Dim query As String = "SELECT ID_Cliente, NombreComp FROM Clientes WHERE Cedula = ?"
 
         Using conexion As New OleDbConnection(connectionString)
@@ -44,19 +43,12 @@ Public Class FrmDetalleMesa
                 Dim lector As OleDbDataReader = comando.ExecuteReader()
 
                 If lector.Read() Then
-                    ' ¡ENCONTRADO!
-                    ' 1. Guardamos el ID en la variable oculta para usarla al reservar
                     _idClienteEncontrado = CInt(lector("ID_Cliente"))
-
-                    ' 2. Mostramos el nombre en el TextBox visual
                     txtNombre.Text = lector("NombreComp").ToString() & " "
                 Else
-                    ' NO ENCONTRADO
                     MessageBox.Show("Cliente no registrado. Por favor regístrelo primero.")
                     _idClienteEncontrado = 0
                     txtNombre.Clear()
-
-                    ' Opcional: Aquí podrías abrir el formulario de agregar cliente
                     FrmRegistroClientes.Show()
                 End If
 
