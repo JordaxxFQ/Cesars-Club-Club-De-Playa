@@ -62,6 +62,7 @@ Public Class FrmDetalleMesa
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
         If _idClienteEncontrado = 0 Then
             MessageBox.Show("Debe buscar un cliente válido.")
+            FrmRegistrarReserva.Show()
             Exit Sub
         End If
 

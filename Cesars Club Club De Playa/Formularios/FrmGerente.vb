@@ -20,4 +20,8 @@
     Private Sub FrmGerente_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Application.Exit()
     End Sub
+
+    Private Sub btnReservaciones_Click(sender As Object, e As EventArgs) Handles btnReservaciones.Click
+        FrmReserva.Show()
+    End Sub
 End Class
