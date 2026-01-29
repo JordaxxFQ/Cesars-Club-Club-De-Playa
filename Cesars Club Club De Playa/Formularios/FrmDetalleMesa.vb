@@ -57,7 +57,7 @@ Public Class FrmDetalleMesa
                     txtNombre.Clear()
 
                     ' Opcional: Aquí podrías abrir el formulario de agregar cliente
-                    Dim frmNuevo As New FrmRegistroClientes() ...
+                    FrmRegistroClientes.Show()
                 End If
 
             Catch ex As Exception
