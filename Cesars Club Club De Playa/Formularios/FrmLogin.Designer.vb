@@ -54,6 +54,7 @@ Partial Class FrmLogin
         txtContrasena.Location = New Point(41, 167)
         txtContrasena.Margin = New Padding(3, 4, 3, 4)
         txtContrasena.Name = "txtContrasena"
+        txtContrasena.PasswordChar = "*"c
         txtContrasena.Size = New Size(137, 27)
         txtContrasena.TabIndex = 2
         ' 
