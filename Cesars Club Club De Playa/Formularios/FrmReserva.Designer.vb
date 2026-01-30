@@ -24,45 +24,37 @@ Partial Class FrmReserva
     Private Sub InitializeComponent()
         TablaReserva = New DataGridView()
         btonDeleteReserv = New Button()
-        Button2 = New Button()
         CType(TablaReserva, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' TablaReserva
         ' 
         TablaReserva.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        TablaReserva.Location = New Point(12, 116)
+        TablaReserva.Location = New Point(10, 87)
+        TablaReserva.Margin = New Padding(3, 2, 3, 2)
         TablaReserva.Name = "TablaReserva"
         TablaReserva.RowHeadersWidth = 51
-        TablaReserva.Size = New Size(502, 322)
+        TablaReserva.Size = New Size(795, 385)
         TablaReserva.TabIndex = 0
         ' 
         ' btonDeleteReserv
         ' 
-        btonDeleteReserv.Location = New Point(12, 33)
+        btonDeleteReserv.Location = New Point(12, 45)
+        btonDeleteReserv.Margin = New Padding(3, 2, 3, 2)
         btonDeleteReserv.Name = "btonDeleteReserv"
-        btonDeleteReserv.Size = New Size(94, 29)
+        btonDeleteReserv.Size = New Size(148, 38)
         btonDeleteReserv.TabIndex = 1
         btonDeleteReserv.Text = "Eliminar"
         btonDeleteReserv.UseVisualStyleBackColor = True
         ' 
-        ' Button2
-        ' 
-        Button2.Location = New Point(261, 78)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(94, 29)
-        Button2.TabIndex = 2
-        Button2.Text = "Agregar "
-        Button2.UseVisualStyleBackColor = True
-        ' 
         ' FrmReserva
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(533, 450)
-        Controls.Add(Button2)
+        ClientSize = New Size(817, 483)
         Controls.Add(btonDeleteReserv)
         Controls.Add(TablaReserva)
+        Margin = New Padding(3, 2, 3, 2)
         Name = "FrmReserva"
         Text = "FrmReserva"
         CType(TablaReserva, ComponentModel.ISupportInitialize).EndInit()
@@ -71,5 +63,4 @@ Partial Class FrmReserva
 
     Friend WithEvents TablaReserva As DataGridView
     Friend WithEvents btonDeleteReserv As Button
-    Friend WithEvents Button2 As Button
 End Class
