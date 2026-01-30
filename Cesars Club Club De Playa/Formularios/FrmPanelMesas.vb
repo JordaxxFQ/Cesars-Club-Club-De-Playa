@@ -68,11 +68,13 @@ Public Class FrmPanelMesas
         Dim idMesaSeleccionada As Integer = CInt(btnPresionado.Tag)
         Dim estadoActual As String = btnPresionado.BackColor.ToString()
 
-        ' Abrimos el formulario de detalle enviando el ID
+        ' Esto ya lo deberías tener, pero asegúrate de que CargarMesas() esté ahí
         Dim frmDetalle As New FrmDetalleMesa(idMesaSeleccionada)
         frmDetalle.ShowDialog()
 
-        ' Al volver, recargamos el panel para ver si cambió de color
+        ' ESTA LÍNEA ES LA QUE PINTA LA MESA DE AZUL OTRA VEZ
         CargarMesas()
+
     End Sub
+
 End Class

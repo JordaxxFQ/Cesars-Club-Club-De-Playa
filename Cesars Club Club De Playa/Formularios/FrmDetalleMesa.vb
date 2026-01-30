@@ -1,26 +1,20 @@
 ﻿Imports System.Data.OleDb
 Imports Cesars_Club_Club_De_Playa.DAL
 Public Class FrmDetalleMesa
-    ' Variables para guardar los datos que recibimos y encontramos
-    Dim _idMesa As Integer
-    Dim _idClienteEncontrado As Integer = 0 ' Aquí guardaremos el ID si lo encontramos
 
-    ' Tu cadena de conexión
+    Dim _idMesa As Integer
+    Dim _idClienteEncontrado As Integer = 0
     Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
     Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
 
-    ' Constructor que recibe el ID de la mesa
     Public Sub New(idMesa As Integer)
         InitializeComponent()
         _idMesa = idMesa
     End Sub
 
     Private Sub FrmDetalleMesa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Asignamos el título ahora que ya creaste el Label
         lblTitulo.Text = "Gestionando Mesa Nro: " & _idMesa
 
-        ' Bloqueamos el campo nombre para que no lo escriban manual, solo por búsqueda
-        txtNombre.ReadOnly = True
     End Sub
 
     ' ==========================================
@@ -32,7 +26,6 @@ Public Class FrmDetalleMesa
             Exit Sub
         End If
 
-        ' Asumo que tu tabla de clientes tiene campos: ID_Cliente, Cedula, Nombre, Apellido
         Dim query As String = "SELECT ID_Cliente, NombreComp FROM Clientes WHERE Cedula = ?"
 
         Using conexion As New OleDbConnection(connectionString)
@@ -44,19 +37,12 @@ Public Class FrmDetalleMesa
                 Dim lector As OleDbDataReader = comando.ExecuteReader()
 
                 If lector.Read() Then
-                    ' ¡ENCONTRADO!
-                    ' 1. Guardamos el ID en la variable oculta para usarla al reservar
                     _idClienteEncontrado = CInt(lector("ID_Cliente"))
-
-                    ' 2. Mostramos el nombre en el TextBox visual
                     txtNombre.Text = lector("NombreComp").ToString() & " "
                 Else
-                    ' NO ENCONTRADO
                     MessageBox.Show("Cliente no registrado. Por favor regístrelo primero.")
                     _idClienteEncontrado = 0
                     txtNombre.Clear()
-
-                    ' Opcional: Aquí podrías abrir el formulario de agregar cliente
                     FrmRegistroClientes.Show()
                 End If
 
@@ -68,40 +54,47 @@ Public Class FrmDetalleMesa
 
     ' Botón Confirmar Reserva / Ocupar
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        ' Validaciones previas
+        ' 1. Validaciones de seguridad
         If _idClienteEncontrado = 0 Then
-            MessageBox.Show("Debe buscar y seleccionar un cliente válido primero.")
+            MessageBox.Show("Debe buscar un cliente válido primero.")
             Exit Sub
         End If
 
-        ' Consulta para insertar en tu tabla RESERVAS (Segun tu imagen)
-        ' Access pone la fecha/hora actual con la función Now()
-        Dim queryReserva As String = "INSERT INTO Reservas (ID_Cliente, ID_Mesa, FechaReserva, EstadoReserva) VALUES (?, ?, ?, ?)"
-
-        ' Consulta para cambiar el color de la mesa en ZONAS
-        Dim queryMesa As String = "UPDATE Zonas SET Estado = 'Reservada' WHERE ID_Mesa = ?"
+        ' IMPORTANTE: Revisa que los nombres 'Cedula' y 'Nombre' sean exactos a tu tabla Access
+        Dim queryReserva As String = "INSERT INTO Reservas (ID_Cliente, Cedula, NombreComp, ID_Mesa, FechaReserva, EstadoReserva) VALUES (?, ?, ?, ?, ?, ?)"
+        Dim queryMesa As String = "UPDATE Zonas SET Estado = ? WHERE ID_Mesa = ?"
 
         Using conexion As New OleDbConnection(connectionString)
             Try
                 conexion.Open()
 
-                ' 1. Guardamos la Reserva
+                ' --- GUARDAR LA RESERVA ---
                 Dim cmdReserva As New OleDbCommand(queryReserva, conexion)
-                cmdReserva.Parameters.AddWithValue("@cli", _idClienteEncontrado)
-                cmdReserva.Parameters.AddWithValue("@mesa", _idMesa)
-                cmdReserva.Parameters.AddWithValue("@fecha", DateTime.Now) ' Fecha de hoy
-                cmdReserva.Parameters.AddWithValue("@estado", "Activa")
+
+                ' Agregamos los parámetros en el orden exacto de los "?" en el INSERT
+                cmdReserva.Parameters.Add("@idcli", OleDbType.Integer).Value = _idClienteEncontrado
+                cmdReserva.Parameters.Add("@ced", OleDbType.VarWChar).Value = txtCedula.Text ' <--- Captura directa del TextBox
+                cmdReserva.Parameters.Add("@nom", OleDbType.VarWChar).Value = txtNombre.Text ' <--- Captura directa del TextBox
+                cmdReserva.Parameters.Add("@idmesa", OleDbType.Integer).Value = _idMesa
+                cmdReserva.Parameters.Add("@fecha", OleDbType.Date).Value = DateTime.Now
+                cmdReserva.Parameters.Add("@est", OleDbType.VarWChar).Value = "Activa"
+
                 cmdReserva.ExecuteNonQuery()
 
-                ' 2. Actualizamos el estado de la mesa (Para que se ponga Amarilla/Roja)
+                ' --- ACTUALIZAR EL ESTADO DE LA MESA EN EL PANEL ---
                 Dim cmdMesa As New OleDbCommand(queryMesa, conexion)
-                cmdMesa.Parameters.AddWithValue("@id", _idMesa)
+
+                ' En el UPDATE: primer "?" es Estado, segundo "?" es ID_Mesa
+                cmdMesa.Parameters.Add("@status", OleDbType.VarWChar).Value = "Reservada"
+                cmdMesa.Parameters.Add("@id", OleDbType.Integer).Value = _idMesa
+
                 cmdMesa.ExecuteNonQuery()
 
-                MessageBox.Show("Reserva creada con éxito.")
-                Me.Close() ' Cerramos para volver al panel de mesas
+                MessageBox.Show("¡Mesa reservada exitosamente con los datos del cliente!")
+                Me.Close()
 
             Catch ex As Exception
+                ' Si sale "Data type mismatch", verifica que los campos en Access sean 'Texto corto'
                 MessageBox.Show("Error al reservar: " & ex.Message)
             End Try
         End Using
@@ -114,4 +107,56 @@ Public Class FrmDetalleMesa
         ' End Using
     End Sub
 
+    Private Sub btnLiberar_Click(sender As Object, e As EventArgs) Handles btnLiberar.Click
+        ' Preguntar para evitar errores accidentales
+        Dim queryMesa As String = "UPDATE Zonas SET Estado = ? WHERE ID_Mesa = ?"
+
+        Using conexion As New OleDbConnection(connectionString)
+            Try
+                conexion.Open()
+                Dim cmdMesa As New OleDbCommand(queryMesa, conexion)
+
+                ' IMPORTANTE: En OLEDB el orden de los parámetros debe ser el mismo que los "?"
+                ' 1er "?" es el Estado (Disponible)
+                cmdMesa.Parameters.Add("@est", OleDbType.VarWChar).Value = "Disponible"
+                ' 2do "?" es el ID de la mesa
+                cmdMesa.Parameters.Add("@id", OleDbType.Integer).Value = _idMesa
+
+                Dim filasAfectadas As Integer = cmdMesa.ExecuteNonQuery()
+
+                If filasAfectadas > 0 Then
+                    MessageBox.Show("Mesa liberada en la base de datos.")
+                    Me.Close()
+                Else
+                    MessageBox.Show("No se encontró la mesa para actualizar.")
+                End If
+            Catch ex As Exception
+                MessageBox.Show("Error al liberar: " & ex.Message)
+            End Try
+        End Using
+    End Sub
+
+    Private Sub btnOcupar_Click(sender As Object, e As EventArgs) Handles btnOcupar.Click
+        ' Consulta para cambiar a Ocupada
+        Dim query As String = "UPDATE Zonas SET Estado = 'Ocupada' WHERE ID_Mesa = ?"
+
+        Using conexion As New OleDbConnection(connectionString)
+            Try
+                conexion.Open()
+                Dim comando As New OleDbCommand(query, conexion)
+
+                ' Parámetros en orden
+                comando.Parameters.Add("@est", OleDbType.VarWChar).Value = "Ocupada"
+                comando.Parameters.Add("@id", OleDbType.Integer).Value = _idMesa
+
+                comando.ExecuteNonQuery()
+
+                MessageBox.Show("La mesa ahora está OCUPADA.")
+                Me.Close() ' Al cerrar, el panel principal ejecutará CargarMesas() y se verá roja
+
+            Catch ex As Exception
+                MessageBox.Show("Error al ocupar mesa: " & ex.Message)
+            End Try
+        End Using
+    End Sub
 End Class
