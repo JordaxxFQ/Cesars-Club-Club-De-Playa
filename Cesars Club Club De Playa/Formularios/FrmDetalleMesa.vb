@@ -60,13 +60,13 @@ Public Class FrmDetalleMesa
 
     ' Botón Confirmar Reserva / Ocupar
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
+        ' 1. Validaciones de seguridad
         If _idClienteEncontrado = 0 Then
-            MessageBox.Show("Debe buscar un cliente válido.")
-            FrmRegistrarReserva.Show()
+            MessageBox.Show("Debe buscar un cliente válido primero.")
             Exit Sub
         End If
 
-        ' Usamos parámetros tipados para que Access no se confunda
+        ' IMPORTANTE: Revisa que los nombres 'Cedula' y 'Nombre' sean exactos a tu tabla Access
         Dim queryReserva As String = "INSERT INTO Reservas (ID_Cliente, Cedula, NombreComp, ID_Mesa, FechaReserva, EstadoReserva) VALUES (?, ?, ?, ?, ?, ?)"
         Dim queryMesa As String = "UPDATE Zonas SET Estado = ? WHERE ID_Mesa = ?"
 
@@ -74,30 +74,33 @@ Public Class FrmDetalleMesa
             Try
                 conexion.Open()
 
-                ' 1. INSERTAR RESERVA
+                ' --- GUARDAR LA RESERVA ---
                 Dim cmdReserva As New OleDbCommand(queryReserva, conexion)
 
-                ' Forzamos los tipos de datos exactos de tu tabla
-                cmdReserva.Parameters.Add("@cli", OleDbType.Integer).Value = _idClienteEncontrado
-                cmdReserva.Parameters.Add("@ced", OleDbType.VarWChar).Value = _cedulaVariable ' <-- ¡Faltaba este!
-                cmdReserva.Parameters.Add("@nom", OleDbType.VarWChar).Value = _nombreVariable ' <-- ¡Faltaba este!
-                cmdReserva.Parameters.Add("@mesa", OleDbType.Integer).Value = _idMesa
+                ' Agregamos los parámetros en el orden exacto de los "?" en el INSERT
+                cmdReserva.Parameters.Add("@idcli", OleDbType.Integer).Value = _idClienteEncontrado
+                cmdReserva.Parameters.Add("@ced", OleDbType.VarWChar).Value = txtCedula.Text ' <--- Captura directa del TextBox
+                cmdReserva.Parameters.Add("@nom", OleDbType.VarWChar).Value = txtNombre.Text ' <--- Captura directa del TextBox
+                cmdReserva.Parameters.Add("@idmesa", OleDbType.Integer).Value = _idMesa
                 cmdReserva.Parameters.Add("@fecha", OleDbType.Date).Value = DateTime.Now
                 cmdReserva.Parameters.Add("@est", OleDbType.VarWChar).Value = "Activa"
 
                 cmdReserva.ExecuteNonQuery()
 
-                ' 2. ACTUALIZAR ESTADO DE LA MESA
+                ' --- ACTUALIZAR EL ESTADO DE LA MESA EN EL PANEL ---
                 Dim cmdMesa As New OleDbCommand(queryMesa, conexion)
+
+                ' En el UPDATE: primer "?" es Estado, segundo "?" es ID_Mesa
                 cmdMesa.Parameters.Add("@status", OleDbType.VarWChar).Value = "Reservada"
                 cmdMesa.Parameters.Add("@id", OleDbType.Integer).Value = _idMesa
 
                 cmdMesa.ExecuteNonQuery()
 
-                MessageBox.Show("¡Mesa reservada exitosamente!")
+                MessageBox.Show("¡Mesa reservada exitosamente con los datos del cliente!")
                 Me.Close()
 
             Catch ex As Exception
+                ' Si sale "Data type mismatch", verifica que los campos en Access sean 'Texto corto'
                 MessageBox.Show("Error al reservar: " & ex.Message)
             End Try
         End Using
