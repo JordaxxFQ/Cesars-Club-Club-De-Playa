@@ -104,7 +104,7 @@ Partial Class FrmDetalleMesa
         ' 
         ' btnLiberar
         ' 
-        btnLiberar.Location = New Point(28, 454)
+        btnLiberar.Location = New Point(28, 285)
         btnLiberar.Name = "btnLiberar"
         btnLiberar.Size = New Size(75, 47)
         btnLiberar.TabIndex = 7
@@ -113,7 +113,7 @@ Partial Class FrmDetalleMesa
         ' 
         ' btnOcupar
         ' 
-        btnOcupar.Location = New Point(28, 507)
+        btnOcupar.Location = New Point(28, 338)
         btnOcupar.Name = "btnOcupar"
         btnOcupar.Size = New Size(75, 47)
         btnOcupar.TabIndex = 8
@@ -122,7 +122,7 @@ Partial Class FrmDetalleMesa
         ' 
         ' btonDeleteReserv
         ' 
-        btonDeleteReserv.Location = New Point(28, 559)
+        btonDeleteReserv.Location = New Point(28, 390)
         btonDeleteReserv.Margin = New Padding(3, 2, 3, 2)
         btonDeleteReserv.Name = "btonDeleteReserv"
         btonDeleteReserv.Size = New Size(75, 47)
@@ -143,7 +143,7 @@ Partial Class FrmDetalleMesa
         ' cmbCantPeople
         ' 
         cmbCantPeople.FormattingEnabled = True
-        cmbCantPeople.Location = New Point(268, 134)
+        cmbCantPeople.Location = New Point(367, 134)
         cmbCantPeople.Name = "cmbCantPeople"
         cmbCantPeople.Size = New Size(121, 23)
         cmbCantPeople.TabIndex = 11
@@ -169,7 +169,7 @@ Partial Class FrmDetalleMesa
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Location = New Point(268, 116)
+        Label5.Location = New Point(367, 116)
         Label5.Name = "Label5"
         Label5.Size = New Size(121, 15)
         Label5.TabIndex = 16
@@ -180,7 +180,7 @@ Partial Class FrmDetalleMesa
         cmbHoraInicio.FormattingEnabled = True
         cmbHoraInicio.Location = New Point(151, 80)
         cmbHoraInicio.Name = "cmbHoraInicio"
-        cmbHoraInicio.Size = New Size(65, 23)
+        cmbHoraInicio.Size = New Size(98, 23)
         cmbHoraInicio.TabIndex = 17
         ' 
         ' cmbHoraFin
@@ -188,7 +188,7 @@ Partial Class FrmDetalleMesa
         cmbHoraFin.FormattingEnabled = True
         cmbHoraFin.Location = New Point(151, 134)
         cmbHoraFin.Name = "cmbHoraFin"
-        cmbHoraFin.Size = New Size(65, 23)
+        cmbHoraFin.Size = New Size(98, 23)
         cmbHoraFin.TabIndex = 18
         ' 
         ' FrmDetalleMesa
