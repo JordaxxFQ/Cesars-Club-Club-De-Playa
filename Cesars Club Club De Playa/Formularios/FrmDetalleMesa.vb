@@ -67,7 +67,7 @@ Public Class FrmDetalleMesa
         End If
 
         ' Usamos parámetros tipados para que Access no se confunda
-        Dim queryReserva As String = "INSERT INTO Reservas (ID_Cliente, ID_Mesa, FechaReserva, EstadoReserva) VALUES (?, ?, ?, ?)"
+        Dim queryReserva As String = "INSERT INTO Reservas (ID_Cliente, Cedula, NombreComp, ID_Mesa, FechaReserva, EstadoReserva) VALUES (?, ?, ?, ?, ?, ?)"
         Dim queryMesa As String = "UPDATE Zonas SET Estado = ? WHERE ID_Mesa = ?"
 
         Using conexion As New OleDbConnection(connectionString)
@@ -79,6 +79,8 @@ Public Class FrmDetalleMesa
 
                 ' Forzamos los tipos de datos exactos de tu tabla
                 cmdReserva.Parameters.Add("@cli", OleDbType.Integer).Value = _idClienteEncontrado
+                cmdReserva.Parameters.Add("@ced", OleDbType.VarWChar).Value = _cedulaVariable ' <-- ¡Faltaba este!
+                cmdReserva.Parameters.Add("@nom", OleDbType.VarWChar).Value = _nombreVariable ' <-- ¡Faltaba este!
                 cmdReserva.Parameters.Add("@mesa", OleDbType.Integer).Value = _idMesa
                 cmdReserva.Parameters.Add("@fecha", OleDbType.Date).Value = DateTime.Now
                 cmdReserva.Parameters.Add("@est", OleDbType.VarWChar).Value = "Activa"
