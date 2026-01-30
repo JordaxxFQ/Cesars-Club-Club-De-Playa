@@ -1,26 +1,20 @@
 ﻿Imports System.Data.OleDb
 Imports Cesars_Club_Club_De_Playa.DAL
 Public Class FrmDetalleMesa
-    ' Variables para guardar los datos que recibimos y encontramos
-    Dim _idMesa As Integer
-    Dim _idClienteEncontrado As Integer = 0 ' Aquí guardaremos el ID si lo encontramos
 
-    ' Tu cadena de conexión
+    Dim _idMesa As Integer
+    Dim _idClienteEncontrado As Integer = 0
     Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
     Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
 
-    ' Constructor que recibe el ID de la mesa
     Public Sub New(idMesa As Integer)
         InitializeComponent()
         _idMesa = idMesa
     End Sub
 
     Private Sub FrmDetalleMesa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Asignamos el título ahora que ya creaste el Label
         lblTitulo.Text = "Gestionando Mesa Nro: " & _idMesa
 
-        ' Bloqueamos el campo nombre para que no lo escriban manual, solo por búsqueda
-        txtNombre.ReadOnly = True
     End Sub
 
     ' ==========================================
@@ -113,4 +107,56 @@ Public Class FrmDetalleMesa
         ' End Using
     End Sub
 
+    Private Sub btnLiberar_Click(sender As Object, e As EventArgs) Handles btnLiberar.Click
+        ' Preguntar para evitar errores accidentales
+        Dim queryMesa As String = "UPDATE Zonas SET Estado = ? WHERE ID_Mesa = ?"
+
+        Using conexion As New OleDbConnection(connectionString)
+            Try
+                conexion.Open()
+                Dim cmdMesa As New OleDbCommand(queryMesa, conexion)
+
+                ' IMPORTANTE: En OLEDB el orden de los parámetros debe ser el mismo que los "?"
+                ' 1er "?" es el Estado (Disponible)
+                cmdMesa.Parameters.Add("@est", OleDbType.VarWChar).Value = "Disponible"
+                ' 2do "?" es el ID de la mesa
+                cmdMesa.Parameters.Add("@id", OleDbType.Integer).Value = _idMesa
+
+                Dim filasAfectadas As Integer = cmdMesa.ExecuteNonQuery()
+
+                If filasAfectadas > 0 Then
+                    MessageBox.Show("Mesa liberada en la base de datos.")
+                    Me.Close()
+                Else
+                    MessageBox.Show("No se encontró la mesa para actualizar.")
+                End If
+            Catch ex As Exception
+                MessageBox.Show("Error al liberar: " & ex.Message)
+            End Try
+        End Using
+    End Sub
+
+    Private Sub btnOcupar_Click(sender As Object, e As EventArgs) Handles btnOcupar.Click
+        ' Consulta para cambiar a Ocupada
+        Dim query As String = "UPDATE Zonas SET Estado = 'Ocupada' WHERE ID_Mesa = ?"
+
+        Using conexion As New OleDbConnection(connectionString)
+            Try
+                conexion.Open()
+                Dim comando As New OleDbCommand(query, conexion)
+
+                ' Parámetros en orden
+                comando.Parameters.Add("@est", OleDbType.VarWChar).Value = "Ocupada"
+                comando.Parameters.Add("@id", OleDbType.Integer).Value = _idMesa
+
+                comando.ExecuteNonQuery()
+
+                MessageBox.Show("La mesa ahora está OCUPADA.")
+                Me.Close() ' Al cerrar, el panel principal ejecutará CargarMesas() y se verá roja
+
+            Catch ex As Exception
+                MessageBox.Show("Error al ocupar mesa: " & ex.Message)
+            End Try
+        End Using
+    End Sub
 End Class
