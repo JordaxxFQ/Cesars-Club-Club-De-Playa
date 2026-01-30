@@ -17,9 +17,6 @@ Public Class FrmDetalleMesa
 
     End Sub
 
-    ' ==========================================
-    ' BOTÓN BUSCAR CLIENTE
-    ' ==========================================
     Private Sub btnBuscarCliente_Click(sender As Object, e As EventArgs) Handles btnBuscarCliente.Click
         If txtCedula.Text = "" Then
             MessageBox.Show("Por favor ingrese una cédula.")
@@ -68,23 +65,17 @@ Public Class FrmDetalleMesa
             Try
                 conexion.Open()
 
-                ' --- GUARDAR LA RESERVA ---
                 Dim cmdReserva As New OleDbCommand(queryReserva, conexion)
 
-                ' Agregamos los parámetros en el orden exacto de los "?" en el INSERT
                 cmdReserva.Parameters.Add("@idcli", OleDbType.Integer).Value = _idClienteEncontrado
-                cmdReserva.Parameters.Add("@ced", OleDbType.VarWChar).Value = txtCedula.Text ' <--- Captura directa del TextBox
-                cmdReserva.Parameters.Add("@nom", OleDbType.VarWChar).Value = txtNombre.Text ' <--- Captura directa del TextBox
+                cmdReserva.Parameters.Add("@ced", OleDbType.VarWChar).Value = txtCedula.Text
+                cmdReserva.Parameters.Add("@nom", OleDbType.VarWChar).Value = txtNombre.Text
                 cmdReserva.Parameters.Add("@idmesa", OleDbType.Integer).Value = _idMesa
                 cmdReserva.Parameters.Add("@fecha", OleDbType.Date).Value = DateTime.Now
                 cmdReserva.Parameters.Add("@est", OleDbType.VarWChar).Value = "Activa"
 
                 cmdReserva.ExecuteNonQuery()
-
-                ' --- ACTUALIZAR EL ESTADO DE LA MESA EN EL PANEL ---
                 Dim cmdMesa As New OleDbCommand(queryMesa, conexion)
-
-                ' En el UPDATE: primer "?" es Estado, segundo "?" es ID_Mesa
                 cmdMesa.Parameters.Add("@status", OleDbType.VarWChar).Value = "Reservada"
                 cmdMesa.Parameters.Add("@id", OleDbType.Integer).Value = _idMesa
 
@@ -94,21 +85,12 @@ Public Class FrmDetalleMesa
                 Me.Close()
 
             Catch ex As Exception
-                ' Si sale "Data type mismatch", verifica que los campos en Access sean 'Texto corto'
                 MessageBox.Show("Error al reservar: " & ex.Message)
             End Try
         End Using
     End Sub
 
-
-    Private Sub ActualizarEstadoMesa(nuevoEstado As String)
-        ' Código SQL UPDATE Zonas SET Estado = @estado WHERE ID_Mesa = @id...
-        ' Usando _idMesa y nuevoEstado
-        ' End Using
-    End Sub
-
     Private Sub btnLiberar_Click(sender As Object, e As EventArgs) Handles btnLiberar.Click
-        ' Preguntar para evitar errores accidentales
         Dim queryMesa As String = "UPDATE Zonas SET Estado = ? WHERE ID_Mesa = ?"
 
         Using conexion As New OleDbConnection(connectionString)
@@ -144,7 +126,6 @@ Public Class FrmDetalleMesa
                 conexion.Open()
                 Dim cmd As New OleDbCommand(query, conexion)
 
-                ' Orden de parámetros vital para Access:
                 cmd.Parameters.Add("@est", OleDbType.VarWChar).Value = "Ocupada"
                 cmd.Parameters.Add("@id", OleDbType.Integer).Value = _idMesa
 
@@ -152,7 +133,7 @@ Public Class FrmDetalleMesa
 
                 If filas > 0 Then
                     MessageBox.Show("Mesa marcada como Ocupada")
-                    Me.Close() ' Esto activa el CargarMesas() del formulario anterior
+                    Me.Close()
                 End If
             Catch ex As Exception
                 MessageBox.Show("Error: " & ex.Message)
