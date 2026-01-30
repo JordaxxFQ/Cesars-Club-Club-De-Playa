@@ -137,25 +137,25 @@ Public Class FrmDetalleMesa
     End Sub
 
     Private Sub btnOcupar_Click(sender As Object, e As EventArgs) Handles btnOcupar.Click
-        ' Consulta para cambiar a Ocupada
-        Dim query As String = "UPDATE Zonas SET Estado = 'Ocupada' WHERE ID_Mesa = ?"
+        Dim query As String = "UPDATE Zonas SET Estado = ? WHERE ID_Mesa = ?"
 
         Using conexion As New OleDbConnection(connectionString)
             Try
                 conexion.Open()
-                Dim comando As New OleDbCommand(query, conexion)
+                Dim cmd As New OleDbCommand(query, conexion)
 
-                ' Parámetros en orden
-                comando.Parameters.Add("@est", OleDbType.VarWChar).Value = "Ocupada"
-                comando.Parameters.Add("@id", OleDbType.Integer).Value = _idMesa
+                ' Orden de parámetros vital para Access:
+                cmd.Parameters.Add("@est", OleDbType.VarWChar).Value = "Ocupada"
+                cmd.Parameters.Add("@id", OleDbType.Integer).Value = _idMesa
 
-                comando.ExecuteNonQuery()
+                Dim filas As Integer = cmd.ExecuteNonQuery()
 
-                MessageBox.Show("La mesa ahora está OCUPADA.")
-                Me.Close() ' Al cerrar, el panel principal ejecutará CargarMesas() y se verá roja
-
+                If filas > 0 Then
+                    MessageBox.Show("Mesa marcada como Ocupada")
+                    Me.Close() ' Esto activa el CargarMesas() del formulario anterior
+                End If
             Catch ex As Exception
-                MessageBox.Show("Error al ocupar mesa: " & ex.Message)
+                MessageBox.Show("Error: " & ex.Message)
             End Try
         End Using
     End Sub
