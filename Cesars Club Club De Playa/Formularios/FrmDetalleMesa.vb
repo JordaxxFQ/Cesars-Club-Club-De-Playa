@@ -14,7 +14,6 @@ Public Class FrmDetalleMesa
 
     Private Sub FrmDetalleMesa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblTitulo.Text = "Gestionando Mesa Nro: " & _idMesa
-
     End Sub
 
     Private Sub btnBuscarCliente_Click(sender As Object, e As EventArgs) Handles btnBuscarCliente.Click
@@ -49,15 +48,15 @@ Public Class FrmDetalleMesa
         End Using
     End Sub
 
-    ' Botón Confirmar Reserva / Ocupar
+
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        ' 1. Validaciones de seguridad
+
         If _idClienteEncontrado = 0 Then
             MessageBox.Show("Debe buscar un cliente válido primero.")
             Exit Sub
         End If
 
-        ' IMPORTANTE: Revisa que los nombres 'Cedula' y 'Nombre' sean exactos a tu tabla Access
+
         Dim queryReserva As String = "INSERT INTO Reservas (ID_Cliente, Cedula, NombreComp, ID_Mesa, FechaReserva, EstadoReserva) VALUES (?, ?, ?, ?, ?, ?)"
         Dim queryMesa As String = "UPDATE Zonas SET Estado = ? WHERE ID_Mesa = ?"
 
@@ -98,10 +97,7 @@ Public Class FrmDetalleMesa
                 conexion.Open()
                 Dim cmdMesa As New OleDbCommand(queryMesa, conexion)
 
-                ' IMPORTANTE: En OLEDB el orden de los parámetros debe ser el mismo que los "?"
-                ' 1er "?" es el Estado (Disponible)
                 cmdMesa.Parameters.Add("@est", OleDbType.VarWChar).Value = "Disponible"
-                ' 2do "?" es el ID de la mesa
                 cmdMesa.Parameters.Add("@id", OleDbType.Integer).Value = _idMesa
 
                 Dim filasAfectadas As Integer = cmdMesa.ExecuteNonQuery()
