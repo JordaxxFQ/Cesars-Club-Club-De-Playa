@@ -50,30 +50,26 @@ Public Class FrmRegistroClientes
 
         Using conexion As New OleDbConnection(connectionString)
             conexion.Open()
-            Using trans As OleDbTransaction = conexion.BeginTransaction()
-                Try
-                    Dim query2 As String = "INSERT INTO Clientes (NombreComp, Cedula, FechaRegistro) VALUES (@Nombre, @Cedula, @Fecha)"
-                    Using comando As New OleDbCommand(query2, conexion, trans)
-                        comando.Parameters.AddWithValue("@Nombre", TxtNombre.Text)
-                        comando.Parameters.AddWithValue("@Cedula", TxtCedula.Text)
-                        comando.Parameters.AddWithValue("@Fecha", dtpFechaRegistro.Value)
+            Try
+                Dim query2 As String = "INSERT INTO Clientes (NombreComp, Cedula, FechaRegistro) VALUES (@Nombre, @Cedula, @Fecha)"
+                Using comando As New OleDbCommand(query2, conexion)
+                    comando.Parameters.AddWithValue("@Nombre", TxtNombre.Text)
+                    comando.Parameters.AddWithValue("@Cedula", TxtCedula.Text)
+                    comando.Parameters.AddWithValue("@Fecha", dtpFechaRegistro.Value)
 
-                        Dim filasAfectadas As Integer = comando.ExecuteNonQuery()
-                        trans.Commit()
+                    Dim filasAfectadas As Integer = comando.ExecuteNonQuery()
 
-                        If filasAfectadas > 0 Then
-                            MessageBox.Show("Cliente guardado exitosamente. Filas afectadas: " & filasAfectadas.ToString(), "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                            LimpiarCampos()
-                            CargarDatos()
-                        Else
-                            MessageBox.Show("No se pudo guardar el cliente. Filas afectadas: " & filasAfectadas.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        End If
-                    End Using
-                Catch ex As Exception
-                    trans.Rollback()
-                    MessageBox.Show("Error al guardar: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End Try
-            End Using
+                    If filasAfectadas > 0 Then
+                        MessageBox.Show("Cliente guardado exitosamente. Filas afectadas: " & filasAfectadas.ToString(), "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        LimpiarCampos()
+                        CargarDatos()
+                    Else
+                        MessageBox.Show("No se pudo guardar el cliente. Filas afectadas: " & filasAfectadas.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Error al guardar: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
         End Using
     End Sub
 
