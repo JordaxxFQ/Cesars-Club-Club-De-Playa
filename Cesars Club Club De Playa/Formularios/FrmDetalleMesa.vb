@@ -16,12 +16,11 @@ Public Class FrmDetalleMesa
         lblTitulo.Text = "Gestionando Mesa Nro: " & _idMesa
         CargarDatos()
         CargarCapacidadMesa()
-        ConfigurarDateTimePickers() ' NUEVO MÉTODO
+        ConfigurarDateTimePickers()
     End Sub
 
-    ' ========== NUEVO MÉTODO PARA CONFIGURAR DATETIMEPICKERS ==========
     Private Sub ConfigurarDateTimePickers()
-        ' Configurar DateTimePicker para Hora de Inicio
+
         DtpHoraInicio.Format = DateTimePickerFormat.Time
         DtpHoraInicio.ShowUpDown = True ' Muestra flechitas arriba/abajo
         DtpHoraInicio.Value = DateTime.Today.AddHours(8) ' 8:00 AM por defecto
@@ -38,7 +37,6 @@ Public Class FrmDetalleMesa
         ' dtpHoraFin.CustomFormat = "hh:mm tt"
     End Sub
 
-    ' ========== MÉTODOS ANTERIORES SIN CAMBIOS ==========
     Private Sub EliminarRegistro(id As Integer)
         Dim query As String = "DELETE FROM Reservas WHERE ID_Reserva = ?"
 
