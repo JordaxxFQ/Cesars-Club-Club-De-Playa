@@ -173,27 +173,29 @@ Public Class FrmPedidos
 
     Private Sub CargarCategorias()
 
-        If CboCategoria.SelectedItem Is Nothing Then
-            Return
-        End If
+        CboCategoria.Items.Clear()
+        CboCategoria.Items.Add("Todas")
+
+        Dim query As String = "SELECT DISTINCT Categoria FROM Productos WHERE ActivoVenta = True"
+
         Using conexion As New OleDbConnection(connectionString)
             Try
+                Dim comando As New OleDbCommand(query, conexion)
                 conexion.Open()
+                Dim reader As OleDbDataReader = comando.ExecuteReader()
 
-                Dim query2 As String = "SELECT DISTINCT Categoria FROM Productos WHERE ActivoVenta = True ORDER BY Categoria"
+                While reader.Read()
+                    ' Agregamos cada categoría encontrada a la lista
+                    If Not reader.IsDBNull(0) Then
+                        CboCategoria.Items.Add(reader("Categoria").ToString())
+                    End If
+                End While
 
-                Using comando As New OleDbCommand(query2, conexion)
-                    Using reader As OleDbDataReader = comando.ExecuteReader()
-                        While reader.Read()
-                            If Not IsDBNull(reader("Categoria")) Then
-                                CboCategoria.Items.Add(reader("Categoria").ToString())
-                            End If
-                        End While
-                    End Using
-                End Using
+                ' Seleccionamos "Todas" por defecto
+                CboCategoria.SelectedIndex = 0
 
             Catch ex As Exception
-                MessageBox.Show("Error al cargar categorías: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Error al cargar categorías: " & ex.Message)
             End Try
         End Using
     End Sub
@@ -269,7 +271,6 @@ Public Class FrmPedidos
             Dim precio As Decimal = CDec(precioTexto.Replace("S/", "").Replace("$", "").Trim())
             Dim stockDisponible As Integer = CInt(fila.Cells("Stock").Value)
 
-            ' Verificar stock
             If stockDisponible <= 0 Then
                 MessageBox.Show("Producto sin stock disponible", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Return
@@ -373,7 +374,7 @@ Public Class FrmPedidos
     End Sub
 
     Private Sub GuardarPedido()
-        ' Validaciones
+        ' Validaciones previas...
         If String.IsNullOrEmpty(cedulaCliente) Then
             MessageBox.Show("Debe buscar un cliente primero", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
@@ -395,16 +396,21 @@ Public Class FrmPedidos
                     totalPedido += CDec(fila.Cells("Subtotal").Value)
                 Next
 
-                ' Insertar pedido
-                Dim queryPedido As String = "INSERT INTO Pedidos (ID_Reserva, Cedula, FechaHora, Estado, Total, NotasEspeciales) " & "VALUES (@IDReserva, @Cedula, @FechaHora, @Estado, @Total, @Notas)"
+                ' --- PASO 1: INSERTAR PEDIDO ---
+                Dim queryPedido As String = "INSERT INTO Pedidos (ID_Reserva, Cedula, FechaHora, Estado, Total, NotasEspeciales) " &
+                                      "VALUES (@IDReserva, @Cedula, @FechaHora, @Estado, @Total, @Notas)"
 
                 Using cmdPedido As New OleDbCommand(queryPedido, conexion, transaction)
-                    cmdPedido.Parameters.AddWithValue("@IDReserva", idReservaCliente)
-                    cmdPedido.Parameters.AddWithValue("@Cedula", cedulaCliente)
-                    cmdPedido.Parameters.AddWithValue("@FechaHora", DateTime.Now)
-                    cmdPedido.Parameters.AddWithValue("@Estado", "Pendiente")
-                    cmdPedido.Parameters.AddWithValue("@Total", totalPedido)
-                    cmdPedido.Parameters.AddWithValue("@Notas", If(String.IsNullOrEmpty(TxtNotas.Text), DBNull.Value, TxtNotas.Text))
+                    ' IMPORTANTE: El orden de los parámetros debe coincidir con la consulta SQL
+                    cmdPedido.Parameters.Add("@IDReserva", OleDbType.Integer).Value = idReservaCliente
+                    cmdPedido.Parameters.Add("@Cedula", OleDbType.VarChar).Value = cedulaCliente
+                    cmdPedido.Parameters.Add("@FechaHora", OleDbType.Date).Value = DateTime.Now
+                    cmdPedido.Parameters.Add("@Estado", OleDbType.VarChar).Value = "Pendiente"
+
+                    ' CORRECCIÓN CLAVE: Usar OleDbType.Currency para dinero en Access
+                    cmdPedido.Parameters.Add("@Total", OleDbType.Currency).Value = totalPedido
+
+                    cmdPedido.Parameters.Add("@Notas", OleDbType.LongVarChar).Value = If(String.IsNullOrEmpty(TxtNotas.Text), DBNull.Value, TxtNotas.Text)
 
                     cmdPedido.ExecuteNonQuery()
                 End Using
@@ -413,27 +419,28 @@ Public Class FrmPedidos
                 Dim cmdGetID As New OleDbCommand("SELECT @@IDENTITY", conexion, transaction)
                 Dim idPedido As Integer = CInt(cmdGetID.ExecuteScalar())
 
-                ' Insertar detalles
+                ' --- PASO 2: INSERTAR DETALLES Y ACTUALIZAR STOCK ---
                 For Each fila As DataGridViewRow In DgvPedido.Rows
-                    Dim queryDetalle As String = "INSERT INTO DetallesPedidos (ID_Pedido, ID_Producto, Cantidad, PrecioUnitario, Subtotal) " & "VALUES (@IDPedido, @IDProducto, @Cantidad, @Precio, @Subtotal)"
+                    Dim queryDetalle As String = "INSERT INTO DetallesPedidos (ID_Pedido, ID_Producto, Cantidad, PrecioUnitario, Subtotal) " &
+                                           "VALUES (@IDPedido, @IDProducto, @Cantidad, @Precio, @Subtotal)"
 
                     Using cmdDetalle As New OleDbCommand(queryDetalle, conexion, transaction)
-                        cmdDetalle.Parameters.AddWithValue("@IDPedido", idPedido)
-                        cmdDetalle.Parameters.AddWithValue("@IDProducto", fila.Cells("ID_Producto").Value)
-                        cmdDetalle.Parameters.AddWithValue("@Cantidad", fila.Cells("Cantidad").Value)
-                        cmdDetalle.Parameters.AddWithValue("@Precio", fila.Cells("Precio").Value)
-                        cmdDetalle.Parameters.AddWithValue("@Subtotal", fila.Cells("Subtotal").Value)
+                        cmdDetalle.Parameters.Add("@IDPedido", OleDbType.Integer).Value = idPedido
+                        cmdDetalle.Parameters.Add("@IDProducto", OleDbType.Integer).Value = CInt(fila.Cells("ID_Producto").Value)
+                        cmdDetalle.Parameters.Add("@Cantidad", OleDbType.Integer).Value = CInt(fila.Cells("Cantidad").Value)
+
+                        ' CORRECCIÓN CLAVE: Usar Currency también aquí
+                        cmdDetalle.Parameters.Add("@Precio", OleDbType.Currency).Value = CDec(fila.Cells("Precio").Value)
+                        cmdDetalle.Parameters.Add("@Subtotal", OleDbType.Currency).Value = CDec(fila.Cells("Subtotal").Value)
 
                         cmdDetalle.ExecuteNonQuery()
                     End Using
 
                     ' Actualizar stock
                     Dim queryStock As String = "UPDATE Productos SET Stock = Stock - @Cantidad WHERE ID_Producto = @IDProducto"
-
                     Using cmdStock As New OleDbCommand(queryStock, conexion, transaction)
-                        cmdStock.Parameters.AddWithValue("@Cantidad", fila.Cells("Cantidad").Value)
-                        cmdStock.Parameters.AddWithValue("@IDProducto", fila.Cells("ID_Producto").Value)
-
+                        cmdStock.Parameters.Add("@Cantidad", OleDbType.Integer).Value = CInt(fila.Cells("Cantidad").Value)
+                        cmdStock.Parameters.Add("@IDProducto", OleDbType.Integer).Value = CInt(fila.Cells("ID_Producto").Value)
                         cmdStock.ExecuteNonQuery()
                     End Using
                 Next
@@ -441,12 +448,9 @@ Public Class FrmPedidos
                 transaction.Commit()
 
                 MessageBox.Show("Pedido #" & idPedido.ToString() & " guardado exitosamente" & vbCrLf & "Total: " & totalPedido.ToString("C2"),
-                               "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                           "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                ' Limpiar pedido
                 LimpiarPedido()
-
-                ' Recargar productos
                 CargarProductos()
 
             Catch ex As Exception
