@@ -7,7 +7,6 @@ Public Class FrmAggPerso
     Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
     Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
     Private Sub FrmAggPerso_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        enlace()
         CargarTurno()
         CargarRoles()
         CargarDatos()

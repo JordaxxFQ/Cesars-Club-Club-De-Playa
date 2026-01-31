@@ -105,6 +105,7 @@ Partial Class FrmAggPerso
         ' 
         ' cmbRol
         ' 
+        cmbRol.DropDownStyle = ComboBoxStyle.DropDownList
         cmbRol.FormattingEnabled = True
         cmbRol.Location = New Point(12, 199)
         cmbRol.Name = "cmbRol"

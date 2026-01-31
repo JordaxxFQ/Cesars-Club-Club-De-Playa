@@ -142,6 +142,7 @@ Partial Class FrmDetalleMesa
         ' 
         ' cmbCantPeople
         ' 
+        cmbCantPeople.DropDownStyle = ComboBoxStyle.DropDownList
         cmbCantPeople.FormattingEnabled = True
         cmbCantPeople.Location = New Point(367, 134)
         cmbCantPeople.Name = "cmbCantPeople"

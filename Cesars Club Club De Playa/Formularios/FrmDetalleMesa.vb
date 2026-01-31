@@ -122,7 +122,6 @@ Public Class FrmDetalleMesa
 
     Private Sub FrmDetalleMesa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblTitulo.Text = "Gestionando Mesa Nro: " & _idMesa
-        enlace()
         CargarDatos()
         CargarCapacidadMesa()
         CargarHorarios()
@@ -291,5 +290,6 @@ Public Class FrmDetalleMesa
 
 
     End Sub
+
 
 End Class
