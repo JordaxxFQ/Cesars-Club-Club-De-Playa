@@ -108,8 +108,8 @@ Public Class FrmDetalleMesa
         cmbHoraFin.Items.Clear()
 
         ' Definimos desde qué hora abre y cierra el local (Formato 24h para el ciclo)
-        Dim horaApertura As Integer = 8  ' 8:00 AM
-        Dim horaCierre As Integer = 23   ' 11:00 PM
+        Dim horaApertura As Integer = 1  ' 8:00 AM
+        Dim horaCierre As Integer = 24   ' 11:00 PM
 
         For i As Integer = horaApertura To horaCierre
             ' Convertimos formato 24h a formato 12h AM/PM
