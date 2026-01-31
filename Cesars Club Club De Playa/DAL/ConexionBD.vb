@@ -1,5 +1,4 @@
-﻿Imports System.Data
-Imports System.Data.OleDb
+﻿Imports System.Data.OleDb
 
 Namespace DAL
     Public Module ConexionBD
@@ -12,7 +11,6 @@ Namespace DAL
                 Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
 
                 If Not IO.File.Exists(ruta) Then
-                    MsgBox("El archivo NO está en: " & ruta)
                     estado = "Desconectado"
                     Exit Sub
                 End If
