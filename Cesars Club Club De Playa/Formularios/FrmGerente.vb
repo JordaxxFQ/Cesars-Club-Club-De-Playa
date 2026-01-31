@@ -24,4 +24,8 @@
     Private Sub btnReservaciones_Click(sender As Object, e As EventArgs) Handles btnReservaciones.Click
         FrmReserva.Show()
     End Sub
+
+    Private Sub btonPedido_Click(sender As Object, e As EventArgs) Handles btonPedido.Click
+        FrmPedidos.Show()
+    End Sub
 End Class

@@ -1,5 +1,4 @@
 ﻿Imports System.Data.OleDb
-Imports Cesars_Club_Club_De_Playa.DAL
 
 Public Class FrmRegistroClientes
 

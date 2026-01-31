@@ -79,4 +79,17 @@ Public Class FrmLogin
         Application.Exit()
     End Sub
 
+    Private Sub txtUsuario_Keypress(sender As Object, e As KeyPressEventArgs) Handles txtUsuario.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtContrasena.Focus()
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtContrasena_Keypress(sender As Object, e As KeyPressEventArgs) Handles txtContrasena.KeyPress
+        If e.KeyChar = Chr(13) Then
+            Button1_Click(sender, e)
+            e.Handled = True
+        End If
+    End Sub
 End Class
