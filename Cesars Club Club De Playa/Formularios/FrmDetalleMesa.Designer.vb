@@ -39,6 +39,8 @@ Partial Class FrmDetalleMesa
         Label5 = New Label()
         cmbHoraInicio = New ComboBox()
         cmbHoraFin = New ComboBox()
+        DtpHoraInicio = New DateTimePicker()
+        DtpHoraFin = New DateTimePicker()
         CType(TablaReserva2, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -80,7 +82,7 @@ Partial Class FrmDetalleMesa
         lblTitulo.AutoSize = True
         lblTitulo.Location = New Point(87, 32)
         lblTitulo.Name = "lblTitulo"
-        lblTitulo.Size = New Size(50, 15)
+        lblTitulo.Size = New Size(51, 15)
         lblTitulo.TabIndex = 4
         lblTitulo.Text = "lblTitulo"
         ' 
@@ -179,7 +181,7 @@ Partial Class FrmDetalleMesa
         ' cmbHoraInicio
         ' 
         cmbHoraInicio.FormattingEnabled = True
-        cmbHoraInicio.Location = New Point(151, 80)
+        cmbHoraInicio.Location = New Point(986, 54)
         cmbHoraInicio.Name = "cmbHoraInicio"
         cmbHoraInicio.Size = New Size(98, 23)
         cmbHoraInicio.TabIndex = 17
@@ -187,16 +189,32 @@ Partial Class FrmDetalleMesa
         ' cmbHoraFin
         ' 
         cmbHoraFin.FormattingEnabled = True
-        cmbHoraFin.Location = New Point(151, 134)
+        cmbHoraFin.Location = New Point(986, 83)
         cmbHoraFin.Name = "cmbHoraFin"
         cmbHoraFin.Size = New Size(98, 23)
         cmbHoraFin.TabIndex = 18
+        ' 
+        ' DtpHoraInicio
+        ' 
+        DtpHoraInicio.Location = New Point(151, 80)
+        DtpHoraInicio.Name = "DtpHoraInicio"
+        DtpHoraInicio.Size = New Size(200, 23)
+        DtpHoraInicio.TabIndex = 19
+        ' 
+        ' DtpHoraFin
+        ' 
+        DtpHoraFin.Location = New Point(151, 134)
+        DtpHoraFin.Name = "DtpHoraFin"
+        DtpHoraFin.Size = New Size(200, 23)
+        DtpHoraFin.TabIndex = 20
         ' 
         ' FrmDetalleMesa
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1248, 617)
+        Controls.Add(DtpHoraFin)
+        Controls.Add(DtpHoraInicio)
         Controls.Add(cmbHoraFin)
         Controls.Add(cmbHoraInicio)
         Controls.Add(Label5)
@@ -238,4 +256,6 @@ Partial Class FrmDetalleMesa
     Friend WithEvents Label5 As Label
     Friend WithEvents cmbHoraInicio As ComboBox
     Friend WithEvents cmbHoraFin As ComboBox
+    Friend WithEvents DtpHoraInicio As DateTimePicker
+    Friend WithEvents DtpHoraFin As DateTimePicker
 End Class
