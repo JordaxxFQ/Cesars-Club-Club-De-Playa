@@ -29,6 +29,7 @@ Partial Class FrmGerente
         btonPedido = New Button()
         btnClient = New Button()
         btnProducto = New Button()
+        BtnCocina = New Button()
         SuspendLayout()
         ' 
         ' btnRegistro
@@ -97,11 +98,22 @@ Partial Class FrmGerente
         btnProducto.Text = "Productos"
         btnProducto.UseVisualStyleBackColor = True
         ' 
+        ' BtnCocina
+        ' 
+        BtnCocina.Location = New Point(374, 35)
+        BtnCocina.Margin = New Padding(3, 2, 3, 2)
+        BtnCocina.Name = "BtnCocina"
+        BtnCocina.Size = New Size(118, 98)
+        BtnCocina.TabIndex = 7
+        BtnCocina.Text = "Cocina"
+        BtnCocina.UseVisualStyleBackColor = True
+        ' 
         ' FrmGerente
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(891, 556)
+        Controls.Add(BtnCocina)
         Controls.Add(btnProducto)
         Controls.Add(btnClient)
         Controls.Add(btonPedido)
@@ -121,4 +133,5 @@ Partial Class FrmGerente
     Friend WithEvents btonPedido As Button
     Friend WithEvents btnClient As Button
     Friend WithEvents btnProducto As Button
+    Friend WithEvents BtnCocina As Button
 End Class
