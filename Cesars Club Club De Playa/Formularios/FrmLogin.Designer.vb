@@ -22,6 +22,7 @@ Partial Class FrmLogin
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         Button1 = New Button()
         txtUsuario = New TextBox()
         txtContrasena = New TextBox()
@@ -29,6 +30,7 @@ Partial Class FrmLogin
         Label2 = New Label()
         CheckBox1 = New CheckBox()
         lblHora = New Label()
+        Timer1 = New Timer(components)
         SuspendLayout()
         ' 
         ' Button1
@@ -92,6 +94,11 @@ Partial Class FrmLogin
         lblHora.Text = "Label3"
         lblHora.UseWaitCursor = True
         ' 
+        ' Timer1
+        ' 
+        Timer1.Enabled = True
+        Timer1.Interval = 1000
+        ' 
         ' FrmLogin
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -117,5 +124,6 @@ Partial Class FrmLogin
     Friend WithEvents Label2 As Label
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents lblHora As Label
+    Friend WithEvents Timer1 As Timer
 
 End Class
