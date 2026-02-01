@@ -43,7 +43,7 @@ Partial Class FrmGerente
         ' 
         ' btnReservaciones
         ' 
-        btnReservaciones.Location = New Point(242, 265)
+        btnReservaciones.Location = New Point(507, 35)
         btnReservaciones.Name = "btnReservaciones"
         btnReservaciones.Size = New Size(117, 98)
         btnReservaciones.TabIndex = 1
@@ -52,7 +52,7 @@ Partial Class FrmGerente
         ' 
         ' btnMesita
         ' 
-        btnMesita.Location = New Point(532, 265)
+        btnMesita.Location = New Point(646, 355)
         btnMesita.Name = "btnMesita"
         btnMesita.Size = New Size(117, 98)
         btnMesita.TabIndex = 2
@@ -61,7 +61,7 @@ Partial Class FrmGerente
         ' 
         ' btnFactura
         ' 
-        btnFactura.Location = New Point(753, 35)
+        btnFactura.Location = New Point(630, 35)
         btnFactura.Name = "btnFactura"
         btnFactura.Size = New Size(118, 98)
         btnFactura.TabIndex = 3
@@ -70,7 +70,7 @@ Partial Class FrmGerente
         ' 
         ' btonPedido
         ' 
-        btonPedido.Location = New Point(101, 265)
+        btonPedido.Location = New Point(507, 355)
         btonPedido.Margin = New Padding(3, 2, 3, 2)
         btonPedido.Name = "btonPedido"
         btonPedido.Size = New Size(118, 98)
@@ -80,7 +80,7 @@ Partial Class FrmGerente
         ' 
         ' btnClient
         ' 
-        btnClient.Location = New Point(176, 162)
+        btnClient.Location = New Point(135, 35)
         btnClient.Margin = New Padding(3, 2, 3, 2)
         btnClient.Name = "btnClient"
         btnClient.Size = New Size(118, 98)
@@ -90,7 +90,7 @@ Partial Class FrmGerente
         ' 
         ' btnProducto
         ' 
-        btnProducto.Location = New Point(684, 265)
+        btnProducto.Location = New Point(754, 35)
         btnProducto.Margin = New Padding(3, 2, 3, 2)
         btnProducto.Name = "btnProducto"
         btnProducto.Size = New Size(118, 98)
@@ -100,7 +100,7 @@ Partial Class FrmGerente
         ' 
         ' BtnCocina
         ' 
-        BtnCocina.Location = New Point(374, 35)
+        BtnCocina.Location = New Point(259, 35)
         BtnCocina.Margin = New Padding(3, 2, 3, 2)
         BtnCocina.Name = "BtnCocina"
         BtnCocina.Size = New Size(118, 98)
