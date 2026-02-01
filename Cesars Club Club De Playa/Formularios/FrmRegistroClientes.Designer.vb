@@ -30,9 +30,9 @@ Partial Class FrmRegistroClientes
         BtnGuardar = New Button()
         BtnLimpiar = New Button()
         dtpFechaRegistro = New DateTimePicker()
-        DataGridView1 = New DataGridView()
+        DgvClientes = New DataGridView()
         BtnEliminar = New Button()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(DgvClientes, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label1
@@ -101,13 +101,13 @@ Partial Class FrmRegistroClientes
         dtpFechaRegistro.Size = New Size(200, 23)
         dtpFechaRegistro.TabIndex = 8
         ' 
-        ' DataGridView1
+        ' DgvClientes
         ' 
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(12, 210)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(384, 328)
-        DataGridView1.TabIndex = 9
+        DgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DgvClientes.Location = New Point(12, 210)
+        DgvClientes.Name = "DgvClientes"
+        DgvClientes.Size = New Size(384, 328)
+        DgvClientes.TabIndex = 9
         ' 
         ' BtnEliminar
         ' 
@@ -124,7 +124,7 @@ Partial Class FrmRegistroClientes
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(417, 550)
         Controls.Add(BtnEliminar)
-        Controls.Add(DataGridView1)
+        Controls.Add(DgvClientes)
         Controls.Add(dtpFechaRegistro)
         Controls.Add(BtnLimpiar)
         Controls.Add(BtnGuardar)
@@ -135,7 +135,7 @@ Partial Class FrmRegistroClientes
         Controls.Add(Label1)
         Name = "FrmRegistroClientes"
         Text = "FrmRegistroClientes"
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        CType(DgvClientes, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -148,6 +148,6 @@ Partial Class FrmRegistroClientes
     Friend WithEvents BtnGuardar As Button
     Friend WithEvents BtnLimpiar As Button
     Friend WithEvents dtpFechaRegistro As DateTimePicker
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DgvClientes As DataGridView
     Friend WithEvents BtnEliminar As Button
 End Class
