@@ -297,7 +297,7 @@ Public Class FrmDetalleMesa
                 Using conexion As New OleDbConnection(connectionString)
                     conexion.Open()
                     Dim cmdMesa As New OleDbCommand(queryMesa, conexion)
-                    cmdMesa.Parameters.Add("@status", OleDbType.VarWChar).Value = "Disponible"
+                    cmdMesa.Parameters.Add("@status", OleDbType.VarWChar).Value = "Mantenimiento"
                     cmdMesa.Parameters.Add("@id", OleDbType.Integer).Value = _idMesa
                     cmdMesa.ExecuteNonQuery()
                 End Using
