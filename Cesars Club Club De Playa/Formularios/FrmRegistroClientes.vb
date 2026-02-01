@@ -22,11 +22,14 @@ Public Class FrmRegistroClientes
 
                 adaptador.Fill(dataset, "TablaClientes")
 
-                DataGridView1.DataSource = dataset.Tables("TablaClientes")
+                DgvCliente.DataSource = dataset.Tables("TablaClientes")
 
-                DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-                DataGridView1.ReadOnly = True
-                DataGridView1.AllowUserToAddRows = False
+                DgvCliente.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+                DgvCliente.ReadOnly = True
+                DgvCliente.AllowUserToAddRows = False
+                If DgvCliente.Columns.Contains("ID_Cliente") Then
+                    DgvCliente.Columns("ID_Cliente").Visible = False
+                End If
 
             Catch ex As Exception
                 MessageBox.Show("Error al cargar datos: " & ex.Message)
@@ -81,7 +84,7 @@ Public Class FrmRegistroClientes
 
     Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
 
-        If DataGridView1.SelectedRows.Count = 0 Then
+        If DgvCliente.SelectedRows.Count = 0 Then
             MessageBox.Show("Por favor seleccione un cliente para eliminar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
@@ -89,7 +92,7 @@ Public Class FrmRegistroClientes
         Dim cedulaCliente As String = ""
         Dim idCliente As Integer = 0
         Dim nombreCliente As String = ""
-        Dim filaSeleccionada As DataGridViewRow = DataGridView1.SelectedRows(0)
+        Dim filaSeleccionada As DataGridViewRow = DgvCliente.SelectedRows(0)
 
         If filaSeleccionada.Cells("ID_Cliente").Value IsNot Nothing Then
             idCliente = CInt(filaSeleccionada.Cells("ID_Cliente").Value)
@@ -141,9 +144,9 @@ Public Class FrmRegistroClientes
         End Using
     End Sub
 
-    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+    Private Sub DgvClientes_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvCliente.CellClick
         If e.RowIndex >= 0 Then
-            Dim fila As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+            Dim fila As DataGridViewRow = DgvCliente.Rows(e.RowIndex)
             Dim idClienteSeleccionado As Integer = 0
 
             If fila.Cells("ID_Cliente").Value IsNot Nothing Then
@@ -178,10 +181,4 @@ Public Class FrmRegistroClientes
     Private Sub BtnLimpiar_Click(sender As Object, e As EventArgs) Handles BtnLimpiar.Click
         LimpiarCampos()
     End Sub
-
-    Private Sub FrmRegistroClientes_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-
-    End Sub
-
-
 End Class

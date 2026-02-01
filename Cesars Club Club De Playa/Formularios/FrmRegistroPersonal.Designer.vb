@@ -28,10 +28,10 @@ Partial Class FrmRegistroPersonal
         Label1 = New Label()
         ConexionBDBindingSource = New BindingSource(components)
         ConexionBDBindingSource1 = New BindingSource(components)
-        DataGridView1 = New DataGridView()
+        DgvPersonal = New DataGridView()
         CType(ConexionBDBindingSource, ComponentModel.ISupportInitialize).BeginInit()
         CType(ConexionBDBindingSource1, ComponentModel.ISupportInitialize).BeginInit()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(DgvPersonal, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnAgg
@@ -71,21 +71,21 @@ Partial Class FrmRegistroPersonal
         ' 
         ConexionBDBindingSource1.DataSource = GetType(DAL.ConexionBD)
         ' 
-        ' DataGridView1
+        ' DgvPersonal
         ' 
-        DataGridView1.AllowUserToOrderColumns = True
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(21, 69)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(308, 383)
-        DataGridView1.TabIndex = 10
+        DgvPersonal.AllowUserToOrderColumns = True
+        DgvPersonal.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DgvPersonal.Location = New Point(21, 69)
+        DgvPersonal.Name = "DgvPersonal"
+        DgvPersonal.Size = New Size(308, 383)
+        DgvPersonal.TabIndex = 10
         ' 
         ' FrmRegistroPersonal
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(469, 464)
-        Controls.Add(DataGridView1)
+        Controls.Add(DgvPersonal)
         Controls.Add(Label1)
         Controls.Add(btnDelete)
         Controls.Add(btnAgg)
@@ -94,7 +94,7 @@ Partial Class FrmRegistroPersonal
         Text = "FrmRegistroPersonal"
         CType(ConexionBDBindingSource, ComponentModel.ISupportInitialize).EndInit()
         CType(ConexionBDBindingSource1, ComponentModel.ISupportInitialize).EndInit()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        CType(DgvPersonal, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -104,5 +104,5 @@ Partial Class FrmRegistroPersonal
     Friend WithEvents Label1 As Label
     Friend WithEvents ConexionBDBindingSource As BindingSource
     Friend WithEvents ConexionBDBindingSource1 As BindingSource
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DgvPersonal As DataGridView
 End Class

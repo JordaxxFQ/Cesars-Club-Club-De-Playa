@@ -28,11 +28,12 @@ Partial Class FrmAggPerso
         Label2 = New Label()
         Label3 = New Label()
         Label4 = New Label()
-        DataGridView1 = New DataGridView()
+        DgvPersonal = New DataGridView()
         btnConfirmar = New Button()
         cmbRol = New ComboBox()
         cmbTurno = New ComboBox()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        btnEdit = New Button()
+        CType(DgvPersonal, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' txtboxusuario
@@ -85,18 +86,18 @@ Partial Class FrmAggPerso
         Label4.TabIndex = 7
         Label4.Text = "Turno"
         ' 
-        ' DataGridView1
+        ' DgvPersonal
         ' 
-        DataGridView1.AllowUserToOrderColumns = True
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(144, 58)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(277, 365)
-        DataGridView1.TabIndex = 8
+        DgvPersonal.AllowUserToOrderColumns = True
+        DgvPersonal.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DgvPersonal.Location = New Point(144, 58)
+        DgvPersonal.Name = "DgvPersonal"
+        DgvPersonal.Size = New Size(277, 365)
+        DgvPersonal.TabIndex = 8
         ' 
         ' btnConfirmar
         ' 
-        btnConfirmar.Location = New Point(12, 323)
+        btnConfirmar.Location = New Point(12, 294)
         btnConfirmar.Name = "btnConfirmar"
         btnConfirmar.Size = New Size(100, 50)
         btnConfirmar.TabIndex = 9
@@ -121,15 +122,25 @@ Partial Class FrmAggPerso
         cmbTurno.Size = New Size(100, 23)
         cmbTurno.TabIndex = 11
         ' 
+        ' btnEdit
+        ' 
+        btnEdit.Location = New Point(12, 350)
+        btnEdit.Name = "btnEdit"
+        btnEdit.Size = New Size(100, 50)
+        btnEdit.TabIndex = 12
+        btnEdit.Text = "Modificar"
+        btnEdit.UseVisualStyleBackColor = True
+        ' 
         ' FrmAggPerso
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(433, 447)
+        Controls.Add(btnEdit)
         Controls.Add(cmbTurno)
         Controls.Add(cmbRol)
         Controls.Add(btnConfirmar)
-        Controls.Add(DataGridView1)
+        Controls.Add(DgvPersonal)
         Controls.Add(Label4)
         Controls.Add(Label3)
         Controls.Add(Label2)
@@ -138,7 +149,7 @@ Partial Class FrmAggPerso
         Controls.Add(txtboxusuario)
         Name = "FrmAggPerso"
         Text = "FrmAggPerso"
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        CType(DgvPersonal, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -149,8 +160,9 @@ Partial Class FrmAggPerso
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DgvPersonal As DataGridView
     Friend WithEvents btnConfirmar As Button
     Friend WithEvents cmbRol As ComboBox
     Friend WithEvents cmbTurno As ComboBox
+    Friend WithEvents btnEdit As Button
 End Class

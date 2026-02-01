@@ -135,9 +135,8 @@ Public Class FrmPedidos
                                 Dim queryMesa As String = "SELECT ID_Mesa FROM Reservas WHERE ID_Reserva = ?"
                                 Using comandoMesa As New OleDbCommand(queryMesa, conexion)
                                     comandoMesa.Parameters.Add("?", OleDbType.Integer).Value = idReservaCliente
-                                    Dim idMesa As Object = comandoMesa.ExecuteScalar()
 
-                                    idReservaCliente = CInt(idMesa)
+                                    Dim idMesa As Object = comandoMesa.ExecuteScalar()
                                     idMesa = CInt(idMesa)
 
 
