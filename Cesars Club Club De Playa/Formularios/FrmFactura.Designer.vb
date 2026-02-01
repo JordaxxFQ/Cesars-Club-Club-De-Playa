@@ -44,7 +44,7 @@ Partial Class FrmFactura
         Label4 = New Label()
         Mesa = New Label()
         TxtTotalPedidos = New TextBox()
-        TotalZone = New TextBox()
+        TxtTotalZone = New TextBox()
         TxtTotalGeneral = New TextBox()
         Label9 = New Label()
         Label10 = New Label()
@@ -52,7 +52,6 @@ Partial Class FrmFactura
         LblConsumoMinimo = New Label()
         BtnGenerarFactura = New Button()
         BtnLimpiar = New Button()
-        Label12 = New Label()
         PnlDetalles.SuspendLayout()
         CType(DgvPedidos, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -259,13 +258,13 @@ Partial Class FrmFactura
         TxtTotalPedidos.Size = New Size(100, 23)
         TxtTotalPedidos.TabIndex = 20
         ' 
-        ' TotalZone
+        ' TxtTotalZone
         ' 
-        TotalZone.Location = New Point(97, 569)
-        TotalZone.Name = "TotalZone"
-        TotalZone.ReadOnly = True
-        TotalZone.Size = New Size(100, 23)
-        TotalZone.TabIndex = 21
+        TxtTotalZone.Location = New Point(97, 569)
+        TxtTotalZone.Name = "TxtTotalZone"
+        TxtTotalZone.ReadOnly = True
+        TxtTotalZone.Size = New Size(100, 23)
+        TxtTotalZone.TabIndex = 21
         ' 
         ' TxtTotalGeneral
         ' 
@@ -306,7 +305,7 @@ Partial Class FrmFactura
         ' 
         LblConsumoMinimo.AutoSize = True
         LblConsumoMinimo.ForeColor = Color.Red
-        LblConsumoMinimo.Location = New Point(339, 606)
+        LblConsumoMinimo.Location = New Point(17, 627)
         LblConsumoMinimo.Name = "LblConsumoMinimo"
         LblConsumoMinimo.Size = New Size(26, 15)
         LblConsumoMinimo.TabIndex = 23
@@ -331,21 +330,11 @@ Partial Class FrmFactura
         BtnLimpiar.Text = "Limpiar"
         BtnLimpiar.UseVisualStyleBackColor = True
         ' 
-        ' Label12
-        ' 
-        Label12.AutoSize = True
-        Label12.Location = New Point(226, 606)
-        Label12.Name = "Label12"
-        Label12.Size = New Size(107, 15)
-        Label12.TabIndex = 26
-        Label12.Text = "Consumo Minimo:"
-        ' 
         ' FrmFactura
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(573, 687)
-        Controls.Add(Label12)
         Controls.Add(BtnLimpiar)
         Controls.Add(BtnGenerarFactura)
         Controls.Add(LblConsumoMinimo)
@@ -354,7 +343,7 @@ Partial Class FrmFactura
         Controls.Add(Label10)
         Controls.Add(PnlDetalles)
         Controls.Add(Label11)
-        Controls.Add(TotalZone)
+        Controls.Add(TxtTotalZone)
         Controls.Add(BtnBuscarCliente)
         Controls.Add(TxtTotalPedidos)
         Controls.Add(TxtNombreCliente)
@@ -385,14 +374,12 @@ Partial Class FrmFactura
     Friend WithEvents TxtHorasTotales As TextBox
     Friend WithEvents TxtHoraFin As TextBox
     Friend WithEvents TxtConsumoMinimo As TextBox
-    Friend WithEvents TxtTotalZona As TextBox
     Friend WithEvents TxtPrecioHora As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents DgvPedidos As DataGridView
     Friend WithEvents TxtTotalPedidos As TextBox
-    Friend WithEvents TotalZone As TextBox
+    Friend WithEvents TxtTotalZone As TextBox
     Friend WithEvents TxtTotalGeneral As TextBox
     Friend WithEvents Label9 As Label
     Friend WithEvents Label10 As Label
@@ -400,5 +387,6 @@ Partial Class FrmFactura
     Friend WithEvents LblConsumoMinimo As Label
     Friend WithEvents BtnGenerarFactura As Button
     Friend WithEvents BtnLimpiar As Button
-    Friend WithEvents Label12 As Label
+    Friend WithEvents TxtTotalZona As TextBox
+    Friend WithEvents Label7 As Label
 End Class

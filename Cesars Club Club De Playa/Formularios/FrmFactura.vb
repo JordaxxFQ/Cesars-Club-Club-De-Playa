@@ -126,6 +126,7 @@ Public Class FrmFactura
                             ' Calcular total de zona
                             totalZona = precioHora * totalHoras
                             TxtTotalZona.Text = totalZona.ToString("C2")
+                            TxtTotalZone.Text = totalZona.ToString("C2")
 
                             ' Habilitar panel
                             PnlDetalles.Enabled = True
@@ -406,6 +407,7 @@ Public Class FrmFactura
         TxtHorasTotales.Clear()
         TxtPrecioHora.Clear()
         TxtConsumoMinimo.Clear()
+        TxtTotalZone.Clear()
 
         DgvPedidos.Rows.Clear()
         LimpiarTotales()
