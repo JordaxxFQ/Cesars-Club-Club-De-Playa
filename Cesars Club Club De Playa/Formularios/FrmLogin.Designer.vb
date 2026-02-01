@@ -91,7 +91,7 @@ Partial Class FrmLogin
         lblHora.Name = "lblHora"
         lblHora.Size = New Size(41, 15)
         lblHora.TabIndex = 6
-        lblHora.Text = "Label3"
+        lblHora.Text = "label 3"
         lblHora.UseWaitCursor = True
         ' 
         ' Timer1
