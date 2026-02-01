@@ -7,8 +7,6 @@ Public Class FrmRegistroPersonal
     Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
 
     Private Sub FrmRegistroPersonal_Load(sender As Object, e As EventArgs) Handles Me.Load
-        enlace()
-
         CargarDatos()
     End Sub
 

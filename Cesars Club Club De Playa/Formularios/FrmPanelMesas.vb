@@ -74,4 +74,5 @@ Public Class FrmPanelMesas
         CargarMesas()
 
     End Sub
+
 End Class
