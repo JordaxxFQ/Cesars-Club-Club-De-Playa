@@ -5,12 +5,14 @@ Public Class FrmAggPerso
     Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
     Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
     Private Sub FrmAggPerso_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cmbRol.Items.Add("Gerente")
+        cmbRol.Items.Add("Cocinero")
+        cmbRol.Items.Add("Recepcionista")
+        cmbRol.Items.Add("Caja")
         CargarTurno()
-        CargarRoles()
         CargarDatos()
 
     End Sub
-
 
     Private Sub CargarTurno()
         Dim query As String = "SELECT DISTINCT Turno FROM Personal"
@@ -32,32 +34,6 @@ Public Class FrmAggPerso
 
             Catch ex As Exception
                 MessageBox.Show("Error al cargar Turnos: " & ex.Message)
-            End Try
-        End Using
-    End Sub
-
-
-    Private Sub CargarRoles()
-
-        Dim query As String = "SELECT DISTINCT ID_Rol FROM Personal"
-
-        Using conexion As New OleDbConnection(connectionString)
-            Try
-                conexion.Open()
-                Dim comando As New OleDbCommand(query, conexion)
-                Dim lector As OleDbDataReader = comando.ExecuteReader()
-
-                While lector.Read()
-                    ' Solo agregamos si el valor no es nulo
-                    If Not IsDBNull(lector("ID_Rol")) Then
-                        cmbRol.Items.Add(lector("ID_Rol").ToString())
-                    End If
-                End While
-
-                lector.Close()
-
-            Catch ex As Exception
-                MessageBox.Show("Error al cargar roles: " & ex.Message)
             End Try
         End Using
     End Sub
@@ -123,5 +99,4 @@ Public Class FrmAggPerso
             End Try
         End Using
     End Sub
-
 End Class
