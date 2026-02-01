@@ -100,9 +100,9 @@ Public Class FrmCocina
                 Dim estadoSeleccionado As String = CboEstado.SelectedItem.ToString()
 
                 ' Query para obtener pedidos con información del cliente
-                Dim query As String = "SELECT p.ID_Pedido, p.FechaHora, c.NombreComp, r.ID_Reserva, p.Total, p.Estado, p.NotasEspeciales " &
-                                     "FROM (Pedidos p INNER JOIN Clientes c ON p.Cedula = c.Cedula) " &
-                                     "INNER JOIN Reservas r ON p.ID_Reserva = r.ID_Reserva"
+                Dim query As String = "SELECT p.ID_Pedido, p.FechaHora, c.NombreComp, r.ID_Mesa, p.Total, p.Estado, p.NotasEspeciales " &
+                      "FROM (Pedidos p INNER JOIN Clientes c ON p.Cedula = c.Cedula) " &
+                      "INNER JOIN Reservas r ON p.ID_Reserva = r.ID_Reserva"
 
                 If estadoSeleccionado <> "Todos" Then
                     query &= " WHERE p.Estado = ?"
@@ -126,7 +126,7 @@ Public Class FrmCocina
                                 reader("ID_Pedido"),
                                 CDate(reader("FechaHora")),
                                 reader("NombreComp"),
-                                "Mesa #" & reader("ID_Reserva").ToString(),
+                                "Mesa #" & reader("ID_Mesa").ToString(),
                                 CDec(reader("Total")),
                                 reader("Estado"),
                                 notas
