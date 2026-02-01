@@ -1,6 +1,4 @@
-﻿Imports System.Data.Common
-Imports System.Data.OleDb
-Imports Cesars_Club_Club_De_Playa.DAL
+﻿Imports System.Data.OleDb
 Public Class FrmRegistroPersonal
 
     Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
