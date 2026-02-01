@@ -36,4 +36,8 @@
     Private Sub btnProducto_Click(sender As Object, e As EventArgs) Handles btnProducto.Click
         FrmProductos.Show()
     End Sub
+
+    Private Sub btnFactura_Click(sender As Object, e As EventArgs) Handles btnFactura.Click
+        FrmFactura.Show()
+    End Sub
 End Class
