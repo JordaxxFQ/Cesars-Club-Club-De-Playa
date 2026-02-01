@@ -27,11 +27,11 @@ Public Class FrmPedidos
             ConfigurarDGVPedido()
 
             ' Estado inicial
-            pnlProductos.Enabled = False
+            PnlProductos.Enabled = False
             BtnGuardarPedido.Enabled = False
             LblTotal.Text = "S/ 0.00"
 
-            txtCedula.Focus()
+            TxtCedula.Focus()
 
         Catch ex As Exception
             MessageBox.Show("Error al inicializar: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -132,17 +132,27 @@ Public Class FrmPedidos
                                 ' Cliente y reserva encontrados
                                 idReservaCliente = CInt(idReserva)
 
-                                TxtNombreCliente.Text = "Cliente: " & nombreCliente
-                                TxtMesa.Text = "Mesa: #" & idReservaCliente.ToString()
+                                Dim queryMesa As String = "SELECT ID_Mesa FROM Reservas WHERE ID_Reserva = ?"
+                                Using comandoMesa As New OleDbCommand(queryMesa, conexion)
+                                    comandoMesa.Parameters.Add("?", OleDbType.Integer).Value = idReservaCliente
+                                    Dim idMesa As Object = comandoMesa.ExecuteScalar()
 
-                                ' Habilitar panel de productos
-                                PnlProductos.Enabled = True
-                                BtnGuardarPedido.Enabled = True
+                                    idReservaCliente = CInt(idMesa)
+                                    idMesa = CInt(idMesa)
 
-                                ' Cargar productos
-                                CargarProductos()
 
-                                MessageBox.Show("¡Bienvenido " & nombreCliente & "!", "Cliente Encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                                    TxtNombreCliente.Text = "Cliente: " & nombreCliente
+                                    TxtMesa.Text = "Mesa: #" & idMesa.ToString()
+
+                                    ' Habilitar panel de productos
+                                    PnlProductos.Enabled = True
+                                    BtnGuardarPedido.Enabled = True
+
+                                    ' Cargar productos
+                                    CargarProductos()
+
+                                    MessageBox.Show("¡Bienvenido " & nombreCliente & "!", "Cliente Encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                                End Using
                             End Using
 
                         Else
