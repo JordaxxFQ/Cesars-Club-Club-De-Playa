@@ -32,4 +32,8 @@
     Private Sub BtnCocina_Click(sender As Object, e As EventArgs) Handles BtnCocina.Click
         FrmCocina.Show()
     End Sub
+
+    Private Sub btnProducto_Click(sender As Object, e As EventArgs) Handles btnProducto.Click
+        FrmProductos.Show()
+    End Sub
 End Class
