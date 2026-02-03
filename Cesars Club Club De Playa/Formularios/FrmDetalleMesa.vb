@@ -1,11 +1,10 @@
 ﻿Imports System.Data.OleDb
+Imports Cesars_Club_Club_De_Playa.DAL
 
 Public Class FrmDetalleMesa
 
     Dim _idMesa As Integer
     Dim _idClienteEncontrado As Integer = 0
-    Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
-    Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
 
     Public Sub New(idMesa As Integer)
         InitializeComponent()
@@ -40,7 +39,7 @@ Public Class FrmDetalleMesa
     Private Sub EliminarRegistro(id As Integer)
         Dim query As String = "DELETE FROM Reservas WHERE ID_Reserva = ?"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 Dim comando As New OleDbCommand(query, conexion)
                 comando.Parameters.AddWithValue("?", id)
@@ -65,7 +64,7 @@ Public Class FrmDetalleMesa
     Private Sub CargarDatos()
         Dim query As String = "SELECT * FROM Reservas"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
 
@@ -91,7 +90,7 @@ Public Class FrmDetalleMesa
 
         Dim query As String = "SELECT CantPersona FROM Zonas WHERE ID_Mesa = ?"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
                 Dim cmd As New OleDbCommand(query, conexion)
@@ -133,7 +132,7 @@ Public Class FrmDetalleMesa
 
         Dim query As String = "SELECT ID_Cliente, NombreComp FROM Clientes WHERE Cedula = ?"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
                 Dim comando As New OleDbCommand(query, conexion)
@@ -198,7 +197,7 @@ Public Class FrmDetalleMesa
                                      "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
         Dim queryMesa As String = "UPDATE Zonas SET Estado = ? WHERE ID_Mesa = ?"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
 
@@ -236,7 +235,7 @@ Public Class FrmDetalleMesa
     Private Sub btnLiberar_Click(sender As Object, e As EventArgs) Handles btnLiberar.Click
         Dim queryMesa As String = "UPDATE Zonas SET Estado = ? WHERE ID_Mesa = ?"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
                 Dim cmdMesa As New OleDbCommand(queryMesa, conexion)
@@ -261,7 +260,7 @@ Public Class FrmDetalleMesa
     Private Sub btnOcupar_Click(sender As Object, e As EventArgs) Handles btnOcupar.Click
         Dim query As String = "UPDATE Zonas SET Estado = ? WHERE ID_Mesa = ?"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
                 Dim cmd As New OleDbCommand(query, conexion)
@@ -294,7 +293,7 @@ Public Class FrmDetalleMesa
                 EliminarRegistro(idSeleccionado)
 
                 Dim queryMesa As String = "UPDATE Zonas SET Estado = ? WHERE ID_Mesa = ?"
-                Using conexion As New OleDbConnection(connectionString)
+                Using conexion As New OleDbConnection(cadena)
                     conexion.Open()
                     Dim cmdMesa As New OleDbCommand(queryMesa, conexion)
                     cmdMesa.Parameters.Add("@status", OleDbType.VarWChar).Value = "Mantenimiento"

@@ -3,23 +3,21 @@ Imports Cesars_Club_Club_De_Playa.DAL
 
 Public Class FrmLogin
 
-    Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
-    Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
+
             Try
                 conexion.Open()
                 estado = "Conectado"
-            Catch ex As Exception
-                estado = "Desconectado"
-            End Try
 
-            If estado = "Desconectado" Then
+            Catch ex As Exception
+
+                estado = "Desconectado"
                 MsgBox("No hay conexión con la base de datos", MsgBoxStyle.Critical)
+
                 Exit Sub
-            End If
+            End Try
 
             Dim query As String = "SELECT ID_Rol FROM Personal WHERE Usuario = ? AND Contraseña = ?"
 
@@ -78,14 +76,14 @@ Public Class FrmLogin
         lblHora.Text = DateTime.Now.ToString("HH:mm:ss")
     End Sub
 
-    Private Sub txtUsuario_Keypress(sender As Object, e As KeyPressEventArgs) Handles txtUsuario.KeyPress
+    Private Sub TxtUsuario_Keypress(sender As Object, e As KeyPressEventArgs) Handles txtUsuario.KeyPress
         If e.KeyChar = Chr(13) Then
             txtContrasena.Focus()
             e.Handled = True
         End If
     End Sub
 
-    Private Sub txtContrasena_Keypress(sender As Object, e As KeyPressEventArgs) Handles txtContrasena.KeyPress
+    Private Sub TxtContrasena_Keypress(sender As Object, e As KeyPressEventArgs) Handles txtContrasena.KeyPress
         If e.KeyChar = Chr(13) Then
             Button1_Click(sender, e)
             e.Handled = True
@@ -94,5 +92,9 @@ Public Class FrmLogin
 
     Private Sub FrmLogin_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Application.Exit()
+    End Sub
+
+    Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

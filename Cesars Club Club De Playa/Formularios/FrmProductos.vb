@@ -1,8 +1,7 @@
 ﻿Imports System.Data.OleDb
+Imports Cesars_Club_Club_De_Playa.DAL
 
 Public Class FrmProductos
-    Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
-    Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
 
     Dim _idProductoSeleccionado As Integer = 0
     Private Sub FrmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -17,7 +16,7 @@ Public Class FrmProductos
     Private Sub CargarProductos()
         Dim query As String = "SELECT * FROM Productos ORDER BY NombreProducto ASC"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 Dim adaptador As New OleDbDataAdapter(query, conexion)
                 Dim tabla As New DataTable()
@@ -35,7 +34,7 @@ Public Class FrmProductos
         End Using
     End Sub
 
-    Private Sub dgvProductos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvProductos.CellClick
+    Private Sub DgvProductos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvProductos.CellClick
         If e.RowIndex >= 0 Then
             Dim fila As DataGridViewRow = DgvProductos.Rows(e.RowIndex)
             _idProductoSeleccionado = CInt(fila.Cells("ID_Producto").Value)
@@ -58,12 +57,12 @@ Public Class FrmProductos
         End If
     End Sub
 
-    Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgg.Click
+    Private Sub BtnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgg.Click
         If ValidarCampos() = False Then Exit Sub
 
         Dim query As String = "INSERT INTO Productos (NombreProducto, Categoria, Descripcion, Precio, Stock) VALUES (?, ?, ?, ?, ?)"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
                 Dim cmd As New OleDbCommand(query, conexion)
@@ -86,7 +85,7 @@ Public Class FrmProductos
         End Using
     End Sub
 
-    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+    Private Sub BtnModificar_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
         If _idProductoSeleccionado = 0 Then
             MessageBox.Show("Seleccione un producto primero.")
             Exit Sub
@@ -95,7 +94,7 @@ Public Class FrmProductos
         ' Agregamos ActivoVenta=? a la consulta SQL
         Dim query As String = "UPDATE Productos SET NombreProducto=?, Categoria=?, Descripcion=?, Precio=?, Stock=?, ActivoVenta=? WHERE ID_Producto=?"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
                 Dim cmd As New OleDbCommand(query, conexion)
@@ -125,7 +124,7 @@ Public Class FrmProductos
         End Using
     End Sub
 
-    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+    Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         If _idProductoSeleccionado = 0 Then
             MessageBox.Show("Seleccione un producto para eliminar.")
             Exit Sub
@@ -136,7 +135,7 @@ Public Class FrmProductos
         If respuesta = DialogResult.Yes Then
             Dim query As String = "DELETE FROM Productos WHERE ID_Producto = ?"
 
-            Using conexion As New OleDbConnection(connectionString)
+            Using conexion As New OleDbConnection(cadena)
                 Try
                     conexion.Open()
                     Dim cmd As New OleDbCommand(query, conexion)

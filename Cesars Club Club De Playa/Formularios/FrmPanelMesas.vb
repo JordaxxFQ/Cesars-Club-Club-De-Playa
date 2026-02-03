@@ -1,9 +1,7 @@
 ﻿Imports System.Data.OleDb
+Imports Cesars_Club_Club_De_Playa.DAL
 
 Public Class FrmPanelMesas
-    ' Tu cadena de conexión habitual
-    Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
-    Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
 
     Private Sub FrmPanelMesas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarMesas()
@@ -14,7 +12,7 @@ Public Class FrmPanelMesas
 
         Dim query As String = "SELECT ID_Mesa, NumeroMesa, Estado, Tipo FROM Zonas ORDER BY ID_Mesa"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
                 Dim comando As New OleDbCommand(query, conexion)

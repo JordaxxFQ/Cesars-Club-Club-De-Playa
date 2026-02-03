@@ -1,9 +1,7 @@
 ﻿Imports System.Data.OleDb
+Imports Cesars_Club_Club_De_Playa.DAL
 Public Class FrmAggPerso
 
-
-    Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
-    Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
     Dim idPersonalSeleccionado As Integer = 0
     Private Sub FrmAggPerso_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cmbRol.Items.Add("Gerente")
@@ -25,7 +23,7 @@ Public Class FrmAggPerso
     Private Sub CargarTurno()
         Dim query As String = "SELECT DISTINCT Turno FROM Personal"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
                 Dim comando As New OleDbCommand(query, conexion)
@@ -49,7 +47,7 @@ Public Class FrmAggPerso
     Private Sub CargarDatos()
         Dim query As String = "SELECT * FROM Personal"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
 
@@ -73,6 +71,21 @@ Public Class FrmAggPerso
             End Try
         End Using
     End Sub
+
+    Private Function UsuarioExiste(usuario As String) As Boolean
+        Dim query As String = "SELECT COUNT(*) FROM Personal WHERE Usuario = ?"
+        Using conexion As New OleDbConnection(cadena)
+            Try
+                conexion.Open()
+                Dim cmd As New OleDbCommand(query, conexion)
+                cmd.Parameters.AddWithValue("@usuario", usuario)
+                Return CInt(cmd.ExecuteScalar()) > 0
+            Catch ex As Exception
+                Return False
+            End Try
+        End Using
+    End Function
+
     Private Sub DgvPersonal_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvPersonal.CellClick
         If e.RowIndex >= 0 Then
             Dim fila As DataGridViewRow = DgvPersonal.Rows(e.RowIndex)
@@ -87,6 +100,9 @@ Public Class FrmAggPerso
     End Sub
 
     Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles btnConfirmar.Click
+
+        UsuarioExiste(txtboxusuario.Text)
+
         ' 1. Validar que los campos no estén vacíos
         If txtboxusuario.Text = "" Or txtboxContra.Text = "" Or cmbRol.Text = "" Or cmbTurno.Text = "" Then
             MessageBox.Show("Por favor, complete todos los campos.")
@@ -95,7 +111,7 @@ Public Class FrmAggPerso
 
         Dim query As String = "INSERT INTO Personal (Usuario, Contraseña, ID_Rol, Turno) VALUES (?, ?, ?, ?)"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 Dim comando As New OleDbCommand(query, conexion)
 
@@ -129,7 +145,7 @@ Public Class FrmAggPerso
 
         Dim query As String = "UPDATE Personal SET Usuario=?, Contraseña=?, ID_Rol=?, Turno=? WHERE ID_Personal=?"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
                 Dim cmd As New OleDbCommand(query, conexion)
@@ -142,7 +158,7 @@ Public Class FrmAggPerso
                 cmd.Parameters.Add("@id", OleDbType.Integer).Value = idPersonalSeleccionado
 
                 cmd.ExecuteNonQuery()
-                MessageBox.Show("Producto actualizado con éxito, incluyendo estado de venta.")
+                MessageBox.Show("Personal actualizado con éxito.")
 
                 CargarDatos()
                 LimpiarCampos()

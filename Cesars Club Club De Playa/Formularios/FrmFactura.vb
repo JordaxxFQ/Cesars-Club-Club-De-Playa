@@ -1,9 +1,7 @@
 ﻿Imports System.Data.OleDb
+Imports Cesars_Club_Club_De_Playa.DAL
 
 Public Class FrmFactura
-
-    Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
-    Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
 
     Private cedulaCliente As String = ""
     Private idReserva As Integer = 0
@@ -73,7 +71,7 @@ Public Class FrmFactura
 
         cedulaCliente = TxtCedula.Text.Trim()
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
 
@@ -190,7 +188,7 @@ Public Class FrmFactura
         DgvPedidos.Rows.Clear()
         totalPedidos = 0
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
 
@@ -295,7 +293,7 @@ Public Class FrmFactura
             Return
         End If
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             conexion.Open()
             Dim transaction As OleDbTransaction = conexion.BeginTransaction()
 
@@ -374,7 +372,7 @@ Public Class FrmFactura
         Dim año As String = DateTime.Now.Year.ToString()
         Dim numero As Integer = 1
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
                 Dim query As String = "SELECT MAX(ID_Facturas) FROM Factura"

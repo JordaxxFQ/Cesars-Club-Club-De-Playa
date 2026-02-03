@@ -1,9 +1,7 @@
 ﻿Imports System.Data.OleDb
+Imports Cesars_Club_Club_De_Playa.DAL
 
 Public Class FrmRegistroClientes
-
-    Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
-    Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
 
     Private Sub FrmRegistroClientes_Load(sender As Object, e As EventArgs) Handles Me.Load
         dtpFechaRegistro.Value = Date.Today
@@ -13,7 +11,7 @@ Public Class FrmRegistroClientes
     Private Sub CargarDatos()
         Dim query As String = "SELECT * FROM Clientes"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
 
@@ -50,7 +48,7 @@ Public Class FrmRegistroClientes
             Return
         End If
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             conexion.Open()
             Try
                 Dim query2 As String = "INSERT INTO Clientes (NombreComp, Cedula, FechaRegistro) VALUES (@Nombre, @Cedula, @Fecha)"
@@ -119,7 +117,7 @@ Public Class FrmRegistroClientes
     End Sub
 
     Private Sub EliminarCliente(idCliente As Integer)
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
 
