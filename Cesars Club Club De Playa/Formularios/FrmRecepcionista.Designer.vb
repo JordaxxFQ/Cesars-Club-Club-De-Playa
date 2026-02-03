@@ -28,18 +28,18 @@ Partial Class FrmRecepcionista
         ' 
         ' btnMesas
         ' 
-        btnMesas.Location = New Point(114, 50)
+        btnMesas.Location = New Point(12, 12)
         btnMesas.Name = "btnMesas"
-        btnMesas.Size = New Size(97, 90)
+        btnMesas.Size = New Size(297, 521)
         btnMesas.TabIndex = 0
         btnMesas.Text = "Mesas"
         btnMesas.UseVisualStyleBackColor = True
         ' 
         ' btnPedido
         ' 
-        btnPedido.Location = New Point(217, 50)
+        btnPedido.Location = New Point(315, 12)
         btnPedido.Name = "btnPedido"
-        btnPedido.Size = New Size(96, 90)
+        btnPedido.Size = New Size(298, 521)
         btnPedido.TabIndex = 1
         btnPedido.Text = "Pedido"
         btnPedido.UseVisualStyleBackColor = True
@@ -48,7 +48,7 @@ Partial Class FrmRecepcionista
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(625, 545)
         Controls.Add(btnPedido)
         Controls.Add(btnMesas)
         Name = "FrmRecepcionista"

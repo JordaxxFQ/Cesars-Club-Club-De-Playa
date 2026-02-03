@@ -6,10 +6,6 @@ Public Class FrmLogin
     Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
     Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
 
-    Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
         Using conexion As New OleDbConnection(connectionString)
@@ -44,9 +40,11 @@ Public Class FrmLogin
                             Case "Gerente"
                                 FrmGerente.Show()
                             Case "Recepcionista"
-                                FrmGerente.Show()
+                                FrmRecepcionista.Show()
                             Case "Cocinero"
-                                FrmGerente.Show()
+                                FrmCocinero.Show()
+                            Case "Caja"
+                                FrmFactura.Show()
                             Case Else
                                 MessageBox.Show("Rol no asignado. Contacte al administrador.")
                                 Exit Sub
