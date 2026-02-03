@@ -6,4 +6,8 @@
     Private Sub btnMesas_Click(sender As Object, e As EventArgs) Handles btnMesas.Click
         FrmPanelMesas.Show()
     End Sub
+
+    Private Sub FrmRecepcionista_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

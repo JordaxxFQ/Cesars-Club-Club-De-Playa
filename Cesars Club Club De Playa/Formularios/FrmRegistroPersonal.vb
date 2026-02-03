@@ -1,8 +1,6 @@
 ﻿Imports System.Data.OleDb
+Imports Cesars_Club_Club_De_Playa.DAL
 Public Class FrmRegistroPersonal
-
-    Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
-    Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
 
     Private Sub FrmRegistroPersonal_Load(sender As Object, e As EventArgs) Handles Me.Load
         CargarDatos()
@@ -11,7 +9,7 @@ Public Class FrmRegistroPersonal
     Private Sub CargarDatos()
         Dim query As String = "SELECT * FROM Personal"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
 
@@ -36,7 +34,7 @@ Public Class FrmRegistroPersonal
         End Using
     End Sub
 
-    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+    Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         If DgvPersonal.SelectedRows.Count > 0 Then
 
             ' 2. Obtener el ID de la fila seleccionada (ID_Perso está en la primera columna, índice 0)
@@ -59,7 +57,7 @@ Public Class FrmRegistroPersonal
         ' En Access, a veces es mejor no usar nombres en los parámetros, sino solo el signo ?
         Dim query As String = "DELETE FROM Personal WHERE ID_Personal = ?"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 Dim comando As New OleDbCommand(query, conexion)
 
@@ -84,7 +82,7 @@ Public Class FrmRegistroPersonal
         End Using
     End Sub
 
-    Private Sub btnAgg_Click(sender As Object, e As EventArgs) Handles btnAgg.Click
+    Private Sub BtnAgg_Click(sender As Object, e As EventArgs) Handles btnAgg.Click
 
         Dim ventanaAgregar As New FrmAggPerso()
 

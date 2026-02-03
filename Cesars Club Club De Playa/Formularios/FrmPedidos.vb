@@ -1,8 +1,7 @@
 ﻿Imports System.Data.OleDb
+Imports Cesars_Club_Club_De_Playa.DAL
 
 Public Class FrmPedidos
-    Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
-    Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
     Dim _idClienteEncontrado As Integer = 0
     Private cedulaCliente As String = ""
     Private idReservaCliente As Integer = 0
@@ -97,7 +96,7 @@ Public Class FrmPedidos
 
         cedulaCliente = TxtCedula.Text.Trim()
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
 
@@ -187,7 +186,7 @@ Public Class FrmPedidos
 
         Dim query As String = "SELECT DISTINCT Categoria FROM Productos WHERE ActivoVenta = True"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 Dim comando As New OleDbCommand(query, conexion)
                 conexion.Open()
@@ -209,7 +208,7 @@ Public Class FrmPedidos
         End Using
     End Sub
 
-    Private Sub cboCategoria_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCategoria.SelectedIndexChanged
+    Private Sub CboCategoria_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCategoria.SelectedIndexChanged
         If PnlProductos.Enabled Then
             CargarProductos()
         End If
@@ -222,7 +221,7 @@ Public Class FrmPedidos
 
         DgvProductos.Rows.Clear()
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
 
@@ -262,7 +261,7 @@ Public Class FrmPedidos
         AgregarProducto()
     End Sub
 
-    Private Sub dgvProductos_DoubleClick(sender As Object, e As EventArgs) Handles DgvProductos.DoubleClick
+    Private Sub DgvProductos_DoubleClick(sender As Object, e As EventArgs) Handles DgvProductos.DoubleClick
         AgregarProducto()
     End Sub
 
@@ -332,12 +331,12 @@ Public Class FrmPedidos
         End Try
     End Sub
 
-    Private Sub dgvPedido_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles DgvPedido.CellEndEdit
+    Private Sub DgvPedido_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles DgvPedido.CellEndEdit
         If e.ColumnIndex = DgvPedido.Columns("Cantidad").Index Then
             Try
                 Dim fila As DataGridViewRow = DgvPedido.Rows(e.RowIndex)
-                Dim cantidad As Integer = CInt(fila.Cells("Cantidad").Value)
-                Dim precio As Decimal = CDec(fila.Cells("Precio").Value)
+                Dim cantidad As Integer = fila.Cells("Cantidad").Value
+                Dim precio As Decimal = fila.Cells("Precio").Value
 
                 If cantidad <= 0 Then
                     MessageBox.Show("La cantidad debe ser mayor a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -354,7 +353,7 @@ Public Class FrmPedidos
         End If
     End Sub
 
-    Private Sub btnQuitar_Click(sender As Object, e As EventArgs) Handles BtnQuitar.Click
+    Private Sub BtnQuitar_Click(sender As Object, e As EventArgs) Handles BtnQuitar.Click
         If DgvPedido.SelectedRows.Count = 0 Then
             MessageBox.Show("Por favor seleccione un producto del pedido", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
@@ -378,7 +377,7 @@ Public Class FrmPedidos
         LblTotal.Text = total.ToString("C2")
     End Sub
 
-    Private Sub btnGuardarPedido_Click(sender As Object, e As EventArgs) Handles BtnGuardarPedido.Click
+    Private Sub BtnGuardarPedido_Click(sender As Object, e As EventArgs) Handles BtnGuardarPedido.Click
         GuardarPedido()
     End Sub
 
@@ -394,7 +393,7 @@ Public Class FrmPedidos
             Return
         End If
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             conexion.Open()
             Dim transaction As OleDbTransaction = conexion.BeginTransaction()
 
@@ -473,7 +472,7 @@ Public Class FrmPedidos
         LimpiarTodo()
     End Sub
 
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
+    Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
         If DgvPedido.Rows.Count > 0 Then
             Dim respuesta As DialogResult = MessageBox.Show(
                 "¿Está seguro de cancelar el pedido actual?",

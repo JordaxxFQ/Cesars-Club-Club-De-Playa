@@ -1,8 +1,7 @@
 ﻿Imports System.Data.OleDb
+Imports Cesars_Club_Club_De_Playa.DAL
 
 Public Class FrmCocina
-    Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
-    Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
     Private idPedidoSeleccionado As Integer = 0
 
     Private Sub FrmCocina_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -93,7 +92,7 @@ Public Class FrmCocina
         DgvDetalle.Rows.Clear()
         LimpiarInfoPedido()
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
 
@@ -189,7 +188,7 @@ Public Class FrmCocina
     Private Sub CargarDetallePedido(idPedido As Integer)
         DgvDetalle.Rows.Clear()
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
 
@@ -245,7 +244,7 @@ Public Class FrmCocina
             Return
         End If
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
 
