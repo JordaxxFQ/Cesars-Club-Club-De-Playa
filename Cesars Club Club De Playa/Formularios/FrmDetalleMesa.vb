@@ -144,12 +144,12 @@ Public Class FrmDetalleMesa
                     _idClienteEncontrado = CInt(lector("ID_Cliente"))
                     txtNombre.Text = lector("NombreComp").ToString()
                 Else
-                    MessageBox.Show("Cliente no registrado. Por favor regístrelo primero.")
-                    _idClienteEncontrado = 0
-                    txtNombre.Clear()
-                    FrmRegistroClientes.Show()
-                End If
+                    Dim resultado = MessageBox.Show("Cliente no registrado. ¿Desea registrarlo ahora?", "Cliente no encontrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
+                    If resultado = DialogResult.Yes Then
+                        FrmRegistroClientes.ShowDialog()
+                    End If
+                End If
             Catch ex As Exception
                 MessageBox.Show("Error al buscar: " & ex.Message)
             End Try
