@@ -23,14 +23,19 @@ Partial Class FrmLogin
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmLogin))
         Button1 = New Button()
         txtUsuario = New TextBox()
         txtContrasena = New TextBox()
         Label1 = New Label()
         Label2 = New Label()
-        CheckBox1 = New CheckBox()
-        lblHora = New Label()
         Timer1 = New Timer(components)
+        CheckBox1 = New CheckBox()
+        PtbDntSeePsw = New PictureBox()
+        PtbSeePsw = New PictureBox()
+        lblHora = New Label()
+        CType(PtbDntSeePsw, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PtbSeePsw, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Button1
@@ -75,29 +80,48 @@ Partial Class FrmLogin
         Label2.TabIndex = 4
         Label2.Text = "Contraseña"
         ' 
+        ' Timer1
+        ' 
+        Timer1.Enabled = True
+        Timer1.Interval = 1000
+        ' 
         ' CheckBox1
         ' 
         CheckBox1.AutoSize = True
-        CheckBox1.Location = New Point(162, 129)
+        CheckBox1.Location = New Point(164, 85)
         CheckBox1.Name = "CheckBox1"
         CheckBox1.Size = New Size(15, 14)
         CheckBox1.TabIndex = 5
         CheckBox1.UseVisualStyleBackColor = True
         ' 
+        ' PtbDntSeePsw
+        ' 
+        PtbDntSeePsw.Image = CType(resources.GetObject("PtbDntSeePsw.Image"), Image)
+        PtbDntSeePsw.Location = New Point(162, 125)
+        PtbDntSeePsw.Name = "PtbDntSeePsw"
+        PtbDntSeePsw.Size = New Size(45, 23)
+        PtbDntSeePsw.SizeMode = PictureBoxSizeMode.Zoom
+        PtbDntSeePsw.TabIndex = 6
+        PtbDntSeePsw.TabStop = False
+        ' 
+        ' PtbSeePsw
+        ' 
+        PtbSeePsw.Image = CType(resources.GetObject("PtbSeePsw.Image"), Image)
+        PtbSeePsw.Location = New Point(162, 125)
+        PtbSeePsw.Name = "PtbSeePsw"
+        PtbSeePsw.Size = New Size(45, 23)
+        PtbSeePsw.SizeMode = PictureBoxSizeMode.Zoom
+        PtbSeePsw.TabIndex = 7
+        PtbSeePsw.TabStop = False
+        ' 
         ' lblHora
         ' 
         lblHora.AutoSize = True
-        lblHora.Location = New Point(78, 9)
+        lblHora.Location = New Point(93, 9)
         lblHora.Name = "lblHora"
         lblHora.Size = New Size(10, 15)
-        lblHora.TabIndex = 6
+        lblHora.TabIndex = 8
         lblHora.Text = " "
-        lblHora.UseWaitCursor = True
-        ' 
-        ' Timer1
-        ' 
-        Timer1.Enabled = True
-        Timer1.Interval = 1000
         ' 
         ' FrmLogin
         ' 
@@ -105,6 +129,8 @@ Partial Class FrmLogin
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(210, 266)
         Controls.Add(lblHora)
+        Controls.Add(PtbSeePsw)
+        Controls.Add(PtbDntSeePsw)
         Controls.Add(CheckBox1)
         Controls.Add(Label2)
         Controls.Add(Label1)
@@ -113,6 +139,8 @@ Partial Class FrmLogin
         Controls.Add(Button1)
         Name = "FrmLogin"
         Text = "Club Playa - Acceso al Sistema v1.0"
+        CType(PtbDntSeePsw, ComponentModel.ISupportInitialize).EndInit()
+        CType(PtbSeePsw, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -122,8 +150,10 @@ Partial Class FrmLogin
     Friend WithEvents txtContrasena As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents lblHora As Label
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents PtbDntSeePsw As PictureBox
+    Friend WithEvents PtbSeePsw As PictureBox
+    Friend WithEvents lblHora As Label
 
 End Class

@@ -2,10 +2,10 @@
 Imports Cesars_Club_Club_De_Playa.DAL
 
 Public Class FrmLogin
+
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
         Using conexion As New OleDbConnection(cadena)
@@ -67,13 +67,6 @@ Public Class FrmLogin
         End Using
     End Sub
 
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
-        If CheckBox1.Checked Then
-            txtContrasena.PasswordChar = ControlChars.NullChar
-        Else
-            txtContrasena.PasswordChar = "*"c
-        End If
-    End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         lblHora.Text = DateTime.Now.ToString("HH:mm:ss")
@@ -96,4 +89,18 @@ Public Class FrmLogin
     Private Sub FrmLogin_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Application.Exit()
     End Sub
+
+
+    Private Sub PtbSeePsw_Click(sender As Object, e As EventArgs) Handles PtbSeePsw.Click
+        txtContrasena.PasswordChar = "*"
+        PtbSeePsw.Visible = False
+        PtbDntSeePsw.Visible = True
+    End Sub
+    Private Sub PtbDntSeePsw_Click(sender As Object, e As EventArgs) Handles PtbDntSeePsw.Click
+        txtContrasena.PasswordChar = ""
+        PtbSeePsw.Visible = True
+        PtbDntSeePsw.Visible = False
+    End Sub
+
+
 End Class
