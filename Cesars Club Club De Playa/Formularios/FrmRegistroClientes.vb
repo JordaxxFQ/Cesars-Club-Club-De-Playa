@@ -35,6 +35,23 @@ Public Class FrmRegistroClientes
         End Using
     End Sub
 
+    Private Function CedulaExiste(cedula As String) As Boolean
+        Dim query As String = "SELECT COUNT(*) FROM Clientes WHERE Cedula = ?"
+
+        Using conexion As New OleDbConnection(cadena)
+            Try
+                conexion.Open()
+                Dim cmd As New OleDbCommand(query, conexion)
+                cmd.Parameters.Add("?", OleDbType.VarWChar).Value = cedula
+
+                Return CInt(cmd.ExecuteScalar()) > 0
+            Catch ex As Exception
+                MessageBox.Show("Error al validar cédula: " & ex.Message)
+                Return False
+            End Try
+        End Using
+    End Function
+
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
         If String.IsNullOrEmpty(TxtNombre.Text) Then
             MessageBox.Show("Por favor ingrese el nombre completo", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -48,14 +65,36 @@ Public Class FrmRegistroClientes
             Return
         End If
 
+        Dim cedulaLimpia As String = TxtCedula.Text.Trim()
+
+        If Not IsNumeric(cedulaLimpia) Then
+            MessageBox.Show("La cédula debe contener solo números", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            TxtCedula.Focus()
+            Return
+        End If
+
+        If cedulaLimpia.Length < 7 Or cedulaLimpia.Length > 8 Then
+            MessageBox.Show("La cédula debe tener entre 7 y 8 dígitos", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            TxtCedula.Focus()
+            Return
+        End If
+
+        ' Validar cédula duplicada
+        If CedulaExiste(cedulaLimpia) Then
+            MessageBox.Show("Ya existe un cliente registrado con esta cédula", "Cédula Duplicada", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            TxtCedula.Focus()
+            Return
+        End If
+
         Using conexion As New OleDbConnection(cadena)
             conexion.Open()
             Try
+
                 Dim query2 As String = "INSERT INTO Clientes (NombreComp, Cedula, FechaRegistro) VALUES (@Nombre, @Cedula, @Fecha)"
                 Using comando As New OleDbCommand(query2, conexion)
-                    comando.Parameters.AddWithValue("@Nombre", TxtNombre.Text)
-                    comando.Parameters.AddWithValue("@Cedula", TxtCedula.Text)
-                    comando.Parameters.AddWithValue("@Fecha", dtpFechaRegistro.Value)
+                    comando.Parameters.Add("@Nombre", OleDbType.VarWChar).Value = TxtNombre.Text
+                    comando.Parameters.Add("@Cedula", OleDbType.VarWChar).Value = TxtCedula.Text
+                    comando.Parameters.Add("@Fecha", OleDbType.Date).Value = dtpFechaRegistro.Value
 
                     Dim filasAfectadas As Integer = comando.ExecuteNonQuery()
 

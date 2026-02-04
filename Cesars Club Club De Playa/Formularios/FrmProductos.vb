@@ -6,11 +6,7 @@ Public Class FrmProductos
     Dim _idProductoSeleccionado As Integer = 0
     Private Sub FrmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarProductos()
-
-        cmbCategoria.Items.Add("Bebida")
-        cmbCategoria.Items.Add("Plato Principal")
-        cmbCategoria.Items.Add("Snack")
-        cmbCategoria.Items.Add("Postre")
+        Dim queryCategoria As String = "SELECT DISTINCT Categoria FROM Productos ORDER BY Categoria"
     End Sub
 
     Private Sub CargarProductos()
@@ -60,7 +56,7 @@ Public Class FrmProductos
     Private Sub BtnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgg.Click
         If ValidarCampos() = False Then Exit Sub
 
-        Dim query As String = "INSERT INTO Productos (NombreProducto, Categoria, Descripcion, Precio, Stock) VALUES (?, ?, ?, ?, ?)"
+        Dim query As String = "INSERT INTO Productos (NombreProducto, Categoria, Descripcion, Precio, Stock, ActivoVenta) VALUES (?, ?, ?, ?, ?, ?)"
 
         Using conexion As New OleDbConnection(cadena)
             Try
@@ -72,6 +68,7 @@ Public Class FrmProductos
                 cmd.Parameters.Add("@desc", OleDbType.LongVarWChar).Value = txtDescripcion.Text
                 cmd.Parameters.Add("@prec", OleDbType.Currency).Value = Decimal.Parse(txtPrecio.Text)
                 cmd.Parameters.Add("@stk", OleDbType.Integer).Value = CInt(txtStock.Text)
+                cmd.Parameters.Add("@act", OleDbType.Boolean).Value = chkActivo.Checked
 
                 cmd.ExecuteNonQuery()
                 MessageBox.Show("Producto agregado correctamente.")
