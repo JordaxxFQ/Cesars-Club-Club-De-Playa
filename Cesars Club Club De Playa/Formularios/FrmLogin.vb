@@ -91,16 +91,14 @@ Public Class FrmLogin
     End Sub
 
 
-    Private Sub PtbSeePsw_Click(sender As Object, e As EventArgs) Handles PtbSeePsw.Click
+    Private Sub PtbSeePsw_Click(sender As Object, e As EventArgs) Handles PtbDntSeePsw.Click
         txtContrasena.PasswordChar = "*"
-        PtbSeePsw.Visible = False
-        PtbDntSeePsw.Visible = True
-    End Sub
-    Private Sub PtbDntSeePsw_Click(sender As Object, e As EventArgs) Handles PtbDntSeePsw.Click
-        txtContrasena.PasswordChar = ""
-        PtbSeePsw.Visible = True
         PtbDntSeePsw.Visible = False
+        PtbSeePsw.Visible = True
     End Sub
-
-
+    Private Sub PtbDntSeePsw_Click(sender As Object, e As EventArgs) Handles PtbSeePsw.Click
+        txtContrasena.PasswordChar = ""
+        PtbDntSeePsw.Visible = True
+        PtbSeePsw.Visible = False
+    End Sub
 End Class

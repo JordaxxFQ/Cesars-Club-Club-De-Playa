@@ -101,18 +101,20 @@ Public Class FrmAggPerso
 
     Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles btnConfirmar.Click
 
-        UsuarioExiste(txtboxusuario.Text)
-
         ' 1. Validar que los campos no estén vacíos
-        If txtboxusuario.Text = "" Or txtboxContra.Text = "" Or cmbRol.Text = "" Or cmbTurno.Text = "" Then
-            MessageBox.Show("Por favor, complete todos los campos.")
-            Exit Sub
+        If UsuarioExiste(txtboxusuario.Text) = True Then
+            MessageBox.Show("El nombre de usuario ya existe. Por favor, elija otro.")
+            txtboxusuario.Focus()
+            Exit Sub ' Aquí detenemos el código para que no guarde
         End If
 
         Dim query As String = "INSERT INTO Personal (Usuario, Contraseña, ID_Rol, Turno) VALUES (?, ?, ?, ?)"
 
         Using conexion As New OleDbConnection(cadena)
             Try
+
+
+
                 Dim comando As New OleDbCommand(query, conexion)
 
                 comando.Parameters.AddWithValue("@usuario", txtboxusuario.Text)

@@ -40,7 +40,7 @@ Public Class FrmPanelMesas
                         Case "Disponible" : btnMesa.BackColor = Color.LightGreen
                         Case "Ocupada" : btnMesa.BackColor = Color.LightCoral
                         Case "Reservada" : btnMesa.BackColor = Color.Khaki
-                        Case "Mantenimiento" : btnMesa.BackColor = Color.Yellow
+                        Case "Mantenimiento" : btnMesa.BackColor = Color.Gray
                     End Select
 
                     ' 5. Agregar el evento Click dinámicamente
