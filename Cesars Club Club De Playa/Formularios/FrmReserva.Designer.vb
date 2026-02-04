@@ -34,23 +34,23 @@ Partial Class FrmReserva
         TablaReserva.Location = New Point(12, 116)
         TablaReserva.Name = "TablaReserva"
         TablaReserva.RowHeadersWidth = 51
-        TablaReserva.Size = New Size(502, 322)
+        TablaReserva.Size = New Size(860, 322)
         TablaReserva.TabIndex = 0
         ' 
         ' btonDeleteReserv
         ' 
-        btonDeleteReserv.Location = New Point(12, 33)
+        btonDeleteReserv.Location = New Point(12, 36)
         btonDeleteReserv.Name = "btonDeleteReserv"
-        btonDeleteReserv.Size = New Size(94, 29)
+        btonDeleteReserv.Size = New Size(114, 74)
         btonDeleteReserv.TabIndex = 1
         btonDeleteReserv.Text = "Eliminar"
         btonDeleteReserv.UseVisualStyleBackColor = True
         ' 
         ' Button2
         ' 
-        Button2.Location = New Point(261, 78)
+        Button2.Location = New Point(132, 36)
         Button2.Name = "Button2"
-        Button2.Size = New Size(94, 29)
+        Button2.Size = New Size(117, 74)
         Button2.TabIndex = 2
         Button2.Text = "Agregar "
         Button2.UseVisualStyleBackColor = True
@@ -59,7 +59,7 @@ Partial Class FrmReserva
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(533, 450)
+        ClientSize = New Size(884, 450)
         Controls.Add(Button2)
         Controls.Add(btonDeleteReserv)
         Controls.Add(TablaReserva)

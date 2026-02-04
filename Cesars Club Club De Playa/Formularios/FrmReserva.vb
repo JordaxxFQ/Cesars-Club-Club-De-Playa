@@ -11,7 +11,6 @@ Public Class FrmReserva
     End Sub
 
 
-
     Private Sub CargarDatos()
         Dim query As String = "SELECT * FROM Reservas"
 
@@ -78,11 +77,12 @@ Public Class FrmReserva
                     MessageBox.Show("No se encontró el registro para eliminar.")
                 End If
 
-                CargarDatos() ' Refrescar la tabla
+                CargarDatos()
 
             Catch ex As Exception
                 MessageBox.Show("Error al eliminar: " & ex.Message)
             End Try
         End Using
+
     End Sub
 End Class
