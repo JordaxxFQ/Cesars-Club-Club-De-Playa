@@ -192,14 +192,14 @@ Public Class FrmFactura
             Try
                 conexion.Open()
 
-                ' Obtener todos los pedidos del cliente (pendientes o listos, no pagados)
+                ' Cargar pedidos de la reserva activa únicamente
                 Dim query As String = "SELECT ID_Pedido, FechaHora, Total, Estado " &
-                                     "FROM Pedidos " &
-                                     "WHERE Cedula = ? AND Estado <> ? " &
-                                     "ORDER BY FechaHora"
+                                 "FROM Pedidos " &
+                                 "WHERE ID_Reserva = ? AND Estado <> ? " &
+                                 "ORDER BY FechaHora"
 
                 Using comando As New OleDbCommand(query, conexion)
-                    comando.Parameters.Add("?", OleDbType.VarChar).Value = cedulaCliente
+                    comando.Parameters.Add("?", OleDbType.Integer).Value = idReserva
                     comando.Parameters.Add("?", OleDbType.VarChar).Value = "Pagado"
 
                     Using reader As OleDbDataReader = comando.ExecuteReader()
@@ -208,11 +208,11 @@ Public Class FrmFactura
                             totalPedidos += total
 
                             DgvPedidos.Rows.Add(
-                                reader("ID_Pedido"),
-                                CDate(reader("FechaHora")),
-                                total,
-                                reader("Estado")
-                            )
+                            reader("ID_Pedido"),
+                            CDate(reader("FechaHora")),
+                            total,
+                            reader("Estado")
+                        )
                         End While
                     End Using
                 End Using
