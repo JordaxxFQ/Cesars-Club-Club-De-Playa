@@ -1,21 +1,15 @@
-﻿Imports System.Data.Common
-Imports System.Data.OleDb
+﻿Imports System.Data.OleDb
 Imports Cesars_Club_Club_De_Playa.DAL
 Public Class FrmRegistroPersonal
 
-    Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
-    Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
-
     Private Sub FrmRegistroPersonal_Load(sender As Object, e As EventArgs) Handles Me.Load
-        enlace()
-
         CargarDatos()
     End Sub
 
     Private Sub CargarDatos()
         Dim query As String = "SELECT * FROM Personal"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
 
@@ -24,24 +18,28 @@ Public Class FrmRegistroPersonal
 
 
                 adaptador.Fill(dataset, "TablaPersonal")
-                DataGridView1.DataSource = dataset.Tables("TablaPersonal")
+                DgvPersonal.DataSource = dataset.Tables("TablaPersonal")
 
-                DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-                DataGridView1.ReadOnly = True
-                DataGridView1.AllowUserToAddRows = False
-                DataGridView1.AutoGenerateColumns = True
+                DgvPersonal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+                DgvPersonal.ReadOnly = True
+                DgvPersonal.AllowUserToAddRows = False
+                DgvPersonal.AutoGenerateColumns = True
+                ' Ocultamos la columna ID para que se vea más limpio (opcional)
+                If DgvPersonal.Columns.Contains("ID_Personal") Then
+                    DgvPersonal.Columns("ID_Personal").Visible = False
+                End If
             Catch ex As Exception
                 MessageBox.Show("Error al cargar datos: " & ex.Message)
             End Try
         End Using
     End Sub
 
-    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        If DataGridView1.SelectedRows.Count > 0 Then
+    Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        If DgvPersonal.SelectedRows.Count > 0 Then
 
             ' 2. Obtener el ID de la fila seleccionada (ID_Perso está en la primera columna, índice 0)
-            Dim idSeleccionado As Integer = Convert.ToInt32(DataGridView1.SelectedRows(0).Cells("ID_Personal").Value)
-            Dim nombreUsuario As String = DataGridView1.SelectedRows(0).Cells("Usuario").Value.ToString()
+            Dim idSeleccionado As Integer = Convert.ToInt32(DgvPersonal.SelectedRows(0).Cells("ID_Personal").Value)
+            Dim nombreUsuario As String = DgvPersonal.SelectedRows(0).Cells("Usuario").Value.ToString()
 
             ' 3. Preguntar al usuario si está seguro (Validación de seguridad)
             Dim respuesta As DialogResult = MessageBox.Show("¿Está seguro de que desea eliminar a " & nombreUsuario & "?",
@@ -59,7 +57,7 @@ Public Class FrmRegistroPersonal
         ' En Access, a veces es mejor no usar nombres en los parámetros, sino solo el signo ?
         Dim query As String = "DELETE FROM Personal WHERE ID_Personal = ?"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 Dim comando As New OleDbCommand(query, conexion)
 
@@ -84,7 +82,7 @@ Public Class FrmRegistroPersonal
         End Using
     End Sub
 
-    Private Sub btnAgg_Click(sender As Object, e As EventArgs) Handles btnAgg.Click
+    Private Sub BtnAgg_Click(sender As Object, e As EventArgs) Handles btnAgg.Click
 
         Dim ventanaAgregar As New FrmAggPerso()
 

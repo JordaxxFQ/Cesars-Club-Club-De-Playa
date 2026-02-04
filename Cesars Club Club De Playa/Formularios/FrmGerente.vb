@@ -24,4 +24,20 @@
     Private Sub btnReservaciones_Click(sender As Object, e As EventArgs) Handles btnReservaciones.Click
         FrmReserva.Show()
     End Sub
+
+    Private Sub btonPedido_Click(sender As Object, e As EventArgs) Handles btonPedido.Click
+        FrmPedidos.Show()
+    End Sub
+
+    Private Sub BtnCocina_Click(sender As Object, e As EventArgs) Handles BtnCocina.Click
+        FrmCocina.Show()
+    End Sub
+
+    Private Sub btnProducto_Click(sender As Object, e As EventArgs) Handles btnProducto.Click
+        FrmProductos.Show()
+    End Sub
+
+    Private Sub btnFactura_Click(sender As Object, e As EventArgs) Handles btnFactura.Click
+        FrmFactura.Show()
+    End Sub
 End Class

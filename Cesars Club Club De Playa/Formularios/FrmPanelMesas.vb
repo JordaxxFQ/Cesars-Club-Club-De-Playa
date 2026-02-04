@@ -2,12 +2,8 @@
 Imports Cesars_Club_Club_De_Playa.DAL
 
 Public Class FrmPanelMesas
-    ' Tu cadena de conexión habitual
-    Dim ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
-    Dim connectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
 
     Private Sub FrmPanelMesas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        enlace()
         CargarMesas()
     End Sub
 
@@ -16,7 +12,7 @@ Public Class FrmPanelMesas
 
         Dim query As String = "SELECT ID_Mesa, NumeroMesa, Estado, Tipo FROM Zonas ORDER BY ID_Mesa"
 
-        Using conexion As New OleDbConnection(connectionString)
+        Using conexion As New OleDbConnection(cadena)
             Try
                 conexion.Open()
                 Dim comando As New OleDbCommand(query, conexion)
@@ -41,10 +37,10 @@ Public Class FrmPanelMesas
                     ' 4. Asignar color según el estado
                     Dim estado As String = lector("Estado").ToString()
                     Select Case estado
-                        Case "Disponible" : btnMesa.BackColor = Color.DodgerBlue
-                        Case "Ocupada" : btnMesa.BackColor = Color.Red
-                        Case "Reservada" : btnMesa.BackColor = Color.Yellow
-                        Case "Mantenimiento" : btnMesa.BackColor = Color.Gray
+                        Case "Disponible" : btnMesa.BackColor = Color.LightGreen
+                        Case "Ocupada" : btnMesa.BackColor = Color.LightCoral
+                        Case "Reservada" : btnMesa.BackColor = Color.Khaki
+                        Case "Mantenimiento" : btnMesa.BackColor = Color.Yellow
                     End Select
 
                     ' 5. Agregar el evento Click dinámicamente
@@ -68,11 +64,12 @@ Public Class FrmPanelMesas
         Dim idMesaSeleccionada As Integer = CInt(btnPresionado.Tag)
         Dim estadoActual As String = btnPresionado.BackColor.ToString()
 
-        ' Abrimos el formulario de detalle enviando el ID
+        ' Esto ya lo deberías tener, pero asegúrate de que CargarMesas() esté ahí
         Dim frmDetalle As New FrmDetalleMesa(idMesaSeleccionada)
         frmDetalle.ShowDialog()
 
-        ' Al volver, recargamos el panel para ver si cambió de color
+        ' ESTA LÍNEA ES LA QUE PINTA LA MESA DE AZUL OTRA VEZ
         CargarMesas()
+
     End Sub
 End Class
