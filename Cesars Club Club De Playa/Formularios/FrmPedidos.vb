@@ -115,10 +115,11 @@ Public Class FrmPedidos
                             lector.Close()
 
                             ' Paso 2: Buscar la reserva del cliente
-                            Dim queryReserva As String = "SELECT ID_Reserva FROM Reservas WHERE Cedula = ?"
+                            Dim queryReserva As String = "SELECT ID_Reserva FROM Reservas WHERE Cedula = ? AND EstadoReserva = ?"
 
                             Using comandoReserva As New OleDbCommand(queryReserva, conexion)
                                 comandoReserva.Parameters.Add("?", OleDbType.VarChar).Value = cedulaCliente
+                                comandoReserva.Parameters.Add("?", OleDbType.VarChar).Value = "Activa"
 
                                 Dim idReserva As Object = comandoReserva.ExecuteScalar()
 
