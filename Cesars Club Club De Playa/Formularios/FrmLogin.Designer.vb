@@ -39,46 +39,49 @@ Partial Class FrmLogin
         ' 
         ' Button1
         ' 
-        Button1.Location = New Point(41, 255)
-        Button1.Margin = New Padding(3, 4, 3, 4)
+        Button1.BackColor = SystemColors.ButtonHighlight
+        Button1.ForeColor = SystemColors.ActiveCaptionText
+        Button1.Location = New Point(28, 243)
         Button1.Name = "Button1"
-        Button1.Size = New Size(137, 31)
+        Button1.Size = New Size(120, 23)
         Button1.TabIndex = 0
         Button1.Text = "Iniciar sesión"
-        Button1.UseVisualStyleBackColor = True
+        Button1.UseVisualStyleBackColor = False
         ' 
         ' txtUsuario
         ' 
-        txtUsuario.Location = New Point(41, 64)
-        txtUsuario.Margin = New Padding(3, 4, 3, 4)
+        txtUsuario.Location = New Point(28, 130)
         txtUsuario.Name = "txtUsuario"
-        txtUsuario.Size = New Size(137, 27)
+        txtUsuario.Size = New Size(120, 23)
         txtUsuario.TabIndex = 1
         ' 
         ' txtContrasena
         ' 
-        txtContrasena.Location = New Point(41, 167)
-        txtContrasena.Margin = New Padding(3, 4, 3, 4)
+        txtContrasena.Location = New Point(28, 190)
         txtContrasena.Name = "txtContrasena"
         txtContrasena.PasswordChar = "*"c
-        txtContrasena.Size = New Size(137, 27)
+        txtContrasena.Size = New Size(120, 23)
         txtContrasena.TabIndex = 2
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(41, 40)
+        Label1.BackColor = Color.Transparent
+        Label1.ForeColor = SystemColors.ButtonHighlight
+        Label1.Location = New Point(28, 112)
         Label1.Name = "Label1"
-        Label1.Size = New Size(59, 20)
+        Label1.Size = New Size(47, 15)
         Label1.TabIndex = 3
         Label1.Text = "Usuario"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(41, 143)
+        Label2.BackColor = Color.Transparent
+        Label2.ForeColor = SystemColors.ButtonHighlight
+        Label2.Location = New Point(28, 172)
         Label2.Name = "Label2"
-        Label2.Size = New Size(83, 20)
+        Label2.Size = New Size(67, 15)
         Label2.TabIndex = 4
         Label2.Text = "Contraseña"
         ' 
@@ -89,22 +92,22 @@ Partial Class FrmLogin
         ' 
         ' PtbSeePsw
         ' 
+        PtbSeePsw.BackColor = Color.Transparent
         PtbSeePsw.Image = CType(resources.GetObject("PtbSeePsw.Image"), Image)
-        PtbSeePsw.Location = New Point(187, 167)
-        PtbSeePsw.Margin = New Padding(3, 4, 3, 4)
+        PtbSeePsw.Location = New Point(154, 190)
         PtbSeePsw.Name = "PtbSeePsw"
-        PtbSeePsw.Size = New Size(51, 31)
+        PtbSeePsw.Size = New Size(61, 23)
         PtbSeePsw.SizeMode = PictureBoxSizeMode.Zoom
         PtbSeePsw.TabIndex = 6
         PtbSeePsw.TabStop = False
         ' 
         ' PtbDntSeePsw
         ' 
+        PtbDntSeePsw.BackColor = Color.Transparent
         PtbDntSeePsw.Image = CType(resources.GetObject("PtbDntSeePsw.Image"), Image)
-        PtbDntSeePsw.Location = New Point(187, 167)
-        PtbDntSeePsw.Margin = New Padding(3, 4, 3, 4)
+        PtbDntSeePsw.Location = New Point(154, 190)
         PtbDntSeePsw.Name = "PtbDntSeePsw"
-        PtbDntSeePsw.Size = New Size(51, 31)
+        PtbDntSeePsw.Size = New Size(61, 23)
         PtbDntSeePsw.SizeMode = PictureBoxSizeMode.Zoom
         PtbDntSeePsw.TabIndex = 7
         PtbDntSeePsw.TabStop = False
@@ -112,17 +115,20 @@ Partial Class FrmLogin
         ' lblHora
         ' 
         lblHora.AutoSize = True
-        lblHora.Location = New Point(106, 12)
+        lblHora.BackColor = Color.Transparent
+        lblHora.Location = New Point(138, 9)
         lblHora.Name = "lblHora"
-        lblHora.Size = New Size(13, 20)
+        lblHora.Size = New Size(10, 15)
         lblHora.TabIndex = 8
         lblHora.Text = " "
         ' 
         ' FrmLogin
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(240, 355)
+        BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
+        BackgroundImageLayout = ImageLayout.Zoom
+        ClientSize = New Size(370, 529)
         Controls.Add(PtbSeePsw)
         Controls.Add(lblHora)
         Controls.Add(PtbDntSeePsw)
@@ -131,7 +137,6 @@ Partial Class FrmLogin
         Controls.Add(txtContrasena)
         Controls.Add(txtUsuario)
         Controls.Add(Button1)
-        Margin = New Padding(3, 4, 3, 4)
         Name = "FrmLogin"
         Text = "Club Playa - Acceso al Sistema v1.0"
         CType(PtbSeePsw, ComponentModel.ISupportInitialize).EndInit()

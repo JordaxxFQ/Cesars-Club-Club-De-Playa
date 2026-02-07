@@ -90,7 +90,6 @@ Public Class FrmLogin
         Application.Exit()
     End Sub
 
-
     Private Sub PtbSeePsw_Click(sender As Object, e As EventArgs) Handles PtbDntSeePsw.Click
         txtContrasena.PasswordChar = "*"
         PtbDntSeePsw.Visible = False
