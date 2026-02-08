@@ -60,7 +60,7 @@ Partial Class FrmLogin
         txtContrasena.Location = New Point(28, 190)
         txtContrasena.Name = "txtContrasena"
         txtContrasena.PasswordChar = "*"c
-        txtContrasena.Size = New Size(120, 23)
+        txtContrasena.Size = New Size(183, 23)
         txtContrasena.TabIndex = 2
         ' 
         ' Label1
@@ -94,7 +94,7 @@ Partial Class FrmLogin
         ' 
         PtbSeePsw.BackColor = Color.Transparent
         PtbSeePsw.Image = CType(resources.GetObject("PtbSeePsw.Image"), Image)
-        PtbSeePsw.Location = New Point(154, 190)
+        PtbSeePsw.Location = New Point(150, 190)
         PtbSeePsw.Name = "PtbSeePsw"
         PtbSeePsw.Size = New Size(61, 23)
         PtbSeePsw.SizeMode = PictureBoxSizeMode.Zoom
@@ -105,7 +105,7 @@ Partial Class FrmLogin
         ' 
         PtbDntSeePsw.BackColor = Color.Transparent
         PtbDntSeePsw.Image = CType(resources.GetObject("PtbDntSeePsw.Image"), Image)
-        PtbDntSeePsw.Location = New Point(154, 190)
+        PtbDntSeePsw.Location = New Point(150, 190)
         PtbDntSeePsw.Name = "PtbDntSeePsw"
         PtbDntSeePsw.Size = New Size(61, 23)
         PtbDntSeePsw.SizeMode = PictureBoxSizeMode.Zoom

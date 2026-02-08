@@ -6,6 +6,10 @@ Public Class FrmProductos
     Dim _idProductoSeleccionado As Integer = 0
     Private Sub FrmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarProductos()
+        cmbCategoria.Items.Add("Plato Principal")
+        cmbCategoria.Items.Add("Postre")
+        cmbCategoria.Items.Add("Snack")
+        cmbCategoria.Items.Add("Bebida")
         Dim queryCategoria As String = "SELECT DISTINCT Categoria FROM Productos ORDER BY Categoria"
     End Sub
 
