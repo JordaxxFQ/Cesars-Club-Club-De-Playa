@@ -4,9 +4,12 @@
     Private Const crecimiento As Integer = 15
     Private Sub FrmGerente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RegistrarEstadoOriginal(PtbClientes)
+        RegistrarEstadoOriginal(PtbPedido)
         RegistrarEstadoOriginal(PtbPersonal)
         RegistrarEstadoOriginal(PtbProducto)
-        RegistrarEstadoOriginal(PtbPedidos)
+        RegistrarEstadoOriginal(PtbFactura)
+        RegistrarEstadoOriginal(PtbZonas)
+
     End Sub
 
     Private Sub RegistrarEstadoOriginal(pb As PictureBox)
@@ -15,7 +18,7 @@
             pb.SizeMode = PictureBoxSizeMode.Zoom
         End If
     End Sub
-    Private Sub Efecto_MouseEnter(sender As Object, e As EventArgs) Handles PtbClientes.MouseEnter, PtbPersonal.MouseEnter, PtbProducto.MouseEnter
+    Private Sub Efecto_MouseEnter(sender As Object, e As EventArgs) Handles PtbClientes.MouseEnter, PtbPersonal.MouseEnter, PtbProducto.MouseEnter, PtbPedido.MouseEnter, PtbFactura.MouseEnter, PtbZonas.MouseEnter
         ' El "sender" es el PictureBox que activó el evento
         Dim pb As PictureBox = DirectCast(sender, PictureBox)
         Dim rectOriginal As Rectangle = estadosOriginales(pb)
@@ -27,7 +30,7 @@
                  rectOriginal.Height + crecimiento)
     End Sub
 
-    Private Sub Efecto_MouseLeave(sender As Object, e As EventArgs) Handles PtbClientes.MouseLeave, PtbPersonal.MouseLeave, PtbProducto.MouseLeave
+    Private Sub Efecto_MouseLeave(sender As Object, e As EventArgs) Handles PtbClientes.MouseLeave, PtbPersonal.MouseLeave, PtbProducto.MouseLeave, PtbPedido.MouseLeave, PtbFactura.MouseLeave, PtbZonas.MouseLeave
         ' El "sender" nos dice cuál restaurar
         Dim pb As PictureBox = DirectCast(sender, PictureBox)
         Dim rectOriginal As Rectangle = estadosOriginales(pb)
@@ -46,9 +49,6 @@
     Private Sub PtbProducto_Click(sender As Object, e As EventArgs) Handles PtbProducto.Click, LblProducto.Click
         FrmProductos.Show()
     End Sub
-    Private Sub PtbPedidos_Click(sender As Object, e As EventArgs) Handles PtbPedidos.Click, LblPedido.Click
-        FrmPedidos.Show()
-    End Sub
 
     Private Sub FrmGerente_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
 
@@ -57,5 +57,15 @@
         Application.Exit()
     End Sub
 
+    Private Sub PtbPedido_Click(sender As Object, e As EventArgs) Handles PtbPedido.Click, LblPedidos.Click
+        FrmPedidos.Show()
+    End Sub
 
+    Private Sub PtbFactura_Click(sender As Object, e As EventArgs) Handles PtbFactura.Click, LblFactura.Click
+        FrmFactura.Show()
+    End Sub
+
+    Private Sub PtbZonas_Click(sender As Object, e As EventArgs) Handles PtbZonas.Click, LblZonas.Click
+        FrmPanelMesas.Show()
+    End Sub
 End Class

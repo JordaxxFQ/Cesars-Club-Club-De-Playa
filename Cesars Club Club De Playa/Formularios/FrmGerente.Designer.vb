@@ -24,10 +24,6 @@ Partial Class FrmGerente
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmGerente))
         btnReservaciones = New Button()
-        btnMesita = New Button()
-        btnFactura = New Button()
-        btonPedido = New Button()
-        btnClient = New Button()
         BtnCocina = New Button()
         PtbProducto = New PictureBox()
         LblProducto = New Label()
@@ -35,64 +31,32 @@ Partial Class FrmGerente
         LblPersonal = New Label()
         PtbClientes = New PictureBox()
         LblClientes = New Label()
-        LblPedido = New Label()
-        PtbPedidos = New PictureBox()
+        PtbPedido = New PictureBox()
+        LblPedidos = New Label()
+        LblFactura = New Label()
+        PtbFactura = New PictureBox()
+        LblZonas = New Label()
+        PtbZonas = New PictureBox()
         CType(PtbProducto, ComponentModel.ISupportInitialize).BeginInit()
         CType(PtbPersonal, ComponentModel.ISupportInitialize).BeginInit()
         CType(PtbClientes, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PtbPedidos, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PtbPedido, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PtbFactura, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PtbZonas, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnReservaciones
         ' 
-        btnReservaciones.Location = New Point(882, 157)
+        btnReservaciones.Location = New Point(803, 231)
         btnReservaciones.Name = "btnReservaciones"
         btnReservaciones.Size = New Size(117, 98)
         btnReservaciones.TabIndex = 1
         btnReservaciones.Text = "Reservaciones"
         btnReservaciones.UseVisualStyleBackColor = True
         ' 
-        ' btnMesita
-        ' 
-        btnMesita.Location = New Point(882, 461)
-        btnMesita.Name = "btnMesita"
-        btnMesita.Size = New Size(117, 98)
-        btnMesita.TabIndex = 2
-        btnMesita.Text = "Mesas"
-        btnMesita.UseVisualStyleBackColor = True
-        ' 
-        ' btnFactura
-        ' 
-        btnFactura.Location = New Point(826, 336)
-        btnFactura.Name = "btnFactura"
-        btnFactura.Size = New Size(118, 98)
-        btnFactura.TabIndex = 3
-        btnFactura.Text = "Factura"
-        btnFactura.UseVisualStyleBackColor = True
-        ' 
-        ' btonPedido
-        ' 
-        btonPedido.Location = New Point(998, 308)
-        btonPedido.Margin = New Padding(3, 2, 3, 2)
-        btonPedido.Name = "btonPedido"
-        btonPedido.Size = New Size(118, 98)
-        btonPedido.TabIndex = 4
-        btonPedido.Text = "Pedidos"
-        btonPedido.UseVisualStyleBackColor = True
-        ' 
-        ' btnClient
-        ' 
-        btnClient.Location = New Point(642, 308)
-        btnClient.Margin = New Padding(3, 2, 3, 2)
-        btnClient.Name = "btnClient"
-        btnClient.Size = New Size(118, 98)
-        btnClient.TabIndex = 5
-        btnClient.Text = "Clientes"
-        btnClient.UseVisualStyleBackColor = True
-        ' 
         ' BtnCocina
         ' 
-        BtnCocina.Location = New Point(651, 461)
+        BtnCocina.Location = New Point(803, 334)
         BtnCocina.Margin = New Padding(3, 2, 3, 2)
         BtnCocina.Name = "BtnCocina"
         BtnCocina.Size = New Size(118, 98)
@@ -103,7 +67,7 @@ Partial Class FrmGerente
         ' PtbProducto
         ' 
         PtbProducto.Image = CType(resources.GetObject("PtbProducto.Image"), Image)
-        PtbProducto.Location = New Point(289, 234)
+        PtbProducto.Location = New Point(12, 194)
         PtbProducto.Name = "PtbProducto"
         PtbProducto.Size = New Size(113, 89)
         PtbProducto.SizeMode = PictureBoxSizeMode.Zoom
@@ -114,7 +78,7 @@ Partial Class FrmGerente
         ' 
         LblProducto.AutoSize = True
         LblProducto.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
-        LblProducto.Location = New Point(395, 250)
+        LblProducto.Location = New Point(118, 210)
         LblProducto.Name = "LblProducto"
         LblProducto.Size = New Size(81, 24)
         LblProducto.TabIndex = 9
@@ -123,7 +87,7 @@ Partial Class FrmGerente
         ' PtbPersonal
         ' 
         PtbPersonal.Image = CType(resources.GetObject("PtbPersonal.Image"), Image)
-        PtbPersonal.Location = New Point(287, 44)
+        PtbPersonal.Location = New Point(10, 4)
         PtbPersonal.Name = "PtbPersonal"
         PtbPersonal.Size = New Size(115, 89)
         PtbPersonal.SizeMode = PictureBoxSizeMode.Zoom
@@ -134,7 +98,7 @@ Partial Class FrmGerente
         ' 
         LblPersonal.AutoSize = True
         LblPersonal.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
-        LblPersonal.Location = New Point(400, 87)
+        LblPersonal.Location = New Point(123, 47)
         LblPersonal.Name = "LblPersonal"
         LblPersonal.Size = New Size(69, 24)
         LblPersonal.TabIndex = 11
@@ -143,7 +107,7 @@ Partial Class FrmGerente
         ' PtbClientes
         ' 
         PtbClientes.Image = CType(resources.GetObject("PtbClientes.Image"), Image)
-        PtbClientes.Location = New Point(287, 139)
+        PtbClientes.Location = New Point(10, 99)
         PtbClientes.Name = "PtbClientes"
         PtbClientes.Size = New Size(115, 89)
         PtbClientes.SizeMode = PictureBoxSizeMode.Zoom
@@ -154,31 +118,71 @@ Partial Class FrmGerente
         ' 
         LblClientes.AutoSize = True
         LblClientes.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
-        LblClientes.Location = New Point(395, 176)
+        LblClientes.Location = New Point(118, 136)
         LblClientes.Name = "LblClientes"
         LblClientes.Size = New Size(64, 24)
         LblClientes.TabIndex = 13
         LblClientes.Text = "Clientes"
         ' 
-        ' LblPedido
+        ' PtbPedido
         ' 
-        LblPedido.AutoSize = True
-        LblPedido.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
-        LblPedido.Location = New Point(395, 345)
-        LblPedido.Name = "LblPedido"
-        LblPedido.Size = New Size(63, 24)
-        LblPedido.TabIndex = 15
-        LblPedido.Text = "Pedidos"
+        PtbPedido.Image = CType(resources.GetObject("PtbPedido.Image"), Image)
+        PtbPedido.Location = New Point(12, 289)
+        PtbPedido.Name = "PtbPedido"
+        PtbPedido.Size = New Size(113, 89)
+        PtbPedido.SizeMode = PictureBoxSizeMode.Zoom
+        PtbPedido.TabIndex = 16
+        PtbPedido.TabStop = False
         ' 
-        ' PtbPedidos
+        ' LblPedidos
         ' 
-        PtbPedidos.Image = CType(resources.GetObject("PtbPedidos.Image"), Image)
-        PtbPedidos.Location = New Point(289, 336)
-        PtbPedidos.Name = "PtbPedidos"
-        PtbPedidos.Size = New Size(113, 89)
-        PtbPedidos.SizeMode = PictureBoxSizeMode.Zoom
-        PtbPedidos.TabIndex = 14
-        PtbPedidos.TabStop = False
+        LblPedidos.AutoSize = True
+        LblPedidos.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
+        LblPedidos.Location = New Point(118, 305)
+        LblPedidos.Name = "LblPedidos"
+        LblPedidos.Size = New Size(63, 24)
+        LblPedidos.TabIndex = 17
+        LblPedidos.Text = "Pedidos"
+        ' 
+        ' LblFactura
+        ' 
+        LblFactura.AutoSize = True
+        LblFactura.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
+        LblFactura.Location = New Point(118, 400)
+        LblFactura.Name = "LblFactura"
+        LblFactura.Size = New Size(70, 24)
+        LblFactura.TabIndex = 19
+        LblFactura.Text = "Facturas"
+        ' 
+        ' PtbFactura
+        ' 
+        PtbFactura.Image = CType(resources.GetObject("PtbFactura.Image"), Image)
+        PtbFactura.Location = New Point(12, 384)
+        PtbFactura.Name = "PtbFactura"
+        PtbFactura.Size = New Size(113, 89)
+        PtbFactura.SizeMode = PictureBoxSizeMode.Zoom
+        PtbFactura.TabIndex = 18
+        PtbFactura.TabStop = False
+        ' 
+        ' LblZonas
+        ' 
+        LblZonas.AutoSize = True
+        LblZonas.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
+        LblZonas.Location = New Point(118, 495)
+        LblZonas.Name = "LblZonas"
+        LblZonas.Size = New Size(52, 24)
+        LblZonas.TabIndex = 21
+        LblZonas.Text = "Zonas"
+        ' 
+        ' PtbZonas
+        ' 
+        PtbZonas.Image = CType(resources.GetObject("PtbZonas.Image"), Image)
+        PtbZonas.Location = New Point(12, 479)
+        PtbZonas.Name = "PtbZonas"
+        PtbZonas.Size = New Size(113, 89)
+        PtbZonas.SizeMode = PictureBoxSizeMode.Zoom
+        PtbZonas.TabIndex = 20
+        PtbZonas.TabStop = False
         ' 
         ' FrmGerente
         ' 
@@ -186,16 +190,16 @@ Partial Class FrmGerente
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(1279, 622)
-        Controls.Add(LblPedido)
-        Controls.Add(PtbPedidos)
+        Controls.Add(LblZonas)
+        Controls.Add(PtbZonas)
+        Controls.Add(LblFactura)
+        Controls.Add(PtbFactura)
+        Controls.Add(LblPedidos)
+        Controls.Add(PtbPedido)
         Controls.Add(LblClientes)
         Controls.Add(LblPersonal)
         Controls.Add(LblProducto)
         Controls.Add(BtnCocina)
-        Controls.Add(btnClient)
-        Controls.Add(btonPedido)
-        Controls.Add(btnFactura)
-        Controls.Add(btnMesita)
         Controls.Add(btnReservaciones)
         Controls.Add(PtbClientes)
         Controls.Add(PtbPersonal)
@@ -206,15 +210,13 @@ Partial Class FrmGerente
         CType(PtbProducto, ComponentModel.ISupportInitialize).EndInit()
         CType(PtbPersonal, ComponentModel.ISupportInitialize).EndInit()
         CType(PtbClientes, ComponentModel.ISupportInitialize).EndInit()
-        CType(PtbPedidos, ComponentModel.ISupportInitialize).EndInit()
+        CType(PtbPedido, ComponentModel.ISupportInitialize).EndInit()
+        CType(PtbFactura, ComponentModel.ISupportInitialize).EndInit()
+        CType(PtbZonas, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
     Friend WithEvents btnReservaciones As Button
-    Friend WithEvents btnMesita As Button
-    Friend WithEvents btnFactura As Button
-    Friend WithEvents btonPedido As Button
-    Friend WithEvents btnClient As Button
     Friend WithEvents BtnCocina As Button
     Friend WithEvents PtbProducto As PictureBox
     Friend WithEvents LblProducto As Label
@@ -222,6 +224,10 @@ Partial Class FrmGerente
     Friend WithEvents LblPersonal As Label
     Friend WithEvents PtbClientes As PictureBox
     Friend WithEvents LblClientes As Label
-    Friend WithEvents LblPedido As Label
-    Friend WithEvents PtbPedidos As PictureBox
+    Friend WithEvents PtbPedido As PictureBox
+    Friend WithEvents LblPedidos As Label
+    Friend WithEvents LblFactura As Label
+    Friend WithEvents PtbFactura As PictureBox
+    Friend WithEvents LblZonas As Label
+    Friend WithEvents PtbZonas As PictureBox
 End Class
