@@ -24,7 +24,7 @@ Partial Class FrmLogin
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmLogin))
-        Button1 = New Button()
+        btnLogin = New Button()
         txtUsuario = New TextBox()
         txtContrasena = New TextBox()
         Label1 = New Label()
@@ -37,40 +37,51 @@ Partial Class FrmLogin
         CType(PtbDntSeePsw, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' Button1
+        ' btnLogin
         ' 
-        Button1.BackColor = SystemColors.ButtonHighlight
-        Button1.ForeColor = SystemColors.ActiveCaptionText
-        Button1.Location = New Point(28, 243)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(120, 23)
-        Button1.TabIndex = 0
-        Button1.Text = "Iniciar sesión"
-        Button1.UseVisualStyleBackColor = False
+        btnLogin.BackColor = SystemColors.Highlight
+        btnLogin.Cursor = Cursors.Hand
+        btnLogin.FlatAppearance.BorderSize = 0
+        btnLogin.FlatStyle = FlatStyle.Flat
+        btnLogin.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        btnLogin.ForeColor = Color.White
+        btnLogin.Location = New Point(44, 259)
+        btnLogin.Name = "btnLogin"
+        btnLogin.Size = New Size(120, 27)
+        btnLogin.TabIndex = 0
+        btnLogin.Text = "Iniciar sesión"
+        btnLogin.UseVisualStyleBackColor = False
         ' 
         ' txtUsuario
         ' 
-        txtUsuario.Location = New Point(28, 130)
+        txtUsuario.BorderStyle = BorderStyle.FixedSingle
+        txtUsuario.Cursor = Cursors.IBeam
+        txtUsuario.Font = New Font("Segoe UI", 10F)
+        txtUsuario.Location = New Point(44, 135)
         txtUsuario.Name = "txtUsuario"
-        txtUsuario.Size = New Size(120, 23)
+        txtUsuario.Size = New Size(120, 25)
         txtUsuario.TabIndex = 1
         ' 
         ' txtContrasena
         ' 
-        txtContrasena.Location = New Point(28, 190)
+        txtContrasena.BorderStyle = BorderStyle.FixedSingle
+        txtContrasena.Cursor = Cursors.IBeam
+        txtContrasena.Font = New Font("Segoe UI", 10F)
+        txtContrasena.Location = New Point(44, 201)
         txtContrasena.Name = "txtContrasena"
         txtContrasena.PasswordChar = "*"c
-        txtContrasena.Size = New Size(183, 23)
+        txtContrasena.Size = New Size(120, 25)
         txtContrasena.TabIndex = 2
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
         Label1.BackColor = Color.Transparent
+        Label1.Font = New Font("Segoe Print", 11F, FontStyle.Bold)
         Label1.ForeColor = SystemColors.ButtonHighlight
-        Label1.Location = New Point(28, 112)
+        Label1.Location = New Point(44, 104)
         Label1.Name = "Label1"
-        Label1.Size = New Size(47, 15)
+        Label1.Size = New Size(68, 26)
         Label1.TabIndex = 3
         Label1.Text = "Usuario"
         ' 
@@ -78,10 +89,11 @@ Partial Class FrmLogin
         ' 
         Label2.AutoSize = True
         Label2.BackColor = Color.Transparent
+        Label2.Font = New Font("Segoe Print", 11F, FontStyle.Bold)
         Label2.ForeColor = SystemColors.ButtonHighlight
-        Label2.Location = New Point(28, 172)
+        Label2.Location = New Point(44, 172)
         Label2.Name = "Label2"
-        Label2.Size = New Size(67, 15)
+        Label2.Size = New Size(97, 26)
         Label2.TabIndex = 4
         Label2.Text = "Contraseña"
         ' 
@@ -93,10 +105,11 @@ Partial Class FrmLogin
         ' PtbSeePsw
         ' 
         PtbSeePsw.BackColor = Color.Transparent
+        PtbSeePsw.Cursor = Cursors.Hand
         PtbSeePsw.Image = CType(resources.GetObject("PtbSeePsw.Image"), Image)
-        PtbSeePsw.Location = New Point(150, 190)
+        PtbSeePsw.Location = New Point(170, 201)
         PtbSeePsw.Name = "PtbSeePsw"
-        PtbSeePsw.Size = New Size(61, 23)
+        PtbSeePsw.Size = New Size(45, 27)
         PtbSeePsw.SizeMode = PictureBoxSizeMode.Zoom
         PtbSeePsw.TabIndex = 6
         PtbSeePsw.TabStop = False
@@ -104,10 +117,11 @@ Partial Class FrmLogin
         ' PtbDntSeePsw
         ' 
         PtbDntSeePsw.BackColor = Color.Transparent
+        PtbDntSeePsw.Cursor = Cursors.Hand
         PtbDntSeePsw.Image = CType(resources.GetObject("PtbDntSeePsw.Image"), Image)
-        PtbDntSeePsw.Location = New Point(150, 190)
+        PtbDntSeePsw.Location = New Point(170, 192)
         PtbDntSeePsw.Name = "PtbDntSeePsw"
-        PtbDntSeePsw.Size = New Size(61, 23)
+        PtbDntSeePsw.Size = New Size(45, 36)
         PtbDntSeePsw.SizeMode = PictureBoxSizeMode.Zoom
         PtbDntSeePsw.TabIndex = 7
         PtbDntSeePsw.TabStop = False
@@ -116,7 +130,9 @@ Partial Class FrmLogin
         ' 
         lblHora.AutoSize = True
         lblHora.BackColor = Color.Transparent
-        lblHora.Location = New Point(138, 9)
+        lblHora.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblHora.ForeColor = SystemColors.ControlLightLight
+        lblHora.Location = New Point(154, 9)
         lblHora.Name = "lblHora"
         lblHora.Size = New Size(10, 15)
         lblHora.TabIndex = 8
@@ -126,9 +142,10 @@ Partial Class FrmLogin
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.Black
         BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
-        BackgroundImageLayout = ImageLayout.Zoom
-        ClientSize = New Size(370, 529)
+        BackgroundImageLayout = ImageLayout.Stretch
+        ClientSize = New Size(369, 523)
         Controls.Add(PtbSeePsw)
         Controls.Add(lblHora)
         Controls.Add(PtbDntSeePsw)
@@ -136,8 +153,10 @@ Partial Class FrmLogin
         Controls.Add(Label1)
         Controls.Add(txtContrasena)
         Controls.Add(txtUsuario)
-        Controls.Add(Button1)
+        Controls.Add(btnLogin)
+        FormBorderStyle = FormBorderStyle.FixedToolWindow
         Name = "FrmLogin"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Club Playa - Acceso al Sistema v1.0"
         CType(PtbSeePsw, ComponentModel.ISupportInitialize).EndInit()
         CType(PtbDntSeePsw, ComponentModel.ISupportInitialize).EndInit()
@@ -145,7 +164,7 @@ Partial Class FrmLogin
         PerformLayout()
     End Sub
 
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnLogin As Button
     Friend WithEvents txtUsuario As TextBox
     Friend WithEvents txtContrasena As TextBox
     Friend WithEvents Label1 As Label

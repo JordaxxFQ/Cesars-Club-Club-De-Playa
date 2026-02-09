@@ -6,16 +6,12 @@
         FrmRegistroPersonal.Show()
     End Sub
 
-
     Private Sub btnClient_Click(sender As Object, e As EventArgs) Handles btnClient.Click
         FrmRegistroClientes.Show()
     End Sub
 
     Private Sub btnMesita_Click(sender As Object, e As EventArgs) Handles btnMesita.Click
         FrmPanelMesas.Show()
-    End Sub
-    Private Sub FrmGerente_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
-
     End Sub
     Private Sub FrmGerente_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Application.Exit()
@@ -39,5 +35,8 @@
 
     Private Sub btnFactura_Click(sender As Object, e As EventArgs) Handles btnFactura.Click
         FrmFactura.Show()
+    End Sub
+    Private Sub FrmGerente_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+
     End Sub
 End Class
