@@ -149,6 +149,7 @@ Partial Class FrmAggPerso
         Controls.Add(txtboxContra)
         Controls.Add(txtboxusuario)
         Name = "FrmAggPerso"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FrmAggPerso"
         CType(DgvPersonal, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
