@@ -10,6 +10,7 @@ Public Class FrmProductos
         cmbCategoria.Items.Add("Postre")
         cmbCategoria.Items.Add("Snack")
         cmbCategoria.Items.Add("Bebida")
+
         Dim queryCategoria As String = "SELECT DISTINCT Categoria FROM Productos ORDER BY Categoria"
     End Sub
 

@@ -40,6 +40,7 @@ Partial Class FrmReserva
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(950, 573)
         Controls.Add(TablaReserva)
         Margin = New Padding(3, 2, 3, 2)

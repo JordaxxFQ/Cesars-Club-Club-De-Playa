@@ -135,6 +135,7 @@ Partial Class FrmAggPerso
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(433, 447)
         Controls.Add(btnEdit)
         Controls.Add(cmbTurno)

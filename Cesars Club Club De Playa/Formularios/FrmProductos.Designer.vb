@@ -171,6 +171,7 @@ Partial Class FrmProductos
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(912, 437)
         Controls.Add(chkActivo)
         Controls.Add(btnEdit)

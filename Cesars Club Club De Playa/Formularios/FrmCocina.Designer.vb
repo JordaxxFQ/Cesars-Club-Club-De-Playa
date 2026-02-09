@@ -183,6 +183,7 @@ Partial Class FrmCocina
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(800, 450)
         Controls.Add(LblComent)
         Controls.Add(BtnMarcarListo)

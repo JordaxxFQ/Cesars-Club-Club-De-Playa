@@ -122,6 +122,7 @@ Partial Class FrmRegistroClientes
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(417, 550)
         Controls.Add(BtnEliminar)
         Controls.Add(DgvCliente)

@@ -169,7 +169,7 @@ Partial Class FrmFactura
         Label7.AutoSize = True
         Label7.Location = New Point(307, 56)
         Label7.Name = "Label7"
-        Label7.Size = New Size(63, 15)
+        Label7.Size = New Size(62, 15)
         Label7.TabIndex = 14
         Label7.Text = "Total Zona"
         ' 
@@ -219,7 +219,7 @@ Partial Class FrmFactura
         Label6.AutoSize = True
         Label6.Location = New Point(3, 118)
         Label6.Name = "Label6"
-        Label6.Size = New Size(78, 15)
+        Label6.Size = New Size(77, 15)
         Label6.TabIndex = 9
         Label6.Text = "Horas Totales"
         ' 
@@ -279,7 +279,7 @@ Partial Class FrmFactura
         Label9.AutoSize = True
         Label9.Location = New Point(15, 601)
         Label9.Name = "Label9"
-        Label9.Size = New Size(76, 15)
+        Label9.Size = New Size(75, 15)
         Label9.TabIndex = 22
         Label9.Text = "Total General"
         ' 
@@ -288,7 +288,7 @@ Partial Class FrmFactura
         Label10.AutoSize = True
         Label10.Location = New Point(17, 572)
         Label10.Name = "Label10"
-        Label10.Size = New Size(63, 15)
+        Label10.Size = New Size(62, 15)
         Label10.TabIndex = 21
         Label10.Text = "Total Zona"
         ' 
@@ -297,7 +297,7 @@ Partial Class FrmFactura
         Label11.AutoSize = True
         Label11.Location = New Point(15, 543)
         Label11.Name = "Label11"
-        Label11.Size = New Size(78, 15)
+        Label11.Size = New Size(77, 15)
         Label11.TabIndex = 20
         Label11.Text = "Total Pedidos"
         ' 
@@ -334,6 +334,7 @@ Partial Class FrmFactura
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(573, 687)
         Controls.Add(BtnLimpiar)
         Controls.Add(BtnGenerarFactura)

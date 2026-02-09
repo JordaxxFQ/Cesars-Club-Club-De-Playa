@@ -84,6 +84,7 @@ Partial Class FrmRegistroPersonal
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(469, 464)
         Controls.Add(DgvPersonal)
         Controls.Add(Label1)

@@ -30,18 +30,17 @@ Partial Class FrmPanelMesas
         flpMesas.AutoScroll = True
         flpMesas.Dock = DockStyle.Fill
         flpMesas.Location = New Point(0, 0)
-        flpMesas.Margin = New Padding(3, 4, 3, 4)
         flpMesas.Name = "flpMesas"
-        flpMesas.Size = New Size(914, 600)
+        flpMesas.Size = New Size(800, 450)
         flpMesas.TabIndex = 0
         ' 
         ' FrmPanelMesas
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(914, 600)
+        BackColor = SystemColors.GradientActiveCaption
+        ClientSize = New Size(800, 450)
         Controls.Add(flpMesas)
-        Margin = New Padding(3, 4, 3, 4)
         Name = "FrmPanelMesas"
         Text = "FrmPanelMesas"
         ResumeLayout(False)

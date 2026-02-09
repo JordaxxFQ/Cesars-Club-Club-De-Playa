@@ -112,6 +112,7 @@ Partial Class FrmGerente
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(891, 556)
         Controls.Add(BtnCocina)
         Controls.Add(btnProducto)

@@ -48,6 +48,7 @@ Partial Class FrmRecepcionista
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(625, 545)
         Controls.Add(btnPedido)
         Controls.Add(btnMesas)

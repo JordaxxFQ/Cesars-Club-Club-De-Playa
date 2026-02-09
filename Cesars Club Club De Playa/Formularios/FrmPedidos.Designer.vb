@@ -206,7 +206,7 @@ Partial Class FrmPedidos
         Label4.AutoSize = True
         Label4.Location = New Point(370, 524)
         Label4.Name = "Label4"
-        Label4.Size = New Size(39, 15)
+        Label4.Size = New Size(38, 15)
         Label4.TabIndex = 15
         Label4.Text = "Total: "
         ' 
@@ -232,6 +232,7 @@ Partial Class FrmPedidos
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(686, 624)
         Controls.Add(BtnNuevo)
         Controls.Add(LblTotal)
