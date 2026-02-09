@@ -252,6 +252,7 @@ Partial Class FrmPedidos
         Controls.Add(Label1)
         Controls.Add(TxtCedula)
         Name = "FrmPedidos"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FrmPedidos"
         PnlProductos.ResumeLayout(False)
         CType(DgvProductos, ComponentModel.ISupportInitialize).EndInit()

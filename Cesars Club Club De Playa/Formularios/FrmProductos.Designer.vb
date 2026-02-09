@@ -189,6 +189,7 @@ Partial Class FrmProductos
         Controls.Add(cmbCategoria)
         Controls.Add(DgvProductos)
         Name = "FrmProductos"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FrmProductos"
         CType(DgvProductos, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

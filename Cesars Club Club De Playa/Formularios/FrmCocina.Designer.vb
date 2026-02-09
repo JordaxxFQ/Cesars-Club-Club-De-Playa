@@ -199,6 +199,7 @@ Partial Class FrmCocina
         Controls.Add(BtnActualizar)
         Controls.Add(CboEstado)
         Name = "FrmCocina"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FrmCocina"
         CType(DgvPedidos, ComponentModel.ISupportInitialize).EndInit()
         CType(DgvDetalle, ComponentModel.ISupportInitialize).EndInit()

@@ -214,6 +214,7 @@ Partial Class FrmDetalleMesa
         Controls.Add(txtNombre)
         Controls.Add(txtCedula)
         Name = "FrmDetalleMesa"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FrmDetalleMesa"
         CType(TablaReserva2, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

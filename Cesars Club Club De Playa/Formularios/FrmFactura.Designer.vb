@@ -352,6 +352,7 @@ Partial Class FrmFactura
         Controls.Add(Label2)
         Controls.Add(Label1)
         Name = "FrmFactura"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FrmFactura"
         PnlDetalles.ResumeLayout(False)
         PnlDetalles.PerformLayout()

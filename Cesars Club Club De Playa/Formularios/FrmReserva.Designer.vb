@@ -45,6 +45,7 @@ Partial Class FrmReserva
         Controls.Add(TablaReserva)
         Margin = New Padding(3, 2, 3, 2)
         Name = "FrmReserva"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FrmReserva"
         CType(TablaReserva, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

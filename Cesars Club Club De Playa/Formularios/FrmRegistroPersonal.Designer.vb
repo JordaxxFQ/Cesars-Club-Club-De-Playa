@@ -92,6 +92,7 @@ Partial Class FrmRegistroPersonal
         Controls.Add(btnAgg)
         Margin = New Padding(3, 2, 3, 2)
         Name = "FrmRegistroPersonal"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FrmRegistroPersonal"
         CType(ConexionBDBindingSource, ComponentModel.ISupportInitialize).EndInit()
         CType(ConexionBDBindingSource1, ComponentModel.ISupportInitialize).EndInit()

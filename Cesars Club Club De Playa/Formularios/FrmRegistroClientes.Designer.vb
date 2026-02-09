@@ -135,6 +135,7 @@ Partial Class FrmRegistroClientes
         Controls.Add(Label2)
         Controls.Add(Label1)
         Name = "FrmRegistroClientes"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FrmRegistroClientes"
         CType(DgvCliente, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

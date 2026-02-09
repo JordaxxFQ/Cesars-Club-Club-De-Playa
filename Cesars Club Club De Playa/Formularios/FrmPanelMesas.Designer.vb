@@ -42,6 +42,7 @@ Partial Class FrmPanelMesas
         ClientSize = New Size(800, 450)
         Controls.Add(flpMesas)
         Name = "FrmPanelMesas"
+        StartPosition = FormStartPosition.CenterParent
         Text = "FrmPanelMesas"
         ResumeLayout(False)
     End Sub
