@@ -28,7 +28,7 @@ Partial Class FrmCocinero
         ' 
         ' btnPedido
         ' 
-        btnPedido.Location = New Point(80, 30)
+        btnPedido.Location = New Point(12, 30)
         btnPedido.Name = "btnPedido"
         btnPedido.Size = New Size(112, 87)
         btnPedido.TabIndex = 0
@@ -37,7 +37,7 @@ Partial Class FrmCocinero
         ' 
         ' btnCocina
         ' 
-        btnCocina.Location = New Point(198, 30)
+        btnCocina.Location = New Point(12, 123)
         btnCocina.Name = "btnCocina"
         btnCocina.Size = New Size(112, 87)
         btnCocina.TabIndex = 1
