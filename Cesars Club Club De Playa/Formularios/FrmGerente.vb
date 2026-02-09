@@ -9,6 +9,8 @@
         RegistrarEstadoOriginal(PtbProducto)
         RegistrarEstadoOriginal(PtbFactura)
         RegistrarEstadoOriginal(PtbZonas)
+        RegistrarEstadoOriginal(PtbCocina)
+        RegistrarEstadoOriginal(PtbReservas)
 
     End Sub
 
@@ -18,22 +20,22 @@
             pb.SizeMode = PictureBoxSizeMode.Zoom
         End If
     End Sub
-    Private Sub Efecto_MouseEnter(sender As Object, e As EventArgs) Handles PtbClientes.MouseEnter, PtbPersonal.MouseEnter, PtbProducto.MouseEnter, PtbPedido.MouseEnter, PtbFactura.MouseEnter, PtbZonas.MouseEnter
+    Private Sub Efecto_MouseEnter(sender As Object, e As EventArgs) Handles PtbClientes.MouseEnter, PtbPersonal.MouseEnter, PtbProducto.MouseEnter, PtbPedido.MouseEnter, PtbFactura.MouseEnter, PtbZonas.MouseEnter, PtbCocina.MouseEnter, PtbReservas.MouseEnter
         ' El "sender" es el PictureBox que activó el evento
-        Dim pb As PictureBox = DirectCast(sender, PictureBox)
-        Dim rectOriginal As Rectangle = estadosOriginales(pb)
+        Dim pb = DirectCast(sender, PictureBox)
+        Dim rectOriginal = estadosOriginales(pb)
 
         ' Aplicamos el crecimiento desde el centro
-        pb.SetBounds(rectOriginal.X - (crecimiento \ 2),
-                 rectOriginal.Y - (crecimiento \ 2),
+        pb.SetBounds(rectOriginal.X - crecimiento \ 2,
+                 rectOriginal.Y - crecimiento \ 2,
                  rectOriginal.Width + crecimiento,
                  rectOriginal.Height + crecimiento)
     End Sub
 
-    Private Sub Efecto_MouseLeave(sender As Object, e As EventArgs) Handles PtbClientes.MouseLeave, PtbPersonal.MouseLeave, PtbProducto.MouseLeave, PtbPedido.MouseLeave, PtbFactura.MouseLeave, PtbZonas.MouseLeave
+    Private Sub Efecto_MouseLeave(sender As Object, e As EventArgs) Handles PtbClientes.MouseLeave, PtbPersonal.MouseLeave, PtbProducto.MouseLeave, PtbPedido.MouseLeave, PtbFactura.MouseLeave, PtbZonas.MouseLeave, PtbCocina.MouseLeave, PtbReservas.MouseLeave
         ' El "sender" nos dice cuál restaurar
-        Dim pb As PictureBox = DirectCast(sender, PictureBox)
-        Dim rectOriginal As Rectangle = estadosOriginales(pb)
+        Dim pb = DirectCast(sender, PictureBox)
+        Dim rectOriginal = estadosOriginales(pb)
 
         ' Restauramos sus valores originales exactos
         pb.Bounds = rectOriginal
@@ -67,5 +69,13 @@
 
     Private Sub PtbZonas_Click(sender As Object, e As EventArgs) Handles PtbZonas.Click, LblZonas.Click
         FrmPanelMesas.Show()
+    End Sub
+
+    Private Sub PtbCocina_Click(sender As Object, e As EventArgs) Handles PtbCocina.Click, LblCocina.Click
+        FrmCocina.Show()
+    End Sub
+
+    Private Sub PtbReservas_Click(sender As Object, e As EventArgs) Handles PtbReservas.Click, LblReserva.Click
+        FrmReserva.Show()
     End Sub
 End Class

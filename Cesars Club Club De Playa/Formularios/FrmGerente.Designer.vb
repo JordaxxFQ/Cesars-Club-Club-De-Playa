@@ -23,8 +23,6 @@ Partial Class FrmGerente
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmGerente))
-        btnReservaciones = New Button()
-        BtnCocina = New Button()
         PtbProducto = New PictureBox()
         LblProducto = New Label()
         PtbPersonal = New PictureBox()
@@ -37,32 +35,19 @@ Partial Class FrmGerente
         PtbFactura = New PictureBox()
         LblZonas = New Label()
         PtbZonas = New PictureBox()
+        LblCocina = New Label()
+        PtbCocina = New PictureBox()
+        LblReserva = New Label()
+        PtbReservas = New PictureBox()
         CType(PtbProducto, ComponentModel.ISupportInitialize).BeginInit()
         CType(PtbPersonal, ComponentModel.ISupportInitialize).BeginInit()
         CType(PtbClientes, ComponentModel.ISupportInitialize).BeginInit()
         CType(PtbPedido, ComponentModel.ISupportInitialize).BeginInit()
         CType(PtbFactura, ComponentModel.ISupportInitialize).BeginInit()
         CType(PtbZonas, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PtbCocina, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PtbReservas, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
-        ' 
-        ' btnReservaciones
-        ' 
-        btnReservaciones.Location = New Point(803, 231)
-        btnReservaciones.Name = "btnReservaciones"
-        btnReservaciones.Size = New Size(117, 98)
-        btnReservaciones.TabIndex = 1
-        btnReservaciones.Text = "Reservaciones"
-        btnReservaciones.UseVisualStyleBackColor = True
-        ' 
-        ' BtnCocina
-        ' 
-        BtnCocina.Location = New Point(803, 334)
-        BtnCocina.Margin = New Padding(3, 2, 3, 2)
-        BtnCocina.Name = "BtnCocina"
-        BtnCocina.Size = New Size(118, 98)
-        BtnCocina.TabIndex = 7
-        BtnCocina.Text = "Cocina"
-        BtnCocina.UseVisualStyleBackColor = True
         ' 
         ' PtbProducto
         ' 
@@ -184,12 +169,56 @@ Partial Class FrmGerente
         PtbZonas.TabIndex = 20
         PtbZonas.TabStop = False
         ' 
+        ' LblCocina
+        ' 
+        LblCocina.AutoSize = True
+        LblCocina.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
+        LblCocina.Location = New Point(304, 20)
+        LblCocina.Name = "LblCocina"
+        LblCocina.Size = New Size(56, 24)
+        LblCocina.TabIndex = 23
+        LblCocina.Text = "Cocina"
+        ' 
+        ' PtbCocina
+        ' 
+        PtbCocina.Image = CType(resources.GetObject("PtbCocina.Image"), Image)
+        PtbCocina.Location = New Point(198, 4)
+        PtbCocina.Name = "PtbCocina"
+        PtbCocina.Size = New Size(113, 89)
+        PtbCocina.SizeMode = PictureBoxSizeMode.Zoom
+        PtbCocina.TabIndex = 22
+        PtbCocina.TabStop = False
+        ' 
+        ' LblReserva
+        ' 
+        LblReserva.AutoSize = True
+        LblReserva.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
+        LblReserva.Location = New Point(304, 115)
+        LblReserva.Name = "LblReserva"
+        LblReserva.Size = New Size(69, 24)
+        LblReserva.TabIndex = 25
+        LblReserva.Text = "Reservas"
+        ' 
+        ' PtbReservas
+        ' 
+        PtbReservas.Image = CType(resources.GetObject("PtbReservas.Image"), Image)
+        PtbReservas.Location = New Point(198, 99)
+        PtbReservas.Name = "PtbReservas"
+        PtbReservas.Size = New Size(113, 89)
+        PtbReservas.SizeMode = PictureBoxSizeMode.Zoom
+        PtbReservas.TabIndex = 24
+        PtbReservas.TabStop = False
+        ' 
         ' FrmGerente
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(1279, 622)
+        Controls.Add(LblReserva)
+        Controls.Add(PtbReservas)
+        Controls.Add(LblCocina)
+        Controls.Add(PtbCocina)
         Controls.Add(LblZonas)
         Controls.Add(PtbZonas)
         Controls.Add(LblFactura)
@@ -199,8 +228,6 @@ Partial Class FrmGerente
         Controls.Add(LblClientes)
         Controls.Add(LblPersonal)
         Controls.Add(LblProducto)
-        Controls.Add(BtnCocina)
-        Controls.Add(btnReservaciones)
         Controls.Add(PtbClientes)
         Controls.Add(PtbPersonal)
         Controls.Add(PtbProducto)
@@ -213,11 +240,11 @@ Partial Class FrmGerente
         CType(PtbPedido, ComponentModel.ISupportInitialize).EndInit()
         CType(PtbFactura, ComponentModel.ISupportInitialize).EndInit()
         CType(PtbZonas, ComponentModel.ISupportInitialize).EndInit()
+        CType(PtbCocina, ComponentModel.ISupportInitialize).EndInit()
+        CType(PtbReservas, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
-    Friend WithEvents btnReservaciones As Button
-    Friend WithEvents BtnCocina As Button
     Friend WithEvents PtbProducto As PictureBox
     Friend WithEvents LblProducto As Label
     Friend WithEvents PtbPersonal As PictureBox
@@ -230,4 +257,8 @@ Partial Class FrmGerente
     Friend WithEvents PtbFactura As PictureBox
     Friend WithEvents LblZonas As Label
     Friend WithEvents PtbZonas As PictureBox
+    Friend WithEvents LblCocina As Label
+    Friend WithEvents PtbCocina As PictureBox
+    Friend WithEvents LblReserva As Label
+    Friend WithEvents PtbReservas As PictureBox
 End Class
