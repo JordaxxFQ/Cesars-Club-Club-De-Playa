@@ -7,5 +7,6 @@ Namespace DAL
         Public comando As New OleDbCommand
         Public ruta As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\DataBase\BD Proyecto Final.accdb"))
         Public cadena As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & ruta
+        Public rutaimg As String = IO.Path.GetFullPath(IO.Path.Combine(Application.StartupPath, "..\..\..\Recursos\"))
     End Module
 End Namespace

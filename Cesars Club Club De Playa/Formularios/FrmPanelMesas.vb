@@ -40,7 +40,7 @@ Public Class FrmPanelMesas
                     ' 2. Definimos la ruta de la carpeta de recursos
                     ' Asegúrate de que esta carpeta exista en: TuProyecto\bin\Debug\Recursos
                     Dim tipoMesa As String = lector("Tipo").ToString().Trim()
-                    Dim rutaImagenes As String = IO.Path.Combine(Application.StartupPath, "Recursos")
+
                     Dim nombreArchivo As String = ""
 
                     ' 3. Elegimos qué archivo buscar
@@ -52,21 +52,29 @@ Public Class FrmPanelMesas
                     End Select
 
                     ' 4. Cargamos la imagen de forma segura si el archivo existe
-                    Dim rutaCompleta As String = IO.Path.Combine(rutaImagenes, nombreArchivo)
+                    Dim rutaCompleta As String = IO.Path.Combine(rutaimg, nombreArchivo)
+
+
 
                     Try
                         If IO.File.Exists(rutaCompleta) Then
-                            ' Usamos Image.FromStream para no "bloquear" el archivo en el disco
                             Using fs As New IO.FileStream(rutaCompleta, IO.FileMode.Open, IO.FileAccess.Read)
-                                btnMesa.Image = Image.FromStream(fs)
+                                ' 1. Cargamos la imagen original de 512x512
+                                Dim imgOriginal As Image = Image.FromStream(fs)
+
+                                ' 2. Creamos una versión pequeña (64x64 es ideal para que sobre espacio para el texto)
+                                ' Puedes probar con 80x80 si la quieres más grande
+                                Dim imgRedimensionada As New Bitmap(imgOriginal, New Size(64, 64))
+
+                                ' 3. La asignamos al botón
+                                btnMesa.Image = imgRedimensionada
+
+                                ' Liberamos la imagen original de la memoria
+                                imgOriginal.Dispose()
                             End Using
-                        Else
-                            ' Si no existe el archivo, podrías poner un ícono por defecto o dejarlo sin imagen
-                            Debug.WriteLine("No se encontró la imagen en: " & rutaCompleta)
                         End If
                     Catch ex As Exception
-                        ' Si hay un error de formato de imagen, el programa no se detiene
-                        Debug.WriteLine("Error cargando imagen: " & ex.Message)
+                        Debug.WriteLine("Error al redimensionar: " & ex.Message)
                     End Try
 
 
