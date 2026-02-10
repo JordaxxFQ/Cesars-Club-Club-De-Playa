@@ -59,18 +59,20 @@ Partial Class FrmFactura
         ' Label1
         ' 
         Label1.AutoSize = True
+        Label1.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         Label1.Location = New Point(12, 9)
         Label1.Name = "Label1"
-        Label1.Size = New Size(50, 15)
+        Label1.Size = New Size(58, 21)
         Label1.TabIndex = 0
         Label1.Text = "Cedula: "
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
+        Label2.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         Label2.Location = New Point(12, 64)
         Label2.Name = "Label2"
-        Label2.Size = New Size(57, 15)
+        Label2.Size = New Size(67, 21)
         Label2.TabIndex = 1
         Label2.Text = "Nombre: "
         ' 
@@ -91,9 +93,10 @@ Partial Class FrmFactura
         ' 
         ' BtnBuscarCliente
         ' 
-        BtnBuscarCliente.Location = New Point(109, 53)
+        BtnBuscarCliente.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        BtnBuscarCliente.Location = New Point(118, 56)
         BtnBuscarCliente.Name = "BtnBuscarCliente"
-        BtnBuscarCliente.Size = New Size(75, 23)
+        BtnBuscarCliente.Size = New Size(60, 29)
         BtnBuscarCliente.TabIndex = 4
         BtnBuscarCliente.Text = "Buscar"
         BtnBuscarCliente.UseVisualStyleBackColor = True
@@ -158,27 +161,30 @@ Partial Class FrmFactura
         ' Label3
         ' 
         Label3.AutoSize = True
+        Label3.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         Label3.Location = New Point(273, 88)
         Label3.Name = "Label3"
-        Label3.Size = New Size(104, 15)
+        Label3.Size = New Size(113, 21)
         Label3.TabIndex = 15
         Label3.Text = "Consumo Minimo"
         ' 
         ' Label7
         ' 
         Label7.AutoSize = True
+        Label7.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         Label7.Location = New Point(307, 56)
         Label7.Name = "Label7"
-        Label7.Size = New Size(62, 15)
+        Label7.Size = New Size(77, 21)
         Label7.TabIndex = 14
         Label7.Text = "Total Zona"
         ' 
         ' Label8
         ' 
         Label8.AutoSize = True
+        Label8.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         Label8.Location = New Point(301, 24)
         Label8.Name = "Label8"
-        Label8.Size = New Size(69, 15)
+        Label8.Size = New Size(81, 21)
         Label8.TabIndex = 13
         Label8.Text = "Precio Hora"
         ' 
@@ -217,36 +223,40 @@ Partial Class FrmFactura
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Location = New Point(3, 118)
+        Label6.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label6.Location = New Point(0, 115)
         Label6.Name = "Label6"
-        Label6.Size = New Size(77, 15)
+        Label6.Size = New Size(92, 21)
         Label6.TabIndex = 9
         Label6.Text = "Horas Totales"
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
+        Label5.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         Label5.Location = New Point(3, 85)
         Label5.Name = "Label5"
-        Label5.Size = New Size(52, 15)
+        Label5.Size = New Size(63, 21)
         Label5.TabIndex = 8
         Label5.Text = "Hora Fin"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
+        Label4.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         Label4.Location = New Point(3, 53)
         Label4.Name = "Label4"
-        Label4.Size = New Size(65, 15)
+        Label4.Size = New Size(76, 21)
         Label4.TabIndex = 7
         Label4.Text = "Hora Inicio"
         ' 
         ' Mesa
         ' 
         Mesa.AutoSize = True
+        Mesa.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         Mesa.Location = New Point(3, 24)
         Mesa.Name = "Mesa"
-        Mesa.Size = New Size(35, 15)
+        Mesa.Size = New Size(39, 21)
         Mesa.TabIndex = 6
         Mesa.Text = "Mesa"
         ' 
@@ -277,55 +287,61 @@ Partial Class FrmFactura
         ' Label9
         ' 
         Label9.AutoSize = True
-        Label9.Location = New Point(15, 601)
+        Label9.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label9.Location = New Point(3, 600)
         Label9.Name = "Label9"
-        Label9.Size = New Size(75, 15)
+        Label9.Size = New Size(91, 21)
         Label9.TabIndex = 22
         Label9.Text = "Total General"
         ' 
         ' Label10
         ' 
         Label10.AutoSize = True
+        Label10.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         Label10.Location = New Point(17, 572)
         Label10.Name = "Label10"
-        Label10.Size = New Size(62, 15)
+        Label10.Size = New Size(77, 21)
         Label10.TabIndex = 21
         Label10.Text = "Total Zona"
         ' 
         ' Label11
         ' 
         Label11.AutoSize = True
-        Label11.Location = New Point(15, 543)
+        Label11.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label11.Location = New Point(3, 542)
         Label11.Name = "Label11"
-        Label11.Size = New Size(77, 15)
+        Label11.Size = New Size(91, 21)
         Label11.TabIndex = 20
         Label11.Text = "Total Pedidos"
         ' 
         ' LblConsumoMinimo
         ' 
         LblConsumoMinimo.AutoSize = True
+        LblConsumoMinimo.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         LblConsumoMinimo.ForeColor = Color.Red
-        LblConsumoMinimo.Location = New Point(17, 627)
+        LblConsumoMinimo.Location = New Point(12, 638)
         LblConsumoMinimo.Name = "LblConsumoMinimo"
-        LblConsumoMinimo.Size = New Size(26, 15)
+        LblConsumoMinimo.Size = New Size(29, 21)
         LblConsumoMinimo.TabIndex = 23
         LblConsumoMinimo.Text = "CM"
         LblConsumoMinimo.Visible = False
         ' 
         ' BtnGenerarFactura
         ' 
-        BtnGenerarFactura.Location = New Point(12, 662)
+        BtnGenerarFactura.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        BtnGenerarFactura.Location = New Point(1, 662)
         BtnGenerarFactura.Name = "BtnGenerarFactura"
-        BtnGenerarFactura.Size = New Size(100, 23)
+        BtnGenerarFactura.Size = New Size(69, 27)
         BtnGenerarFactura.TabIndex = 24
         BtnGenerarFactura.Text = "Generar Factura"
         BtnGenerarFactura.UseVisualStyleBackColor = True
         ' 
         ' BtnLimpiar
         ' 
-        BtnLimpiar.Location = New Point(486, 662)
+        BtnLimpiar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        BtnLimpiar.Location = New Point(501, 662)
         BtnLimpiar.Name = "BtnLimpiar"
-        BtnLimpiar.Size = New Size(75, 23)
+        BtnLimpiar.Size = New Size(75, 30)
         BtnLimpiar.TabIndex = 25
         BtnLimpiar.Text = "Limpiar"
         BtnLimpiar.UseVisualStyleBackColor = True

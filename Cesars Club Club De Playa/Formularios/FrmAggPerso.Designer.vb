@@ -38,7 +38,6 @@ Partial Class FrmAggPerso
         ' 
         ' txtboxusuario
         ' 
-        txtboxusuario.Cursor = Cursors.IBeam
         txtboxusuario.Location = New Point(12, 76)
         txtboxusuario.Name = "txtboxusuario"
         txtboxusuario.Size = New Size(100, 23)
@@ -46,7 +45,6 @@ Partial Class FrmAggPerso
         ' 
         ' txtboxContra
         ' 
-        txtboxContra.Cursor = Cursors.IBeam
         txtboxContra.Location = New Point(12, 137)
         txtboxContra.Name = "txtboxContra"
         txtboxContra.Size = New Size(100, 23)
@@ -55,40 +53,40 @@ Partial Class FrmAggPerso
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
-        Label1.Location = New Point(12, 52)
+        Label1.Font = New Font("Segoe Print", 11F, FontStyle.Bold)
+        Label1.Location = New Point(12, 47)
         Label1.Name = "Label1"
-        Label1.Size = New Size(54, 21)
+        Label1.Size = New Size(68, 26)
         Label1.TabIndex = 4
         Label1.Text = "Usuario"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
-        Label2.Location = New Point(12, 113)
+        Label2.Font = New Font("Segoe Print", 11F, FontStyle.Bold)
+        Label2.Location = New Point(12, 108)
         Label2.Name = "Label2"
-        Label2.Size = New Size(78, 21)
+        Label2.Size = New Size(97, 26)
         Label2.TabIndex = 5
         Label2.Text = "Contraseña"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
-        Label3.Location = New Point(12, 175)
+        Label3.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
+        Label3.Location = New Point(12, 170)
         Label3.Name = "Label3"
-        Label3.Size = New Size(29, 21)
+        Label3.Size = New Size(32, 24)
         Label3.TabIndex = 6
         Label3.Text = "Rol"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
-        Label4.Location = New Point(12, 228)
+        Label4.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
+        Label4.Location = New Point(12, 225)
         Label4.Name = "Label4"
-        Label4.Size = New Size(46, 21)
+        Label4.Size = New Size(52, 24)
         Label4.TabIndex = 7
         Label4.Text = "Turno"
         ' 
@@ -103,8 +101,6 @@ Partial Class FrmAggPerso
         ' 
         ' btnConfirmar
         ' 
-        btnConfirmar.Cursor = Cursors.Hand
-        btnConfirmar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         btnConfirmar.Location = New Point(12, 294)
         btnConfirmar.Name = "btnConfirmar"
         btnConfirmar.Size = New Size(100, 50)
@@ -114,7 +110,6 @@ Partial Class FrmAggPerso
         ' 
         ' cmbRol
         ' 
-        cmbRol.Cursor = Cursors.Hand
         cmbRol.DropDownStyle = ComboBoxStyle.DropDownList
         cmbRol.FormattingEnabled = True
         cmbRol.Location = New Point(12, 199)
@@ -124,7 +119,6 @@ Partial Class FrmAggPerso
         ' 
         ' cmbTurno
         ' 
-        cmbTurno.Cursor = Cursors.Hand
         cmbTurno.DropDownStyle = ComboBoxStyle.DropDownList
         cmbTurno.FormattingEnabled = True
         cmbTurno.Location = New Point(12, 252)
@@ -134,8 +128,6 @@ Partial Class FrmAggPerso
         ' 
         ' btnEdit
         ' 
-        btnEdit.Cursor = Cursors.Hand
-        btnEdit.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         btnEdit.Location = New Point(12, 350)
         btnEdit.Name = "btnEdit"
         btnEdit.Size = New Size(100, 50)

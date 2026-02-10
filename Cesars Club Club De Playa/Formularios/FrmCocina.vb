@@ -274,6 +274,8 @@ Public Class FrmCocina
         MessageBox.Show("Pedidos actualizados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
+
+
     'Possssiiiiiible timer para actualizar automaticamente cada 30 seg :)
     'Private Sub TimerActualizacion_Tick(sender As Object, e As EventArgs) Handles TimerActualizacion.Tick
     'CargarPedidos()
