@@ -76,12 +76,24 @@ Public Class FrmAggPerso
     End Sub
 
     Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles btnConfirmar.Click
+        'Verificamos que no este vacío el nombre o la contraseña
+        If String.IsNullOrEmpty(txtboxusuario.Text) Then
+            MessageBox.Show("Por favor ingrese el nombre completo", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtboxusuario.Focus()
+            Return
+        End If
+
+        If String.IsNullOrEmpty(txtboxContra.Text) Then
+            MessageBox.Show("Por favor ingrese la contraseña", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtboxContra.Focus()
+            Return
+        End If
 
         ' 1. Validar que los campos no estén vacíos
         If UsuarioExiste(txtboxusuario.Text) = True Then
             MessageBox.Show("El nombre de usuario ya existe. Por favor, elija otro.")
             txtboxusuario.Focus()
-            Exit Sub ' Aquí detenemos el código para que no guarde
+            Exit Sub ' Este exit sub es por si el usuario ya existe, no se guarde
         End If
 
         Dim query As String = "INSERT INTO Personal (Usuario, Contraseña, ID_Rol, Turno) VALUES (?, ?, ?, ?)"
