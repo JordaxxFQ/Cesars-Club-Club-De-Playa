@@ -49,25 +49,30 @@ Partial Class FrmPedidos
         ' 
         ' TxtCedula
         ' 
-        TxtCedula.Location = New Point(12, 35)
+        TxtCedula.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        TxtCedula.Location = New Point(14, 49)
+        TxtCedula.Margin = New Padding(3, 4, 3, 4)
         TxtCedula.Name = "TxtCedula"
-        TxtCedula.Size = New Size(100, 23)
+        TxtCedula.Size = New Size(114, 29)
         TxtCedula.TabIndex = 0
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(12, 17)
+        Label1.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label1.Location = New Point(14, 24)
         Label1.Name = "Label1"
-        Label1.Size = New Size(44, 15)
+        Label1.Size = New Size(49, 21)
         Label1.TabIndex = 1
         Label1.Text = "Cedula"
         ' 
         ' BtnBuscarCliente
         ' 
-        BtnBuscarCliente.Location = New Point(12, 110)
+        BtnBuscarCliente.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        BtnBuscarCliente.Location = New Point(14, 154)
+        BtnBuscarCliente.Margin = New Padding(3, 4, 3, 4)
         BtnBuscarCliente.Name = "BtnBuscarCliente"
-        BtnBuscarCliente.Size = New Size(75, 23)
+        BtnBuscarCliente.Size = New Size(86, 32)
         BtnBuscarCliente.TabIndex = 2
         BtnBuscarCliente.Text = "Buscar"
         BtnBuscarCliente.UseVisualStyleBackColor = True
@@ -75,33 +80,39 @@ Partial Class FrmPedidos
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(12, 63)
+        Label2.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label2.Location = New Point(14, 88)
         Label2.Name = "Label2"
-        Label2.Size = New Size(51, 15)
+        Label2.Size = New Size(58, 21)
         Label2.TabIndex = 4
         Label2.Text = "Nombre"
         ' 
         ' TxtNombreCliente
         ' 
-        TxtNombreCliente.Location = New Point(12, 81)
+        TxtNombreCliente.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        TxtNombreCliente.Location = New Point(14, 113)
+        TxtNombreCliente.Margin = New Padding(3, 4, 3, 4)
         TxtNombreCliente.Name = "TxtNombreCliente"
-        TxtNombreCliente.Size = New Size(100, 23)
+        TxtNombreCliente.Size = New Size(114, 29)
         TxtNombreCliente.TabIndex = 3
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(118, 43)
+        Label3.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label3.Location = New Point(135, 60)
         Label3.Name = "Label3"
-        Label3.Size = New Size(98, 15)
+        Label3.Size = New Size(111, 21)
         Label3.TabIndex = 6
         Label3.Text = "Numero de Mesa"
         ' 
         ' TxtMesa
         ' 
-        TxtMesa.Location = New Point(145, 63)
+        TxtMesa.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        TxtMesa.Location = New Point(166, 88)
+        TxtMesa.Margin = New Padding(3, 4, 3, 4)
         TxtMesa.Name = "TxtMesa"
-        TxtMesa.Size = New Size(44, 23)
+        TxtMesa.Size = New Size(50, 29)
         TxtMesa.TabIndex = 5
         ' 
         ' PnlProductos
@@ -110,18 +121,20 @@ Partial Class FrmPedidos
         PnlProductos.Controls.Add(DgvProductos)
         PnlProductos.Controls.Add(BtnAgregar)
         PnlProductos.Enabled = False
-        PnlProductos.Location = New Point(12, 153)
+        PnlProductos.Location = New Point(14, 214)
+        PnlProductos.Margin = New Padding(3, 4, 3, 4)
         PnlProductos.Name = "PnlProductos"
-        PnlProductos.Size = New Size(310, 432)
+        PnlProductos.Size = New Size(354, 605)
         PnlProductos.TabIndex = 7
         ' 
         ' CboCategoria
         ' 
         CboCategoria.DropDownStyle = ComboBoxStyle.DropDownList
         CboCategoria.FormattingEnabled = True
-        CboCategoria.Location = New Point(3, 4)
+        CboCategoria.Location = New Point(3, 6)
+        CboCategoria.Margin = New Padding(3, 4, 3, 4)
         CboCategoria.Name = "CboCategoria"
-        CboCategoria.Size = New Size(223, 23)
+        CboCategoria.Size = New Size(254, 29)
         CboCategoria.TabIndex = 8
         ' 
         ' DgvProductos
@@ -129,19 +142,22 @@ Partial Class FrmPedidos
         DgvProductos.AllowUserToAddRows = False
         DgvProductos.AllowUserToDeleteRows = False
         DgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DgvProductos.Location = New Point(3, 32)
+        DgvProductos.Location = New Point(3, 45)
+        DgvProductos.Margin = New Padding(3, 4, 3, 4)
         DgvProductos.MultiSelect = False
         DgvProductos.Name = "DgvProductos"
         DgvProductos.ReadOnly = True
         DgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DgvProductos.Size = New Size(304, 397)
+        DgvProductos.Size = New Size(347, 556)
         DgvProductos.TabIndex = 8
         ' 
         ' BtnAgregar
         ' 
-        BtnAgregar.Location = New Point(232, 3)
+        BtnAgregar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        BtnAgregar.Location = New Point(265, 4)
+        BtnAgregar.Margin = New Padding(3, 4, 3, 4)
         BtnAgregar.Name = "BtnAgregar"
-        BtnAgregar.Size = New Size(75, 23)
+        BtnAgregar.Size = New Size(86, 32)
         BtnAgregar.TabIndex = 9
         BtnAgregar.Text = "Agregar"
         BtnAgregar.UseVisualStyleBackColor = True
@@ -151,52 +167,62 @@ Partial Class FrmPedidos
         DgvPedido.AllowUserToAddRows = False
         DgvPedido.AllowUserToDeleteRows = False
         DgvPedido.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DgvPedido.Location = New Point(370, 188)
+        DgvPedido.Location = New Point(423, 263)
+        DgvPedido.Margin = New Padding(3, 4, 3, 4)
         DgvPedido.MultiSelect = False
         DgvPedido.Name = "DgvPedido"
         DgvPedido.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DgvPedido.Size = New Size(304, 300)
+        DgvPedido.Size = New Size(347, 420)
         DgvPedido.TabIndex = 9
         ' 
         ' BtnQuitar
         ' 
-        BtnQuitar.Location = New Point(599, 516)
+        BtnQuitar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        BtnQuitar.Location = New Point(685, 722)
+        BtnQuitar.Margin = New Padding(3, 4, 3, 4)
         BtnQuitar.Name = "BtnQuitar"
-        BtnQuitar.Size = New Size(75, 23)
+        BtnQuitar.Size = New Size(86, 32)
         BtnQuitar.TabIndex = 10
         BtnQuitar.Text = "Quitar"
         BtnQuitar.UseVisualStyleBackColor = True
         ' 
         ' TxtNotas
         ' 
-        TxtNotas.Location = New Point(451, 491)
+        TxtNotas.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        TxtNotas.Location = New Point(515, 687)
+        TxtNotas.Margin = New Padding(3, 4, 3, 4)
         TxtNotas.Name = "TxtNotas"
-        TxtNotas.Size = New Size(223, 23)
+        TxtNotas.Size = New Size(254, 29)
         TxtNotas.TabIndex = 11
         ' 
         ' Label
         ' 
         Label.AutoSize = True
-        Label.Location = New Point(370, 494)
+        Label.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label.Location = New Point(423, 692)
         Label.Name = "Label"
-        Label.Size = New Size(75, 15)
+        Label.Size = New Size(85, 21)
         Label.TabIndex = 12
         Label.Text = "Comentarios"
         ' 
         ' BtnGuardarPedido
         ' 
-        BtnGuardarPedido.Location = New Point(528, 599)
+        BtnGuardarPedido.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        BtnGuardarPedido.Location = New Point(603, 839)
+        BtnGuardarPedido.Margin = New Padding(3, 4, 3, 4)
         BtnGuardarPedido.Name = "BtnGuardarPedido"
-        BtnGuardarPedido.Size = New Size(75, 23)
+        BtnGuardarPedido.Size = New Size(86, 32)
         BtnGuardarPedido.TabIndex = 13
         BtnGuardarPedido.Text = "Guardar"
         BtnGuardarPedido.UseVisualStyleBackColor = True
         ' 
         ' BtnCancelar
         ' 
-        BtnCancelar.Location = New Point(609, 599)
+        BtnCancelar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        BtnCancelar.Location = New Point(696, 839)
+        BtnCancelar.Margin = New Padding(3, 4, 3, 4)
         BtnCancelar.Name = "BtnCancelar"
-        BtnCancelar.Size = New Size(75, 23)
+        BtnCancelar.Size = New Size(86, 32)
         BtnCancelar.TabIndex = 14
         BtnCancelar.Text = "Cancelar"
         BtnCancelar.UseVisualStyleBackColor = True
@@ -204,36 +230,40 @@ Partial Class FrmPedidos
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(370, 524)
+        Label4.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label4.Location = New Point(423, 734)
         Label4.Name = "Label4"
-        Label4.Size = New Size(38, 15)
+        Label4.Size = New Size(50, 21)
         Label4.TabIndex = 15
         Label4.Text = "Total: "
         ' 
         ' LblTotal
         ' 
         LblTotal.AutoSize = True
-        LblTotal.Location = New Point(404, 524)
+        LblTotal.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        LblTotal.Location = New Point(462, 734)
         LblTotal.Name = "LblTotal"
-        LblTotal.Size = New Size(41, 15)
+        LblTotal.Size = New Size(50, 21)
         LblTotal.TabIndex = 16
         LblTotal.Text = "Label5"
         ' 
         ' BtnNuevo
         ' 
-        BtnNuevo.Location = New Point(12, 599)
+        BtnNuevo.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        BtnNuevo.Location = New Point(14, 839)
+        BtnNuevo.Margin = New Padding(3, 4, 3, 4)
         BtnNuevo.Name = "BtnNuevo"
-        BtnNuevo.Size = New Size(75, 23)
+        BtnNuevo.Size = New Size(86, 32)
         BtnNuevo.TabIndex = 17
         BtnNuevo.Text = "Nuevo"
         BtnNuevo.UseVisualStyleBackColor = True
         ' 
         ' FrmPedidos
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 21F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.GradientActiveCaption
-        ClientSize = New Size(686, 624)
+        ClientSize = New Size(784, 874)
         Controls.Add(BtnNuevo)
         Controls.Add(LblTotal)
         Controls.Add(Label4)
@@ -251,7 +281,8 @@ Partial Class FrmPedidos
         Controls.Add(BtnBuscarCliente)
         Controls.Add(Label1)
         Controls.Add(TxtCedula)
-        FormBorderStyle = FormBorderStyle.FixedToolWindow
+        Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Margin = New Padding(3, 4, 3, 4)
         Name = "FrmPedidos"
         StartPosition = FormStartPosition.CenterScreen
         Text = "FrmPedidos"

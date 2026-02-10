@@ -43,116 +43,138 @@ Partial Class FrmProductos
         ' DgvProductos
         ' 
         DgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DgvProductos.Location = New Point(175, 12)
+        DgvProductos.Location = New Point(200, 17)
+        DgvProductos.Margin = New Padding(3, 4, 3, 4)
         DgvProductos.Name = "DgvProductos"
-        DgvProductos.Size = New Size(727, 412)
+        DgvProductos.Size = New Size(831, 577)
         DgvProductos.TabIndex = 0
         ' 
         ' cmbCategoria
         ' 
         cmbCategoria.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbCategoria.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         cmbCategoria.FormattingEnabled = True
-        cmbCategoria.Location = New Point(8, 71)
+        cmbCategoria.Location = New Point(9, 99)
+        cmbCategoria.Margin = New Padding(3, 4, 3, 4)
         cmbCategoria.Name = "cmbCategoria"
-        cmbCategoria.Size = New Size(157, 23)
+        cmbCategoria.Size = New Size(179, 29)
         cmbCategoria.TabIndex = 1
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(8, 53)
+        Label1.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label1.Location = New Point(9, 74)
         Label1.Name = "Label1"
-        Label1.Size = New Size(58, 15)
+        Label1.Size = New Size(67, 21)
         Label1.TabIndex = 2
         Label1.Text = "Categoría"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(8, 7)
+        Label2.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label2.Location = New Point(9, 10)
         Label2.Name = "Label2"
-        Label2.Size = New Size(122, 15)
+        Label2.Size = New Size(140, 21)
         Label2.TabIndex = 3
         Label2.Text = "Nombre del Producto"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(8, 99)
+        Label3.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label3.Location = New Point(9, 139)
         Label3.Name = "Label3"
-        Label3.Size = New Size(69, 15)
+        Label3.Size = New Size(78, 21)
         Label3.TabIndex = 4
         Label3.Text = "Descripción"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(8, 141)
+        Label4.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label4.Location = New Point(9, 197)
         Label4.Name = "Label4"
-        Label4.Size = New Size(40, 15)
+        Label4.Size = New Size(46, 21)
         Label4.TabIndex = 5
         Label4.Text = "Precio"
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Location = New Point(8, 183)
+        Label5.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label5.Location = New Point(9, 256)
         Label5.Name = "Label5"
-        Label5.Size = New Size(36, 15)
+        Label5.Size = New Size(44, 21)
         Label5.TabIndex = 6
         Label5.Text = "Stock"
         ' 
         ' txtNombre
         ' 
-        txtNombre.Location = New Point(8, 25)
+        txtNombre.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        txtNombre.Location = New Point(9, 35)
+        txtNombre.Margin = New Padding(3, 4, 3, 4)
         txtNombre.Name = "txtNombre"
-        txtNombre.Size = New Size(157, 23)
+        txtNombre.Size = New Size(179, 29)
         txtNombre.TabIndex = 7
         ' 
         ' txtDescripcion
         ' 
-        txtDescripcion.Location = New Point(8, 117)
+        txtDescripcion.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        txtDescripcion.Location = New Point(9, 164)
+        txtDescripcion.Margin = New Padding(3, 4, 3, 4)
         txtDescripcion.Name = "txtDescripcion"
-        txtDescripcion.Size = New Size(157, 23)
+        txtDescripcion.Size = New Size(179, 29)
         txtDescripcion.TabIndex = 8
         ' 
         ' txtPrecio
         ' 
-        txtPrecio.Location = New Point(8, 159)
+        txtPrecio.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        txtPrecio.Location = New Point(9, 223)
+        txtPrecio.Margin = New Padding(3, 4, 3, 4)
         txtPrecio.Name = "txtPrecio"
-        txtPrecio.Size = New Size(157, 23)
+        txtPrecio.Size = New Size(179, 29)
         txtPrecio.TabIndex = 9
         ' 
         ' txtStock
         ' 
-        txtStock.Location = New Point(8, 201)
+        txtStock.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        txtStock.Location = New Point(9, 281)
+        txtStock.Margin = New Padding(3, 4, 3, 4)
         txtStock.Name = "txtStock"
-        txtStock.Size = New Size(157, 23)
+        txtStock.Size = New Size(179, 29)
         txtStock.TabIndex = 10
         ' 
         ' btnAgg
         ' 
-        btnAgg.Location = New Point(8, 252)
+        btnAgg.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        btnAgg.Location = New Point(9, 353)
+        btnAgg.Margin = New Padding(3, 4, 3, 4)
         btnAgg.Name = "btnAgg"
-        btnAgg.Size = New Size(161, 23)
+        btnAgg.Size = New Size(184, 32)
         btnAgg.TabIndex = 11
         btnAgg.Text = "Agregar"
         btnAgg.UseVisualStyleBackColor = True
         ' 
         ' btnDelete
         ' 
-        btnDelete.Location = New Point(8, 281)
+        btnDelete.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        btnDelete.Location = New Point(9, 393)
+        btnDelete.Margin = New Padding(3, 4, 3, 4)
         btnDelete.Name = "btnDelete"
-        btnDelete.Size = New Size(69, 23)
+        btnDelete.Size = New Size(79, 32)
         btnDelete.TabIndex = 12
         btnDelete.Text = "Eliminar"
         btnDelete.UseVisualStyleBackColor = True
         ' 
         ' btnEdit
         ' 
-        btnEdit.Location = New Point(96, 281)
+        btnEdit.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        btnEdit.Location = New Point(110, 393)
+        btnEdit.Margin = New Padding(3, 4, 3, 4)
         btnEdit.Name = "btnEdit"
-        btnEdit.Size = New Size(69, 23)
+        btnEdit.Size = New Size(79, 32)
         btnEdit.TabIndex = 13
         btnEdit.Text = "Modificar"
         btnEdit.UseVisualStyleBackColor = True
@@ -160,19 +182,21 @@ Partial Class FrmProductos
         ' chkActivo
         ' 
         chkActivo.AutoSize = True
-        chkActivo.Location = New Point(8, 230)
+        chkActivo.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        chkActivo.Location = New Point(9, 322)
+        chkActivo.Margin = New Padding(3, 4, 3, 4)
         chkActivo.Name = "chkActivo"
-        chkActivo.Size = New Size(108, 19)
+        chkActivo.Size = New Size(127, 25)
         chkActivo.TabIndex = 14
         chkActivo.Text = "Activo en Venta"
         chkActivo.UseVisualStyleBackColor = True
         ' 
         ' FrmProductos
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 21F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.GradientActiveCaption
-        ClientSize = New Size(912, 437)
+        ClientSize = New Size(1042, 612)
         Controls.Add(chkActivo)
         Controls.Add(btnEdit)
         Controls.Add(btnDelete)
@@ -188,7 +212,8 @@ Partial Class FrmProductos
         Controls.Add(Label1)
         Controls.Add(cmbCategoria)
         Controls.Add(DgvProductos)
-        FormBorderStyle = FormBorderStyle.FixedToolWindow
+        Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Margin = New Padding(3, 4, 3, 4)
         Name = "FrmProductos"
         StartPosition = FormStartPosition.CenterScreen
         Text = "FrmProductos"
