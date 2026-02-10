@@ -8,7 +8,8 @@ Public Class FrmAggPerso
         cmbRol.Items.Add("Cocinero")
         cmbRol.Items.Add("Recepcionista")
         cmbRol.Items.Add("Caja")
-        CargarTurno()
+        cmbTurno.Items.Add("Diurno")
+        cmbTurno.Items.Add("Nocturno")
         CargarDatos()
 
     End Sub
@@ -19,31 +20,6 @@ Public Class FrmAggPerso
         txtboxContra.Clear()
         idPersonalSeleccionado = 0
     End Sub
-
-    Private Sub CargarTurno()
-        Dim query As String = "SELECT DISTINCT Turno FROM Personal"
-
-        Using conexion As New OleDbConnection(cadena)
-            Try
-                conexion.Open()
-                Dim comando As New OleDbCommand(query, conexion)
-                Dim lector As OleDbDataReader = comando.ExecuteReader()
-
-                While lector.Read()
-
-                    If Not IsDBNull(lector("Turno")) Then
-                        cmbTurno.Items.Add(lector("Turno").ToString())
-                    End If
-                End While
-
-                lector.Close()
-
-            Catch ex As Exception
-                MessageBox.Show("Error al cargar Turnos: " & ex.Message)
-            End Try
-        End Using
-    End Sub
-
     Private Sub CargarDatos()
         Dim query As String = "SELECT * FROM Personal"
 
