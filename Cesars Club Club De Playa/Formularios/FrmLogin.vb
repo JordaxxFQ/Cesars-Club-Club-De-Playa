@@ -5,6 +5,8 @@ Public Class FrmLogin
 
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
     End Sub
+
+    'Este código se encarga de validar el usuario y contraseña ingresados, y redirigir al formulario correspondiente según el rol del usuario.
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
 
         Using conexion As New OleDbConnection(cadena)
@@ -66,7 +68,7 @@ Public Class FrmLogin
         End Using
     End Sub
 
-
+    'Este código se encarga de mostrar la hora actual en un label cada segundo.
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         lblHora.Text = DateTime.Now.ToString("HH:mm:ss")
     End Sub
@@ -89,6 +91,7 @@ Public Class FrmLogin
         Application.Exit()
     End Sub
 
+    'Este código se encarga de mostrar u ocultar la contraseña ingresada en el textbox, dependiendo del estado de los PictureBox.
     Private Sub PtbSeePsw_Click(sender As Object, e As EventArgs) Handles PtbDntSeePsw.Click
         txtContrasena.PasswordChar = "*"
         PtbDntSeePsw.Visible = False

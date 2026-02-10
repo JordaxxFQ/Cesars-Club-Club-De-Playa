@@ -18,24 +18,20 @@ Public Class FrmDetalleMesa
         ConfigurarDateTimePickers()
     End Sub
 
+    ' Configura los DateTimePickers para que muestren solo la hora y tengan un formato adecuado
     Private Sub ConfigurarDateTimePickers()
-
+        ' Configurar DateTimePicker para Hora de Inicio
         DtpHoraInicio.Format = DateTimePickerFormat.Time
-        DtpHoraInicio.ShowUpDown = True ' Muestra flechitas arriba/abajo
         DtpHoraInicio.Value = DateTime.Today.AddHours(8) ' 8:00 AM por defecto
         DtpHoraInicio.CustomFormat = "hh:mm tt"
 
         ' Configurar DateTimePicker para Hora de Fin
         DtpHoraFin.Format = DateTimePickerFormat.Time
-        DtpHoraFin.ShowUpDown = True
         DtpHoraFin.Value = DateTime.Today.AddHours(12) ' 12:00 PM por defecto
         DtpHoraFin.CustomFormat = "hh:mm tt"
-
-        ' Opcional: Puedes usar CustomFormat para más control
-        ' dtpHoraInicio.CustomFormat = "hh:mm tt"
-        ' dtpHoraFin.CustomFormat = "hh:mm tt"
     End Sub
 
+    ' Elimina un registro de reserva por su ID y actualiza la tabla
     Private Sub EliminarRegistro(id As Integer)
         Dim query As String = "DELETE FROM Reservas WHERE ID_Reserva = ?"
 
@@ -61,6 +57,7 @@ Public Class FrmDetalleMesa
         End Using
     End Sub
 
+    'Carga los datos de las reservas en el DataGridView
     Private Sub CargarDatos()
         Dim query As String = "SELECT * FROM Reservas"
 
@@ -84,6 +81,7 @@ Public Class FrmDetalleMesa
         End Using
     End Sub
 
+    'Carga la capacidad máxima de la mesa desde la base de datos y llena el ComboBox
     Private Sub CargarCapacidadMesa()
         cmbCantPeople.Items.Clear()
         Dim capacidadMaxima As Integer = 0
@@ -124,6 +122,8 @@ Public Class FrmDetalleMesa
         End If
     End Sub
 
+    ' Valida si la mesa está disponible en el rango horario dado, considerando las reservas existentes, el estado de la reserva y la fecha.
+    ' Es decir, si hay una reserva activa para esa mesa en la misma fecha que choca con el nuevo horario, entonces no estará disponible.
     Private Function ValidarDisponibilidad(idMesa As Integer, fecha As DateTime, nuevaHoraInicio As DateTime, nuevaHoraFin As DateTime) As Boolean
         ' Consultamos si existe alguna reserva que choque con el horario
         ' La lógica de solapamiento es:
@@ -139,32 +139,26 @@ Public Class FrmDetalleMesa
             Try
                 conexion.Open()
                 Dim cmd As New OleDbCommand(query, conexion)
-
-                ' --- PARÁMETROS (El orden es CRUCIAL en Access) ---
-
-                ' 1. ID_Mesa
+                'ID_Mesa
                 cmd.Parameters.Add("@idMesa", OleDbType.Integer).Value = idMesa
 
-                ' 2. Fecha (Para el DateValue) - Enviamos la fecha sola
+                ' Fecha (Para el DateValue) - Enviamos la fecha sola
                 cmd.Parameters.Add("@fecha", OleDbType.Date).Value = fecha.Date
 
-                ' 3. Nuevo Fin (Para comparar con Inicio) - Enviamos solo la cadena de hora
+                ' Nuevo Fin (Para comparar con Inicio) - Enviamos solo la cadena de hora
                 ' Usamos ToShortTimeString o ToString("HH:mm") para que Access lo interprete como hora pura
                 cmd.Parameters.Add("@nuevoFin", OleDbType.VarChar).Value = nuevaHoraFin.ToString("HH:mm")
 
-                ' 4. Nuevo Inicio (Para comparar con Fin)
+                ' Nuevo Inicio (Para comparar con Fin)
                 cmd.Parameters.Add("@nuevoInicio", OleDbType.VarChar).Value = nuevaHoraInicio.ToString("HH:mm")
 
-                ' --- Ejecución ---
+                ' Ejecutamos la consulta y obtenemos el número de coincidencias
                 Dim resultado As Object = cmd.ExecuteScalar()
                 Dim coincidencias As Integer = 0
 
                 If resultado IsNot Nothing AndAlso IsNumeric(resultado) Then
                     coincidencias = Convert.ToInt32(resultado)
                 End If
-
-                ' Descomenta esta linea si quieres ver cuantas coincidencias encuentra (para pruebas)
-                ' MessageBox.Show("Coincidencias encontradas: " & coincidencias)
 
                 ' Si es 0, está libre (True). Si es > 0, está ocupada (False)
                 Return (coincidencias = 0)
@@ -176,6 +170,7 @@ Public Class FrmDetalleMesa
         End Using
     End Function
 
+    'Este método busca un cliente por su cédula. Si lo encuentra, muestra su nombre. Si no, ofrece registrarlo.
     Private Sub BtnBuscarCliente_Click(sender As Object, e As EventArgs) Handles btnBuscarCliente.Click
         If txtCedula.Text = "" Then
             MessageBox.Show("Por favor ingrese una cédula.")
@@ -208,7 +203,8 @@ Public Class FrmDetalleMesa
         End Using
     End Sub
 
-    ' ========== GUARDAR CON DATETIMEPICKER ==========
+    'Este buttom se encarga de guardar la reserva en la base de datos, validando que el cliente esté registrado, que se haya seleccionado la cantidad de personas, que las horas sean válidas y que no haya conflictos con otras reservas.
+    'Si todo es correcto, inserta la reserva y actualiza el estado de la mesa a "Ocupada".
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
         If _idClienteEncontrado = 0 Then
@@ -221,7 +217,6 @@ Public Class FrmDetalleMesa
             Exit Sub
         End If
 
-        ' USAR DateTimePicker directamente
         Dim horaInicio As DateTime = DtpHoraInicio.Value
         Dim horaFin As DateTime = DtpHoraFin.Value
 
@@ -234,7 +229,7 @@ Public Class FrmDetalleMesa
         ' Calcular duración
         Dim duracion As TimeSpan = horaFin - horaInicio
 
-        ' Opcional: Validar duración mínima y máxima
+        'Validar duración mínima y máxima
         If duracion.TotalMinutes < 30 Then
             MessageBox.Show("La reserva debe ser de al menos 30 minutos.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
@@ -291,7 +286,8 @@ Public Class FrmDetalleMesa
             End Try
         End Using
     End Sub
-
+    'Este buttom se encarga de liberar la mesa, es decir, actualizar su estado a "Disponible" en la base de datos.
+    'Solo actualiza el estado de la mesa, no elimina la reserva, para mantener el historial.
     Private Sub BtnLiberar_Click(sender As Object, e As EventArgs) Handles btnLiberar.Click
         Dim queryMesa As String = "UPDATE Zonas SET Estado = ? WHERE ID_Mesa = ?"
 
@@ -316,7 +312,8 @@ Public Class FrmDetalleMesa
             End Try
         End Using
     End Sub
-
+    'Este buttom se encarga de reservar la mesa, pero sin validar el horario ni la disponibilidad.
+    'Solo inserta la reserva y actualiza el estado de la mesa a "Reservada".
     Private Sub BtnReservar_Click(sender As Object, e As EventArgs) Handles btnReservar.Click
         If _idClienteEncontrado = 0 Then
             MessageBox.Show("Debe buscar un cliente válido primero.")
@@ -328,11 +325,10 @@ Public Class FrmDetalleMesa
             Exit Sub
         End If
 
-        ' USAR DateTimePicker directamente
         Dim horaInicio As DateTime = DtpHoraInicio.Value
         Dim horaFin As DateTime = DtpHoraFin.Value
 
-        ' Validar que hora fin sea posterior a hora inicio
+        ' Validamos que hora fin sea posterior a hora inicio
         If horaFin <= horaInicio Then
             MessageBox.Show("La hora de finalización debe ser posterior a la de inicio.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
@@ -341,7 +337,7 @@ Public Class FrmDetalleMesa
         ' Calcular duración
         Dim duracion As TimeSpan = horaFin - horaInicio
 
-        ' Opcional: Validar duración mínima y máxima
+        'Validar duración mínima y máxima
         If duracion.TotalMinutes < 30 Then
             MessageBox.Show("La reserva debe ser de al menos 30 minutos.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
@@ -398,7 +394,8 @@ Public Class FrmDetalleMesa
             End Try
         End Using
     End Sub
-
+    'Button para eliminar una reserva seleccionada en el DataGridView.
+    'Pide confirmación antes de eliminar y luego actualiza el estado de la mesa a "Mantenimiento" para indicar que necesita revisión.
     Private Sub BtonDeleteReserv_Click(sender As Object, e As EventArgs) Handles btonDeleteReserv.Click
         If TablaReserva2.SelectedRows.Count > 0 Then
 
@@ -426,7 +423,4 @@ Public Class FrmDetalleMesa
         End If
     End Sub
 
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
-
-    End Sub
 End Class
