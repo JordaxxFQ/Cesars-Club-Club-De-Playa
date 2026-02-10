@@ -20,6 +20,9 @@ Public Class FrmAggPerso
         TxtContraseña.Clear()
         idPersonalSeleccionado = 0
     End Sub
+    'Esta función se encarga de cargar los datos de la tabla "Personal" desde la base de datos y mostrarlos en un DataGridView.
+    'Utiliza una conexión a la base de datos, ejecuta una consulta SQL para obtener los datos, y luego los muestra en el control DgvPersonal.
+    'Además, configura algunas propiedades del DataGridView para mejorar su apariencia y usabilidad.
     Private Sub CargarDatos()
         Dim query As String = "SELECT * FROM Personal"
 

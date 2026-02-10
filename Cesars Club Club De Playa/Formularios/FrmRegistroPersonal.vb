@@ -16,7 +16,6 @@ Public Class FrmRegistroPersonal
                 Dim adaptador As New OleDbDataAdapter(query, conexion)
                 Dim dataset As New DataSet()
 
-
                 adaptador.Fill(dataset, "TablaPersonal")
                 DgvPersonal.DataSource = dataset.Tables("TablaPersonal")
 
@@ -24,7 +23,6 @@ Public Class FrmRegistroPersonal
                 DgvPersonal.ReadOnly = True
                 DgvPersonal.AllowUserToAddRows = False
                 DgvPersonal.AutoGenerateColumns = True
-                ' Ocultamos la columna ID para que se vea más limpio (opcional)
                 If DgvPersonal.Columns.Contains("ID_Personal") Then
                     DgvPersonal.Columns("ID_Personal").Visible = False
                 End If
@@ -50,7 +48,8 @@ Public Class FrmRegistroPersonal
             MessageBox.Show("Por favor, seleccione una fila completa haciendo clic en la barra de la izquierda.")
         End If
     End Sub
-    'Esta función se encarga de eliminar el registro del personal en la base de datos utilizando el ID proporcionado. Después de eliminar, se recarga la tabla para reflejar los cambios.
+    'Esta función se encarga de eliminar el registro del personal en la base de datos utilizando el ID proporcionado.
+    'Después de eliminar, se recarga la tabla para reflejar los cambios.
     Private Sub EliminarPersonal(id As Integer)
         Dim query As String = "DELETE FROM Personal WHERE ID_Personal = ?"
 
@@ -75,7 +74,8 @@ Public Class FrmRegistroPersonal
         End Using
     End Sub
 
-    'Este evento se activa al hacer clic en el botón "Agregar". Abre el formulario FrmAggPerso para agregar un nuevo registro. Después de cerrar ese formulario, se recarga la tabla para mostrar el nuevo registro agregado.
+    'Este evento se activa al hacer clic en el botón "Agregar".
+    'Abre el formulario FrmAggPerso para agregar un nuevo registro. Después de cerrar ese formulario, se recarga la tabla para mostrar el nuevo registro agregado.
     Private Sub BtnAgg_Click(sender As Object, e As EventArgs) Handles btnAgg.Click
 
         Dim ventanaAgregar As New FrmAggPerso()

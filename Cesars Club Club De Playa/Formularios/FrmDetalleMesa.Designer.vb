@@ -191,6 +191,7 @@ Partial Class FrmDetalleMesa
         ' 
         DtpHoraInicio.Location = New Point(151, 80)
         DtpHoraInicio.Name = "DtpHoraInicio"
+        DtpHoraInicio.ShowUpDown = True
         DtpHoraInicio.Size = New Size(200, 23)
         DtpHoraInicio.TabIndex = 19
         ' 
@@ -198,6 +199,7 @@ Partial Class FrmDetalleMesa
         ' 
         DtpHoraFin.Location = New Point(151, 134)
         DtpHoraFin.Name = "DtpHoraFin"
+        DtpHoraFin.ShowUpDown = True
         DtpHoraFin.Size = New Size(200, 23)
         DtpHoraFin.TabIndex = 20
         ' 

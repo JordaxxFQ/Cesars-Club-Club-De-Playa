@@ -18,16 +18,14 @@ Public Class FrmCocina
             ' Configurar estados en ComboBox
             CboEstado.Items.Clear()
             CboEstado.Items.AddRange({"Todos", "Pendiente", "En Preparacion", "Listo"})
-            CboEstado.SelectedIndex = 1 ' Por defecto "Pendiente"
-
-            ' Cargar pedidos pendientes
+            CboEstado.SelectedIndex = 1 ' Para que por defecto salga "Pendiente"
             CargarPedidos()
 
         Catch ex As Exception
             MessageBox.Show("Error al inicializar: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
+    'Este código se encarga de configurar las columnas y propiedades del DataGridView DgvPedidos, que muestra la lista de pedidos en la cocina.
     Private Sub ConfigurarDGVPedidos()
         DgvPedidos.Columns.Clear()
         DgvPedidos.Columns.Add("ID_Pedido", "#Pedido")
@@ -55,7 +53,7 @@ Public Class FrmCocina
         DgvPedidos.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DgvPedidos.MultiSelect = False
     End Sub
-
+    'Este código se encarga de configurar las columnas y propiedades del DataGridView DgvDetalle, que muestra el detalle de los productos en un pedido seleccionado.
     Private Sub ConfigurarDGVDetalle()
         DgvDetalle.Columns.Clear()
         DgvDetalle.Columns.Add("Cantidad", "Cant.")
@@ -78,11 +76,11 @@ Public Class FrmCocina
         DgvDetalle.AllowUserToAddRows = False
         DgvDetalle.SelectionMode = DataGridViewSelectionMode.FullRowSelect
     End Sub
-
+    'Este código se encarga de cargar los pedidos desde la base de datos y mostrarlos en el DataGridView DgvPedidos, filtrando por el estado seleccionado en el ComboBox CboEstado.
     Private Sub CboEstado_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboEstado.SelectedIndexChanged
         CargarPedidos()
     End Sub
-
+    'Este código se encarga de cargar los pedidos desde la base de datos y mostrarlos en el DataGridView DgvPedidos, filtrando por el estado seleccionado en el ComboBox CboEstado.
     Private Sub CargarPedidos()
         If CboEstado.SelectedItem Is Nothing Then
             Return
@@ -150,7 +148,8 @@ Public Class FrmCocina
             End Try
         End Using
     End Sub
-
+    'Este código se encarga de manejar el evento de clic en una celda del DataGridView DgvPedidos.
+    'Cuando se hace clic en una fila, se obtiene el ID del pedido seleccionado, se carga el detalle de ese pedido en el DataGridView DgvDetalle y se muestra la información del pedido en los labels correspondientes.
     Private Sub DgvPedidos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvPedidos.CellClick
         If e.RowIndex >= 0 Then
             Dim fila As DataGridViewRow = DgvPedidos.Rows(e.RowIndex)
@@ -163,6 +162,8 @@ Public Class FrmCocina
         End If
     End Sub
 
+    'Este código se encarga de mostrar la información detallada del pedido seleccionado en los labels y el textbox correspondientes.
+    'Muestra el número de pedido, el nombre del cliente, la mesa, la hora, los comentarios especiales (si los hay) y el total del pedido.
     Private Sub MostrarInfoPedido(fila As DataGridViewRow)
         Try
             LblNumPedido.Text = "PEDIDO #" & fila.Cells("ID_Pedido").Value.ToString()
@@ -185,6 +186,7 @@ Public Class FrmCocina
         End Try
     End Sub
 
+    'Este código se encarga de cargar el detalle de los productos de un pedido específico en el DataGridView DgvDetalle.
     Private Sub CargarDetallePedido(idPedido As Integer)
         DgvDetalle.Rows.Clear()
 
@@ -220,6 +222,7 @@ Public Class FrmCocina
         End Using
     End Sub
 
+    'Este código se encarga de limpiar la información del pedido mostrado en los labels y el textbox, y de resetear el ID del pedido seleccionado a 0.
     Private Sub LimpiarInfoPedido()
         LblNumPedido.Text = "SELECCIONE UN PEDIDO"
         LblCliente.Text = ""
@@ -230,14 +233,17 @@ Public Class FrmCocina
         idPedidoSeleccionado = 0
     End Sub
 
+    'Este código se encarga de cambiar el estado del pedido seleccionado a "En Preparacion" o "Listo" cuando se hacen clic en los botones correspondientes.
     Private Sub BtnIniciarPreparacion_Click(sender As Object, e As EventArgs) Handles BtnIniciarPreparacion.Click
         CambiarEstadoPedido("En Preparacion")
     End Sub
 
+    'Este código se encarga de cambiar el estado del pedido seleccionado a "En Preparacion" o "Listo" cuando se hacen clic en los botones correspondientes.
     Private Sub BtnMarcarListo_Click(sender As Object, e As EventArgs) Handles BtnMarcarListo.Click
         CambiarEstadoPedido("Listo")
     End Sub
 
+    'Este código se encarga de cambiar el estado del pedido seleccionado a "En Preparacion" o "Listo" cuando se hacen clic en los botones correspondientes.
     Private Sub CambiarEstadoPedido(nuevoEstado As String)
         If idPedidoSeleccionado = 0 Then
             MessageBox.Show("Por favor seleccione un pedido", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -269,15 +275,10 @@ Public Class FrmCocina
         End Using
     End Sub
 
+    'Este código se encarga de recargar la lista de pedidos desde la base de datos y mostrar un mensaje de confirmación al usuario.
     Private Sub BtnActualizar_Click(sender As Object, e As EventArgs) Handles BtnActualizar.Click
         CargarPedidos()
         MessageBox.Show("Pedidos actualizados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-
-
-    'Possssiiiiiible timer para actualizar automaticamente cada 30 seg :)
-    'Private Sub TimerActualizacion_Tick(sender As Object, e As EventArgs) Handles TimerActualizacion.Tick
-    'CargarPedidos()
-    ' End Sub
 End Class
