@@ -22,27 +22,58 @@ Partial Class FrmCocinero
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        btnPedido = New Button()
-        btnCocina = New Button()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmCocinero))
+        LblCocina = New Label()
+        PtbCocina = New PictureBox()
+        LblPedidos = New Label()
+        PtbPedido = New PictureBox()
+        CType(PtbCocina, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PtbPedido, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' btnPedido
+        ' LblCocina
         ' 
-        btnPedido.Location = New Point(12, 30)
-        btnPedido.Name = "btnPedido"
-        btnPedido.Size = New Size(112, 87)
-        btnPedido.TabIndex = 0
-        btnPedido.Text = "Pedidos"
-        btnPedido.UseVisualStyleBackColor = True
+        LblCocina.AutoSize = True
+        LblCocina.Cursor = Cursors.Hand
+        LblCocina.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
+        LblCocina.Location = New Point(118, 28)
+        LblCocina.Name = "LblCocina"
+        LblCocina.Size = New Size(56, 24)
+        LblCocina.TabIndex = 25
+        LblCocina.Text = "Cocina"
         ' 
-        ' btnCocina
+        ' PtbCocina
         ' 
-        btnCocina.Location = New Point(12, 123)
-        btnCocina.Name = "btnCocina"
-        btnCocina.Size = New Size(112, 87)
-        btnCocina.TabIndex = 1
-        btnCocina.Text = "Cocina"
-        btnCocina.UseVisualStyleBackColor = True
+        PtbCocina.Cursor = Cursors.Hand
+        PtbCocina.Image = CType(resources.GetObject("PtbCocina.Image"), Image)
+        PtbCocina.Location = New Point(12, 12)
+        PtbCocina.Name = "PtbCocina"
+        PtbCocina.Size = New Size(113, 89)
+        PtbCocina.SizeMode = PictureBoxSizeMode.Zoom
+        PtbCocina.TabIndex = 24
+        PtbCocina.TabStop = False
+        ' 
+        ' LblPedidos
+        ' 
+        LblPedidos.AutoSize = True
+        LblPedidos.Cursor = Cursors.Hand
+        LblPedidos.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
+        LblPedidos.Location = New Point(118, 136)
+        LblPedidos.Name = "LblPedidos"
+        LblPedidos.Size = New Size(63, 24)
+        LblPedidos.TabIndex = 27
+        LblPedidos.Text = "Pedidos"
+        ' 
+        ' PtbPedido
+        ' 
+        PtbPedido.Cursor = Cursors.Hand
+        PtbPedido.Image = CType(resources.GetObject("PtbPedido.Image"), Image)
+        PtbPedido.Location = New Point(12, 120)
+        PtbPedido.Name = "PtbPedido"
+        PtbPedido.Size = New Size(113, 89)
+        PtbPedido.SizeMode = PictureBoxSizeMode.Zoom
+        PtbPedido.TabIndex = 26
+        PtbPedido.TabStop = False
         ' 
         ' FrmCocinero
         ' 
@@ -50,13 +81,19 @@ Partial Class FrmCocinero
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(800, 450)
-        Controls.Add(btnCocina)
-        Controls.Add(btnPedido)
+        Controls.Add(LblPedidos)
+        Controls.Add(PtbPedido)
+        Controls.Add(LblCocina)
+        Controls.Add(PtbCocina)
         Name = "FrmCocinero"
         Text = "FrmCocinero"
+        CType(PtbCocina, ComponentModel.ISupportInitialize).EndInit()
+        CType(PtbPedido, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
-
-    Friend WithEvents btnPedido As Button
-    Friend WithEvents btnCocina As Button
+    Friend WithEvents LblCocina As Label
+    Friend WithEvents PtbCocina As PictureBox
+    Friend WithEvents LblPedidos As Label
+    Friend WithEvents PtbPedido As PictureBox
 End Class

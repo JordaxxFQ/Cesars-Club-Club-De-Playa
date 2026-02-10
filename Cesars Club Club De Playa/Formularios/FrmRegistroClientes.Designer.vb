@@ -38,27 +38,30 @@ Partial Class FrmRegistroClientes
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(12, 39)
+        Label1.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label1.Location = New Point(12, 33)
         Label1.Name = "Label1"
-        Label1.Size = New Size(107, 15)
+        Label1.Size = New Size(122, 21)
         Label1.TabIndex = 0
         Label1.Text = "Nombre y Apellido"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(12, 83)
+        Label2.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label2.Location = New Point(12, 80)
         Label2.Name = "Label2"
-        Label2.Size = New Size(44, 15)
+        Label2.Size = New Size(49, 21)
         Label2.TabIndex = 1
-        Label2.Text = "Cedula"
+        Label2.Text = "Cédula"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(12, 143)
+        Label3.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label3.Location = New Point(12, 137)
         Label3.Name = "Label3"
-        Label3.Size = New Size(100, 15)
+        Label3.Size = New Size(116, 21)
         Label3.TabIndex = 2
         Label3.Text = "Fecha de Registro"
         ' 
@@ -71,25 +74,29 @@ Partial Class FrmRegistroClientes
         ' 
         ' TxtCedula
         ' 
-        TxtCedula.Location = New Point(12, 101)
+        TxtCedula.Location = New Point(12, 104)
         TxtCedula.Name = "TxtCedula"
         TxtCedula.Size = New Size(100, 23)
         TxtCedula.TabIndex = 4
         ' 
         ' BtnGuardar
         ' 
-        BtnGuardar.Location = New Point(321, 161)
+        BtnGuardar.AutoSize = True
+        BtnGuardar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        BtnGuardar.Location = New Point(230, 161)
         BtnGuardar.Name = "BtnGuardar"
-        BtnGuardar.Size = New Size(75, 23)
+        BtnGuardar.Size = New Size(70, 31)
         BtnGuardar.TabIndex = 6
         BtnGuardar.Text = "Guardar"
         BtnGuardar.UseVisualStyleBackColor = True
         ' 
         ' BtnLimpiar
         ' 
-        BtnLimpiar.Location = New Point(240, 161)
+        BtnLimpiar.AutoSize = True
+        BtnLimpiar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        BtnLimpiar.Location = New Point(306, 127)
         BtnLimpiar.Name = "BtnLimpiar"
-        BtnLimpiar.Size = New Size(75, 23)
+        BtnLimpiar.Size = New Size(70, 31)
         BtnLimpiar.TabIndex = 7
         BtnLimpiar.Text = "Limpiar"
         BtnLimpiar.UseVisualStyleBackColor = True
@@ -111,9 +118,11 @@ Partial Class FrmRegistroClientes
         ' 
         ' BtnEliminar
         ' 
-        BtnEliminar.Location = New Point(321, 132)
+        BtnEliminar.AutoSize = True
+        BtnEliminar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        BtnEliminar.Location = New Point(306, 161)
         BtnEliminar.Name = "BtnEliminar"
-        BtnEliminar.Size = New Size(75, 23)
+        BtnEliminar.Size = New Size(70, 31)
         BtnEliminar.TabIndex = 10
         BtnEliminar.Text = "Eliminar"
         BtnEliminar.UseVisualStyleBackColor = True
