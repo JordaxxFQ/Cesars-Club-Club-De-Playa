@@ -78,6 +78,7 @@ Partial Class FrmFactura
         ' 
         ' TxtCedula
         ' 
+        TxtCedula.Cursor = Cursors.IBeam
         TxtCedula.Location = New Point(12, 27)
         TxtCedula.Name = "TxtCedula"
         TxtCedula.Size = New Size(100, 23)
@@ -93,6 +94,7 @@ Partial Class FrmFactura
         ' 
         ' BtnBuscarCliente
         ' 
+        BtnBuscarCliente.Cursor = Cursors.Hand
         BtnBuscarCliente.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         BtnBuscarCliente.Location = New Point(118, 56)
         BtnBuscarCliente.Name = "BtnBuscarCliente"
@@ -367,6 +369,7 @@ Partial Class FrmFactura
         Controls.Add(TxtCedula)
         Controls.Add(Label2)
         Controls.Add(Label1)
+        Cursor = Cursors.Default
         FormBorderStyle = FormBorderStyle.FixedToolWindow
         Name = "FrmFactura"
         StartPosition = FormStartPosition.CenterScreen
