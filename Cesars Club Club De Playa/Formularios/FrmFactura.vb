@@ -429,4 +429,5 @@ Public Class FrmFactura
         TxtTotalZona.Text = "S/ 0.00"
         TxtTotalGeneral.Text = "S/ 0.00"
     End Sub
+
 End Class

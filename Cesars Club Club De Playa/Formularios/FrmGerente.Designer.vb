@@ -51,6 +51,7 @@ Partial Class FrmGerente
         ' 
         ' PtbProducto
         ' 
+        PtbProducto.Cursor = Cursors.Hand
         PtbProducto.Image = CType(resources.GetObject("PtbProducto.Image"), Image)
         PtbProducto.Location = New Point(12, 194)
         PtbProducto.Name = "PtbProducto"
@@ -62,6 +63,7 @@ Partial Class FrmGerente
         ' LblProducto
         ' 
         LblProducto.AutoSize = True
+        LblProducto.Cursor = Cursors.Hand
         LblProducto.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
         LblProducto.Location = New Point(118, 210)
         LblProducto.Name = "LblProducto"
@@ -71,6 +73,7 @@ Partial Class FrmGerente
         ' 
         ' PtbPersonal
         ' 
+        PtbPersonal.Cursor = Cursors.Hand
         PtbPersonal.Image = CType(resources.GetObject("PtbPersonal.Image"), Image)
         PtbPersonal.Location = New Point(10, 4)
         PtbPersonal.Name = "PtbPersonal"
@@ -82,6 +85,7 @@ Partial Class FrmGerente
         ' LblPersonal
         ' 
         LblPersonal.AutoSize = True
+        LblPersonal.Cursor = Cursors.Hand
         LblPersonal.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
         LblPersonal.Location = New Point(123, 47)
         LblPersonal.Name = "LblPersonal"
@@ -91,6 +95,7 @@ Partial Class FrmGerente
         ' 
         ' PtbClientes
         ' 
+        PtbClientes.Cursor = Cursors.Hand
         PtbClientes.Image = CType(resources.GetObject("PtbClientes.Image"), Image)
         PtbClientes.Location = New Point(10, 99)
         PtbClientes.Name = "PtbClientes"
@@ -102,6 +107,7 @@ Partial Class FrmGerente
         ' LblClientes
         ' 
         LblClientes.AutoSize = True
+        LblClientes.Cursor = Cursors.Hand
         LblClientes.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
         LblClientes.Location = New Point(118, 136)
         LblClientes.Name = "LblClientes"
@@ -111,6 +117,7 @@ Partial Class FrmGerente
         ' 
         ' PtbPedido
         ' 
+        PtbPedido.Cursor = Cursors.Hand
         PtbPedido.Image = CType(resources.GetObject("PtbPedido.Image"), Image)
         PtbPedido.Location = New Point(12, 289)
         PtbPedido.Name = "PtbPedido"
@@ -122,6 +129,7 @@ Partial Class FrmGerente
         ' LblPedidos
         ' 
         LblPedidos.AutoSize = True
+        LblPedidos.Cursor = Cursors.Hand
         LblPedidos.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
         LblPedidos.Location = New Point(118, 305)
         LblPedidos.Name = "LblPedidos"
@@ -132,6 +140,7 @@ Partial Class FrmGerente
         ' LblFactura
         ' 
         LblFactura.AutoSize = True
+        LblFactura.Cursor = Cursors.Hand
         LblFactura.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
         LblFactura.Location = New Point(118, 400)
         LblFactura.Name = "LblFactura"
@@ -141,6 +150,7 @@ Partial Class FrmGerente
         ' 
         ' PtbFactura
         ' 
+        PtbFactura.Cursor = Cursors.Hand
         PtbFactura.Image = CType(resources.GetObject("PtbFactura.Image"), Image)
         PtbFactura.Location = New Point(12, 384)
         PtbFactura.Name = "PtbFactura"
@@ -152,6 +162,7 @@ Partial Class FrmGerente
         ' LblZonas
         ' 
         LblZonas.AutoSize = True
+        LblZonas.Cursor = Cursors.Hand
         LblZonas.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
         LblZonas.Location = New Point(118, 495)
         LblZonas.Name = "LblZonas"
@@ -161,6 +172,7 @@ Partial Class FrmGerente
         ' 
         ' PtbZonas
         ' 
+        PtbZonas.Cursor = Cursors.Hand
         PtbZonas.Image = CType(resources.GetObject("PtbZonas.Image"), Image)
         PtbZonas.Location = New Point(12, 479)
         PtbZonas.Name = "PtbZonas"
@@ -172,6 +184,7 @@ Partial Class FrmGerente
         ' LblCocina
         ' 
         LblCocina.AutoSize = True
+        LblCocina.Cursor = Cursors.Hand
         LblCocina.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
         LblCocina.Location = New Point(304, 20)
         LblCocina.Name = "LblCocina"
@@ -181,6 +194,7 @@ Partial Class FrmGerente
         ' 
         ' PtbCocina
         ' 
+        PtbCocina.Cursor = Cursors.Hand
         PtbCocina.Image = CType(resources.GetObject("PtbCocina.Image"), Image)
         PtbCocina.Location = New Point(198, 4)
         PtbCocina.Name = "PtbCocina"
@@ -192,6 +206,7 @@ Partial Class FrmGerente
         ' LblReserva
         ' 
         LblReserva.AutoSize = True
+        LblReserva.Cursor = Cursors.Hand
         LblReserva.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
         LblReserva.Location = New Point(304, 115)
         LblReserva.Name = "LblReserva"
@@ -201,6 +216,7 @@ Partial Class FrmGerente
         ' 
         ' PtbReservas
         ' 
+        PtbReservas.Cursor = Cursors.Hand
         PtbReservas.Image = CType(resources.GetObject("PtbReservas.Image"), Image)
         PtbReservas.Location = New Point(198, 99)
         PtbReservas.Name = "PtbReservas"
