@@ -51,6 +51,7 @@ Partial Class FrmProductos
         ' 
         ' cmbCategoria
         ' 
+        cmbCategoria.Cursor = Cursors.Hand
         cmbCategoria.DropDownStyle = ComboBoxStyle.DropDownList
         cmbCategoria.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         cmbCategoria.FormattingEnabled = True
@@ -112,6 +113,7 @@ Partial Class FrmProductos
         ' 
         ' txtNombre
         ' 
+        txtNombre.Cursor = Cursors.IBeam
         txtNombre.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         txtNombre.Location = New Point(9, 35)
         txtNombre.Margin = New Padding(3, 4, 3, 4)
@@ -121,6 +123,7 @@ Partial Class FrmProductos
         ' 
         ' txtDescripcion
         ' 
+        txtDescripcion.Cursor = Cursors.IBeam
         txtDescripcion.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         txtDescripcion.Location = New Point(9, 164)
         txtDescripcion.Margin = New Padding(3, 4, 3, 4)
@@ -130,6 +133,7 @@ Partial Class FrmProductos
         ' 
         ' txtPrecio
         ' 
+        txtPrecio.Cursor = Cursors.IBeam
         txtPrecio.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         txtPrecio.Location = New Point(9, 223)
         txtPrecio.Margin = New Padding(3, 4, 3, 4)
@@ -139,6 +143,7 @@ Partial Class FrmProductos
         ' 
         ' txtStock
         ' 
+        txtStock.Cursor = Cursors.IBeam
         txtStock.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         txtStock.Location = New Point(9, 281)
         txtStock.Margin = New Padding(3, 4, 3, 4)
@@ -148,6 +153,7 @@ Partial Class FrmProductos
         ' 
         ' btnAgg
         ' 
+        btnAgg.Cursor = Cursors.Hand
         btnAgg.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         btnAgg.Location = New Point(9, 353)
         btnAgg.Margin = New Padding(3, 4, 3, 4)
@@ -159,6 +165,7 @@ Partial Class FrmProductos
         ' 
         ' btnDelete
         ' 
+        btnDelete.Cursor = Cursors.Hand
         btnDelete.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         btnDelete.Location = New Point(9, 393)
         btnDelete.Margin = New Padding(3, 4, 3, 4)
@@ -170,6 +177,7 @@ Partial Class FrmProductos
         ' 
         ' btnEdit
         ' 
+        btnEdit.Cursor = Cursors.Hand
         btnEdit.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         btnEdit.Location = New Point(110, 393)
         btnEdit.Margin = New Padding(3, 4, 3, 4)
@@ -182,6 +190,7 @@ Partial Class FrmProductos
         ' chkActivo
         ' 
         chkActivo.AutoSize = True
+        chkActivo.Cursor = Cursors.Hand
         chkActivo.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         chkActivo.Location = New Point(9, 322)
         chkActivo.Margin = New Padding(3, 4, 3, 4)

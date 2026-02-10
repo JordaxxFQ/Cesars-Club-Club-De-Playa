@@ -36,6 +36,7 @@ Partial Class FrmRegistroPersonal
         ' 
         ' btnAgg
         ' 
+        btnAgg.Cursor = Cursors.Hand
         btnAgg.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         btnAgg.Location = New Point(345, 125)
         btnAgg.Margin = New Padding(3, 2, 3, 2)
@@ -47,6 +48,7 @@ Partial Class FrmRegistroPersonal
         ' 
         ' btnDelete
         ' 
+        btnDelete.Cursor = Cursors.Hand
         btnDelete.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         btnDelete.Location = New Point(345, 69)
         btnDelete.Margin = New Padding(3, 2, 3, 2)

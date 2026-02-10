@@ -67,6 +67,7 @@ Partial Class FrmRegistroClientes
         ' 
         ' TxtNombre
         ' 
+        TxtNombre.Cursor = Cursors.IBeam
         TxtNombre.Location = New Point(12, 57)
         TxtNombre.Name = "TxtNombre"
         TxtNombre.Size = New Size(100, 23)
@@ -74,6 +75,7 @@ Partial Class FrmRegistroClientes
         ' 
         ' TxtCedula
         ' 
+        TxtCedula.Cursor = Cursors.IBeam
         TxtCedula.Location = New Point(12, 104)
         TxtCedula.Name = "TxtCedula"
         TxtCedula.Size = New Size(100, 23)
@@ -82,6 +84,7 @@ Partial Class FrmRegistroClientes
         ' BtnGuardar
         ' 
         BtnGuardar.AutoSize = True
+        BtnGuardar.Cursor = Cursors.Hand
         BtnGuardar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         BtnGuardar.Location = New Point(230, 161)
         BtnGuardar.Name = "BtnGuardar"
@@ -93,6 +96,7 @@ Partial Class FrmRegistroClientes
         ' BtnLimpiar
         ' 
         BtnLimpiar.AutoSize = True
+        BtnLimpiar.Cursor = Cursors.Hand
         BtnLimpiar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         BtnLimpiar.Location = New Point(306, 127)
         BtnLimpiar.Name = "BtnLimpiar"
@@ -119,6 +123,7 @@ Partial Class FrmRegistroClientes
         ' BtnEliminar
         ' 
         BtnEliminar.AutoSize = True
+        BtnEliminar.Cursor = Cursors.Hand
         BtnEliminar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         BtnEliminar.Location = New Point(306, 161)
         BtnEliminar.Name = "BtnEliminar"

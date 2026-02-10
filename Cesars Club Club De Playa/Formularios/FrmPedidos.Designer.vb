@@ -49,6 +49,7 @@ Partial Class FrmPedidos
         ' 
         ' TxtCedula
         ' 
+        TxtCedula.Cursor = Cursors.IBeam
         TxtCedula.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         TxtCedula.Location = New Point(14, 49)
         TxtCedula.Margin = New Padding(3, 4, 3, 4)
