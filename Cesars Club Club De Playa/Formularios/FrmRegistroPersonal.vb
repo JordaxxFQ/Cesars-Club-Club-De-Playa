@@ -34,6 +34,7 @@ Public Class FrmRegistroPersonal
         End Using
     End Sub
 
+    'Cuando se hace clic en el botón "Eliminar". Verifica si hay una fila seleccionada, muestra un mensaje de confirmación y llama a la función para eliminar el registro si el usuario confirma.
     Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         If DgvPersonal.SelectedRows.Count > 0 Then
             Dim idSeleccionado As Integer = Convert.ToInt32(DgvPersonal.SelectedRows(0).Cells("ID_Personal").Value)
@@ -49,6 +50,7 @@ Public Class FrmRegistroPersonal
             MessageBox.Show("Por favor, seleccione una fila completa haciendo clic en la barra de la izquierda.")
         End If
     End Sub
+    'Esta función se encarga de eliminar el registro del personal en la base de datos utilizando el ID proporcionado. Después de eliminar, se recarga la tabla para reflejar los cambios.
     Private Sub EliminarPersonal(id As Integer)
         Dim query As String = "DELETE FROM Personal WHERE ID_Personal = ?"
 
@@ -73,6 +75,7 @@ Public Class FrmRegistroPersonal
         End Using
     End Sub
 
+    'Este evento se activa al hacer clic en el botón "Agregar". Abre el formulario FrmAggPerso para agregar un nuevo registro. Después de cerrar ese formulario, se recarga la tabla para mostrar el nuevo registro agregado.
     Private Sub BtnAgg_Click(sender As Object, e As EventArgs) Handles btnAgg.Click
 
         Dim ventanaAgregar As New FrmAggPerso()

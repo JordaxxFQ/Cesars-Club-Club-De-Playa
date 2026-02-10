@@ -48,6 +48,7 @@ Public Class FrmAggPerso
         End Using
     End Sub
 
+    ' Esta funcion verifica si el nombre de usuario ya existe en la base de datos
     Private Function UsuarioExiste(usuario As String) As Boolean
         Dim query As String = "SELECT COUNT(*) FROM Personal WHERE Usuario = ?"
         Using conexion As New OleDbConnection(cadena)
