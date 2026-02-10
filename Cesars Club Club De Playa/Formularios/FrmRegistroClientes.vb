@@ -35,6 +35,7 @@ Public Class FrmRegistroClientes
         End Using
     End Sub
 
+    'Función para validar si la cédula ya existe en la base de datos
     Private Function CedulaExiste(cedula As String) As Boolean
         Dim query As String = "SELECT COUNT(*) FROM Clientes WHERE Cedula = ?"
 
