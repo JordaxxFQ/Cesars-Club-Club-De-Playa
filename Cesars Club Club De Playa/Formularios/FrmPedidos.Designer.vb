@@ -251,6 +251,7 @@ Partial Class FrmPedidos
         Controls.Add(BtnBuscarCliente)
         Controls.Add(Label1)
         Controls.Add(TxtCedula)
+        FormBorderStyle = FormBorderStyle.FixedToolWindow
         Name = "FrmPedidos"
         StartPosition = FormStartPosition.CenterScreen
         Text = "FrmPedidos"

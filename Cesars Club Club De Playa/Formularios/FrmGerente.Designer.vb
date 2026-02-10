@@ -247,6 +247,7 @@ Partial Class FrmGerente
         Controls.Add(PtbClientes)
         Controls.Add(PtbPersonal)
         Controls.Add(PtbProducto)
+        FormBorderStyle = FormBorderStyle.FixedToolWindow
         Name = "FrmGerente"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Menú"

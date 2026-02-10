@@ -38,14 +38,14 @@ Partial Class FrmAggPerso
         ' 
         ' txtboxusuario
         ' 
-        txtboxusuario.Location = New Point(12, 76)
+        txtboxusuario.Location = New Point(12, 104)
         txtboxusuario.Name = "txtboxusuario"
         txtboxusuario.Size = New Size(100, 23)
         txtboxusuario.TabIndex = 0
         ' 
         ' txtboxContra
         ' 
-        txtboxContra.Location = New Point(12, 137)
+        txtboxContra.Location = New Point(12, 154)
         txtboxContra.Name = "txtboxContra"
         txtboxContra.Size = New Size(100, 23)
         txtboxContra.TabIndex = 1
@@ -53,40 +53,40 @@ Partial Class FrmAggPerso
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Segoe Print", 11F, FontStyle.Bold)
-        Label1.Location = New Point(12, 47)
+        Label1.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label1.Location = New Point(12, 80)
         Label1.Name = "Label1"
-        Label1.Size = New Size(68, 26)
+        Label1.Size = New Size(54, 21)
         Label1.TabIndex = 4
         Label1.Text = "Usuario"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Segoe Print", 11F, FontStyle.Bold)
-        Label2.Location = New Point(12, 108)
+        Label2.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label2.Location = New Point(12, 130)
         Label2.Name = "Label2"
-        Label2.Size = New Size(97, 26)
+        Label2.Size = New Size(78, 21)
         Label2.TabIndex = 5
         Label2.Text = "Contraseña"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
-        Label3.Location = New Point(12, 170)
+        Label3.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label3.Location = New Point(12, 180)
         Label3.Name = "Label3"
-        Label3.Size = New Size(32, 24)
+        Label3.Size = New Size(29, 21)
         Label3.TabIndex = 6
         Label3.Text = "Rol"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
-        Label4.Location = New Point(12, 225)
+        Label4.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label4.Location = New Point(12, 230)
         Label4.Name = "Label4"
-        Label4.Size = New Size(52, 24)
+        Label4.Size = New Size(46, 21)
         Label4.TabIndex = 7
         Label4.Text = "Turno"
         ' 
@@ -101,7 +101,8 @@ Partial Class FrmAggPerso
         ' 
         ' btnConfirmar
         ' 
-        btnConfirmar.Location = New Point(12, 294)
+        btnConfirmar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        btnConfirmar.Location = New Point(12, 317)
         btnConfirmar.Name = "btnConfirmar"
         btnConfirmar.Size = New Size(100, 50)
         btnConfirmar.TabIndex = 9
@@ -112,7 +113,7 @@ Partial Class FrmAggPerso
         ' 
         cmbRol.DropDownStyle = ComboBoxStyle.DropDownList
         cmbRol.FormattingEnabled = True
-        cmbRol.Location = New Point(12, 199)
+        cmbRol.Location = New Point(12, 204)
         cmbRol.Name = "cmbRol"
         cmbRol.Size = New Size(100, 23)
         cmbRol.TabIndex = 10
@@ -121,14 +122,15 @@ Partial Class FrmAggPerso
         ' 
         cmbTurno.DropDownStyle = ComboBoxStyle.DropDownList
         cmbTurno.FormattingEnabled = True
-        cmbTurno.Location = New Point(12, 252)
+        cmbTurno.Location = New Point(12, 254)
         cmbTurno.Name = "cmbTurno"
         cmbTurno.Size = New Size(100, 23)
         cmbTurno.TabIndex = 11
         ' 
         ' btnEdit
         ' 
-        btnEdit.Location = New Point(12, 350)
+        btnEdit.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        btnEdit.Location = New Point(12, 373)
         btnEdit.Name = "btnEdit"
         btnEdit.Size = New Size(100, 50)
         btnEdit.TabIndex = 12
@@ -152,6 +154,7 @@ Partial Class FrmAggPerso
         Controls.Add(Label1)
         Controls.Add(txtboxContra)
         Controls.Add(txtboxusuario)
+        FormBorderStyle = FormBorderStyle.FixedToolWindow
         Name = "FrmAggPerso"
         StartPosition = FormStartPosition.CenterScreen
         Text = "FrmAggPerso"

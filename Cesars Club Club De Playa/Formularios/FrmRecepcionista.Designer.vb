@@ -85,6 +85,7 @@ Partial Class FrmRecepcionista
         Controls.Add(PtbPedido)
         Controls.Add(LblZonas)
         Controls.Add(PtbZonas)
+        FormBorderStyle = FormBorderStyle.FixedToolWindow
         Name = "FrmRecepcionista"
         Text = "FrmRecepcionista"
         CType(PtbZonas, ComponentModel.ISupportInitialize).EndInit()

@@ -367,6 +367,7 @@ Partial Class FrmFactura
         Controls.Add(TxtCedula)
         Controls.Add(Label2)
         Controls.Add(Label1)
+        FormBorderStyle = FormBorderStyle.FixedToolWindow
         Name = "FrmFactura"
         StartPosition = FormStartPosition.CenterScreen
         Text = "FrmFactura"

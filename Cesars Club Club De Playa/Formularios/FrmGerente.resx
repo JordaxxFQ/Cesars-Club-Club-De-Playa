@@ -2876,7 +2876,7 @@
   <data name="PtbCocina.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        ygAAC8oBZVGvqQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACytSURBVHhe7d17
+        yQAAC8kByOiOxAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACytSURBVHhe7d17
         tFxlmedxcr9BIImQBE64NXeC3K/NHWZEQCCoIIMYUQw0IzagSGNQVGSAoAa7MZDVjApIR4ggkl6CjSi2
         MsB0FOxhCIIiF83YM7Y9ywujqOx53uPC3jv18Kaeqvepevfe399an38Oya5in9TZ33Or2qDhGydOFSvF
         c+I3okDFr8QT4tPiAMH8t63Q3hcWPxd12SKh/T9Y3C4YY6yr7SseF9oHE7y6L4nXCOY3AsCOAGCMdbXj
@@ -3073,7 +3073,7 @@
   <data name="PtbReservas.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAH/CAYAAAAhVGWrAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        0wAADdMBvdUcagAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAGpcSURBVHhe7d0H
+        0gAADdIBb5L+jgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAGpcSURBVHhe7d0H
         nBXluT/wf9Sbprkx5qaq2JLrNfYaTTRqbFFjkqtJTMzVDGAN9hJ7oQmKUhQBaUNTRBSQ3kF6rwtsYRfY
         ZXtjG9uA9/+8Z3fx7Oyzs3OmvTNzfvO53xt4ZWfenfI+v3POe2b+nxACAAAAkgzbCAAAANHGNgIAAEC0
         sY0AAAAQbWwjAAAARBvbCAAAANHGNgIAAEC0sY0AAAAQbWwjAAAARBvbCAAAANHGNgKAQrp2POlELiRX

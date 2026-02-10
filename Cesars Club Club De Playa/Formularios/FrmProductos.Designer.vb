@@ -188,6 +188,7 @@ Partial Class FrmProductos
         Controls.Add(Label1)
         Controls.Add(cmbCategoria)
         Controls.Add(DgvProductos)
+        FormBorderStyle = FormBorderStyle.FixedToolWindow
         Name = "FrmProductos"
         StartPosition = FormStartPosition.CenterScreen
         Text = "FrmProductos"

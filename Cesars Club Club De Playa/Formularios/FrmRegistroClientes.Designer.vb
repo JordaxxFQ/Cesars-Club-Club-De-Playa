@@ -143,6 +143,7 @@ Partial Class FrmRegistroClientes
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(Label1)
+        FormBorderStyle = FormBorderStyle.FixedToolWindow
         Name = "FrmRegistroClientes"
         StartPosition = FormStartPosition.CenterScreen
         Text = "FrmRegistroClientes"

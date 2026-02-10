@@ -43,6 +43,7 @@ Partial Class FrmReserva
         BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(950, 573)
         Controls.Add(TablaReserva)
+        FormBorderStyle = FormBorderStyle.FixedToolWindow
         Margin = New Padding(3, 2, 3, 2)
         Name = "FrmReserva"
         StartPosition = FormStartPosition.CenterScreen
