@@ -36,6 +36,7 @@ Partial Class FrmRegistroPersonal
         ' 
         ' btnAgg
         ' 
+        btnAgg.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         btnAgg.Location = New Point(345, 125)
         btnAgg.Margin = New Padding(3, 2, 3, 2)
         btnAgg.Name = "btnAgg"
@@ -46,6 +47,7 @@ Partial Class FrmRegistroPersonal
         ' 
         ' btnDelete
         ' 
+        btnDelete.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         btnDelete.Location = New Point(345, 69)
         btnDelete.Margin = New Padding(3, 2, 3, 2)
         btnDelete.Name = "btnDelete"
@@ -57,9 +59,10 @@ Partial Class FrmRegistroPersonal
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(105, 37)
+        Label1.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
+        Label1.Location = New Point(98, 42)
         Label1.Name = "Label1"
-        Label1.Size = New Size(112, 15)
+        Label1.Size = New Size(152, 24)
         Label1.TabIndex = 3
         Label1.Text = "Listado del Personal"
         ' 
