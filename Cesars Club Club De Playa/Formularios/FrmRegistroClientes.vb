@@ -219,4 +219,18 @@ Public Class FrmRegistroClientes
     Private Sub BtnLimpiar_Click(sender As Object, e As EventArgs) Handles BtnLimpiar.Click
         LimpiarCampos()
     End Sub
+
+    Private Sub TxtNombre_keypress(sender As Object, e As KeyPressEventArgs) Handles TxtNombre.KeyPress
+        If e.KeyChar = Chr(13) Then
+            TxtCedula.Focus()
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TxtCedula_keypress(sender As Object, e As KeyPressEventArgs) Handles TxtCedula.KeyPress
+        If e.KeyChar = Chr(13) Then
+            BtnGuardar_Click(sender, e)
+            e.Handled = True
+        End If
+    End Sub
 End Class
