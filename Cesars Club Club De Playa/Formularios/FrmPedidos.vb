@@ -6,13 +6,16 @@ Public Class FrmPedidos
     Private cedulaCliente As String = ""
     Private idReservaCliente As Integer = 0
 
-
+    ' Este código se encarga de inicializar el formulario de pedidos, configurando los controles y cargando las categorías de productos disponibles.
+    ' También establece el estado inicial del formulario, deshabilitando el panel de productos y el botón de guardar pedido hasta que se busque un cliente válido.
     Private Sub FrmPedidos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         InicializarFormulario()
 
     End Sub
 
+    ' Esta función se encarga de configurar el formulario de pedidos
+    ' Estableciendo los estados iniciales de los controles, cargando las categorías de productos, y configurando los DataGridViews para mostrar los productos y el pedido.
     Private Sub InicializarFormulario()
         Try
             ' Configurar estados
@@ -37,6 +40,8 @@ Public Class FrmPedidos
         End Try
     End Sub
 
+    ' Esta función se encarga de configurar el DataGridView que muestra los productos disponibles para el pedido.
+    ' Se definen las columnas que se mostrarán, se oculta la columna de ID, y se establecen algunas propiedades para mejorar la apariencia y usabilidad del control.
     Private Sub ConfigurarDGVProductos()
         DgvProductos.Columns.Clear()
         DgvProductos.Columns.Add("ID_Producto", "ID")
@@ -52,6 +57,7 @@ Public Class FrmPedidos
         DgvProductos.MultiSelect = False
     End Sub
 
+    ' Esta función se encarga de configurar el DataGridView que muestra los productos agregados al pedido.
     Private Sub ConfigurarDGVPedido()
         DgvPedido.Columns.Clear()
         DgvPedido.Columns.Add("ID_Producto", "ID")
@@ -73,6 +79,7 @@ Public Class FrmPedidos
         DgvPedido.SelectionMode = DataGridViewSelectionMode.FullRowSelect
     End Sub
 
+    ' Este código se encarga de manejar el evento de clic en el botón "Buscar Cliente" y la tecla Enter en el textbox de cédula, llamando a la función BuscarCliente para buscar un cliente en la base de datos utilizando la cédula ingresada por el usuario.
     Private Sub BtnBuscarCliente_Click(sender As Object, e As EventArgs) Handles BtnBuscarCliente.Click
 
         BuscarCliente()
@@ -85,6 +92,8 @@ Public Class FrmPedidos
             e.Handled = True
         End If
     End Sub
+
+    ' Esta función se encarga de buscar un cliente en la base de datos utilizando la cédula ingresada por el usuario.
 
     Private Sub BuscarCliente()
         ' Validar que se ingresó una cédula
@@ -100,7 +109,7 @@ Public Class FrmPedidos
             Try
                 conexion.Open()
 
-                ' Paso 1: Buscar el cliente
+                ' Buscamos el cliente
                 Dim queryCliente As String = "SELECT ID_Cliente, NombreComp FROM Clientes WHERE Cedula = ?"
 
                 Using comandoCliente As New OleDbCommand(queryCliente, conexion)
@@ -114,7 +123,7 @@ Public Class FrmPedidos
 
                             lector.Close()
 
-                            ' Paso 2: Buscar la reserva del cliente
+                            ' Buscamos la reserva del cliente
                             Dim queryReserva As String = "SELECT ID_Reserva FROM Reservas WHERE Cedula = ? AND EstadoReserva = ?"
 
                             Using comandoReserva As New OleDbCommand(queryReserva, conexion)
@@ -143,11 +152,11 @@ Public Class FrmPedidos
                                     TxtNombreCliente.Text = "Cliente: " & nombreCliente
                                     TxtMesa.Text = "Mesa: #" & idMesa.ToString()
 
-                                    ' Habilitar panel de productos
+                                    ' Habilitamos panel de productos
                                     PnlProductos.Enabled = True
                                     BtnGuardarPedido.Enabled = True
 
-                                    ' Cargar productos
+                                    ' Cargamos los productos
                                     CargarProductos()
 
                                     MessageBox.Show("¡Bienvenido " & nombreCliente & "!", "Cliente Encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -180,6 +189,7 @@ Public Class FrmPedidos
         BtnGuardarPedido.Enabled = False
     End Sub
 
+    ' Esta función se encarga de cargar las categorías de productos disponibles para la venta en el ComboBox de categorías, obteniendo los datos de la base de datos y agregándolos a la lista. También maneja cualquier error que pueda ocurrir durante la carga.
     Private Sub CargarCategorias()
 
         CboCategoria.Items.Clear()
@@ -209,12 +219,15 @@ Public Class FrmPedidos
         End Using
     End Sub
 
+    ' Este código se encarga de manejar el evento de cambio de selección en el ComboBox de categorías, llamando a la función CargarProductos para actualizar la lista de productos mostrados según la categoría seleccionada.
     Private Sub CboCategoria_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCategoria.SelectedIndexChanged
         If PnlProductos.Enabled Then
             CargarProductos()
         End If
     End Sub
 
+    ' Esta función se encarga de cargar los productos disponibles para la venta en el DataGridView de productos, filtrando por la categoría seleccionada en el ComboBox.
+    ' Si se selecciona "Todas", se muestran todos los productos activos para la venta. También maneja cualquier error que pueda ocurrir durante la carga.
     Private Sub CargarProductos()
         If CboCategoria.SelectedItem Is Nothing Then
             Return
@@ -258,14 +271,18 @@ Public Class FrmPedidos
         End Using
     End Sub
 
+    ' Este código se encarga de manejar el evento de clic en el botón "Agregar Producto", llamando a la función AgregarProducto para agregar el producto seleccionado al pedido.
     Private Sub BtnAgregar_Click(sender As Object, e As EventArgs) Handles BtnAgregar.Click
         AgregarProducto()
     End Sub
 
+    ' Este código se encarga de manejar el evento de doble clic en el DataGridView de productos, llamando a la función AgregarProducto para agregar el producto seleccionado al pedido.
     Private Sub DgvProductos_DoubleClick(sender As Object, e As EventArgs) Handles DgvProductos.DoubleClick
         AgregarProducto()
     End Sub
 
+    ' Esta función se encarga de agregar el producto seleccionado en el DataGridView de productos al pedido, solicitando la cantidad deseada al usuario y validando que no se exceda el stock disponible. Si el producto ya existe en el pedido, se actualiza la cantidad y el subtotal correspondiente.
+    ' También maneja cualquier error que pueda ocurrir durante el proceso.
     Private Sub AgregarProducto()
         If DgvProductos.SelectedRows.Count = 0 Then
             MessageBox.Show("Por favor seleccione un producto", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -332,6 +349,8 @@ Public Class FrmPedidos
         End Try
     End Sub
 
+    ' Este código se encarga de manejar el evento de edición de una celda en el DataGridView del pedido, específicamente para la columna de cantidad.
+    ' Valida que la cantidad ingresada sea un número entero positivo y que no exceda el stock disponible. Si la cantidad es válida, actualiza el subtotal correspondiente y recalcula el total del pedido.
     Private Sub DgvPedido_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles DgvPedido.CellEndEdit
         If e.ColumnIndex = DgvPedido.Columns("Cantidad").Index Then
             Try
@@ -354,6 +373,8 @@ Public Class FrmPedidos
         End If
     End Sub
 
+    ' Este código se encarga de manejar el evento de clic en el botón "Quitar Producto", permitiendo al usuario eliminar un producto seleccionado del pedido.
+    ' Antes de eliminar, se muestra una confirmación para evitar eliminaciones accidentales. Si el usuario confirma, se elimina la fila seleccionada del DataGridView del pedido y se recalcula el total.
     Private Sub BtnQuitar_Click(sender As Object, e As EventArgs) Handles BtnQuitar.Click
         If DgvPedido.SelectedRows.Count = 0 Then
             MessageBox.Show("Por favor seleccione un producto del pedido", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -368,6 +389,7 @@ Public Class FrmPedidos
         End If
     End Sub
 
+    ' Esta función se encarga de calcular el total del pedido sumando los subtotales de cada producto agregado al pedido, y actualizando la etiqueta que muestra el total en el formulario.
     Private Sub CalcularTotal()
         Dim total As Decimal = 0
 
@@ -378,10 +400,12 @@ Public Class FrmPedidos
         LblTotal.Text = total.ToString("C2")
     End Sub
 
+    ' Este código se encarga de manejar el evento de clic en el botón "Guardar Pedido", llamando a la función GuardarPedido para guardar el pedido actual en la base de datos, incluyendo los detalles del pedido y actualizando el stock de los productos correspondientes.
     Private Sub BtnGuardarPedido_Click(sender As Object, e As EventArgs) Handles BtnGuardarPedido.Click
         GuardarPedido()
     End Sub
 
+    ' Esta función se encarga de guardar el pedido actual en la base de datos, realizando las siguientes operaciones:
     Private Sub GuardarPedido()
         ' Validaciones previas...
         If String.IsNullOrEmpty(cedulaCliente) Then
@@ -410,15 +434,13 @@ Public Class FrmPedidos
                                       "VALUES (@IDReserva, @Cedula, @FechaHora, @Estado, @Total, @Notas)"
 
                 Using cmdPedido As New OleDbCommand(queryPedido, conexion, transaction)
-                    ' IMPORTANTE: El orden de los parámetros debe coincidir con la consulta SQL
+
                     cmdPedido.Parameters.Add("@IDReserva", OleDbType.Integer).Value = idReservaCliente
                     cmdPedido.Parameters.Add("@Cedula", OleDbType.VarChar).Value = cedulaCliente
                     cmdPedido.Parameters.Add("@FechaHora", OleDbType.Date).Value = DateTime.Now
                     cmdPedido.Parameters.Add("@Estado", OleDbType.VarChar).Value = "Pendiente"
 
-                    ' CORRECCIÓN CLAVE: Usar OleDbType.Currency para dinero en Access
                     cmdPedido.Parameters.Add("@Total", OleDbType.Currency).Value = totalPedido
-
                     cmdPedido.Parameters.Add("@Notas", OleDbType.LongVarChar).Value = If(String.IsNullOrEmpty(TxtNotas.Text), DBNull.Value, TxtNotas.Text)
 
                     cmdPedido.ExecuteNonQuery()
@@ -428,7 +450,6 @@ Public Class FrmPedidos
                 Dim cmdGetID As New OleDbCommand("SELECT @@IDENTITY", conexion, transaction)
                 Dim idPedido As Integer = CInt(cmdGetID.ExecuteScalar())
 
-                ' --- PASO 2: INSERTAR DETALLES Y ACTUALIZAR STOCK ---
                 For Each fila As DataGridViewRow In DgvPedido.Rows
                     Dim queryDetalle As String = "INSERT INTO DetallesPedidos (ID_Pedido, ID_Producto, Cantidad, PrecioUnitario, Subtotal) " &
                                            "VALUES (@IDPedido, @IDProducto, @Cantidad, @Precio, @Subtotal)"
@@ -437,8 +458,6 @@ Public Class FrmPedidos
                         cmdDetalle.Parameters.Add("@IDPedido", OleDbType.Integer).Value = idPedido
                         cmdDetalle.Parameters.Add("@IDProducto", OleDbType.Integer).Value = CInt(fila.Cells("ID_Producto").Value)
                         cmdDetalle.Parameters.Add("@Cantidad", OleDbType.Integer).Value = CInt(fila.Cells("Cantidad").Value)
-
-                        ' CORRECCIÓN CLAVE: Usar Currency también aquí
                         cmdDetalle.Parameters.Add("@Precio", OleDbType.Currency).Value = CDec(fila.Cells("Precio").Value)
                         cmdDetalle.Parameters.Add("@Subtotal", OleDbType.Currency).Value = CDec(fila.Cells("Subtotal").Value)
 
@@ -468,11 +487,13 @@ Public Class FrmPedidos
             End Try
         End Using
     End Sub
-
+    ' Este código se encarga de manejar el evento de clic en el botón "Nuevo Pedido", llamando a la función LimpiarTodo para limpiar todos los campos y restablecer el formulario al estado inicial, permitiendo iniciar un nuevo pedido desde cero.
     Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BtnNuevo.Click
         LimpiarTodo()
     End Sub
 
+    ' Este código se encarga de manejar el evento de clic en el botón "Cancelar Pedido", mostrando una confirmación para cancelar el pedido actual.
+    ' Si el usuario confirma, se llama a la función LimpiarPedido para limpiar los productos agregados al pedido y restablecer el total a cero, pero manteniendo la información del cliente para permitir seguir agregando productos si lo desea. 
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
         If DgvPedido.Rows.Count > 0 Then
             Dim respuesta As DialogResult = MessageBox.Show(
@@ -486,13 +507,13 @@ Public Class FrmPedidos
             End If
         End If
     End Sub
-
+    ' Esta función se encarga de limpiar los productos agregados al pedido y restablecer el total a cero, pero manteniendo la información del cliente para permitir seguir agregando productos si lo desea.
     Private Sub LimpiarPedido()
         DgvPedido.Rows.Clear()
         TxtNotas.Clear()
         LblTotal.Text = "S/ 0.00"
     End Sub
-
+    ' Esta función se encarga de limpiar todos los campos y restablecer el formulario al estado inicial, permitiendo iniciar un nuevo pedido desde cero. Esto incluye limpiar la información del cliente, deshabilitar el panel de productos, limpiar los productos agregados al pedido, y restablecer el total a cero.
     Private Sub LimpiarTodo()
         LimpiarPedido()
         TxtCedula.Clear()
