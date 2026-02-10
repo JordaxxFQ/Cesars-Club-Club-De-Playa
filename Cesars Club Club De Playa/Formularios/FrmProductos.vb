@@ -40,11 +40,11 @@ Public Class FrmProductos
             Dim fila As DataGridViewRow = DgvProductos.Rows(e.RowIndex)
             _idProductoSeleccionado = CInt(fila.Cells("ID_Producto").Value)
 
-            txtNombre.Text = fila.Cells("NombreProducto").Value.ToString()
+            TxtNombre.Text = fila.Cells("NombreProducto").Value.ToString()
             cmbCategoria.Text = fila.Cells("Categoria").Value.ToString()
-            txtDescripcion.Text = fila.Cells("Descripcion").Value.ToString()
-            txtPrecio.Text = fila.Cells("Precio").Value.ToString()
-            txtStock.Text = fila.Cells("Stock").Value.ToString()
+            TxtDescripcion.Text = fila.Cells("Descripcion").Value.ToString()
+            TxtPrecio.Text = fila.Cells("Precio").Value.ToString()
+            TxtStock.Text = fila.Cells("Stock").Value.ToString()
 
             If DgvProductos.Columns.Contains("ActivoVenta") Then
                 Dim valorCheck = fila.Cells("ActivoVenta").Value
@@ -58,7 +58,7 @@ Public Class FrmProductos
         End If
     End Sub
 
-    Private Sub BtnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgg.Click
+    Private Sub BtnAgregar_Click(sender As Object, e As EventArgs) Handles BtnAgregar.Click
         If ValidarCampos() = False Then Exit Sub
 
         Dim query As String = "INSERT INTO Productos (NombreProducto, Categoria, Descripcion, Precio, Stock, ActivoVenta) VALUES (?, ?, ?, ?, ?, ?)"
@@ -68,11 +68,11 @@ Public Class FrmProductos
                 conexion.Open()
                 Dim cmd As New OleDbCommand(query, conexion)
 
-                cmd.Parameters.Add("@nom", OleDbType.VarWChar).Value = txtNombre.Text
+                cmd.Parameters.Add("@nom", OleDbType.VarWChar).Value = TxtNombre.Text
                 cmd.Parameters.Add("@cat", OleDbType.VarWChar).Value = cmbCategoria.Text
-                cmd.Parameters.Add("@desc", OleDbType.LongVarWChar).Value = txtDescripcion.Text
-                cmd.Parameters.Add("@prec", OleDbType.Currency).Value = Decimal.Parse(txtPrecio.Text)
-                cmd.Parameters.Add("@stk", OleDbType.Integer).Value = CInt(txtStock.Text)
+                cmd.Parameters.Add("@desc", OleDbType.LongVarWChar).Value = TxtDescripcion.Text
+                cmd.Parameters.Add("@prec", OleDbType.Currency).Value = Decimal.Parse(TxtPrecio.Text)
+                cmd.Parameters.Add("@stk", OleDbType.Integer).Value = CInt(TxtStock.Text)
                 cmd.Parameters.Add("@act", OleDbType.Boolean).Value = chkActivo.Checked
 
                 cmd.ExecuteNonQuery()
@@ -102,11 +102,11 @@ Public Class FrmProductos
                 Dim cmd As New OleDbCommand(query, conexion)
 
                 ' Los parámetros DEBEN seguir el orden exacto del Query arriba
-                cmd.Parameters.Add("@nom", OleDbType.VarWChar).Value = txtNombre.Text
+                cmd.Parameters.Add("@nom", OleDbType.VarWChar).Value = TxtNombre.Text
                 cmd.Parameters.Add("@cat", OleDbType.VarWChar).Value = cmbCategoria.Text
-                cmd.Parameters.Add("@desc", OleDbType.LongVarWChar).Value = txtDescripcion.Text
-                cmd.Parameters.Add("@prec", OleDbType.Currency).Value = Decimal.Parse(txtPrecio.Text)
-                cmd.Parameters.Add("@stk", OleDbType.Integer).Value = CInt(txtStock.Text)
+                cmd.Parameters.Add("@desc", OleDbType.LongVarWChar).Value = TxtDescripcion.Text
+                cmd.Parameters.Add("@prec", OleDbType.Currency).Value = Decimal.Parse(TxtPrecio.Text)
+                cmd.Parameters.Add("@stk", OleDbType.Integer).Value = CInt(TxtStock.Text)
 
                 ' --- NUEVO: Parámetro para el campo Yes/No ---
                 cmd.Parameters.Add("@act", OleDbType.Boolean).Value = chkActivo.Checked
@@ -158,28 +158,28 @@ Public Class FrmProductos
 
     ' --- FUNCIONES DE AYUDA (LIMPIEZA Y VALIDACIÓN) ---
     Private Sub LimpiarCampos()
-        txtNombre.Clear()
+        TxtNombre.Clear()
         cmbCategoria.SelectedIndex = -1
-        txtDescripcion.Clear()
-        txtPrecio.Clear()
-        txtStock.Clear()
+        TxtDescripcion.Clear()
+        TxtPrecio.Clear()
+        TxtStock.Clear()
         _idProductoSeleccionado = 0
     End Sub
 
     Private Function ValidarCampos() As Boolean
-        If txtNombre.Text = "" Or cmbCategoria.Text = "" Or txtPrecio.Text = "" Then
+        If TxtNombre.Text = "" Or cmbCategoria.Text = "" Or TxtPrecio.Text = "" Then
             MessageBox.Show("Nombre, Categoría y Precio son obligatorios.")
             Return False
         End If
 
         ' Validar que Precio sea número
-        If Not IsNumeric(txtPrecio.Text) Then
+        If Not IsNumeric(TxtPrecio.Text) Then
             MessageBox.Show("El Precio debe ser un número válido.")
             Return False
         End If
 
         ' Validar que Stock sea número
-        If txtStock.Text <> "" AndAlso Not IsNumeric(txtStock.Text) Then
+        If TxtStock.Text <> "" AndAlso Not IsNumeric(TxtStock.Text) Then
             MessageBox.Show("El Stock debe ser un número entero.")
             Return False
         End If
@@ -187,4 +187,31 @@ Public Class FrmProductos
         Return True
     End Function
 
+    Private Sub txtNombre_Keypress(sender As Object, e As KeyPressEventArgs) Handles TxtNombre.KeyPress
+        If e.KeyChar = Chr(13) Then
+            TxtDescripcion.Focus()
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TxtDescripcion_Keypress(sender As Object, e As KeyPressEventArgs) Handles TxtDescripcion.KeyPress
+        If e.KeyChar = Chr(13) Then
+            TxtPrecio.Focus()
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TxtPrecio_Keypress(sender As Object, e As KeyPressEventArgs) Handles TxtPrecio.KeyPress
+        If e.KeyChar = Chr(13) Then
+            TxtStock.Focus()
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TxtStock_keypress(sender As Object, e As KeyPressEventArgs) Handles TxtStock.KeyPress
+        If e.KeyChar = Chr(13) Then
+            BtnAgregar_Click(sender, e)
+            e.Handled = True
+        End If
+    End Sub
 End Class

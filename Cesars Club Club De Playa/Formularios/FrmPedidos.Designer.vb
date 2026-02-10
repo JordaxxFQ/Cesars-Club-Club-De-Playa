@@ -94,6 +94,7 @@ Partial Class FrmPedidos
         TxtNombreCliente.Location = New Point(14, 113)
         TxtNombreCliente.Margin = New Padding(3, 4, 3, 4)
         TxtNombreCliente.Name = "TxtNombreCliente"
+        TxtNombreCliente.ReadOnly = True
         TxtNombreCliente.Size = New Size(114, 29)
         TxtNombreCliente.TabIndex = 3
         ' 
@@ -113,6 +114,7 @@ Partial Class FrmPedidos
         TxtMesa.Location = New Point(166, 88)
         TxtMesa.Margin = New Padding(3, 4, 3, 4)
         TxtMesa.Name = "TxtMesa"
+        TxtMesa.ReadOnly = True
         TxtMesa.Size = New Size(50, 29)
         TxtMesa.TabIndex = 5
         ' 

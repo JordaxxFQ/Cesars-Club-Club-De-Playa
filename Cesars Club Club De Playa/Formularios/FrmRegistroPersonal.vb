@@ -5,7 +5,7 @@ Public Class FrmRegistroPersonal
     Private Sub FrmRegistroPersonal_Load(sender As Object, e As EventArgs) Handles Me.Load
         CargarDatos()
     End Sub
-    ' Este método carga los datos de la tabla "Personal" y los muestra en el DataGridView
+    ' Este método carga los datos de la tabla "Personal" y los muestra en el DgvPersonal
     Private Sub CargarDatos()
         Dim query As String = "SELECT * FROM Personal"
 
