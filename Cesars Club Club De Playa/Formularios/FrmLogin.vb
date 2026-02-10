@@ -4,7 +4,6 @@ Imports Cesars_Club_Club_De_Playa.DAL
 Public Class FrmLogin
 
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
 

@@ -17,7 +17,7 @@ Public Class FrmAggPerso
         txtboxusuario.Clear()
         cmbRol.SelectedIndex = -1
         cmbTurno.SelectedIndex = -1
-        txtboxContra.Clear()
+        TxtContraseña.Clear()
         idPersonalSeleccionado = 0
     End Sub
     Private Sub CargarDatos()
@@ -68,14 +68,14 @@ Public Class FrmAggPerso
             idPersonalSeleccionado = CInt(fila.Cells("ID_Personal").Value)
 
             txtboxusuario.Text = fila.Cells("Usuario").Value.ToString()
-            txtboxContra.Text = fila.Cells("Contraseña").Value.ToString()
+            TxtContraseña.Text = fila.Cells("Contraseña").Value.ToString()
             cmbRol.Text = fila.Cells("ID_Rol").Value.ToString()
             cmbTurno.Text = fila.Cells("Turno").Value.ToString()
 
         End If
     End Sub
 
-    Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles btnConfirmar.Click
+    Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles BtnConfirmar.Click
 
         ' 1. Validar que los campos no estén vacíos
         If UsuarioExiste(txtboxusuario.Text) = True Then
@@ -92,7 +92,7 @@ Public Class FrmAggPerso
                 Dim comando As New OleDbCommand(query, conexion)
 
                 comando.Parameters.AddWithValue("@usuario", txtboxusuario.Text)
-                comando.Parameters.AddWithValue("@contra", txtboxContra.Text)
+                comando.Parameters.AddWithValue("@contra", TxtContraseña.Text)
                 comando.Parameters.AddWithValue("@Rol", cmbRol.Text)
                 comando.Parameters.AddWithValue("@turno", cmbTurno.Text)
                 conexion.Open()
@@ -102,7 +102,7 @@ Public Class FrmAggPerso
 
 
                 txtboxusuario.Clear()
-                txtboxContra.Clear()
+                TxtContraseña.Clear()
                 cmbTurno.Items.Clear()
                 cmbRol.Items.Clear()
                 Me.Close()
@@ -127,7 +127,7 @@ Public Class FrmAggPerso
                 Dim cmd As New OleDbCommand(query, conexion)
 
                 cmd.Parameters.AddWithValue("@usuario", txtboxusuario.Text)
-                cmd.Parameters.AddWithValue("@contra", txtboxContra.Text)
+                cmd.Parameters.AddWithValue("@contra", TxtContraseña.Text)
                 cmd.Parameters.AddWithValue("@Rol", cmbRol.Text)
                 cmd.Parameters.AddWithValue("@turno", cmbTurno.Text)
 
@@ -144,5 +144,19 @@ Public Class FrmAggPerso
                 MessageBox.Show("Error al modificar: " & ex.Message)
             End Try
         End Using
+    End Sub
+
+    Private Sub txtboxusuario_keypress(sender As Object, e As KeyPressEventArgs) Handles txtboxusuario.KeyPress
+        If e.KeyChar = Chr(13) Then
+            TxtContraseña.Focus()
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TxtContraseña_Keypress(sender As Object, e As KeyPressEventArgs) Handles TxtContraseña.KeyPress
+        If e.KeyChar = Chr(13) Then
+            btnConfirmar_Click(sender, e)
+            e.Handled = True
+        End If
     End Sub
 End Class
