@@ -1,6 +1,7 @@
 ﻿Imports System.Data.OleDb
 Imports Cesars_Club_Club_De_Playa.DAL
 Public Class FrmReserva
+    'en este formulario solo muestramos las reservas que se han hecho, no se pueden modificar ni eliminar, solo mostrar
     Private Sub FrmReserva_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarDatos()
     End Sub
