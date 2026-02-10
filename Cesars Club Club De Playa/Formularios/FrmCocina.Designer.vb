@@ -43,6 +43,7 @@ Partial Class FrmCocina
         ' 
         ' CboEstado
         ' 
+        CboEstado.Cursor = Cursors.Hand
         CboEstado.DropDownStyle = ComboBoxStyle.DropDownList
         CboEstado.FormattingEnabled = True
         CboEstado.Location = New Point(12, 12)
@@ -76,7 +77,7 @@ Partial Class FrmCocina
         ' 
         LblNumPedido.AutoSize = True
         LblNumPedido.Font = New Font("Segoe Print", 14F, FontStyle.Bold)
-        LblNumPedido.Location = New Point(305, 97)
+        LblNumPedido.Location = New Point(275, 103)
         LblNumPedido.Name = "LblNumPedido"
         LblNumPedido.Size = New Size(220, 33)
         LblNumPedido.TabIndex = 3
@@ -148,6 +149,7 @@ Partial Class FrmCocina
         ' 
         ' BtnIniciarPreparacion
         ' 
+        BtnIniciarPreparacion.Cursor = Cursors.Hand
         BtnIniciarPreparacion.Location = New Point(12, 424)
         BtnIniciarPreparacion.Name = "BtnIniciarPreparacion"
         BtnIniciarPreparacion.Size = New Size(120, 23)
@@ -157,6 +159,7 @@ Partial Class FrmCocina
         ' 
         ' BtnMarcarListo
         ' 
+        BtnMarcarListo.Cursor = Cursors.Hand
         BtnMarcarListo.Location = New Point(140, 424)
         BtnMarcarListo.Name = "BtnMarcarListo"
         BtnMarcarListo.Size = New Size(120, 23)
