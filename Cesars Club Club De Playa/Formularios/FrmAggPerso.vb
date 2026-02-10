@@ -89,8 +89,6 @@ Public Class FrmAggPerso
         Using conexion As New OleDbConnection(cadena)
             Try
 
-
-
                 Dim comando As New OleDbCommand(query, conexion)
 
                 comando.Parameters.AddWithValue("@usuario", txtboxusuario.Text)
