@@ -527,4 +527,11 @@ Public Class FrmPedidos
         CboCategoria.SelectedIndex = 0
         TxtCedula.Focus()
     End Sub
+
+    Private Sub TxtCedula_Keypress(sender As Object, e As KeyPressEventArgs) Handles TxtCedula.KeyPress
+        If e.KeyChar = Chr(13) Then
+            BtnBuscarCliente_Click(sender, e)
+            e.Handled = True
+        End If
+    End Sub
 End Class

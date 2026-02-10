@@ -29,11 +29,11 @@ Partial Class FrmProductos
         Label3 = New Label()
         Label4 = New Label()
         Label5 = New Label()
-        txtNombre = New TextBox()
-        txtDescripcion = New TextBox()
-        txtPrecio = New TextBox()
-        txtStock = New TextBox()
-        btnAgg = New Button()
+        TxtNombre = New TextBox()
+        TxtDescripcion = New TextBox()
+        TxtPrecio = New TextBox()
+        TxtStock = New TextBox()
+        BtnAgregar = New Button()
         btnDelete = New Button()
         btnEdit = New Button()
         chkActivo = New CheckBox()
@@ -111,57 +111,57 @@ Partial Class FrmProductos
         Label5.TabIndex = 6
         Label5.Text = "Stock"
         ' 
-        ' txtNombre
+        ' TxtNombre
         ' 
-        txtNombre.Cursor = Cursors.IBeam
-        txtNombre.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
-        txtNombre.Location = New Point(9, 35)
-        txtNombre.Margin = New Padding(3, 4, 3, 4)
-        txtNombre.Name = "txtNombre"
-        txtNombre.Size = New Size(179, 29)
-        txtNombre.TabIndex = 7
+        TxtNombre.Cursor = Cursors.IBeam
+        TxtNombre.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        TxtNombre.Location = New Point(9, 35)
+        TxtNombre.Margin = New Padding(3, 4, 3, 4)
+        TxtNombre.Name = "TxtNombre"
+        TxtNombre.Size = New Size(179, 29)
+        TxtNombre.TabIndex = 7
         ' 
-        ' txtDescripcion
+        ' TxtDescripcion
         ' 
-        txtDescripcion.Cursor = Cursors.IBeam
-        txtDescripcion.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
-        txtDescripcion.Location = New Point(9, 164)
-        txtDescripcion.Margin = New Padding(3, 4, 3, 4)
-        txtDescripcion.Name = "txtDescripcion"
-        txtDescripcion.Size = New Size(179, 29)
-        txtDescripcion.TabIndex = 8
+        TxtDescripcion.Cursor = Cursors.IBeam
+        TxtDescripcion.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        TxtDescripcion.Location = New Point(9, 164)
+        TxtDescripcion.Margin = New Padding(3, 4, 3, 4)
+        TxtDescripcion.Name = "TxtDescripcion"
+        TxtDescripcion.Size = New Size(179, 29)
+        TxtDescripcion.TabIndex = 8
         ' 
-        ' txtPrecio
+        ' TxtPrecio
         ' 
-        txtPrecio.Cursor = Cursors.IBeam
-        txtPrecio.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
-        txtPrecio.Location = New Point(9, 223)
-        txtPrecio.Margin = New Padding(3, 4, 3, 4)
-        txtPrecio.Name = "txtPrecio"
-        txtPrecio.Size = New Size(179, 29)
-        txtPrecio.TabIndex = 9
+        TxtPrecio.Cursor = Cursors.IBeam
+        TxtPrecio.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        TxtPrecio.Location = New Point(9, 223)
+        TxtPrecio.Margin = New Padding(3, 4, 3, 4)
+        TxtPrecio.Name = "TxtPrecio"
+        TxtPrecio.Size = New Size(179, 29)
+        TxtPrecio.TabIndex = 9
         ' 
-        ' txtStock
+        ' TxtStock
         ' 
-        txtStock.Cursor = Cursors.IBeam
-        txtStock.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
-        txtStock.Location = New Point(9, 281)
-        txtStock.Margin = New Padding(3, 4, 3, 4)
-        txtStock.Name = "txtStock"
-        txtStock.Size = New Size(179, 29)
-        txtStock.TabIndex = 10
+        TxtStock.Cursor = Cursors.IBeam
+        TxtStock.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        TxtStock.Location = New Point(9, 281)
+        TxtStock.Margin = New Padding(3, 4, 3, 4)
+        TxtStock.Name = "TxtStock"
+        TxtStock.Size = New Size(179, 29)
+        TxtStock.TabIndex = 10
         ' 
-        ' btnAgg
+        ' BtnAgregar
         ' 
-        btnAgg.Cursor = Cursors.Hand
-        btnAgg.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
-        btnAgg.Location = New Point(9, 353)
-        btnAgg.Margin = New Padding(3, 4, 3, 4)
-        btnAgg.Name = "btnAgg"
-        btnAgg.Size = New Size(184, 32)
-        btnAgg.TabIndex = 11
-        btnAgg.Text = "Agregar"
-        btnAgg.UseVisualStyleBackColor = True
+        BtnAgregar.Cursor = Cursors.Hand
+        BtnAgregar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        BtnAgregar.Location = New Point(9, 353)
+        BtnAgregar.Margin = New Padding(3, 4, 3, 4)
+        BtnAgregar.Name = "BtnAgregar"
+        BtnAgregar.Size = New Size(184, 32)
+        BtnAgregar.TabIndex = 11
+        BtnAgregar.Text = "Agregar"
+        BtnAgregar.UseVisualStyleBackColor = True
         ' 
         ' btnDelete
         ' 
@@ -209,11 +209,11 @@ Partial Class FrmProductos
         Controls.Add(chkActivo)
         Controls.Add(btnEdit)
         Controls.Add(btnDelete)
-        Controls.Add(btnAgg)
-        Controls.Add(txtStock)
-        Controls.Add(txtPrecio)
-        Controls.Add(txtDescripcion)
-        Controls.Add(txtNombre)
+        Controls.Add(BtnAgregar)
+        Controls.Add(TxtStock)
+        Controls.Add(TxtPrecio)
+        Controls.Add(TxtDescripcion)
+        Controls.Add(TxtNombre)
         Controls.Add(Label5)
         Controls.Add(Label4)
         Controls.Add(Label3)
@@ -238,11 +238,11 @@ Partial Class FrmProductos
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents txtNombre As TextBox
-    Friend WithEvents txtDescripcion As TextBox
-    Friend WithEvents txtPrecio As TextBox
-    Friend WithEvents txtStock As TextBox
-    Friend WithEvents btnAgg As Button
+    Friend WithEvents TxtNombre As TextBox
+    Friend WithEvents TxtDescripcion As TextBox
+    Friend WithEvents TxtPrecio As TextBox
+    Friend WithEvents TxtStock As TextBox
+    Friend WithEvents BtnAgregar As Button
     Friend WithEvents btnDelete As Button
     Friend WithEvents btnEdit As Button
     Friend WithEvents chkActivo As CheckBox
