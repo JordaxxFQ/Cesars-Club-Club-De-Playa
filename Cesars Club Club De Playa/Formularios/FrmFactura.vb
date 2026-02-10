@@ -13,6 +13,7 @@ Public Class FrmFactura
         InicializarFormulario()
     End Sub
 
+    'Este código se encarga de inicializar el formulario de facturación, configurando el DataGridView para mostrar los pedidos, estableciendo el estado inicial de los controles, y preparando el formulario para la búsqueda de clientes y generación de facturas.
     Private Sub InicializarFormulario()
         Try
             ' Configurar DataGridView de pedidos
@@ -29,7 +30,7 @@ Public Class FrmFactura
             MessageBox.Show("Error al inicializar: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
+    'Esta función se encarga de configurar el DataGridView que muestra los pedidos asociados a la reserva del cliente. Define las columnas, sus anchos, formatos y propiedades para asegurar una presentación clara y funcional de los datos.
     Private Sub ConfigurarDGVPedidos()
         DgvPedidos.Columns.Clear()
         DgvPedidos.Columns.Add("ID_Pedido", "#Pedido")
@@ -51,6 +52,7 @@ Public Class FrmFactura
         DgvPedidos.SelectionMode = DataGridViewSelectionMode.FullRowSelect
     End Sub
 
+    'Este código se encarga de manejar el evento de clic en el botón "Buscar Cliente" y la tecla Enter en el campo de cédula para iniciar la búsqueda del cliente en la base de datos. Llama a la función BuscarCliente() que realiza la consulta y muestra los detalles del cliente, su reserva activa, y los pedidos asociados.
     Private Sub BtnBuscarCliente_Click(sender As Object, e As EventArgs) Handles BtnBuscarCliente.Click
         BuscarCliente()
     End Sub
@@ -62,6 +64,8 @@ Public Class FrmFactura
         End If
     End Sub
 
+    'Esta función se encarga de buscar un cliente en la base de datos utilizando la cédula ingresada. Si el cliente existe y tiene una reserva activa, muestra los detalles del cliente, la mesa asignada, las horas de reserva, el precio por hora, y carga los pedidos asociados a esa reserva.
+    'Si no se encuentra el cliente o no tiene una reserva activa, muestra mensajes de advertencia y limpia el formulario.
     Private Sub BuscarCliente()
         If String.IsNullOrWhiteSpace(TxtCedula.Text) Then
             MessageBox.Show("Por favor ingrese una cédula", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -149,6 +153,7 @@ Public Class FrmFactura
         End Using
     End Sub
 
+    'Esta función se encarga de obtener el precio por hora y el consumo mínimo asociado a la mesa reservada por el cliente. Realiza una consulta a la tabla Zonas utilizando el ID de la mesa para recuperar esta información, que luego se muestra en el formulario y se utiliza para calcular el total de zona.
     Private Function ObtenerPrecioZona(idMesa As Integer, conexion As OleDbConnection) As Decimal
         Try
             Dim query As String = "SELECT PrecioHora, ConsumoMin FROM Zonas WHERE ID_Mesa = ?"
@@ -184,6 +189,8 @@ Public Class FrmFactura
         Return 0
     End Function
 
+    'Esta función se encarga de cargar los pedidos asociados a la reserva activa del cliente.
+    'Realiza una consulta a la tabla Pedidos utilizando el ID de la reserva para recuperar los pedidos que no estén marcados como "Pagado". Los pedidos se muestran en un DataGridView, y se calcula el total de los pedidos para mostrarlo en el formulario.
     Private Sub CargarPedidos()
         DgvPedidos.Rows.Clear()
         totalPedidos = 0
@@ -227,6 +234,8 @@ Public Class FrmFactura
         End Using
     End Sub
 
+    'Esta función se encarga de calcular el total general a pagar por el cliente, sumando el total de los pedidos y el total de la zona (mesa).
+    'Además, verifica si hay un consumo mínimo establecido para la mesa y, si el total de los pedidos es menor que ese consumo mínimo, ajusta el total general para reflejar el consumo mínimo aplicado.
     Private Sub CalcularTotalGeneral()
         ' Verificar consumo mínimo
         Dim consumoMinimo As Decimal = 0
@@ -248,11 +257,14 @@ Public Class FrmFactura
 
         TxtTotalGeneral.Text = totalGeneral.ToString("C2")
     End Sub
-
+    'Este código se encarga de manejar el evento de clic en el botón "Generar Factura".
+    'Al hacer clic, se llama a la función GenerarFactura() que realiza todo el proceso de generación de la factura, incluyendo el cálculo de impuestos, propina, total final, confirmación con el usuario, inserción de la factura en la base de datos, actualización del estado de los pedidos y reserva, y liberación de la mesa.
     Private Sub BtnGenerarFactura_Click(sender As Object, e As EventArgs) Handles BtnGenerarFactura.Click
         GenerarFactura()
     End Sub
 
+    'Esta función se encarga de generar la factura para el cliente.
+    'Realiza los cálculos necesarios para determinar el subtotal, impuestos, propina y total final. Luego, muestra un resumen de la factura para que el usuario confirme antes de proceder.
     Private Sub GenerarFactura()
         If String.IsNullOrEmpty(cedulaCliente) Then
             MessageBox.Show("Debe buscar un cliente primero", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -265,7 +277,7 @@ Public Class FrmFactura
         Dim iva As Decimal = subtotal * 0.15D ' 15% IVA
         Dim propina As Decimal = 0
 
-        ' Preguntar por propina (opcional)
+        ' Preguntar por propina 
         Dim respuestaPropina As String = InputBox("¿Desea agregar propina? (Ingrese el porcentaje, ej: 10 para 10%)", "Propina", "0")
 
         If Not String.IsNullOrEmpty(respuestaPropina) AndAlso IsNumeric(respuestaPropina) Then
@@ -367,6 +379,8 @@ Public Class FrmFactura
         End Using
     End Sub
 
+    'Esta función se encarga de generar un número de factura único para cada factura creada.
+    'Intenta obtener el último ID de factura registrado en la base de datos y lo incrementa para crear un nuevo número de factura. Si ocurre algún error al acceder a la base de datos, utiliza un timestamp para garantizar la unicidad del número de factura.
     Private Function GenerarNumeroFactura() As String
         ' Formato: FACT-001-2026 (ajustar según tu necesidad)
         Dim año As String = DateTime.Now.Year.ToString()
@@ -396,6 +410,8 @@ Public Class FrmFactura
         LimpiarFormulario()
     End Sub
 
+    'Esta función se encarga de limpiar todos los campos del formulario, restablecer los totales a cero, y preparar el formulario para una nueva búsqueda de cliente y generación de factura.
+    'También deshabilita el panel de detalles y el botón de generar factura hasta que se realice una nueva búsqueda exitosa.
     Private Sub LimpiarFormulario()
         TxtCedula.Clear()
         TxtNombreCliente.Clear()
