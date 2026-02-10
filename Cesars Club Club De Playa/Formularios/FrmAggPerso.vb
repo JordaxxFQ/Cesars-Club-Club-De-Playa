@@ -75,8 +75,20 @@ Public Class FrmAggPerso
 
         End If
     End Sub
-
+    'Este buttom se encarga de validar los campos antes de insertar un nuevo registro en la base de datos.
+    'Verifica que el nombre de usuario no esté vacío, que la contraseña no esté vacía y que el nombre de usuario no exista ya en la base de datos. Si todas las validaciones pasan, inserta el nuevo registro y recarga la tabla.
     Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles BtnConfirmar.Click
+        If String.IsNullOrEmpty(txtboxusuario.Text) Then
+            MessageBox.Show("Por favor ingrese el nombre completo", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtboxusuario.Focus()
+            Return
+        End If
+
+        If String.IsNullOrEmpty(TxtContraseña.Text) Then
+            MessageBox.Show("Por favor ingrese la cédula", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            TxtContraseña.Focus()
+            Return
+        End If
 
         ' 1. Validar que los campos no estén vacíos
         If UsuarioExiste(txtboxusuario.Text) = True Then
@@ -114,6 +126,8 @@ Public Class FrmAggPerso
         End Using
     End Sub
 
+    'Este button se encarga de validar que se haya seleccionado un registro antes de intentar modificarlo. Si no se ha seleccionado ningún registro, muestra un mensaje de advertencia.
+    'Si se ha seleccionado un registro, actualiza la información en la base de datos con los valores ingresados en los campos de texto y recarga la tabla para reflejar los cambios.
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
         If idPersonalSeleccionado = 0 Then
             MessageBox.Show("Seleccione el Personal a modificar.")
