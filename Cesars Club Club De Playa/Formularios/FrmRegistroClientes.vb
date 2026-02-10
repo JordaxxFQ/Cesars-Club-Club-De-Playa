@@ -7,7 +7,7 @@ Public Class FrmRegistroClientes
         dtpFechaRegistro.Value = Date.Today
         CargarDatos()
     End Sub
-
+    'Este método se encarga de cargar los datos de los clientes desde la base de datos y mostrarlos en el DataGridView, configurando las propiedades para una mejor visualización y usabilidad.
     Private Sub CargarDatos()
         Dim query As String = "SELECT * FROM Clientes"
 
@@ -53,6 +53,8 @@ Public Class FrmRegistroClientes
         End Using
     End Function
 
+    'Este buttom se encarga de validar los campos de entrada, verificar que la cédula no esté duplicada, y luego insertar un nuevo cliente en la base de datos si todas las validaciones son exitosas.
+    'Después de guardar, limpia los campos y recarga el DataGridView para mostrar el nuevo cliente.
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
         If String.IsNullOrEmpty(TxtNombre.Text) Then
             MessageBox.Show("Por favor ingrese el nombre completo", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -113,6 +115,7 @@ Public Class FrmRegistroClientes
         End Using
     End Sub
 
+
     Private Sub LimpiarCampos()
         TxtNombre.Clear()
         TxtCedula.Clear()
@@ -120,6 +123,7 @@ Public Class FrmRegistroClientes
         TxtNombre.Focus()
     End Sub
 
+    ' Este código se encarga de eliminar un cliente seleccionado en el DataGridView, mostrando una confirmación antes de proceder con la eliminación.
     Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
 
         If DgvCliente.SelectedRows.Count = 0 Then
@@ -156,6 +160,7 @@ Public Class FrmRegistroClientes
         End If
     End Sub
 
+    'Este método se encarga de eliminar un cliente de la base de datos utilizando su ID, y luego actualiza el DataGridView para reflejar los cambios.
     Private Sub EliminarCliente(idCliente As Integer)
         Using conexion As New OleDbConnection(cadena)
             Try
@@ -216,6 +221,7 @@ Public Class FrmRegistroClientes
         End If
     End Sub
 
+    '
     Private Sub BtnLimpiar_Click(sender As Object, e As EventArgs) Handles BtnLimpiar.Click
         LimpiarCampos()
     End Sub
