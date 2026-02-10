@@ -22,27 +22,58 @@ Partial Class FrmRecepcionista
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        btnMesas = New Button()
-        btnPedido = New Button()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmRecepcionista))
+        LblZonas = New Label()
+        PtbZonas = New PictureBox()
+        LblPedidos = New Label()
+        PtbPedido = New PictureBox()
+        CType(PtbZonas, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PtbPedido, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' btnMesas
+        ' LblZonas
         ' 
-        btnMesas.Location = New Point(12, 12)
-        btnMesas.Name = "btnMesas"
-        btnMesas.Size = New Size(138, 112)
-        btnMesas.TabIndex = 0
-        btnMesas.Text = "Mesas"
-        btnMesas.UseVisualStyleBackColor = True
+        LblZonas.AutoSize = True
+        LblZonas.Cursor = Cursors.Hand
+        LblZonas.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
+        LblZonas.Location = New Point(118, 28)
+        LblZonas.Name = "LblZonas"
+        LblZonas.Size = New Size(52, 24)
+        LblZonas.TabIndex = 23
+        LblZonas.Text = "Zonas"
         ' 
-        ' btnPedido
+        ' PtbZonas
         ' 
-        btnPedido.Location = New Point(12, 130)
-        btnPedido.Name = "btnPedido"
-        btnPedido.Size = New Size(138, 116)
-        btnPedido.TabIndex = 1
-        btnPedido.Text = "Pedido"
-        btnPedido.UseVisualStyleBackColor = True
+        PtbZonas.Cursor = Cursors.Hand
+        PtbZonas.Image = CType(resources.GetObject("PtbZonas.Image"), Image)
+        PtbZonas.Location = New Point(12, 12)
+        PtbZonas.Name = "PtbZonas"
+        PtbZonas.Size = New Size(113, 89)
+        PtbZonas.SizeMode = PictureBoxSizeMode.Zoom
+        PtbZonas.TabIndex = 22
+        PtbZonas.TabStop = False
+        ' 
+        ' LblPedidos
+        ' 
+        LblPedidos.AutoSize = True
+        LblPedidos.Cursor = Cursors.Hand
+        LblPedidos.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
+        LblPedidos.Location = New Point(118, 133)
+        LblPedidos.Name = "LblPedidos"
+        LblPedidos.Size = New Size(63, 24)
+        LblPedidos.TabIndex = 25
+        LblPedidos.Text = "Pedidos"
+        ' 
+        ' PtbPedido
+        ' 
+        PtbPedido.Cursor = Cursors.Hand
+        PtbPedido.Image = CType(resources.GetObject("PtbPedido.Image"), Image)
+        PtbPedido.Location = New Point(12, 117)
+        PtbPedido.Name = "PtbPedido"
+        PtbPedido.Size = New Size(113, 89)
+        PtbPedido.SizeMode = PictureBoxSizeMode.Zoom
+        PtbPedido.TabIndex = 24
+        PtbPedido.TabStop = False
         ' 
         ' FrmRecepcionista
         ' 
@@ -50,13 +81,19 @@ Partial Class FrmRecepcionista
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(625, 545)
-        Controls.Add(btnPedido)
-        Controls.Add(btnMesas)
+        Controls.Add(LblPedidos)
+        Controls.Add(PtbPedido)
+        Controls.Add(LblZonas)
+        Controls.Add(PtbZonas)
         Name = "FrmRecepcionista"
         Text = "FrmRecepcionista"
+        CType(PtbZonas, ComponentModel.ISupportInitialize).EndInit()
+        CType(PtbPedido, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
-
-    Friend WithEvents btnMesas As Button
-    Friend WithEvents btnPedido As Button
+    Friend WithEvents LblZonas As Label
+    Friend WithEvents PtbZonas As PictureBox
+    Friend WithEvents LblPedidos As Label
+    Friend WithEvents PtbPedido As PictureBox
 End Class
