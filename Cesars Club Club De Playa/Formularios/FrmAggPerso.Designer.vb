@@ -38,6 +38,7 @@ Partial Class FrmAggPerso
         ' 
         ' txtboxusuario
         ' 
+        txtboxusuario.Cursor = Cursors.Hand
         txtboxusuario.Location = New Point(12, 104)
         txtboxusuario.Name = "txtboxusuario"
         txtboxusuario.Size = New Size(100, 23)
@@ -45,6 +46,7 @@ Partial Class FrmAggPerso
         ' 
         ' txtboxContra
         ' 
+        txtboxContra.Cursor = Cursors.Hand
         txtboxContra.Location = New Point(12, 154)
         txtboxContra.Name = "txtboxContra"
         txtboxContra.Size = New Size(100, 23)
@@ -101,6 +103,7 @@ Partial Class FrmAggPerso
         ' 
         ' btnConfirmar
         ' 
+        btnConfirmar.Cursor = Cursors.Hand
         btnConfirmar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         btnConfirmar.Location = New Point(12, 317)
         btnConfirmar.Name = "btnConfirmar"
@@ -111,6 +114,7 @@ Partial Class FrmAggPerso
         ' 
         ' cmbRol
         ' 
+        cmbRol.Cursor = Cursors.Hand
         cmbRol.DropDownStyle = ComboBoxStyle.DropDownList
         cmbRol.FormattingEnabled = True
         cmbRol.Location = New Point(12, 204)
@@ -120,6 +124,7 @@ Partial Class FrmAggPerso
         ' 
         ' cmbTurno
         ' 
+        cmbTurno.Cursor = Cursors.Hand
         cmbTurno.DropDownStyle = ComboBoxStyle.DropDownList
         cmbTurno.FormattingEnabled = True
         cmbTurno.Location = New Point(12, 254)
@@ -154,6 +159,7 @@ Partial Class FrmAggPerso
         Controls.Add(Label1)
         Controls.Add(txtboxContra)
         Controls.Add(txtboxusuario)
+        Cursor = Cursors.Default
         FormBorderStyle = FormBorderStyle.FixedToolWindow
         Name = "FrmAggPerso"
         StartPosition = FormStartPosition.CenterScreen
