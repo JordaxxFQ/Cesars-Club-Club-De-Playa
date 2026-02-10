@@ -23,13 +23,13 @@ Partial Class FrmAggPerso
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         txtboxusuario = New TextBox()
-        txtboxContra = New TextBox()
+        TxtContraseña = New TextBox()
         Label1 = New Label()
         Label2 = New Label()
         Label3 = New Label()
         Label4 = New Label()
         DgvPersonal = New DataGridView()
-        btnConfirmar = New Button()
+        BtnConfirmar = New Button()
         cmbRol = New ComboBox()
         cmbTurno = New ComboBox()
         btnEdit = New Button()
@@ -44,13 +44,13 @@ Partial Class FrmAggPerso
         txtboxusuario.Size = New Size(100, 23)
         txtboxusuario.TabIndex = 0
         ' 
-        ' txtboxContra
+        ' TxtContraseña
         ' 
-        txtboxContra.Cursor = Cursors.Hand
-        txtboxContra.Location = New Point(12, 154)
-        txtboxContra.Name = "txtboxContra"
-        txtboxContra.Size = New Size(100, 23)
-        txtboxContra.TabIndex = 1
+        TxtContraseña.Cursor = Cursors.Hand
+        TxtContraseña.Location = New Point(12, 154)
+        TxtContraseña.Name = "TxtContraseña"
+        TxtContraseña.Size = New Size(100, 23)
+        TxtContraseña.TabIndex = 1
         ' 
         ' Label1
         ' 
@@ -101,16 +101,16 @@ Partial Class FrmAggPerso
         DgvPersonal.Size = New Size(277, 365)
         DgvPersonal.TabIndex = 8
         ' 
-        ' btnConfirmar
+        ' BtnConfirmar
         ' 
-        btnConfirmar.Cursor = Cursors.Hand
-        btnConfirmar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
-        btnConfirmar.Location = New Point(12, 317)
-        btnConfirmar.Name = "btnConfirmar"
-        btnConfirmar.Size = New Size(100, 50)
-        btnConfirmar.TabIndex = 9
-        btnConfirmar.Text = "Confirmar"
-        btnConfirmar.UseVisualStyleBackColor = True
+        BtnConfirmar.Cursor = Cursors.Hand
+        BtnConfirmar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        BtnConfirmar.Location = New Point(12, 317)
+        BtnConfirmar.Name = "BtnConfirmar"
+        BtnConfirmar.Size = New Size(100, 50)
+        BtnConfirmar.TabIndex = 9
+        BtnConfirmar.Text = "Confirmar"
+        BtnConfirmar.UseVisualStyleBackColor = True
         ' 
         ' cmbRol
         ' 
@@ -151,15 +151,14 @@ Partial Class FrmAggPerso
         Controls.Add(btnEdit)
         Controls.Add(cmbTurno)
         Controls.Add(cmbRol)
-        Controls.Add(btnConfirmar)
+        Controls.Add(BtnConfirmar)
         Controls.Add(DgvPersonal)
         Controls.Add(Label4)
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(Label1)
-        Controls.Add(txtboxContra)
+        Controls.Add(TxtContraseña)
         Controls.Add(txtboxusuario)
-        Cursor = Cursors.Default
         FormBorderStyle = FormBorderStyle.FixedToolWindow
         Name = "FrmAggPerso"
         StartPosition = FormStartPosition.CenterScreen
@@ -170,13 +169,13 @@ Partial Class FrmAggPerso
     End Sub
 
     Friend WithEvents txtboxusuario As TextBox
-    Friend WithEvents txtboxContra As TextBox
+    Friend WithEvents TxtContraseña As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents DgvPersonal As DataGridView
-    Friend WithEvents btnConfirmar As Button
+    Friend WithEvents BtnConfirmar As Button
     Friend WithEvents cmbRol As ComboBox
     Friend WithEvents cmbTurno As ComboBox
     Friend WithEvents btnEdit As Button
