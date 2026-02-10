@@ -86,13 +86,6 @@ Public Class FrmPedidos
 
     End Sub
 
-    Private Sub TxtCedula_Keypress(sender As Object, e As KeyPressEventArgs) Handles TxtCedula.KeyPress
-        If e.KeyChar = Chr(13) Then
-            BuscarCliente()
-            e.Handled = True
-        End If
-    End Sub
-
     ' Esta función se encarga de buscar un cliente en la base de datos utilizando la cédula ingresada por el usuario.
 
     Private Sub BuscarCliente()

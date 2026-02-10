@@ -4,6 +4,7 @@ Imports Cesars_Club_Club_De_Playa.DAL
 Public Class FrmProductos
 
     Dim _idProductoSeleccionado As Integer = 0
+
     Private Sub FrmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarProductos()
         cmbCategoria.Items.Add("Plato Principal")
@@ -48,7 +49,6 @@ Public Class FrmProductos
 
             If DgvProductos.Columns.Contains("ActivoVenta") Then
                 Dim valorCheck = fila.Cells("ActivoVenta").Value
-                ' Verificamos si no es nulo antes de asignar
                 If IsDBNull(valorCheck) Then
                     chkActivo.Checked = False
                 Else
@@ -93,7 +93,6 @@ Public Class FrmProductos
             Exit Sub
         End If
 
-        ' Agregamos ActivoVenta=? a la consulta SQL
         Dim query As String = "UPDATE Productos SET NombreProducto=?, Categoria=?, Descripcion=?, Precio=?, Stock=?, ActivoVenta=? WHERE ID_Producto=?"
 
         Using conexion As New OleDbConnection(cadena)
@@ -101,17 +100,12 @@ Public Class FrmProductos
                 conexion.Open()
                 Dim cmd As New OleDbCommand(query, conexion)
 
-                ' Los parámetros DEBEN seguir el orden exacto del Query arriba
                 cmd.Parameters.Add("@nom", OleDbType.VarWChar).Value = TxtNombre.Text
                 cmd.Parameters.Add("@cat", OleDbType.VarWChar).Value = cmbCategoria.Text
                 cmd.Parameters.Add("@desc", OleDbType.LongVarWChar).Value = TxtDescripcion.Text
                 cmd.Parameters.Add("@prec", OleDbType.Currency).Value = Decimal.Parse(TxtPrecio.Text)
                 cmd.Parameters.Add("@stk", OleDbType.Integer).Value = CInt(TxtStock.Text)
-
-                ' --- NUEVO: Parámetro para el campo Yes/No ---
                 cmd.Parameters.Add("@act", OleDbType.Boolean).Value = chkActivo.Checked
-
-                ' El ID siempre al final por el WHERE
                 cmd.Parameters.Add("@id", OleDbType.Integer).Value = _idProductoSeleccionado
 
                 cmd.ExecuteNonQuery()
@@ -126,6 +120,7 @@ Public Class FrmProductos
         End Using
     End Sub
 
+    '
     Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         If _idProductoSeleccionado = 0 Then
             MessageBox.Show("Seleccione un producto para eliminar.")
@@ -156,7 +151,7 @@ Public Class FrmProductos
         End If
     End Sub
 
-    ' --- FUNCIONES DE AYUDA (LIMPIEZA Y VALIDACIÓN) ---
+    ' FUNCIONES DE AYUDA (LIMPIEZA Y VALIDACIÓN)
     Private Sub LimpiarCampos()
         TxtNombre.Clear()
         cmbCategoria.SelectedIndex = -1
