@@ -75,40 +75,40 @@ Partial Class FrmCocina
         ' LblNumPedido
         ' 
         LblNumPedido.AutoSize = True
-        LblNumPedido.Font = New Font("Segoe UI", 14F)
+        LblNumPedido.Font = New Font("Segoe Print", 14F, FontStyle.Bold)
         LblNumPedido.Location = New Point(305, 97)
         LblNumPedido.Name = "LblNumPedido"
-        LblNumPedido.Size = New Size(194, 25)
+        LblNumPedido.Size = New Size(220, 33)
         LblNumPedido.TabIndex = 3
         LblNumPedido.Text = "Seleccione Un Pedido"
         ' 
         ' LblCliente
         ' 
         LblCliente.AutoSize = True
-        LblCliente.Font = New Font("Segoe UI", 11F)
+        LblCliente.Font = New Font("Segoe Print", 11F, FontStyle.Bold)
         LblCliente.Location = New Point(275, 136)
         LblCliente.Name = "LblCliente"
-        LblCliente.Size = New Size(55, 20)
+        LblCliente.Size = New Size(63, 26)
         LblCliente.TabIndex = 4
         LblCliente.Text = "Cliente"
         ' 
         ' LblMesa
         ' 
         LblMesa.AutoSize = True
-        LblMesa.Font = New Font("Segoe UI", 11F)
+        LblMesa.Font = New Font("Segoe Print", 11F, FontStyle.Bold)
         LblMesa.Location = New Point(275, 165)
         LblMesa.Name = "LblMesa"
-        LblMesa.Size = New Size(44, 20)
+        LblMesa.Size = New Size(49, 26)
         LblMesa.TabIndex = 5
         LblMesa.Text = "Mesa"
         ' 
         ' LblFechaHora
         ' 
         LblFechaHora.AutoSize = True
-        LblFechaHora.Font = New Font("Segoe UI", 10F)
+        LblFechaHora.Font = New Font("Segoe Print", 11F, FontStyle.Bold)
         LblFechaHora.Location = New Point(275, 195)
         LblFechaHora.Name = "LblFechaHora"
-        LblFechaHora.Size = New Size(39, 19)
+        LblFechaHora.Size = New Size(49, 26)
         LblFechaHora.TabIndex = 6
         LblFechaHora.Text = "Hora"
         ' 
@@ -167,10 +167,10 @@ Partial Class FrmCocina
         ' LblComent
         ' 
         LblComent.AutoSize = True
-        LblComent.Font = New Font("Segoe UI", 10F)
-        LblComent.Location = New Point(275, 275)
+        LblComent.Font = New Font("Segoe Print", 11F, FontStyle.Bold)
+        LblComent.Location = New Point(275, 268)
         LblComent.Name = "LblComent"
-        LblComent.Size = New Size(90, 19)
+        LblComent.Size = New Size(109, 26)
         LblComent.TabIndex = 12
         LblComent.Text = "Comentarios:"
         ' 

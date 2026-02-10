@@ -53,36 +53,40 @@ Partial Class FrmAggPerso
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(12, 58)
+        Label1.Font = New Font("Segoe Print", 11F, FontStyle.Bold)
+        Label1.Location = New Point(12, 47)
         Label1.Name = "Label1"
-        Label1.Size = New Size(47, 15)
+        Label1.Size = New Size(68, 26)
         Label1.TabIndex = 4
         Label1.Text = "Usuario"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(12, 119)
+        Label2.Font = New Font("Segoe Print", 11F, FontStyle.Bold)
+        Label2.Location = New Point(12, 108)
         Label2.Name = "Label2"
-        Label2.Size = New Size(67, 15)
+        Label2.Size = New Size(97, 26)
         Label2.TabIndex = 5
         Label2.Text = "Contraseña"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(12, 181)
+        Label3.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
+        Label3.Location = New Point(12, 170)
         Label3.Name = "Label3"
-        Label3.Size = New Size(24, 15)
+        Label3.Size = New Size(32, 24)
         Label3.TabIndex = 6
         Label3.Text = "Rol"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(12, 234)
+        Label4.Font = New Font("Segoe Print", 10F, FontStyle.Bold)
+        Label4.Location = New Point(12, 225)
         Label4.Name = "Label4"
-        Label4.Size = New Size(38, 15)
+        Label4.Size = New Size(52, 24)
         Label4.TabIndex = 7
         Label4.Text = "Turno"
         ' 

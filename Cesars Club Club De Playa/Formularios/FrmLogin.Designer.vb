@@ -54,6 +54,7 @@ Partial Class FrmLogin
         ' 
         ' txtUsuario
         ' 
+        txtUsuario.BackColor = Color.White
         txtUsuario.BorderStyle = BorderStyle.FixedSingle
         txtUsuario.Cursor = Cursors.IBeam
         txtUsuario.Font = New Font("Segoe UI", 10F)

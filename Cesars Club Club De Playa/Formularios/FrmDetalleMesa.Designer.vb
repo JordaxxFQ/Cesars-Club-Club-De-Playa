@@ -59,6 +59,7 @@ Partial Class FrmDetalleMesa
         ' 
         ' btnBuscarCliente
         ' 
+        btnBuscarCliente.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         btnBuscarCliente.Location = New Point(28, 181)
         btnBuscarCliente.Name = "btnBuscarCliente"
         btnBuscarCliente.Size = New Size(75, 46)
@@ -68,6 +69,7 @@ Partial Class FrmDetalleMesa
         ' 
         ' btnGuardar
         ' 
+        btnGuardar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         btnGuardar.Location = New Point(28, 233)
         btnGuardar.Name = "btnGuardar"
         btnGuardar.Size = New Size(75, 46)
@@ -78,41 +80,46 @@ Partial Class FrmDetalleMesa
         ' lblTitulo
         ' 
         lblTitulo.AutoSize = True
-        lblTitulo.Location = New Point(87, 32)
+        lblTitulo.Font = New Font("Segoe Print", 11F, FontStyle.Bold)
+        lblTitulo.Location = New Point(82, 18)
         lblTitulo.Name = "lblTitulo"
-        lblTitulo.Size = New Size(50, 15)
+        lblTitulo.Size = New Size(71, 26)
         lblTitulo.TabIndex = 4
         lblTitulo.Text = "lblTitulo"
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(28, 62)
+        Label1.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label1.Location = New Point(28, 56)
         Label1.Name = "Label1"
-        Label1.Size = New Size(44, 15)
+        Label1.Size = New Size(49, 21)
         Label1.TabIndex = 5
         Label1.Text = "Cedula"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(28, 116)
+        Label2.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label2.Location = New Point(28, 110)
         Label2.Name = "Label2"
-        Label2.Size = New Size(51, 15)
+        Label2.Size = New Size(58, 21)
         Label2.TabIndex = 6
         Label2.Text = "Nombre"
         ' 
         ' btnLiberar
         ' 
+        btnLiberar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         btnLiberar.Location = New Point(28, 285)
         btnLiberar.Name = "btnLiberar"
         btnLiberar.Size = New Size(75, 47)
         btnLiberar.TabIndex = 7
-        btnLiberar.Text = "Liberar Zona"
+        btnLiberar.Text = "Liberar"
         btnLiberar.UseVisualStyleBackColor = True
         ' 
         ' btnReservar
         ' 
+        btnReservar.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         btnReservar.Location = New Point(28, 338)
         btnReservar.Name = "btnReservar"
         btnReservar.Size = New Size(75, 47)
@@ -122,6 +129,7 @@ Partial Class FrmDetalleMesa
         ' 
         ' btonDeleteReserv
         ' 
+        btonDeleteReserv.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
         btonDeleteReserv.Location = New Point(28, 390)
         btonDeleteReserv.Margin = New Padding(3, 2, 3, 2)
         btonDeleteReserv.Name = "btonDeleteReserv"
@@ -152,27 +160,30 @@ Partial Class FrmDetalleMesa
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(151, 62)
+        Label3.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label3.Location = New Point(151, 56)
         Label3.Name = "Label3"
-        Label3.Size = New Size(65, 15)
+        Label3.Size = New Size(76, 21)
         Label3.TabIndex = 14
         Label3.Text = "Hora Inicio"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(151, 116)
+        Label4.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label4.Location = New Point(151, 110)
         Label4.Name = "Label4"
-        Label4.Size = New Size(52, 15)
+        Label4.Size = New Size(63, 21)
         Label4.TabIndex = 15
         Label4.Text = "Hora Fin"
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Location = New Point(367, 116)
+        Label5.Font = New Font("Segoe Print", 9F, FontStyle.Bold)
+        Label5.Location = New Point(367, 110)
         Label5.Name = "Label5"
-        Label5.Size = New Size(121, 15)
+        Label5.Size = New Size(141, 21)
         Label5.TabIndex = 16
         Label5.Text = "Cantidad de Personas"
         ' 
