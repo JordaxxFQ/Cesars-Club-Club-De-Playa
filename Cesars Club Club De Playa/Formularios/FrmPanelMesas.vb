@@ -6,10 +6,13 @@ Public Class FrmPanelMesas
         CargarMesas()
     End Sub
 
+    ' Esta función se encarga de cargar las mesas desde la base de datos y mostrarlas en un FlowLayoutPanel.
+    ' Para cada mesa, se crea un botón con su número, tipo y estado, y se le asigna una imagen representativa según su tipo.
+    ' Además, el color de fondo del botón cambia según el estado de la mesa (disponible, ocupada, reservada, mantenimiento).
+    ' Al hacer clic en un botón de mesa, se abre un formulario de detalle con la información de esa mesa.
     Public Sub CargarMesas()
         flpMesas.Controls.Clear()
 
-        ' Nos aseguramos de traer el campo "Tipo" (ya lo tenías, perfecto)
         Dim query As String = "SELECT ID_Mesa, NumeroMesa, Estado, Tipo FROM Zonas ORDER BY ID_Mesa"
 
         Using conexion As New OleDbConnection(cadena)
@@ -20,30 +23,23 @@ Public Class FrmPanelMesas
 
                 While lector.Read()
                     Dim btnMesa As New Button()
-
-                    ' --- CONFIGURACIÓN BÁSICA ---
-                    btnMesa.Width = 120  ' Un poco más grande para que quepa la imagen
+                    btnMesa.Width = 120
                     btnMesa.Height = 120
                     btnMesa.Tag = lector("ID_Mesa")
 
                     ' Mostramos el nombre y el tipo en el texto
                     btnMesa.Text = lector("NumeroMesa").ToString() & vbCrLf & lector("Tipo").ToString()
 
-                    ' --- AQUI EMPIEZA EL CAMBIO DE IMÁGENES ---
-
-                    ' --- CONFIGURACIÓN DE IMAGEN SEGÚN TIPO ---
-                    ' 1. Configuración visual del botón
+                    'Configuración visual del botón
                     btnMesa.TextAlign = ContentAlignment.BottomCenter
                     btnMesa.ImageAlign = ContentAlignment.TopCenter
                     btnMesa.TextImageRelation = TextImageRelation.ImageAboveText
 
-                    ' 2. Definimos la ruta de la carpeta de recursos
-                    ' Asegúrate de que esta carpeta exista en: TuProyecto\bin\Debug\Recursos
                     Dim tipoMesa As String = lector("Tipo").ToString().Trim()
 
                     Dim nombreArchivo As String = ""
 
-                    ' 3. Elegimos qué archivo buscar
+                    ' Elegimos qué archivo buscar
                     Select Case tipoMesa
                         Case "VIP" : nombreArchivo = "VIP.png"
                         Case "Terraza" : nombreArchivo = "Terraza.png"
@@ -51,7 +47,7 @@ Public Class FrmPanelMesas
                         Case Else : nombreArchivo = "General.png"
                     End Select
 
-                    ' 4. Cargamos la imagen de forma segura si el archivo existe
+                    ' Cargamos la imagen de forma segura si el archivo existe
                     Dim rutaCompleta As String = IO.Path.Combine(rutaimg, nombreArchivo)
 
 
@@ -59,11 +55,11 @@ Public Class FrmPanelMesas
                     Try
                         If IO.File.Exists(rutaCompleta) Then
                             Using fs As New IO.FileStream(rutaCompleta, IO.FileMode.Open, IO.FileAccess.Read)
-                                ' 1. Cargamos la imagen original de 512x512
+                                ' Cargamos la imagen original de 512x512
+                                'Esto pq las imagenes en Recursos son de 512x512, pero el botón es de 120x120, así que las redimensionamos para que se vean bien sin distorsión
                                 Dim imgOriginal As Image = Image.FromStream(fs)
 
-                                ' 2. Creamos una versión pequeña (64x64 es ideal para que sobre espacio para el texto)
-                                ' Puedes probar con 80x80 si la quieres más grande
+                                ' Creamos una versión pequeña 
                                 Dim imgRedimensionada As New Bitmap(imgOriginal, New Size(64, 64))
 
                                 ' 3. La asignamos al botón
@@ -78,7 +74,7 @@ Public Class FrmPanelMesas
                     End Try
 
 
-                    ' --- COLOR DE ESTADO (Mantenemos tu lógica) ---
+                    ' Cambia de color segun su estado
                     Dim estado As String = lector("Estado").ToString()
                     Select Case estado
                         Case "Disponible" : btnMesa.BackColor = Color.LightGreen
@@ -97,7 +93,9 @@ Public Class FrmPanelMesas
         End Using
     End Sub
 
-    ' Este evento se dispara al hacer clic en CUALQUIER mesa
+    ' Este código se encarga de manejar el evento de clic en los botones de las mesas.
+    ' Cuando se hace clic en un botón, se recupera el ID de la mesa desde la propiedad Tag del botón, y se abre un formulario de detalle (FrmDetalleMesa) pasando ese ID como parámetro.
+    ' Después de cerrar el formulario de detalle, se recargan las mesas para reflejar cualquier cambio que se haya hecho.
     Private Sub BotonMesa_Click(sender As Object, e As EventArgs)
         ' Recuperamos qué botón fue presionado
         Dim btnPresionado As Button = CType(sender, Button)
