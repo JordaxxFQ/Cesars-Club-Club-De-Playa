@@ -224,6 +224,7 @@ Partial Class FrmDetalleMesa
         Controls.Add(btnBuscarCliente)
         Controls.Add(txtNombre)
         Controls.Add(txtCedula)
+        FormBorderStyle = FormBorderStyle.FixedToolWindow
         Name = "FrmDetalleMesa"
         StartPosition = FormStartPosition.CenterScreen
         Text = "FrmDetalleMesa"

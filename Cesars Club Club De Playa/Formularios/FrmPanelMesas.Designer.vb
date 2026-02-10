@@ -41,6 +41,7 @@ Partial Class FrmPanelMesas
         BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(800, 450)
         Controls.Add(flpMesas)
+        FormBorderStyle = FormBorderStyle.FixedToolWindow
         Name = "FrmPanelMesas"
         StartPosition = FormStartPosition.CenterScreen
         Text = "FrmPanelMesas"

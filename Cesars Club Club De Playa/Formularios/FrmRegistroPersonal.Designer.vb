@@ -93,6 +93,7 @@ Partial Class FrmRegistroPersonal
         Controls.Add(Label1)
         Controls.Add(btnDelete)
         Controls.Add(btnAgg)
+        FormBorderStyle = FormBorderStyle.FixedToolWindow
         Margin = New Padding(3, 2, 3, 2)
         Name = "FrmRegistroPersonal"
         StartPosition = FormStartPosition.CenterScreen

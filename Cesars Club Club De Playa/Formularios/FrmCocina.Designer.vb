@@ -198,6 +198,7 @@ Partial Class FrmCocina
         Controls.Add(DgvPedidos)
         Controls.Add(BtnActualizar)
         Controls.Add(CboEstado)
+        FormBorderStyle = FormBorderStyle.FixedToolWindow
         Name = "FrmCocina"
         StartPosition = FormStartPosition.CenterScreen
         Text = "FrmCocina"
